@@ -89,6 +89,7 @@ public class HomeController {
 		try {
 			User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			modelMap.put("user", user);
+			model.addAttribute("titrePage", "FILETS SOCIAUX | Accueil");
 			return "home";
 		}catch (ClassCastException e) {
 			return "redirect:/";
@@ -100,6 +101,7 @@ public class HomeController {
 	public String accessDenied(Model model) {
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("user", user);
+		model.addAttribute("titrePage", "FILETS SOCIAUX | Erreur 403");
 
 		return "denied.html";
 	}

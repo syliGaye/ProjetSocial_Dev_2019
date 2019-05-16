@@ -65,143 +65,143 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = "admin")
 public class OdkMembreController {
-    
-      
-    @Autowired
-    private OdkMembreService odkMembreService;
 
-    @Autowired
-    private SigRegionService sigRegionService;
-    
-    @Autowired
-    private SigDepartementService sigDepartementService;
-    
-	 @Autowired
-	 private SigDepartementListeService sigDepartementListeService;
-	 @Autowired
-	 private SigSousPrefectureListeService sigSousPrefectureListeService;
-	 @Autowired
-	 private SigLocaliteListeService sigLocaliteListeService;	
 
 	@Autowired
-    private SigLocaliteService sigLocaliteService; 
-	
-	@Autowired
-    private SigSousPrefectureService sigSousPrefectureService;
-	 
-	@Autowired
-    private PmtTypePieceidentService PmtTypePieceidentService;
-	
-	@Autowired
-    private PmtNiveauEtudeService PmtNiveauEtudeService;
-	
-	@Autowired
-    private PmtActiviteCmService PmtActiviteCmService;
-	
-	@Autowired
-    private PmtStatutMatrimonialService PmtStatutMatrimonialService;
-	
-	@Autowired
-    private PmtStatutResidenceService PmtStatutResidenceService;
-	
-	@Autowired
-    private PmtLienMenageService PmtLienMenageService;
-	
-	@Autowired
-    private PmtModePaiementSoinService PmtModePaiementSoinService;
+	private OdkMembreService odkMembreService;
 
-   
-         
-    @RequestMapping(path = "/detailsOdkMembres/{idSelection}", method = RequestMethod.GET)
-    public String detailOdkMembre(Model model, @PathVariable(value = "idSelection") String idSelection) {
-        model.addAttribute("odkMembre", odkMembreService.getOne(idSelection));
-        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	model.addAttribute("user", user);
-	
-	   SigRegion SigRegion = new SigRegion();
+	@Autowired
+	private SigRegionService sigRegionService;
+
+	@Autowired
+	private SigDepartementService sigDepartementService;
+
+	@Autowired
+	private SigDepartementListeService sigDepartementListeService;
+	@Autowired
+	private SigSousPrefectureListeService sigSousPrefectureListeService;
+	@Autowired
+	private SigLocaliteListeService sigLocaliteListeService;
+
+	@Autowired
+	private SigLocaliteService sigLocaliteService;
+
+	@Autowired
+	private SigSousPrefectureService sigSousPrefectureService;
+
+	@Autowired
+	private PmtTypePieceidentService PmtTypePieceidentService;
+
+	@Autowired
+	private PmtNiveauEtudeService PmtNiveauEtudeService;
+
+	@Autowired
+	private PmtActiviteCmService PmtActiviteCmService;
+
+	@Autowired
+	private PmtStatutMatrimonialService PmtStatutMatrimonialService;
+
+	@Autowired
+	private PmtStatutResidenceService PmtStatutResidenceService;
+
+	@Autowired
+	private PmtLienMenageService PmtLienMenageService;
+
+	@Autowired
+	private PmtModePaiementSoinService PmtModePaiementSoinService;
+
+
+
+	@RequestMapping(path = "/detailsOdkMembres/{idSelection}", method = RequestMethod.GET)
+	public String detailOdkMembre(Model model, @PathVariable(value = "idSelection") String idSelection) {
+		model.addAttribute("odkMembre", odkMembreService.getOne(idSelection));
+		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		model.addAttribute("user", user);
+
+		SigRegion SigRegion = new SigRegion();
 		model.addAttribute("SigRegion", SigRegion);
 		List<SigRegion> allSigRegion = (List<SigRegion>) sigRegionService.findAllOrder();
 		model.addAttribute("allSigRegion", allSigRegion);
 
 		  /*-------------------------concernant le combox Departement-----------------------------------*/
-		 SigDepartement SigDepartement = new SigDepartement();
-	     model.addAttribute("SigDepartement", SigDepartement);
-	     List<SigDepartement> allSigDepartement = (List<SigDepartement>) sigDepartementService.findAllOrder();
-	     model.addAttribute("allSigDepartement", allSigDepartement);
-		
+		SigDepartement SigDepartement = new SigDepartement();
+		model.addAttribute("SigDepartement", SigDepartement);
+		List<SigDepartement> allSigDepartement = (List<SigDepartement>) sigDepartementService.findAllOrder();
+		model.addAttribute("allSigDepartement", allSigDepartement);
+
 		  /*-------------------------concernant le combox Sous Prefecture-----------------------------------*/
 		SigSousPrefecture SigSousPrefecture = new SigSousPrefecture();
 		model.addAttribute("SigSousPrefecture", SigSousPrefecture);
 		List<SigSousPrefecture> allSigSousPrefecture = (List<SigSousPrefecture>) sigSousPrefectureService.findAllOrder();
 		model.addAttribute("allSigSousPrefecture", allSigSousPrefecture);
-	
+
 		/*-------------------------concernant le combox Localite-----------------------------------*/
 		SigLocalite SigLocalite = new SigLocalite();
 		model.addAttribute("SigLocalite", SigLocalite);
 		List<SigLocalite> allSigLocalite = (List<SigLocalite>) sigLocaliteService.findAllOrder();
 		model.addAttribute("allSigLocalite", allSigLocalite);
-	
-	      PmtTypePieceident PmtTypePieceident = new PmtTypePieceident();
-	    	model.addAttribute("PmtTypePieceident", PmtTypePieceident);
-	    	List<PmtTypePieceident> allPmtTypePieceident = (List<PmtTypePieceident>) PmtTypePieceidentService.findAll();
-	    	model.addAttribute("allPmtTypePieceident", allPmtTypePieceident);
-	    	
-	    	PmtNiveauEtude PmtNiveauEtude = new PmtNiveauEtude();
-	    	model.addAttribute("PmtNiveauEtude", PmtNiveauEtude);
-	    	List<PmtNiveauEtude> allPmtNiveauEtude = (List<PmtNiveauEtude>) PmtNiveauEtudeService.findAll();
-	    	model.addAttribute("allPmtNiveauEtude", allPmtNiveauEtude);
-	    	
-	    	PmtActiviteCm PmtActiviteCm = new PmtActiviteCm();
-	    	model.addAttribute("PmtActiviteCm", PmtActiviteCm);
-	    	List<PmtActiviteCm> allPmtActiviteCm = (List<PmtActiviteCm>) PmtActiviteCmService.findAll();
-	    	model.addAttribute("allPmtActiviteCm", allPmtActiviteCm);
-	    	
-	    	PmtStatutMatrimonial PmtStatutMatrimonial = new PmtStatutMatrimonial();
-	    	model.addAttribute("PmtStatutMatrimonial", PmtStatutMatrimonial);
-	    	List<PmtStatutMatrimonial> allPmtStatutMatrimonial = (List<PmtStatutMatrimonial>) PmtStatutMatrimonialService.findAll();
-	    	model.addAttribute("allPmtStatutMatrimonial", allPmtStatutMatrimonial);
-	    	
-	    	PmtStatutResidence PmtStatutResidence = new PmtStatutResidence();
-	    	model.addAttribute("PmtStatutResidence", PmtStatutResidence);
-	    	List<PmtStatutResidence> allPmtStatutResidence = (List<PmtStatutResidence>) PmtStatutResidenceService.findAll();
-	    	model.addAttribute("allPmtStatutResidence", allPmtStatutResidence);
-	    	
-	    	PmtLienMenage PmtLienMenage = new PmtLienMenage();
-	    	model.addAttribute("PmtLienMenage", PmtLienMenage);
-	    	List<PmtLienMenage> allPmtLienMenage = (List<PmtLienMenage>) PmtLienMenageService.findAll();
-	    	model.addAttribute("allPmtLienMenage", allPmtLienMenage);
-	    	
-	    	PmtModePaiementSoin PmtModePaiementSoin = new PmtModePaiementSoin();
-	    	model.addAttribute("PmtModePaiementSoin", PmtModePaiementSoin);
-	    	List<PmtModePaiementSoin> allPmtModePaiementSoin = (List<PmtModePaiementSoin>) PmtModePaiementSoinService.findAll();
-	    	model.addAttribute("allPmtModePaiementSoin", allPmtModePaiementSoin);
-	
-        return "admin/detailsOdkMembres.html";
-    }
-    
-    
 
-  
+		PmtTypePieceident PmtTypePieceident = new PmtTypePieceident();
+		model.addAttribute("PmtTypePieceident", PmtTypePieceident);
+		List<PmtTypePieceident> allPmtTypePieceident = (List<PmtTypePieceident>) PmtTypePieceidentService.findAll();
+		model.addAttribute("allPmtTypePieceident", allPmtTypePieceident);
 
-    @RequestMapping(path = {"/odkMembre", "/odkMembre/{CodRegion}/{CodDepartement}/{CodSPref}/{CodLocalite}/{VillageQuartier}/{NomMembre}/{Genre}"},  method = RequestMethod.GET)
-    public String rechOdkMembre(Model model,
-	     		
-   		@PathVariable(required = false, name = "CodRegion") String CodRegion,
-   		@PathVariable(required = false, name = "CodDepartement") String CodDepartement,
-   		@PathVariable(required = false, name = "CodSPref") String CodSPref,
-   		@PathVariable(required = false, name = "CodLocalite") String CodLocalite,
-   		@PathVariable(required = false, name = "VillageQuartier") String VillageQuartier,
-   		@PathVariable(required = false, name = "Genre") String Genre,
-   		@PathVariable(required = false, name = "NomMembre") String NomMembre){
-    	
-    	List<OdkMembre> listOdkMembre = new ArrayList<>();
-    	OdkMembre odkMembre = new OdkMembre();
-    	
+		PmtNiveauEtude PmtNiveauEtude = new PmtNiveauEtude();
+		model.addAttribute("PmtNiveauEtude", PmtNiveauEtude);
+		List<PmtNiveauEtude> allPmtNiveauEtude = (List<PmtNiveauEtude>) PmtNiveauEtudeService.findAll();
+		model.addAttribute("allPmtNiveauEtude", allPmtNiveauEtude);
+
+		PmtActiviteCm PmtActiviteCm = new PmtActiviteCm();
+		model.addAttribute("PmtActiviteCm", PmtActiviteCm);
+		List<PmtActiviteCm> allPmtActiviteCm = (List<PmtActiviteCm>) PmtActiviteCmService.findAll();
+		model.addAttribute("allPmtActiviteCm", allPmtActiviteCm);
+
+		PmtStatutMatrimonial PmtStatutMatrimonial = new PmtStatutMatrimonial();
+		model.addAttribute("PmtStatutMatrimonial", PmtStatutMatrimonial);
+		List<PmtStatutMatrimonial> allPmtStatutMatrimonial = (List<PmtStatutMatrimonial>) PmtStatutMatrimonialService.findAll();
+		model.addAttribute("allPmtStatutMatrimonial", allPmtStatutMatrimonial);
+
+		PmtStatutResidence PmtStatutResidence = new PmtStatutResidence();
+		model.addAttribute("PmtStatutResidence", PmtStatutResidence);
+		List<PmtStatutResidence> allPmtStatutResidence = (List<PmtStatutResidence>) PmtStatutResidenceService.findAll();
+		model.addAttribute("allPmtStatutResidence", allPmtStatutResidence);
+
+		PmtLienMenage PmtLienMenage = new PmtLienMenage();
+		model.addAttribute("PmtLienMenage", PmtLienMenage);
+		List<PmtLienMenage> allPmtLienMenage = (List<PmtLienMenage>) PmtLienMenageService.findAll();
+		model.addAttribute("allPmtLienMenage", allPmtLienMenage);
+
+		PmtModePaiementSoin PmtModePaiementSoin = new PmtModePaiementSoin();
+		model.addAttribute("PmtModePaiementSoin", PmtModePaiementSoin);
+		List<PmtModePaiementSoin> allPmtModePaiementSoin = (List<PmtModePaiementSoin>) PmtModePaiementSoinService.findAll();
+		model.addAttribute("allPmtModePaiementSoin", allPmtModePaiementSoin);
+
+		return "admin/detailsOdkMembres.html";
+	}
+
+
+
+
+
+	@RequestMapping(path = {"/odkMembre", "/odkMembre/{CodRegion}/{CodDepartement}/{CodSPref}/{CodLocalite}/{VillageQuartier}/{NomMembre}/{Genre}"},  method = RequestMethod.GET)
+	public String rechOdkMembre(Model model,
+
+								@PathVariable(required = false, name = "CodRegion") String CodRegion,
+								@PathVariable(required = false, name = "CodDepartement") String CodDepartement,
+								@PathVariable(required = false, name = "CodSPref") String CodSPref,
+								@PathVariable(required = false, name = "CodLocalite") String CodLocalite,
+								@PathVariable(required = false, name = "VillageQuartier") String VillageQuartier,
+								@PathVariable(required = false, name = "Genre") String Genre,
+								@PathVariable(required = false, name = "NomMembre") String NomMembre){
+
+		List<OdkMembre> listOdkMembre = new ArrayList<>();
+		OdkMembre odkMembre = new OdkMembre();
+
 		SigFiltreRecherche sigFiltreRecherche = new SigFiltreRecherche();
-   		 
-    
-		  if ( CodRegion != null && CodDepartement != null && CodSPref != null && CodLocalite != null && VillageQuartier != null && Genre != null && NomMembre != null){
-		switch (CodRegion)
+
+
+		if ( CodRegion != null && CodDepartement != null && CodSPref != null && CodLocalite != null && VillageQuartier != null && Genre != null && NomMembre != null){
+			switch (CodRegion)
 			{
 				case "null":
 					CodRegion="";
@@ -250,142 +250,142 @@ public class OdkMembreController {
 				default:
 					break;
 			}
-		   	 
-		   	 switch (Genre)
-		   	 {
-		   	 case "null":
-		   		 Genre="";
-		   		 	break;
-		   		 	
-		   	 default:
-		   		 	break;
-		   		 	
-		   	 }
-		   	 
-		
-		   	 
-		        switch (NomMembre)
-		   	 {
-		   	 case "null":
-		   		 NomMembre="";
-		   		 	break;
-		   		 	
-		   	 default:
-		   		 	break;
-		   	 }	
-			 
-			   
-			 
-                
 
-				sigFiltreRecherche.setCodRegion(CodRegion);
-				sigFiltreRecherche.setCodDepartement(CodDepartement);
-				sigFiltreRecherche.setCodLocalite(CodLocalite);
-				sigFiltreRecherche.setCodSPref(CodSPref);
-				sigFiltreRecherche.setVillageQuartier(VillageQuartier);
-				
+			switch (Genre)
+			{
+				case "null":
+					Genre="";
+					break;
+
+				default:
+					break;
+
+			}
+
+
+
+			switch (NomMembre)
+			{
+				case "null":
+					NomMembre="";
+					break;
+
+				default:
+					break;
+			}
+
+
+
+
+
+			sigFiltreRecherche.setCodRegion(CodRegion);
+			sigFiltreRecherche.setCodDepartement(CodDepartement);
+			sigFiltreRecherche.setCodLocalite(CodLocalite);
+			sigFiltreRecherche.setCodSPref(CodSPref);
+			sigFiltreRecherche.setVillageQuartier(VillageQuartier);
+
 				/* utiliser le champs nom locaite pour le genre et nomRegion pour le nomMembre*/
-				sigFiltreRecherche.setNomLocalite(Genre);
-				sigFiltreRecherche.setNomRegion(NomMembre);
+			sigFiltreRecherche.setNomLocalite(Genre);
+			sigFiltreRecherche.setNomRegion(NomMembre);
 
 
-   	 listOdkMembre = (List<OdkMembre>)  
-   			 odkMembreService.findQuery(
-   					                  CodRegion,
-   			                          CodDepartement,
-   			                          CodSPref,
-   			                          CodLocalite,
-   			                          VillageQuartier,
-   			                          Genre,
-   			                   
-   			                          NomMembre); 
-   	 
-		model.addAttribute("SigFiltreRecherche", sigFiltreRecherche);
-    	model.addAttribute("result", listOdkMembre);
-       	model.addAttribute("recherFaite", odkMembre);	 
+			listOdkMembre = (List<OdkMembre>)
+					odkMembreService.findQuery(
+							CodRegion,
+							CodDepartement,
+							CodSPref,
+							CodLocalite,
+							VillageQuartier,
+							Genre,
+
+							NomMembre);
+
+			model.addAttribute("SigFiltreRecherche", sigFiltreRecherche);
+			model.addAttribute("result", listOdkMembre);
+			model.addAttribute("recherFaite", odkMembre);
        	/*-------------------------concernant le combox region-----------------------------------*/
-		SigRegion SigRegion = new SigRegion();
-		model.addAttribute("SigRegion", SigRegion);
-		List<SigRegion> allSigRegion = (List<SigRegion>) sigRegionService.findAllOrder();
-		model.addAttribute("allSigRegion", allSigRegion);
+			SigRegion SigRegion = new SigRegion();
+			model.addAttribute("SigRegion", SigRegion);
+			List<SigRegion> allSigRegion = (List<SigRegion>) sigRegionService.findAllOrder();
+			model.addAttribute("allSigRegion", allSigRegion);
 
 		  /*-------------------------concernant le combox Departement-----------------------------------*/
 
-		SigDepartementView SigDepartementView = new SigDepartementView();
-		model.addAttribute("SigDepartementView", SigDepartementView);		
-		List<SigDepartementView> allSigDepartement = (List<SigDepartementView>) sigDepartementListeService.DepartementByRegion(CodRegion);	
-		model.addAttribute("allSigDepartement", allSigDepartement);		
-		
-		  /*-------------------------concernant le combox Sous Prefecture-----------------------------------*/
-		SigSousPrefectureView SigSousPrefectureView = new SigSousPrefectureView();
-		model.addAttribute("SigSousPrefectureView", SigSousPrefectureView);
-		List<SigSousPrefectureView> allSigSousPrefecture = (List<SigSousPrefectureView>) sigSousPrefectureListeService.SousPrefectureByRegion(CodRegion, CodDepartement);
-		model.addAttribute("allSigSousPrefecture", allSigSousPrefecture);
-		  /*-------------------------concernant le combox Localite-----------------------------------*/
-		SigLocaliteView SigLocaliteView = new SigLocaliteView();
-		model.addAttribute("SigLocaliteView", SigLocaliteView);
-		List<SigLocaliteView> allSigLocalite = (List<SigLocaliteView>) sigLocaliteListeService.LocaliteByRegion(CodRegion, CodDepartement, CodSPref );
-		model.addAttribute("allSigLocalite", allSigLocalite); 	 
-   	}
-     else {    
+			SigDepartementView SigDepartementView = new SigDepartementView();
+			model.addAttribute("SigDepartementView", SigDepartementView);
+			List<SigDepartementView> allSigDepartement = (List<SigDepartementView>) sigDepartementListeService.DepartementByRegion(CodRegion);
+			model.addAttribute("allSigDepartement", allSigDepartement);
 
-		  	 
+		  /*-------------------------concernant le combox Sous Prefecture-----------------------------------*/
+			SigSousPrefectureView SigSousPrefectureView = new SigSousPrefectureView();
+			model.addAttribute("SigSousPrefectureView", SigSousPrefectureView);
+			List<SigSousPrefectureView> allSigSousPrefecture = (List<SigSousPrefectureView>) sigSousPrefectureListeService.SousPrefectureByRegion(CodRegion, CodDepartement);
+			model.addAttribute("allSigSousPrefecture", allSigSousPrefecture);
+		  /*-------------------------concernant le combox Localite-----------------------------------*/
+			SigLocaliteView SigLocaliteView = new SigLocaliteView();
+			model.addAttribute("SigLocaliteView", SigLocaliteView);
+			List<SigLocaliteView> allSigLocalite = (List<SigLocaliteView>) sigLocaliteListeService.LocaliteByRegion(CodRegion, CodDepartement, CodSPref );
+			model.addAttribute("allSigLocalite", allSigLocalite);
+		}
+		else {
+
+
      	/*-------------------------concernant le combox region-----------------------------------*/
-   		SigRegion SigRegion = new SigRegion();
-   		model.addAttribute("SigRegion", SigRegion);
-   		List<SigRegion> allSigRegion = (List<SigRegion>) sigRegionService.findAllOrder();
-   		model.addAttribute("allSigRegion", allSigRegion);
+			SigRegion SigRegion = new SigRegion();
+			model.addAttribute("SigRegion", SigRegion);
+			List<SigRegion> allSigRegion = (List<SigRegion>) sigRegionService.findAllOrder();
+			model.addAttribute("allSigRegion", allSigRegion);
 
    		  /*-------------------------concernant le combox Departement-----------------------------------*/
-   		SigDepartement SigDepartement = new SigDepartement();
-   		model.addAttribute("SigDepartement", SigDepartement);
-   		List<SigDepartement> allSigDepartement = (List<SigDepartement>) sigDepartementService.findAllOrder();
-   		model.addAttribute("allSigDepartement", allSigDepartement);
-   																							
+			SigDepartement SigDepartement = new SigDepartement();
+			model.addAttribute("SigDepartement", SigDepartement);
+			List<SigDepartement> allSigDepartement = (List<SigDepartement>) sigDepartementService.findAllOrder();
+			model.addAttribute("allSigDepartement", allSigDepartement);
+
 		  /*-------------------------concernant le combox Sous Prefecture-----------------------------------*/
-		SigSousPrefectureView SigSousPrefectureView = new SigSousPrefectureView();
-		model.addAttribute("SigSousPrefectureView", SigSousPrefectureView);
-		List<SigSousPrefectureView> allSigSousPrefecture = (List<SigSousPrefectureView>) sigSousPrefectureListeService.SousPrefectureByRegion(CodRegion, CodDepartement);
-		model.addAttribute("allSigSousPrefecture", allSigSousPrefecture);
+			SigSousPrefectureView SigSousPrefectureView = new SigSousPrefectureView();
+			model.addAttribute("SigSousPrefectureView", SigSousPrefectureView);
+			List<SigSousPrefectureView> allSigSousPrefecture = (List<SigSousPrefectureView>) sigSousPrefectureListeService.SousPrefectureByRegion(CodRegion, CodDepartement);
+			model.addAttribute("allSigSousPrefecture", allSigSousPrefecture);
 		  /*-------------------------concernant le combox Localite-----------------------------------*/
-		SigLocaliteView SigLocaliteView = new SigLocaliteView();
-		model.addAttribute("SigLocaliteView", SigLocaliteView);
-		List<SigLocaliteView> allSigLocalite = (List<SigLocaliteView>) sigLocaliteListeService.LocaliteByRegion(CodRegion, CodDepartement, CodSPref );
-		model.addAttribute("allSigLocalite", allSigLocalite);
+			SigLocaliteView SigLocaliteView = new SigLocaliteView();
+			model.addAttribute("SigLocaliteView", SigLocaliteView);
+			List<SigLocaliteView> allSigLocalite = (List<SigLocaliteView>) sigLocaliteListeService.LocaliteByRegion(CodRegion, CodDepartement, CodSPref );
+			model.addAttribute("allSigLocalite", allSigLocalite);
 
-		
-		model.addAttribute("SigFiltreRecherche", sigFiltreRecherche);
-	   	model.addAttribute("result", listOdkMembre);
-	   	model.addAttribute("recherFaite", listOdkMembre);	
-     }
-   		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-   		model.addAttribute("user", user);
-   		
-   		return "admin/odkMembre.html";
-   }    
-    
 
- 
+			model.addAttribute("SigFiltreRecherche", sigFiltreRecherche);
+			model.addAttribute("result", listOdkMembre);
+			model.addAttribute("recherFaite", listOdkMembre);
+		}
+		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		model.addAttribute("user", user);
 
-//******************************************
+		return "admin/odkMembre.html";
+	}
+
+
+
+
+	//******************************************
 	@RequestMapping(path = "/odkMembre/rech", method = RequestMethod.POST)
 	public String redirigerMembreMenageView(SigFiltreRecherche sigFiltreRecherche) {
-		
-		
-		String CodRegion = sigFiltreRecherche.getCodRegion();   
+
+
+		String CodRegion = sigFiltreRecherche.getCodRegion();
 		String CodDepartement = sigFiltreRecherche.getCodDepartement();
 		String CodSPref = sigFiltreRecherche.getCodSPref();
 		String CodLocalite = sigFiltreRecherche.getCodLocalite();
-		String VillageQuartier = sigFiltreRecherche.getVillageQuartier(); 
-		
-		
+		String VillageQuartier = sigFiltreRecherche.getVillageQuartier();
+
+
 	/* utiliser le champs nom locaite pour le genre et nomRegion pour le nomMembre*/
 		String NomMembre = sigFiltreRecherche.getNomRegion();
 		String Genre = sigFiltreRecherche.getNomLocalite();
-		
-		
-		
-			switch (Genre)
+
+
+
+		switch (Genre)
 		{
 			case "":
 				Genre="null";
@@ -394,8 +394,8 @@ public class OdkMembreController {
 			default:
 				break;
 		}
-		
-			switch (CodRegion)
+
+		switch (CodRegion)
 		{
 			case "":
 				CodRegion="null";
@@ -405,7 +405,7 @@ public class OdkMembreController {
 				break;
 		}
 
-			switch (CodDepartement)
+		switch (CodDepartement)
 		{
 			case "":
 				CodDepartement="null";
@@ -414,7 +414,7 @@ public class OdkMembreController {
 			default:
 				break;
 		}
-		
+
 		switch (CodSPref)
 		{
 			case "":
@@ -424,7 +424,7 @@ public class OdkMembreController {
 			default:
 				break;
 		}
-		
+
 		switch (CodLocalite)
 		{
 			case "":
@@ -434,7 +434,7 @@ public class OdkMembreController {
 			default:
 				break;
 		}
-		
+
 		switch (VillageQuartier)
 		{
 			case "":
@@ -444,9 +444,9 @@ public class OdkMembreController {
 			default:
 				break;
 		}
-		
-	
-		
+
+
+
 		switch (NomMembre)
 		{
 			case "":
@@ -456,9 +456,9 @@ public class OdkMembreController {
 			default:
 				break;
 		}
-		
 
-       String url = "redirect:/admin/odkMembre/"+CodRegion+"/"+CodDepartement+"/"+CodSPref+"/"+CodLocalite+"/"+VillageQuartier+"/"+NomMembre+"/"+Genre;
+
+		String url = "redirect:/admin/odkMembre/"+CodRegion+"/"+CodDepartement+"/"+CodSPref+"/"+CodLocalite+"/"+VillageQuartier+"/"+NomMembre+"/"+Genre;
 
 
 		return url;

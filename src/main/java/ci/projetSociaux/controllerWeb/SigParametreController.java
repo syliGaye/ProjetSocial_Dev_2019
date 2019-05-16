@@ -27,9 +27,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = "admin")
 public class SigParametreController {
-    
-         
-      
+
+
+
     @Autowired
     private SigParametreService sigParametreService;
 
@@ -38,76 +38,77 @@ public class SigParametreController {
 
     @RequestMapping(path = "/sigParametre/add", method = RequestMethod.GET)
     public String createSigParametre(Model model) {
-       User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	    model.addAttribute("user", user);
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", user);
+        model.addAttribute("titrePage", "FILETS SOCIAUX | Ajouter Param&egrave;tre G&eacute;n&eacute;ral");
         model.addAttribute("sigParametre", new SigParametre());
         return "admin/saveSigParametre.html";
     }
 
     @RequestMapping(path = "/sigParametre/add", method = RequestMethod.POST)
     public String saveSigParametre(SigParametre sigParametre,Model model ) {
-          User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	model.addAttribute("user", user);
+
         model.addAttribute("sigParametre", new SigParametre());
-        
+
        /* sigParametre.setCreerPar(user.getUsername());
         sigParametre.setCreerLe(new Date());
         sigParametre.setModifierLe(new Date());
         sigParametre.setModifierPar(user.getUsername());*/
-        
-        
+
+
         sigParametreService.save(sigParametre);
         return "redirect:/admin/sigParametre";
     }
-    
-    
-     @RequestMapping(path = "/editSigParametre/{codParam}", method = RequestMethod.POST)
+
+
+    @RequestMapping(path = "/editSigParametre/{codParam}", method = RequestMethod.POST)
     public String editSaveSigParametre(@PathVariable("codParam") String codParam, SigParametre sigParametre, ModelMap modelMap) {
-	        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	        modelMap.put("user", user);	
-                SigParametre sigParametreCurrent = sigParametreService.getOne(codParam);
-				sigParametreCurrent.setValLibelle(sigParametre.getValLibelle());
-				sigParametreCurrent.setValChaine(sigParametre.getValChaine());
-				sigParametreCurrent.setValNumeric(sigParametre.getValNumeric());
-				sigParametreCurrent.setValDate(sigParametre.getValDate());
+
+        SigParametre sigParametreCurrent = sigParametreService.getOne(codParam);
+        sigParametreCurrent.setValLibelle(sigParametre.getValLibelle());
+        sigParametreCurrent.setValChaine(sigParametre.getValChaine());
+        sigParametreCurrent.setValNumeric(sigParametre.getValNumeric());
+        sigParametreCurrent.setValDate(sigParametre.getValDate());
                 /*sigParametreCurrent.setCreerPar(sigParametreCurrent.getCreerPar());
                 sigParametreCurrent.setCreerLe(sigParametreCurrent.getCreerLe());
                 sigParametreCurrent.setModifierLe(new Date());
                 sigParametreCurrent.setModifierPar(user.getUsername());*/
-		sigParametreService.save(sigParametreCurrent);
-		
+        sigParametreService.save(sigParametreCurrent);
+
         return "redirect:/admin/sigParametre";
     }
-    
-	 @RequestMapping(path = "/sigParametre", method = RequestMethod.GET)
+
+    @RequestMapping(path = "/sigParametre", method = RequestMethod.GET)
     public String getAllSigParametre(Model model) {
-        
-         List<SigParametreView> allSigParametreView = (List<SigParametreView>) sigParametreViewService.findAll();
+
+        List<SigParametreView> allSigParametreView = (List<SigParametreView>) sigParametreViewService.findAll();
         model.addAttribute("allSigParametreView", allSigParametreView);
-        model.addAttribute("sigParametreView", new SigParametreView());        
+        model.addAttribute("sigParametreView", new SigParametreView());
         User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	model.addAttribute("user", user);
+        model.addAttribute("titrePage", "FILETS SOCIAUX | Param&egrave;tres G&eacute;n&eacute;raux");
+        model.addAttribute("user", user);
         return "admin/sigParametre.html";
     }
-   
+
     @RequestMapping(path = "/editSigParametre/{codParam}", method = RequestMethod.GET)
     public String editSigParametre(Model model, @PathVariable(value = "codParam") String codParam) {
         model.addAttribute("sigParametre", sigParametreService.getOne(codParam));
-          User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	model.addAttribute("user", user);
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("titrePage", "FILETS SOCIAUX | Modifier Param&egrave;tres G&eacute;n&eacute;raux");
+        model.addAttribute("user", user);
         return "admin/editSigParametre.html";
     }
 
     @RequestMapping(path = "/sigParametre/delete/{codParam}", method = RequestMethod.GET)
-    public String deleteSigParametre(Model model,@PathVariable(name = "codParam") String codParam) {  
+    public String deleteSigParametre(Model model,@PathVariable(name = "codParam") String codParam) {
         User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-     model.addAttribute("user", user);
+        model.addAttribute("user", user);
         sigParametreService.delete(codParam);
         return "redirect:/admin/sigParametre";
     }
-   
 
-   
 
-    
+
+
+
 }

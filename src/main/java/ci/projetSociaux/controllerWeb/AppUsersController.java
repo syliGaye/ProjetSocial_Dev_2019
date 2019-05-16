@@ -42,6 +42,7 @@ public class AppUsersController {
 		modelMap.put("user", user);
 		modelMap.put("lesRoles", appRoleService.getAllRoles().stream().filter(r -> !(r.getRoleName().equals("ROLE_SUPERADMIN"))).collect(Collectors.toList()));
 		modelMap.put("appUsers", new AppUsers());
+		modelMap.put("titrePage", "FILETS SOCIAUX | Ajouter Utilisateur");
 
 		return "user/saveAppUsers";
 
@@ -52,10 +53,6 @@ public class AppUsersController {
 
 		AppRole appRole = appRoleService.findRoleByRoleName(roleName);
 		appUsers.setAppRole(appRole);
-
-		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		//String voir = user.getAuthorities().;
-		modelMap.put("user", user);
 
 		userInfoService.save(appUsers);
 		return "redirect:/user/users";
@@ -75,6 +72,7 @@ public class AppUsersController {
 		//modelMap.put("users", userInfoService.findAll().stream().filter(u -> !(u.getUsername().equals("admin") || u.getUsername().equals(user.getUsername()))).collect(Collectors.toList()));
 		modelMap.put("users", userInfoService.findAll().stream().filter(u -> !(u.getAppRole().getRoleName().equals("ROLE_SUPERADMIN") || u.getUsername().equals(user.getUsername()))).collect(Collectors.toList()));
 	    modelMap.put("user", user);
+		modelMap.put("titrePage", "FILETS SOCIAUX | Liste des Utilisateurs");
 	    
 		//return "users/appUsers";
 
@@ -155,6 +153,8 @@ public class AppUsersController {
 	public String edit(@PathVariable("username") String username, ModelMap modelMap) {
 		User userConnected = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		modelMap.put("user", userConnected);
+		modelMap.put("titrePage", "FILETS SOCIAUX | Modifier Utilisateur");
+
 		modelMap.put("lesRoles", appRoleService.getAllRoles().stream().filter(r -> !(r.getRoleName().equals("ROLE_SUPERADMIN"))).collect(Collectors.toList()));
 		modelMap.put("appUsers", userInfoService.findByUsername(username));
 		return "user/editAppUser";

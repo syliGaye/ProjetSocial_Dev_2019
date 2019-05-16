@@ -106,7 +106,7 @@ public class UploadExcelPrgPaiementReportController {
 	         executor.submit(() -> {
 	            try {
 	               UploadEvent event = new UploadEvent();
-	               event.setState("Uploaded filed received on server");
+	               event.setState("Téléchargé, classé et reçu sur le serveur");
 	               event.setEventType("start");
 	            
 	               final FileInputStream inputStream = new FileInputStream(filepath);
@@ -169,7 +169,7 @@ public class UploadExcelPrgPaiementReportController {
                
 	         //      }
 		               event = new UploadEvent();
-		               event.setState("Uploaded filed deleted on server");
+		               event.setState("Fichiers téléchargés supprimés du serveur");
 		               fh.delete();
 		               event.setEventType("end");
 

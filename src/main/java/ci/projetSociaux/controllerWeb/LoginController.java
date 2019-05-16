@@ -20,6 +20,7 @@ public class LoginController {
 		    /* Cas où l'utilisateur est connecté */
 			User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			modelMap.put("user", user);
+			modelMap.put("titrePage", "FILETS SOCIAUX | Accueil");
 		    return "home";
 		}else {
 			/* Cas de non connexion */
