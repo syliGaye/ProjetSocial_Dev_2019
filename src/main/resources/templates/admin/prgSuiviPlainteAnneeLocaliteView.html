@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+	 
+	    
+        <!-- page debut filtre -->
+   <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">  <br/>    
+       
+		<b><font color="orange"><font face=Castellar><font size="4"><center>CONSULTATIONS DES PLAINTES PAR ANNEE ET PAR LOCALITE </center></font></font></font></b>
+
+        <br/>
+		<b><font color="orange"><font face=Castellar><font size="4"><center>FILTRE</center></font></font></font></b>	
+			<center>						    
+				<div class="x_content" width="95%">
+					<div class="portlet-header">
+					
+					
+						<form class="form-horizontal form-label-left " id="dataPrgSuiviPlainteAnneeLocaliteView" th:object="${SigFiltreRecherche}" th:action="@{/admin/prgSuiviPlainteAnneeLocaliteView/rech}" method="post" enctype="multipart/form-data" novalidate>	
+						<table class="table-striped jambo_table bulk_action" width="70%"  style="border-collapse: separate;  border-spacing: 10px; background-color: Lavender;">
+							<tbody>
+						<tr spacing="10px" padding="10px">
+									 <td align="right">
+										<label for="annee"><font color=black>Année Debut:</font></label>
+									</td>	
+									<td align="left">										
+										<input class="form-control" type="number" placeholder="Annee" name="annee" id="d_annee" th:field="*{anneeDebut}"  required=""/>
+									</td>
+									<td align="right">
+										<label for="annee"><font color=black>Année Fin:</font></label>
+									</td>	
+									<td align="left">										
+										<input class="form-control" type="number" placeholder="Annee" name="annee" id="f_annee" th:field="*{anneeFin}" required=""/>
+									</td>
+								
+                                    <td align="right">
+										<label for="Region"><font color=black>Région:</font></label>
+									</td>	
+								<td align="left">
+									    <select class="form-control" name="Région" type="text" th:field="*{codRegion}" id="f_region" required="">
+									      <option value="">Selectionner une Région</option>
+                                              <option th:each="SigRegion:${allSigRegion}" 
+	                                                   th:value="${SigRegion.getCodRegion()}"
+	                                                   th:text="${SigRegion.getNomRegion()}">
+	                                            </option>
+                         				 </select>											
+									</td>
+								</tr>
+									<tr>
+									
+                                    <td align="right">
+										<label for="Département"><font color=black>Département:</font></label>
+									</td>	
+									<td align="left">
+									    <select class="form-control" name="Département" type="text" th:field="*{codDepartement}" id="f_departement" required="">
+									      <option value="">Selectionner un Département</option>
+                                             <option  th:each="SigDepartement:${allSigDepartement}" 
+	                                                     th:value="${SigDepartement.getCodDepartement()}"
+	                                                     th:text="${SigDepartement.getNomDepartement()}">
+	                                            </option>
+                         				</select>											
+									</td>
+									<td align="right">
+										<label for="Sous-Prefecture"><font color=black>Sous-Prefecture:</font></label>
+									</td>	
+									<td align="left">
+									    <select class="form-control" name="Sous-Prefecture" id="f_s_prefecture" type="text" th:field="*{codSPref}" required="">
+									      <option value="">Selectionner une Sous-Préfecture</option>
+                                             <option  th:each="SigSousPrefecture:${allSigSousPrefecture}" 
+                                                    th:value="${SigSousPrefecture.getCodSPref()}"
+                                                    th:text="${SigSousPrefecture.getNomSPref()}">
+                                              </option>
+                         				</select>											
+									</td>
+								
+									
+									<td align="right">
+										<label for="Localité"><font color=black>Localité:</font></label>
+									</td>	
+									<td align="left">		
+									    <select class="form-control" name="Localite" type="text" th:field="*{codLocalite}"  id="f_localite" required="">
+									      <option value="">Selectionner une localité</option>
+                                             <option  th:each="SigLocalite:${allSigLocalite}" 
+                                                    th:value="${SigLocalite.getCodLocalite()}"
+                                                    th:text="${SigLocalite.getNomLocalite()}">
+                                            </option>
+                         				</select>									
+									</td>
+									
+									<input class="form-control" type="hidden"  value="FILTRE" name="paramchoix"/>
+									
+								</tr>
+								
+								
+
+							</tbody>
+						</table>
+						</br>
+						<center>
+							<p><button target="submit"  class="btn btn-success" style="background-color: #0099ff"><b>Rechercher</b></button></p>
+						</center>
+						</form>
+					</div>
+				</div>
+			</center>
+            <br/>			
+
+         <!-- page fin filtre -->
+        
+        <!-- page detail fitre -->
+
+        <!-- page content -->
+       
+			<div class="">
+				<div class="x_title">
+						
+						
+						<ul class="nav navbar-right panel_toolbox">
+						  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					
+					
+					<table width="100%">
+						<tr>
+							<td align="center">
+								<form th:object="${SigFiltreRecherche}" th:action="@{/admin/prgSuiviPlainteAnneeLocaliteView/rech}" method="post" enctype="multipart/form-data" novalidate> 
+									<input th:field="*{AnneeDebut}"  type="hidden" class="form-control" id="d_annee" />
+									<input th:field="*{AnneeFin}"  type="hidden" class="form-control" id="f_annee" />
+									<input th:field="*{moisFin}" type="hidden" class="form-control" id="f_mois"  />
+									<input th:field="*{codRegion}" type="hidden" class="form-control" id="f_region"  />
+									<input th:field="*{codDepartement}" type="hidden" class="form-control" id="f_departement"  />
+									<input th:field="*{codSPref}" type="hidden" class="form-control" id="f_s_prefecture"  />
+									<input th:field="*{codLocalite}" type="hidden" class="form-control" id="f_localite"  />
+									<input class="form-control" type="hidden"  value="EXCEL" name="paramchoix"/>
+						
+									<button type="submit"  class="btn btn-large btn-primary navbar-center"><b>Générer Excel</b></button>
+						
+								</form>
+								
+							</td>
+						</tr>
+					</table>
+					
+					
+					<center>
+<!--debut contenue ---------------------------------PAGE--><!--BEGIN CONTENT-->
+
+				<br/>
+			
+				
+				<div class="row-fluid sortable ui-sortable">		                                                            
+					<div class="panel panel-yellow">
+						<div class="panel-body">
+							<div id="no-more-tables">
+								<table id="datatable-fixed-header" border="1" class="table table-striped jambo_table bulk_action" width="70%">
+								<thead >
+									   	   <tr>
+										    <th colspan="2"><center>PERIODE</center></th>
+											<th colspan="10"><center>PLAINTE</center></th>
+											<th colspan="7"><center>TRAITEMENT</center></th>
+											<th rowspan="3"><center>Action</center></font></th>
+											
+																						
+										</tr>
+										<tr >
+										    <th colspan="1"><center>Période</center></th>
+											<th colspan="1"><center>Localité</center></th>
+											<th colspan="3"><center>Nombre de plainte</center></th>
+											<th colspan="3"><center>Analyse par categorie</center></th>
+											<th colspan="2"><center>Gravité</center></th>
+											<th colspan="2"><center>Genre</center></th>
+											<th colspan="1"><center></center></th>
+											<th colspan="1"><center></center></th>
+											<th colspan="1"><center></center></th>
+											<th colspan="1"><center></center></th>
+											<th colspan="3"><center>En cours</center></th>
+											</tr>
+											
+											
+											
+											<tr>
+											<th colspan="1"><center>Période</center></font></th>
+											<th colspan="1"><center>Libellé</center></font></th>
+											<th colspan="1"><center>Nbre plainte</center></th>
+											<th colspan="1"><center>Nbre plainte payé</center></th>
+											<th colspan="1"><center>Nbre plainte non payé</center></th>
+											<th colspan="1"><center>Ciblage</center></th>
+											<th colspan="1"><center>Transfert monétaire</center></font></th>
+											<th colspan="1"><center>Mesure accompagnement</center></font></th>
+											<th colspan="1"><center>Majeur</center></font></th>
+											<th colspan="1"><center>Mineur</center></font></th>
+											<th colspan="1"><center>Homme</center></font></th>
+											<th colspan="1"><center>Femme</center></font></th>
+											<th colspan="1"><center>Résolue</center></th>
+											<th colspan="1"><center>Taux résolution</center></font></th>
+											<th colspan="1"><center>Nbre clôturé</center></font></th>
+											<th colspan="1"><center>Nbre en cours</center></font></th>
+											<th colspan="1"><center>Niveau 1</center></font></th>
+											<th colspan="1"><center>Niveau 2</center></font></th>
+											<th colspan="1"><center>Niveau 3</center></font></th>
+											
+										</tr>
+									
+										
+									</thead>
+								<tbody id="tbodyParams">
+									<tr th:each="prgSuiviPlainteAnneeLocaliteView, i:${result}">
+										    
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.annee}"></td>
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.nomLocalite}"></td>	
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.nbPlainte}"> </td>	
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.nbPlaintePaiement}"></td>
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.nbPlainteNonPaiement}"> </td>
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.nbPlainteCiblage}"> </td>
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.nbPlainteTransfertMonetaire}" ></td> 
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.nbPlainteMesureAccompagnement}"width="12%"> </td>
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.nbPlainteMajeur}" ></td>
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.nbPlainteMineur}" ></td> 
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.nbPlainteEffFemme}" > </td>
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.nbPlainteEffHomme}" ></td> 
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.nbPlainteResolue}" ></td>
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.tauxResolutionPlainte}" ></td> 
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.nbPlainteCloture}" > </td>
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.nbPlainteEnCours}" ></td> 
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.nbPlainteTraitN1}" ></td> 
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.nbPlainteTraitN2}" ></td> 
+											<td th:text="${prgSuiviPlainteAnneeLocaliteView.nbPlainteNTraitN3}" ></td> 
+											<td> 
+												<table>
+												<tr><td align="center">	
+													<a class="btn btn-info btn-xs" th:href="@{/admin/detailLocAnPrgSuiviPlainteView/__${prgSuiviPlainteAnneeLocaliteView.annee}__/__${prgSuiviPlainteAnneeLocaliteView.codLocalite}__}"><i class="fa fa-edit"></i>&nbsp;
+													Detail 
+													</a> 
+										        </td></tr>
+												</table>
+											</td>
+										</tr>
+											</tbody>
+									
+								</table>
+							</div>
+						</div>
+					</div>
+					</div>
+                  </center>
+				</div>
+			</div>
+		</div>	
+    <!-- /page content -->
+	</body>
+</html>
+

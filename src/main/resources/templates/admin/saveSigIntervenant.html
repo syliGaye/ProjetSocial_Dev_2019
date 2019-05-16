@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+
+     
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+			<div class="">
+            
+			<div class="clearfix">
+			</div>
+
+            <div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+						<div class="x_title">
+							<b><font color="orange"><font face=Castellar><font size="5"><center>AJOUT D'UN PLAIGNANT</center></font></font></font></b>
+							<ul class="nav navbar-right panel_toolbox">
+								<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+								</li>
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+                  
+						<div class="x_content">
+							<form class="form-horizontal form-label-left " th:object="${SigIntervenant}" th:action="@{/admin/SigIntervenant/add}" method="post"   novalidate>
+								
+									
+								<div class="item form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Code Plaignant <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Code du plaignant" required="required" type="text" th:field="*{idIntervenant}" disabled="true">
+									</div>
+								</div> 
+								
+								<div class="item form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nom Plaignant <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Nom du plaignant" required="required" type="text" th:field="*{nomInterv}" >
+									</div>
+								</div>
+
+                                <div class="item form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Prenom Plaignant <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Prenoms Plaignant" required="required" type="text" th:field="*{prenomsInterv}" >
+									</div>
+								</div>	
+ 
+                                 <div class="item form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Contact Plaignant <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Contact Plaignant" required="required" type="text" th:field="*{contactInterv}" >
+									</div>
+								</div> 
+								
+								  <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Genre Plaignant<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">									
+										
+										  <select class="form-control" name="sexeIInterv"  >
+                                             <option value="H">HOMME</option>  
+                                             <option value="F">FEMME</option> 
+						                                            
+                                         </select>
+                        
+										</div>
+										
+									          <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									    </div>	
+								
+				
+								
+								<div class="ln_solid"></div>
+								         <div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+                                         <center>
+										    <a onclick = "history.back()" class="btn btn-warning">Retour</a>
+											<a th:href="@{/admin/SigIntervenant/add}" class="btn btn-default">Annuler</a>
+											<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+										</center>
+							
+							</form>
+						</div>
+                    
+					</div>
+                </div>
+            </div>
+        </div>
+    <!-- /page content -->
+	</body>
+</html>

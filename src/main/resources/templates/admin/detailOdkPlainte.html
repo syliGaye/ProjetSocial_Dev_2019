@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+  
+  <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+		
+							 
+		<style>
+			* {
+			  box-sizing: border-box;
+			}
+
+			body {
+			  background-color: #f1f1f1;
+			}
+
+			#regForm {
+			  background-color: #ffffff;
+			  margin: 100px auto;
+			  font-family: Raleway;
+			  padding: 40px;
+			  width: 90%;
+			  min-width: 300px;
+			}
+
+			
+			input {
+			  padding: 10px;
+			  width: 100%;
+			  font-size: 17px;
+			  font-family: Raleway;
+			  border: 1px solid #aaaaaa;
+			}
+			
+			select {
+			  padding: 10px;
+			  width: 100%;
+			  font-size: 17px;
+			  font-family: Raleway;
+			  border: 1px solid #aaaaaa;
+			}
+
+			/* Mark input boxes that gets an error on validation: */
+			input.invalid {
+			  background-color: #ffdddd;
+			}
+			
+			/* Mark input boxes that gets an error on validation: */
+			select.invalid {
+			  background-color: #ffdddd;
+			}
+
+			/* Hide all steps by default: */
+			.tab {
+			  display: none;
+			}
+
+			button {
+			  background-color: #4CAF50;
+			  color: #ffffff;
+			  border: none;
+			  padding: 10px 20px;
+			  font-size: 17px;
+			  font-family: Raleway;
+			  cursor: pointer;
+			}
+
+			button:hover {
+			  opacity: 0.8;
+			}
+
+			#prevBtn {
+			  background-color: #bbbbbb;
+			}
+
+			/* Make circles that indicate the steps of the form: */
+			.step {
+			  height: 15px;
+			  width: 15px;
+			  margin: 0 2px;
+			  background-color: #bbbbbb;
+			  border: none;  
+			  border-radius: 50%;
+			  display: inline-block;
+			  opacity: 0.5;
+			}
+
+			.step.active {
+			  opacity: 1;
+			}
+
+			/* Mark the steps that are finished and valid: */
+			.step.finish {
+			  background-color: #4CAF50;
+			}
+			
+			
+			textarea        {
+            width:400px;
+            height:200px;
+            margin:auto; /* exemple pour centrer */
+            display:block;/* pour effectivement centrer ! */
+                          }
+		</style>
+		
+
+
+	
+  </head>
+	
+  <body  >   
+        <!-- page content -->
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">
+		
+			<br/>
+				<form id="regForm" name="regForm1" th:object="${odkPlainte}" th:action="${'/admin/detailOdkPlainte/'+odkPlainte.numPlainte}" method="post"    novalidate>
+					<div class="x_title">
+						<b><font color="orange" size="5"><center>CONSULTATIONS DU DETAILS ODK DE LA PLAINTE</center></font></b>
+						<ul class="nav navbar-right panel_toolbox">
+							<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+							</li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<!-- One "tab" for each step in the form: 
+					<div class="tab">-->
+					
+					<center>
+				<br/>
+				
+						<div class="tab"> 
+						<div class="x_panel"> 
+							<div class="x_title">
+								<b><font color="orange" size="4">Infos - localisation</font></b>
+								<div class="clearfix"></div>
+							</div>
+							<p><label for="fullname">Région </label><select id="f_region" th:field="*{codRegion}" disabled="disabled"  >
+								<option value="NONE">Région</option>  
+								 <option th:each="SigRegion:${allSigRegion}" 
+	                                                   th:value="${SigRegion.getCodRegion()}"
+	                                                   th:text="${SigRegion.getNomRegion()}">
+	                              </option>
+							</select></p>
+							<p><label for="fullname">Département </label><select id="f_departement" th:field="*{codDepartement}" disabled="disabled"  >
+								<option value="NONE">Département</option>  
+							 <option           th:each="SigDepartement:${allSigDepartement}" 
+	                                           th:value="${SigDepartement.getCodDepartement()}"
+	                                           th:text="${SigDepartement.getNomDepartement()}">
+	                                            </option>
+								</option>
+							</select></p><p><label for="fullname">Sous-Préfecture </label><select id="f_s_prefecture" th:field="*{codSousPref}" disabled="disabled"  >
+								<option value="NONE">Sous-Préfecture</option>  
+							  <option  th:each="SigSousPrefecture:${allSigSousPrefecture}" 
+                                                    th:value="${SigSousPrefecture.getCodSPref()}"
+                                                    th:text="${SigSousPrefecture.getNomSPref()}">
+                                              </option>
+							</select></p><p><label for="fullname">Localité </label><select  id="f_localite" th:field="*{codLocalite}" name="codLocalite" disabled="disabled" >
+								<option value="NONE">Localité</option>  
+								<option th:each="SigLocalite:${allSigLocalite}" 
+										th:value="${SigLocalite.getCodLocalite()}"
+										th:text="${SigLocalite.getNomLocalite()}"> 
+								</option>
+							</select></p>
+							
+					
+							<div class="x_title">
+						<div>	<b><font color="orange" size="4">Infos - Plainte</font></b></div>
+								<div class="clearfix"></div>
+							</div>
+							
+							
+							<p><label for="fullname">Numéro plainte </label><input type="text" placeholder="numPlainte..." oninput="this.className = ''" name="numPlainte" th:field="*{numPlainte}" disabled="disabled"></p>
+							
+							<p><label for="fullname">Date Saisie </label><input type="text" placeholder="Date Saisie..." oninput="this.className = ''" name="Date Saisie" th:field="*{dateEnregis}" disabled="disabled"></p>
+							 
+							<p><label for="fullname">Plaignant </label><input type="text" placeholder="Plaignant..." oninput="this.className = ''" name="Plaignant" th:field="*{nomTierce}" disabled="disabled"></p>
+							
+							<p><label for="fullname">Genre </label>
+										<select   oninput="this.className = ''" name="Genre"   th:field="*{genreTierce}" disabled="disabled">
+											<option selected value="0">HOMME</option>  
+											<option value="1">FEMME</option>
+										</select></p>
+							
+							<p><label for="fullname">Date Evenement </label><input type="text" placeholder="Date Evenement..." oninput="this.className = ''" name="Date Evenement" th:field="*{dateEvent}" disabled="disabled"></p>
+							
+							<p><label for="fullname">Date Signalement  </label><input type="text" placeholder="Date Signalement ..." oninput="this.className = ''" name="Date Signalement " th:field="*{dateSignal}" disabled="disabled"></p>
+							
+							<p><label for="fullname">Nature Geste </label><select   oninput="this.className = ''" name="Nature Geste" th:field="*{codNatGest}" disabled="disabled" >
+								<option value="NONE">Nature Geste</option>  
+								<option th:each="PrgNatureGeste:${allPrgNatureGeste}" 
+										th:value="${PrgNatureGeste.getCodNatGest()}"
+										th:text="${PrgNatureGeste.getLibelleNatGest()}"> 
+								</option>
+							</select></p>
+							
+							<p><label for="fullname">Forme Geste </label><select   oninput="this.className = ''" name="Forme Geste" th:field="*{codForeGeste}" disabled="disabled" >
+								<option value="NONE">Forme Geste</option>  
+								<option th:each="PrgFormeGeste:${allPrgFormeGeste}" 
+										th:value="${PrgFormeGeste.getCodForeGeste()}"
+										th:text="${PrgFormeGeste.getLibelleFormGeste()}"> 
+								</option>
+							</select></p>
+							
+							<p><label for="fullname">Type Geste </label><select   oninput="this.className = ''" name="Type Geste" th:field="*{codTypGeste}" disabled="disabled" >
+								<option value="NONE">Type Geste</option>  
+								<option th:each="PrgTypeGeste:${allPrgTypeGeste}" 
+										th:value="${PrgTypeGeste.getCodTypGeste()}"
+										th:text="${PrgTypeGeste.getLibelleTyeGeste()}"> 
+								</option>
+							</select></p>
+							
+							
+							<p><label for="fullname">Moment </label><select   oninput="this.className = ''" name="Moment" th:field="*{codMoment}" disabled="disabled" >
+								<option value="NONE">Moment</option>  
+								<option th:each="PrgMomentPl:${allPrgMomentPl}" 
+										th:value="${PrgMomentPl.getCodMoment()}"
+										th:text="${PrgMomentPl.getLibelleMoment()}"> 
+								</option>
+							</select></p>
+							
+							
+							<p><label for="fullname">Objet Discrimination </label><select   oninput="this.className = ''" name="Objet Discrimination" th:field="*{codObjetDiscr}" disabled="disabled" >
+								<option value="NONE">Objet Discrimination</option>  
+								<option th:each="PrgObjetDiscrim:${allPrgObjetDiscrim}" 
+										th:value="${PrgObjetDiscrim.getCodObjetDiscr()}"
+										th:text="${PrgObjetDiscrim.getLibelleObjetDiscr()}"> 
+								</option>
+							</select></p>
+							
+							<p><label for="fullname">Description </label><textarea placeholder="description" oninput="this.className = ''" name="description" th:field="*{description}" style='width: 830px; height: 200px;' aria-required='true' required='' rows='10' cols='50'  > </textarea>
+							
+							
+						</div>
+					</div>
+					
+					<br>
+								<table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+									<tr>
+										<td align="center">	
+											<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+												<center>
+													<!--a class="btn btn-warning" th:href="@{/admin/odkPlainte}">Retour</a-->
+													<a onclick = "history.go(-1)"  class="btn btn-warning">Retour</a>
+												</center>
+											 </div>
+
+										</td>		
+									</tr>
+								</table>
+								
+					
+
+</form>
+		</div>
+        <!-- /page content -->
+
+	
+    </body>
+</html>

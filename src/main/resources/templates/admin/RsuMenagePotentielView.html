@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+  
+  <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+  </head>
+
+  <body class="nav-md">   
+        <!-- page content -->
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">
+         <br/>
+        <div class="x_title">
+						<b><font color="orange" size="4"><center>FILTRE</center></font></b>
+						<ul class="nav navbar-right panel_toolbox">
+						  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+        
+					<center>						    
+				<div class="x_content" width="95%">
+					<div class="portlet-header">
+					
+					<form class="form-horizontal form-label-left " id="dataRsuMenageView" th:object="${SigFiltreRecherche}" th:action="@{/admin/RsuMenagePotentielView/rech}" method="post" enctype="multipart/form-data" novalidate>
+						
+			             <table class="table-striped jambo_table bulk_action" width="90%"  style="border-collapse: separate;  border-spacing: 10px; background-color: Lavender;">
+							<tbody>
+								
+								<tr>
+									<td align="right">
+										<label for="f_region"><font color=black>Région:</font></label>
+									</td>	
+									<td align="left">
+									    <select class="form-control" type="text"  id="f_region" th:field="*{codRegion}" required="">
+									      <option value="">Selectioner une Région</option>
+                                              <option th:each="SigRegion:${allSigRegion}" 
+	                                                   th:value="${SigRegion.getCodRegion()}"
+	                                                   th:text="${SigRegion.getNomRegion()}">
+	                                            </option>
+                         				 </select>											
+									</td>
+                                    <td align="right">
+										<label for="f_Depart"><font color=black>Département:</font></label>
+									</td>	
+									<td align="left">
+									    <select class="form-control" type="text" id="f_departement" th:field="*{codDepartement}" required="">
+									      <option value="">Selectioner un Département</option>
+                                             <option  th:each="SigDepartementView:${allSigDepartement}" 
+	                                                     th:value="${SigDepartementView.getCodDepartement()}"
+	                                                     th:text="${SigDepartementView.getNomDepartement()}">
+	                                            </option>
+                         				</select>											
+									</td>
+									<td align="right">
+										<label for="f_s_prefecture"><font color=black>Sous-Prefecture:</font></label>
+									</td>	
+									<td align="left">
+									    <select class="form-control" id="f_s_prefecture" th:field="*{codSPref}"  required="">
+									      <option value="">Selectioner une Sous-Préfecture</option>
+                                             <option  th:each="SigSousPrefecture:${allSigSousPrefecture}" 
+                                                    th:value="${SigSousPrefecture.getCodSPref()}"
+                                                    th:text="${SigSousPrefecture.getNomSPref()}">
+                                              </option>
+                         				</select>											
+									</td>
+								</tr>
+								<tr>
+									<td align="right">
+										<label for="f_Localite"><font color=black>Localité:</font></label>
+									</td>	
+									<td align="left">		
+									    <select class="form-control" id="f_localite" th:field="*{codLocalite}" required="">
+									      <option value="">Selectioner une localité</option>
+                                             <option  th:each="SigLocalite:${allSigLocalite}" 
+                                                    th:value="${SigLocalite.getCodLocalite()}"
+                                                    th:text="${SigLocalite.getNomLocalite()}">
+                                            </option>
+                         				</select>									
+									</td>
+									<td align="right">
+										<label for="f_Village"><font color=black>Village:</font></label>
+									</td>	
+									<td align="left">										
+										<input class="form-control" type="text" placeholder="Village" th:field="*{villageQuartier}" id="f_Village"/>
+									</td>
+									
+								</tr>								
+																	
+							</tbody>
+						</table>
+						<br><br>
+						<center>
+							<p><button type="submit"  class="btn btn-success" style="background-color: #0099ff" ><b>Rechercher</b></button></p>
+						</center>
+						
+					</form>
+											
+					 <div class="col-md-12 col-sm-12 col-xs-12">
+			<!--a class="btn btn-large btn-success" >Ajouter Membre</a-->
+				<div class="x_panel">
+					<div class="x_title">
+						<b><font color="orange" size="4"><center>LISTE DES MENAGES POTENTIELS</center></font></b>
+						<ul class="nav navbar-right panel_toolbox">
+						  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<center>
+					<div class="x_content">
+					
+						<table id="datatable-buttons" class="table table-striped table-bordered jambo_table bulk_action" width="100%">
+							<thead>
+								<tr heigth="5px">
+									<th >Localité</th>
+									<th >Village</th>
+									<th >Chef de Menage</th>
+									<th >ilot</th>
+									<th >Batiment</th>
+									<th >Logement</th>
+									<th >Score Model 1</th>
+									<th >Score Model 2</th>
+									<th >Score Model 3</th>
+									<th >Score Model 4</th>
+									<th >Score Model 5</th>
+									<th >Action</th>                      
+								</tr>
+							</thead>
+							<tbody>
+							      <tr th:each="RsuMenagePotentielView,iterStat:${allRsuMenagePotentielView}">
+									<td th:text="${RsuMenagePotentielView.nomLocalite}"> </td>
+									<td th:text="${RsuMenagePotentielView.villageQuartier}"> </td>
+									<td th:text="${RsuMenagePotentielView.nomChefMenage}" width="20%"> </td>
+									<td th:text="${RsuMenagePotentielView.ilot}"></td>
+									<td th:text="${RsuMenagePotentielView.batiment}"></td>
+									<td th:text="${RsuMenagePotentielView.logement}"></td>
+									<td th:text="${RsuMenagePotentielView.effModel1}"></td>
+									<td th:text="${RsuMenagePotentielView.effModel2}"></td>
+									<td th:text="${RsuMenagePotentielView.effModel3}"></td>
+									<td th:text="${RsuMenagePotentielView.effModel4}"></td>
+									<td th:text="${RsuMenagePotentielView.effModel5}"></td>
+								<td>
+                              <a class="btn btn-info btn-xs"  th:href="@{/admin/PrgBeneficiaire/add/__${RsuMenagePotentielView.codMenage}__}"><i class="fa fa-edit"></i>Ajouter</a>
+                                </td>
+                            </tr>
+								
+							</tbody>
+						</table>
+						   
+					  </div>	
+                       
+								         <div >
+                                         <center>
+										    <a th:href="@{/admin/prgBeneficiaireVillageView}" class="btn btn-warning" >Retour</a>
+											
+										</center>
+			       </div>
+			      
+					  </center>
+				</div>
+			</div>
+		</div>
+			
+			 <!-- fiin du filtre et debut du formulaire de consultation-->
+			
+			
+        </div>
+        <!-- /page content -->
+       
+  </center>      
+     <!--<script th:src="@{/build/js/passerParamRsuMenageView.js}"></script>-->
+
+    </body>
+    
+</html>

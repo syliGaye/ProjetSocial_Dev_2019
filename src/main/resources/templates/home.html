@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+</head>
+<body >
+<!-- page content -->
+<div class="right_col" role="main" data-layout-fragment="content" >
+	<div class="" >
+		<center>
+			</br>
+			<table id="datatable" width="95%" cellpadding="5" cellspacing="5" border="1">
+				<tr>
+					<td>
+						<center>
+							<img height="150" width="250" th:src="@{/images/sensibiliser.jpg}" alt="..." >
+						</center>
+					</td>
+					<td>
+						<center>
+							<img height="150" width="250" th:src="@{/images/paiement_emoney.jpg}" alt="..." >
+						</center>
+					</td>
+					<td>
+						<center>
+							<img height="150" width="250" th:src="@{/images/paiement_cash.jpg}" alt="..." >
+						</center>
+					</td>
+					<td>
+						<center><img height="150" width="250" th:src="@{/images/accompagnement.jpg}" alt="..." >
+						</center>
+					</td>
+				</tr>
+				<td>
+					<center>
+						<b><font>Sensibilisation et Mobilisation</font></b>
+					</center>
+				</td>
+				<td>
+					<center>
+						<b>Paiement des bénéficiaires</b>
+					</center>
+				</td>
+				<td>
+					<center>
+						<b>Implication des travailleurs sociaux</b>
+					</center>
+				</td>
+				<td>
+					<center>
+						<b>Mesure d’accompagnement-inclusion productive</b>
+					</center>
+				</td>
+				<tr>
+				</tr>
+			</table>
+
+			<div class="clearfix"></div>
+			<br>
+			<br>
+			<table width="95%" border="1">
+
+				<tr heigth="5px" >
+					<th colspan="3"  padding="5px" style = "background-color: #ff6f00; margin-top:5px;">
+						<font color="black">
+							<center>Base PMT/RSU</center>
+						</font>
+					</th>
+				</tr>
+				<tr >
+					<td width="50%">
+						<center>
+							<table class="table table-striped table-bordered" width="95%">
+								<thead>
+
+								<tr heigth="5px" bgcolor="Green" >
+									<th><font color="white"><center>N°</center></font></th>
+									<th><font color="white"><center>Indicateurs clés</center></font></th>
+									<th><font color="white"><center>Nombre Ménages</center></font></th>
+									<th><font color="white"><center>Nombre Total Membre</center></font></th>
+									<th><font color="white"><center>Nombre Membre Homme</center></font></th>
+									<th><font color="white"><center>Nombre Membre Femme</center></font></th>
+								</tr>
+
+								</thead>
+								<tbody>
+								<tr heigth=2% th:each="sigIndicateurCleView,iterStat:${allSigIndicateurCleRsuView}">
+									<td align="center"  th:text="${sigIndicateurCleView.idIndicateur}" width=5% bgcolor=""> </td></font>
+									<td align="left" th:text="${sigIndicateurCleView.libIndicateur}" > </td>
+									<td align="center"  th:text="${sigIndicateurCleView.nombreMenage}" width=15%></td>
+									<td align="center"  th:text="${sigIndicateurCleView.effectifTotal}" width=15%></td>
+									<td align="center"  th:text="${sigIndicateurCleView.effectifHomme}" width=15%></td>
+									<td align="center"  th:text="${sigIndicateurCleView.effectifFemme}" width=15%></td>
+								</tr>
+								</tbody>
+							</table>
+						</center>
+					</td>
+					<td></td>
+					<td width="50%" >
+						<!--<div id="resultat_rech">
+                            <div style="width:95%;">
+                                <canvas id="canvas"></canvas>
+                            </div>
+                        </div>-->
+
+						<div class="x_panel">
+							<div class="x_content">
+
+								<div id="mainb" th:href="@{/}" style="height:350px;"></div>
+
+							</div>
+						</div>
+					</td>
+
+				</tr>
+
+				<tr>
+					<td colspan="3">
+						</br>
+						<center>
+
+							<table class="table table-striped table-bordered" width="90%">
+								<thead>
+								<tr heigth="5px" >
+									<th colspan="7"  padding="5px" style = "background-color: #ff6f00; margin-top:5px;">
+										<font color="black">
+											<center>Bénéficiaires PFSP</center>
+										</font>
+									</th>
+								</tr>
+								<tr  bgcolor="Green" >
+
+
+									<th><font color="white"><center>N°</center></font></th>
+									<th><font color="white"><center>Indicateurs clés</center></font></th>
+									<th><font color="white"><center>Phase</center></font></th>
+									<th><font color="white"><center>Nombre Ménages</center></font></th>
+									<th><font color="white"><center>Nombre Total Membre</center></font></th>
+									<th><font color="white"><center>Nombre Membre Homme</center></font></th>
+									<th><font color="white"><center>Nombre Membre Femme</center></font></th>
+								</tr>
+
+								</thead>
+								<tbody>
+								<tr heigth=2% th:each="sigIndicateurCleBenefView,iterStat:${allSigIndicateurCleBenefView}">
+									<td align="center"  th:text="${sigIndicateurCleBenefView.ordreIndicateur}" width=5% > </td>
+									<td align="left"    th:text="${sigIndicateurCleBenefView.libIndicateur}" > </td>
+									<td align="left"    th:text="${sigIndicateurCleBenefView.libelleSelection}" > </td>
+									<td align="center"  th:text="${sigIndicateurCleBenefView.nombreMenage}" width=10%></td>
+									<td align="center"  th:text="${sigIndicateurCleBenefView.effectifTotal}" width=10%></td>
+									<td align="center"  th:text="${sigIndicateurCleBenefView.effectifHomme}" width=10%></td>
+									<td align="center"  th:text="${sigIndicateurCleBenefView.effectifFemme}" width=10%></td>
+								</tr>
+								</tbody>
+							</table>
+						</center>
+					</td>
+				</tr>
+			</table>
+		</center>
+	</div>
+</div>
+<!-- /page content -->
+</body>
+</html>

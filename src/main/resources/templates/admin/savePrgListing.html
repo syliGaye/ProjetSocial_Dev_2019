@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">    
+    
+    <head>
+		<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+    
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+			<div class="">
+				<div class="clearfix"></div>
+
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="x_panel">
+							<div class="x_title">
+								<b><font color="orange" size="5"><center>CREATION D'UN LISTING PERIODIQUE</center></font></b>
+								<ul class="nav navbar-right panel_toolbox">
+									<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+									</li>
+								</ul>
+								<div class="clearfix"></div>
+							</div>
+							<div class="x_content">
+								<form class="form-horizontal form-label-left " th:object="${prgListing}" th:action="@{/admin/prgListing/add}" method="post"    novalidate>
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Numero <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Code" required="required" type="text" th:field="*{idListing}" readonly="true">
+										</div>
+									</div>  
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Date listing" required="required" type="text" th:field="*{dateListing}">
+										</div>
+									</div>
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Periode <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">									
+										
+									       <select class="form-control" name="codPeriode" th:field="*{codPeriode}" >
+														
+															<option th:each="sigEmmissionPeriode:${allSigEmmissionPeriode}" 
+															th:value="${sigEmmissionPeriode.getCodPeriode()}" 
+															th:text="${sigEmmissionPeriode.getLibellePeriode()}"> 
+															</option>
+										  </select>
+                                        
+                                      </div>
+									   <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>	
+									</div>
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Agence de paiement <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">									
+										
+									       <select class="form-control" name="codAp" th:field="*{codAp}" >
+														
+															<option th:each="sigAgencePaiement:${allSigAgencePaiement}" 
+															th:value="${sigAgencePaiement.getCodAp()}" 
+															th:text="${sigAgencePaiement.getRaisonSocialAp()}"> 
+															</option>
+										  </select>
+                                        
+                                       </div>
+									   <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>	
+									</div>	
+								
+									
+									<div class="ln_solid"></div>
+									<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+                                        <center>
+											<a class="btn btn-warning" th:href="@{/admin/prgListing}">Retour</a>
+											<a class="btn btn-default" th:href="@{/admin/prgListing/add}">Annuler</a>
+											<button id="send" type="submit" class="btn btn-success">Enregistrer</button> 
+										</center>
+
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+        <!-- /page content -->
+
+ 
+	</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+  
+  <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+		
+							 
+		<style>
+			* {
+			  box-sizing: border-box;
+			}
+
+			body {
+			  background-color: #f1f1f1;
+			}
+
+			#regForm1 {
+			  background-color: #ffffff;
+			  margin: 100px auto;
+			  font-family: Raleway;
+			  padding: 40px;
+			  width: 70%;
+			  min-width: 300px;
+			}
+
+			
+			input {
+			  padding: 10px;
+			  width: 100%;
+			  font-size: 17px;
+			  font-family: Raleway;
+			  border: 1px solid #aaaaaa;
+			}
+			
+			select {
+			  padding: 10px;
+			  width: 100%;
+			  font-size: 17px;
+			  font-family: Raleway;
+			  border: 1px solid #aaaaaa;
+			}
+
+			
+			
+			/* Mark input boxes that gets an error on validation: */
+			select.invalid {
+			  background-color: #ffdddd;
+			}
+
+			/* Hide all steps by default: */
+			.tab1 {
+			  display: none;
+			}
+
+			button {
+			  background-color: #4CAF50;
+			  color: #ffffff;
+			  border: none;
+			  padding: 10px 20px;
+			  font-size: 17px;
+			  font-family: Raleway;
+			  cursor: pointer;
+			}
+
+			button:hover {
+			  opacity: 0.8;
+			}
+
+			#prevBtn1 {
+			  background-color: #bbbbbb;
+			}
+
+			/* Make circles that indicate the steps of the form: */
+			.step {
+			  height: 15px;
+			  width: 15px;
+			  margin: 0 2px;
+			  background-color: #bbbbbb;
+			  border: none;  
+			  border-radius: 50%;
+			  display: inline-block;
+			  opacity: 0.5;
+			}
+
+			.step.active {
+			  opacity: 1;
+			}
+
+			/* Mark the steps that are finished and valid: */
+			.step.finish {
+			  background-color: #4CAF50;
+			}
+		</style>
+		
+
+
+	
+  </head>
+	
+  <body  >   
+        <!-- page content -->
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">
+		
+			<br/>
+				<form id="regForm1" name="regForm1" th:object="${odkMenage}" th:action="${'/admin/detailsOdkMenages/'+odkMenage.idMenage}" method="post"    novalidate>
+					<div class="x_title">
+						<b><font color="orange" size="5"><center>LISTE DETAILLEE DU MENAGE ODK</center></font></b>
+						<ul class="nav navbar-right panel_toolbox">
+							<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+							</li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<!-- One "tab1" for each step in the form: -->
+					<div class="tab1">
+						<div class="x_panel"> 
+							<div class="x_title">
+								<b><font color="orange" size="4">Localisation du Ménage</font></b>
+								<div class="clearfix"></div>
+							</div>
+							<p><label for="fullname">Région </label><select id="f_region" th:field="*{regiondistrict}" disabled="disabled"  >
+								<option value="NONE">Région</option>  
+								<option th:each="SigRegion:${allSigRegion}" 
+										th:value="${SigRegion.getCodRegion()}"
+										th:text="${SigRegion.getNomRegion()}"> 
+								</option>
+							</select></p>
+							<p><label for="fullname">Département </label><select id="f_departement" th:field="*{departement}" disabled="disabled"  >
+								<option value="NONE">Département</option>  
+								<option th:each="SigDepartement:${allSigDepartement}" 
+										th:value="${SigDepartement.getCodDepartement()}"
+										th:text="${SigDepartement.getNomDepartement()}"> 
+								</option>
+							</select></p><p><label for="fullname">Sous-Préfecture </label><select id="f_s_prefecture" th:field="*{sousprefecture}" disabled="disabled"  >
+								<option value="NONE">Sous-Préfecture</option>  
+								<option th:each="SigSousPrefecture:${allSigSousPrefecture}" 
+										th:value="${SigSousPrefecture.getCodSPref()}"
+										th:text="${SigSousPrefecture.getNomSPref()}"> 
+								</option>
+							</select></p><p><label for="fullname">Localité </label><select  id="f_localite" th:field="*{localite}" name="codLocalite" disabled="disabled" >
+								<option value="NONE">Localité</option>  
+								<option th:each="SigLocalite:${allSigLocalite}" 
+										th:value="${SigLocalite.getCodLocalite()}"
+										th:text="${SigLocalite.getNomLocalite()}"> 
+								</option>
+							</select></p>
+							
+							<p><label for="fullname">Village </label><input placeholder="Village..." oninput="this.className = ''" name="quartierEtVillage" th:field="*{quartierEtVillage}" disabled="disabled"></p>
+							<p><label for="fullname">N° de l'Ilot </label><input type="text" placeholder="Ilot..." oninput="this.className = ''" name="ilot"  th:field="*{ilot}" disabled="disabled"></p>
+							<p><label for="fullname">N° du batiment </label><input type="text" placeholder="Batiment..." oninput="this.className = ''" name="batiment" th:field="*{batiment}" disabled="disabled"></p>
+							<p><label for="fullname">N° du logement </label><input type="text" placeholder="Logement..." oninput="this.className = ''" name="logement"  th:field="*{logement}" disabled="disabled"></p>
+							
+		
+						</div>
+					</div>
+					<div class="tab1">
+						<div class="x_panel">
+							<div class="x_title">
+								<b><font color="orange" size="4">Information sur le Logement</font></b>
+								<div class="clearfix"></div>
+							</div>
+							<p><label for="fullname">Type de Mur </label><select   oninput="this.className = ''" name="logementMur"  th:field="*{logementMur}" disabled="disabled" >
+								<option value="NONE">Type de Mur</option>  
+								<option th:each="PmtLogMur:${allPmtLogMur}" 
+										th:value="${PmtLogMur.getCodLogMur()}"
+										th:text="${PmtLogMur.getLibelleLogMur()}"> 
+								</option>
+							</select></p>
+							<p><label for="fullname">Toit </label><select   oninput="this.className = ''" name="logementToit"  th:field="*{logementToit}" disabled="disabled" >
+								<option value="NONE">Toit</option>  
+								<option th:each="PmtLogToit:${allPmtLogToit}" 
+										th:value="${PmtLogToit.getCodLogToit()}"
+										th:text="${PmtLogToit.getLibelleLogToit()}"> 
+								</option>
+							</select></p>
+							
+							<p><label for="fullname">Chambre </label><input type="number" placeholder="Chambre..." oninput="this.className = ''" name="logemementChambres" th:field="*{logemementChambres}" disabled="disabled"></p>
+							 
+							
+							<p><label for="fullname">Type de Sol </label><select   oninput="this.className = ''" name="logementSol" th:field="*{logementSol}" disabled="disabled" >
+								<option value="NONE">Type de Sol</option>  
+								<option th:each="PmtLogSol:${allPmtLogSol}" 
+										th:value="${PmtLogSol.getCodLogSol()}"
+										th:text="${PmtLogSol.getLibelleLogSol()}"> 
+								</option>
+							</select></p>
+							<p><label for="fullname">Source d'eau </label><select   oninput="this.className = ''" name="codLogEau" th:field="*{logementEau}" disabled="disabled" >
+								<option value="NONE">Source d'eau</option>  
+								<option th:each="PmtLogEau:${allPmtLogEau}" 
+										th:value="${PmtLogEau.getCodLogEau()}"
+										th:text="${PmtLogEau.getLibelleLogEau()}"> 
+								</option>
+							</select></p>
+							<p><label for="fullname">Type de Douche </label><select   oninput="this.className = ''" name="codLogDouche" th:field="*{logementDouche}" disabled="disabled">
+								<option value="NONE">Type de Douche</option>  
+								<option th:each="PmtLogDouche:${allPmtLogDouche}" 
+										th:value="${PmtLogDouche.getCodLogDouche()}"
+										th:text="${PmtLogDouche.getLibelleLogDouche()}"> 
+								</option>
+							</select></p>
+							<p><label for="fullname">Type de Toilette </label><select   oninput="this.className = ''" name="codLogToilette" th:field="*{logementToilette}" disabled="disabled">
+								<option value="NONE">Type de Toilette</option>  
+								<option th:each="PmtLogToilette:${allPmtLogToilette}" 
+										th:value="${PmtLogToilette.getCodLogToilette()}"
+										th:text="${PmtLogToilette.getLibelleLogToilette()}"> 
+								</option>
+							</select></p>
+							<p><label for="fullname">Ordure </label><select   oninput="this.className = ''" name="codLogOrdure" th:field="*{logementOrdures}" disabled="disabled" >
+								<option value="NONE">Ordure</option>  
+								<option th:each="PmtLogOrdure:${allPmtLogOrdure}" 
+										th:value="${PmtLogOrdure.getCodLogOrdure()}"
+										th:text="${PmtLogOrdure.getLibelleLogOrdure()}"> 
+								</option>
+							</select></p>
+							
+						</div>
+					</div>
+					<div class="tab1">
+						<div class="x_panel">
+							<div class="x_title">
+								<b><font color="orange" size="4">Bien du Ménage</font></b>
+								<div class="clearfix"></div>
+							</div>
+							
+							<table border="0">
+								<tr>
+									<td width="30%">
+										<p> <label for="fullname">à Tabouret </label>
+										<select   oninput="this.className = ''" name="lTabouret" th:field="*{lTabouret}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>  
+										</select></p>
+										
+										<p><label for="fullname">à Table </label>
+										<select   oninput="this.className = ''" name="lTable"  th:field="*{lTable}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option> 
+										</select></p>
+										
+										<p> <label for="fullname">à Fauteuil </label>
+										<select   oninput="this.className = ''" name="lFauteuil"  th:field="*{lFauteuil}"disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+										<p> <label for="fullname">à Portable </label>
+										<select   oninput="this.className = ''" name="aPortable"  th:field="*{aPortable}" disabled="disabled">
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option> 
+										</select></p>
+										
+										<p> <label for="fullname">à TV </label>
+										<select   oninput="this.className = ''" name="aTv"  th:field="*{aTv}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+										<p> <label for="fullname">à Radio </label>
+										<select   oninput="this.className = ''" name="aRadio"  th:field="*{aRadio}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+										<p> <label for="fullname">à Ordinateur </label>
+										<select   oninput="this.className = ''" name="aOrdinateur" th:field="*{aOrdinateur}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+										<p> <label for="fullname">à Cuisinière </label>
+										<select   oninput="this.className = ''" name="aCuisiniere" th:field="*{aCuisiniere}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+									</td>
+									<td width="3%">
+									</td>
+									<td width="30%">
+										<p><label for="fullname">à Chaise </label>
+										<select   oninput="this.className = ''" name="aChaiseAutre" th:field="*{aChaiseAutre}" disabled="disabled">
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option> 
+										</select></p>
+										
+										<p><label for="fullname">à bateau </label>
+										<select   oninput="this.className = ''" name="aBateauDePeche"   th:field="*{aBateauDePeche}" disabled="disabled">
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+										<p><label for="fullname">à Fer à Repasser </label>
+										<select   oninput="this.className = ''" name="aFerARepasser"  th:field="*{aFerARepasser}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+										<p><label for="fullname">à Vélomoteur </label>
+										<select   oninput="this.className = ''" name="aVelomoteur"   th:field="*{aVelomoteur}" disabled="disabled">
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+										<p><label for="fullname">à Drap </label>
+										<select   oninput="this.className = ''" name="aDrapEtCouverture"  th:field="*{aDrapEtCouverture}" disabled="disabled">
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>  
+										</select></p>
+										
+										<p><label for="fullname">à Salon Ordinaire </label>
+										<select   oninput="this.className = ''" name="aSalonOrdinaire"   th:field="*{aSalonOrdinaire}" disabled="disabled">
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option> 
+										</select></p>
+										
+										<p><label for="fullname">à pilon et Mortier </label>
+										<select   oninput="this.className = ''" name="aPilonEtMortier"  th:field="*{aPilonEtMortier}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+									</td>
+									<td width="3%">
+									</td>
+									<td width="30%">
+										<p><label for="fullname">à Antenne Parabolique </label>
+										<select   oninput="this.className = ''" name="aAntenneParabolique" th:field="*{aPilonEtMortier}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option> 
+										</select></p>
+										
+										<p><label for="fullname">à Appareil Photo Numérique </label>
+										<select   oninput="this.className = ''" name="aAppareilPhotoNumerique" th:field="*{aAppareilPhotoNumerique}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+										<p><label for="fullname">à Voiture </label>
+										<select   oninput="this.className = ''" name="aVoiture" th:field="*{aVoiture}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>  
+										</select></p>
+										
+										<p><label for="fullname">à Moto </label>
+										<select   oninput="this.className = ''" name="aMoto" th:field="*{aMoto}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+										<p><label for="fullname">à Brouette </label>
+										<select   oninput="this.className = ''" name="aBrouette" th:field="*{aBrouette}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+										<p><label for="fullname">à Lit </label>
+										<select   oninput="this.className = ''" name="aLit" th:field="*{aLit}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+										<p><label for="fullname">à natte </label>
+										<select   oninput="this.className = ''" name="aNatte" th:field="*{aNatte}" disabled="disabled"  >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+										<p><label for="fullname">à sceau </label>
+										<select   oninput="this.className = ''" name="aSceau" th:field="*{aSceau}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option> 
+										</select></p>
+									</td>
+								</tr>
+							</table>
+							
+						</div>
+					</div>
+					
+					<div class="tab1">
+						<table border="0">
+							<tr>
+								<td width="50%">
+									<div class="x_panel">
+										<div class="x_title">
+											<b><font color="orange" size="4">Détails Ciblage</font></b>
+											<div class="clearfix"></div>
+										</div>
+										<div class="x_content">
+											<br />
+											<p>
+												<label for="fullname">Date Début </label><input type="text" required class="form-control" placeholder="Date Début..." oninput="this.className = ''" name="starttime" th:field="*{starttime}" disabled="disabled">
+											</p>
+											<p>
+												<label for="fullname">Date Fin </label><input type="text" required class="form-control" placeholder="Date Fin..." oninput="this.className = ''" name="endtime" th:field="*{endtime}" disabled="disabled">
+											</p>
+											<p><label for="fullname">Id Sim </label><input placeholder="Id Sim..." oninput="this.className = ''" name="idsim" th:field="*{simid}" disabled="disabled"></p>
+											<p><label for="fullname">N°Appareil </label><input placeholder="N°Appareil..."  name="devicephonenum" th:field="*{devicephonenum}" disabled="disabled"></p>
+											<p><label for="fullname">Agent Collecteur </label><select   oninput="this.className = ''" name="codAgCol" th:field="*{enqueteur}"  disabled="disabled">
+												<option value="NONE">Agent Collecteur</option>  
+												<option th:each="SigAgentCollecte:${allSigAgentCollecte}" 
+														th:value="${SigAgentCollecte.getCodAgCol()}"
+														th:text="${SigAgentCollecte.getNomAgCol()}"> 
+												</option>
+											</select></p>
+											<p><label for="fullname">Id User </label><input placeholder="Id User..." oninput="this.className = ''" name="iduser" th:field="*{id}" disabled="disabled"></p>
+											
+										
+										</div>
+									</div>
+								</td>
+								<td width="50%">
+									<div class="x_panel">
+										<div class="x_title">
+											<b><font color="orange" size="4">Coordonnées GPS</font></b>
+											<div class="clearfix"></div>
+										</div>
+										<div class="x_content">
+											<br />
+											<p><label for="fullname">Latitude </label><input placeholder="Latitude..." oninput="this.className = ''" name="gpsLatitude" th:field="*{gpsLatitude}" disabled="disabled"></p>
+											<p><label for="fullname">Longitude </label><input placeholder="Longitude..." oninput="this.className = ''" name="gpsLongitude" th:field="*{gpsLongitude}" disabled="disabled"></p>
+											<p><label for="fullname">Altitude </label><input placeholder="Altitude..." oninput="this.className = ''" name="gpsAltitude" th:field="*{gpsAltitude}" disabled="disabled"></p>
+											<p><label for="fullname">Accuracy </label><input placeholder="Accuracy..." oninput="this.className = ''" name="gpsAccuracy" th:field="*{gpsAccuracy}" disabled="disabled"></p>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+							
+						
+					</div>
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="prevBtn1" onclick="nextPrev1(-1)">Précédent</button>
+      <button type="button" id="nextBtn1" onclick="nextPrev1(1)">Suivant</button>
+	  <button type="button" id="lienBtn1" onclick="history.back()">Quitter</button>
+	  
+	 
+    </div>
+  </div>
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+  </div>
+ 
+</form>
+		</div>
+        <!-- /page content -->
+
+	
+    </body>
+</html>

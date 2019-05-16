@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+  
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+		<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">   
+        <!-- page content -->
+        
+			<div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">
+			
+				<div class="col-md-12 col-sm-12 col-xs-12">
+				<!--<a class="btn btn-large btn-success" th:href="@{/admin/pmtActiviteCm/add}">Ajouter Fonction</a>-->
+
+				</div>		
+			
+					<div class="x_panel">
+					    <div class="x_title">
+							<b><font color="orange"><font face=Castellar><font size="4"><center>Liste détaillés des paiements de la période</center></font></font></font></b>
+							<ul class="nav navbar-right panel_toolbox">
+							<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+						</ul>
+						<div class="clearfix"></div>					
+							<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+                                       <center>
+										  <a onclick = "history.back()" class="btn btn-warning" >Retour</a>
+									</center>	
+							</div>														
+					</div>
+		
+					<center>
+					<div class="x_content">
+					
+						<table id="datatable-buttons" class="table table-striped jambo_table bulk_action" width="90%">
+							<thead>
+								<tr>
+														<th >Période</th>
+														<th >Date paiement</th>
+														<th >Localité</th>
+														<th >Village</th>
+														<th >Chef Ménage </th>
+														<th>Recipiendaire</th>
+														<th >Nom Agence</th>
+														<th >Montant</th>
+													<th >Statut</th>
+												</tr>
+							</thead>
+							<tbody>
+								<tr th:each="prgPaiementView,iterStat:${listPrgPaiementView}">
+														<td th:text="${prgPaiementView.codPeriode}"> </td>
+														<td th:text="${prgPaiementView.datePaiement}"> </td>
+														<td th:text="${prgPaiementView.nomLocalite}"> </td>
+														<td th:text="${prgPaiementView.villageQuartier}"> </td>
+														<td th:text="${prgPaiementView.nomChefMenage}"> </td>
+														<td th:text="${prgPaiementView.nomRecipiendaire}"> </td>
+														<td th:text="${prgPaiementView.raisonSocialAp}"> </td>
+														<td th:text="${prgPaiementView.montantPaiement}"> </td>
+														<td th:text="${prgPaiementView.libStatutPaiement}"> </td>
+													</tr>
+							</tbody>
+						</table>
+						
+					  </div>
+					  </center>
+				</div>								
+					<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+                        <center>
+								  <a onclick = "history.back()" class="btn btn-warning" >Retour</a>
+						</center>	
+					</div>				
+			</div>
+		
+        <!-- /page content </div>-->
+
+    </body>
+</html>

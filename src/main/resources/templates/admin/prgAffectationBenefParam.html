@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+  
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+		</br>
+			<div class="clearfix">
+			</div>
+			</br>
+            <div class="row">
+				<table border="0">
+					<tr>
+						<td width="15%">
+						</td>
+						<td width="45%">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<b><font color="orange" size="5"><center>ENTRER LES PARAMETRES</center></font></b>
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+						  
+								<div class="x_content">
+									<form class="form-horizontal form-label-left " th:object="${PrgBeneficiaire}" th:action="@{/admin/prgGenererAffectationBenef}" method="post"   novalidate>
+										
+										<div class="form-horizontal form-label-left">
+
+											<p><label for="fullname">Sélection </label><select class="form-control" name="idSelection">
+												<option th:each="SigQuotaSelection:${allSigQuotaSelection}" 
+														th:value="${SigQuotaSelection.getIdSelection()}"
+														th:text="${SigQuotaSelection.getLibelleSelection()}"> 
+												</option>
+											</select></p>
+											
+											<p><label for="fullname">Programme </label><select   class="form-control" name="codProgramme">
+												<option value="NONE">Sélectionner le Programme</option>
+												<option th:each="SigProgramme:${allSigProgramme}" 
+														th:value="${SigProgramme.getCodProgramme()}"
+														th:text="${SigProgramme.getLibelleProgramme()}"> 
+												</option>
+											</select></p>
+											
+											<p><label for="fullname">Model </label><select   class="form-control" name="codModel" >
+												<option value="NONE">Sélectionner le Model</option>
+												<option th:each="PmtModel:${allPmtModel}" 
+														th:value="${PmtModel.getCodModel()}"
+														th:text="${PmtModel.getLibelleModel()}"> 
+												</option>
+											</select></p>
+										</div>
+										<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+											<center>
+												<a class="btn btn-warning" th:href="@{/admin/sigQuotaSelection}">Retour</a>
+												<button id="send" type="submit" class="btn btn-success">Valider</button>
+											</center>
+										</div>
+									</form>
+								</div>
+							
+							</div>
+						</div>
+						</td>
+						<td width="15%">
+						</td>
+					</tr>
+				</table>
+					
+            </div>
+        </div>
+    <!-- /page content -->
+	</body>
+</html>

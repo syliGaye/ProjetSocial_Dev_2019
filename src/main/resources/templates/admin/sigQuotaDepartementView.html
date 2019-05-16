@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+  
+  <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+  </head>
+
+  <body class="nav-md">  
+  
+  <form th:object="${sigQuotaDepartementView}" th:action="@{/admin/sigQuotaDepartementView}" method="post"  novalidate="novalidate">
+             <table align="center" border="1" width="1286" height="54">
+   
+        <!-- page content sigQuotaDepartementView -->
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">
+			
+			<div class="col-md-12 col-sm-12 col-xs-12">
+			<!--<a class="btn btn-large btn-success" th:href="@{/admin/pmtActiviteCm/add}">Ajouter Fonction</a>-->
+				<div class="x_panel">
+					<div class="x_title">
+						<b><font color="orange"><font face=Castellar><font size="4"><center>LISTE DES QUOTAS PAR DEPARTEMENT </center></font></font></font></b>
+						<ul class="nav navbar-right panel_toolbox">
+						  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<center>
+					<div class="x_content">
+					
+						<table id="datatable-buttons" class=" table-striped jambo_table bulk_action" width="90%">
+							<thead>
+								<tr heigth="5px">
+									 <th> Departement</th>
+									 <th>Effectif à affecter</th>
+								  	 <th>Effectif affecté</th>
+									 <th> Région</th>
+								  	 <th>Libellé</th>
+
+								  	 <th><center>Action</center></th>                       
+								</tr>
+							</thead>
+							<tbody><!--- -->
+							
+								    <tr heigth=2% th:each="sigQuotaDepartementView,iterStat:${ListDetailsDepartement}">
+									 <td th:text="${sigQuotaDepartementView.nomDepartement}"></td>
+									<td align="center" th:text="${sigQuotaDepartementView.deptEffAAffecter}"></td>
+								    <td align="center" th:text="${sigQuotaDepartementView.deptEffAffecter}"></td>
+									<td th:text="${sigQuotaDepartementView.nomRegion}"></td>
+									<td th:text="${sigQuotaDepartementView.libelleSelection}" width=5%></td>
+									
+									<td width=10% allign="center">
+										<center>
+											<a class="btn btn-info btn-xs" th:href="@{/admin/sigQuotaSousPrefViewDetail/__${sigQuotaDepartementView.idSelection}__/__${sigQuotaDepartementView.codRegion}__/__${sigQuotaDepartementView.codDepartement}__}"><i class="fa fa-edit"></i>Details</a>
+											   
+										</center>          
+									</td>
+								</tr>
+								</tr>
+							</tbody>
+						</table>
+						<br>
+						<br>
+						<div class="ln_solid"></div>
+						
+							<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+							<center>
+								<a onclick = "history.back()" class="btn btn-warning" >Retour</a>												
+							</center>
+						</div>
+						
+					  </div>
+					  </center>
+				</div>
+			</div>
+		</div>
+        <!-- /page content -->
+
+    </table>
+</form>
+
+    </body>
+</html>

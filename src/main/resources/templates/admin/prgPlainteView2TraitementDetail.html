@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">          
+			<br>
+			<div class="x_title">
+				<b><font color="orange"><font face=Castellar><font size="4"><center>DETAILS DES ELEMENTS DE LA SESSION DE VALIDATION</center></font></font></font></b>
+				<ul class="nav navbar-right panel_toolbox">
+				<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+			<center>
+				<br/>
+				<div class="row-fluid sortable ui-sortable">		                                                            
+					<div class="panel panel-yellow">
+						<div class="panel-body">
+							<table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+									<tr>
+										<td align="center">	
+											<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+												<center>
+													<a onclick = "history.back()" class="btn btn-warning" >Retour</a>
+											</center>
+								             </div>
+										</td>		
+									</tr>
+							</table>
+							<div id="no-more-tables">								
+								<div class="col-xs-2">
+								  <!-- required for floating -->
+								  <!-- Nav tabs -->
+									<ul class="nav nav-tabs tabs-left">
+					
+										<li  class="active"><a href="#doc_just" data-toggle="tab">Doc Just Traitement</a>
+										</li>
+										<li><a href="#jury" data-toggle="tab">Acteurs traitement</a>
+										</li>
+									</ul>
+								</div>	
+								<div class="col-xs-9">
+								  <!-- Tab panes -->
+									<div class="tab-content">
+										<div class="tab-pane" id="doc_just">
+										<p class="lead">Liste des documents justifiants les séances de traitements de la plainte</p>
+										<!-- /Zone d'inserion des traitements -->
+										<br>
+										  <a class="btn btn-large btn-success" th:with="var=${numTrait},var1=${numPlainte}" th:href="@{/admin/PrgPlainteDocJust2/add/__${var}__/__${var1}__}" >Nouveau Document</a>
+										
+      										<table  class="table table-striped jambo_table bulk_action" width=100%> 
+												<thead>
+													<tr>
+														<th>N°Document</th>
+														<th>Code</th>
+														<th>Type Document</th>
+														<th>Reference</th>
+														<th>Date Doc</th>
+														<th>Action</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="prgPlainteDocJustView,iterStat:${listPrgPlainteDocJustView}">
+														<td th:text="${prgPlainteDocJustView.idDocJustPlt}"></td>
+														<td th:text="${prgPlainteDocJustView.codTypDoc}"></td>
+														<td th:text="${prgPlainteDocJustView.libTypDoc}"></td>
+														<td th:text="${prgPlainteDocJustView.refDocument}"></td>
+														<td th:text="${prgPlainteDocJustView.dateDocument}"></td>
+														
+														<td width=25% allign="center">
+															<center>
+																
+																<a class="btn btn-info btn-xs" th:href="@{/admin/editPrgPlainteDocJust2/__${prgPlainteDocJustView.numTrait}__/__${prgPlainteDocJustView.idDocJustPlt}__/__${prgPlainteDocJustView.numPlainte}__}" onclick="return confirm('Voulez-vous modifier le Document ?')" ><i class="fa fa-edit"></i>&nbsp;
+																	Modifier
+																</a>
+																 <a class="btn btn-danger btn-xs" th:href="@{/admin/PrgPlainteDocJust2/delete/__${prgPlainteDocJustView.idDocJustPlt}__}" onclick="return confirm('supprimer?')" ><i class="fa fa-trash-o"></i>&nbsp;
+																	Supprimer
+																</a>  															
+															</center>            
+														</td>															
+													</tr>
+												</tbody>
+											</table>						
+										</div>
+										<div class="tab-pane" id="jury">
+											<p class="lead">Liste des Acteurs ayants participés aux séances de traitements de la plainte</p>
+											<!-- /Zone d'inserion des membres du jury -->
+											<br>
+										    <a class="btn btn-large btn-success" th:with="var=${numTrait},var1=${numPlainte}" th:href="@{/admin/PrgPlainteJuryTrait2/add/__${var}__/__${var1}__}" >Nouvel Acteur</a>
+										
+						   					 <table   class="table table-striped jambo_table bulk_action" width=100%> 
+												<thead>
+													<tr>
+														<th >Numero </th>
+														 <th>Nom Jury</th>
+														 <th>Prenoms</th>
+														 <th>Fonction</th>
+														 <th>Contact</th>
+														 <th>Structure</th>
+														 <th>Action</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="prgPlainteJuryTraitView,iterStat:${listPrgPlainteJuryTraitView}">
+														<td th:text="${prgPlainteJuryTraitView.idJury}"></td>
+														<td th:text="${prgPlainteJuryTraitView.nomJury}"></td>
+														<td th:text="${prgPlainteJuryTraitView.prenomJury}"></td>
+														<td th:text="${prgPlainteJuryTraitView.fonctionJury}"></td>
+														<td th:text="${prgPlainteJuryTraitView.contactJury}"></td>
+														<td th:text="${prgPlainteJuryTraitView.structureRepresente}"></td>
+														<td width=25% allign="center">
+															<center>
+																
+																<a class="btn btn-info btn-xs" th:href="@{/admin/editPrgPlainteJuryTrait2/__${prgPlainteJuryTraitView.numTrait}__/__${prgPlainteJuryTraitView.idJury}__/__${prgPlainteJuryTraitView.numPlainte}__}" onclick="return confirm('voulez vous modifier ce membre du jury ?')" ><i class="fa fa-edit"></i>&nbsp;
+																	Modifier
+																</a>
+																 <a class="btn btn-danger btn-xs" th:href="@{/admin/PrgPlainteJuryTrait2/delete/__${prgPlainteJuryTraitView.idJury}__}" onclick="return confirm('supprimer?')" ><i class="fa fa-trash-o"></i>&nbsp;
+																	Supprimer
+																</a>  															
+															</center>            
+														</td>														
+														</tr>
+													</tbody>
+												</table>	
+										</div>
+									</div>
+								</div>
+								
+								<table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+									<tr>
+										<td align="center">	
+											<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+												<center>
+													<a onclick = "history.back()" class="btn btn-warning" >Retour</a>
+										</center>
+											 </div>
+
+										</td>		
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>	
+                </div>	
+			</center>		
+		</div>	
+    <!-- /page content -->
+	</body>
+</html>
+

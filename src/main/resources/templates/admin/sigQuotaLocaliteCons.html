@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+  
+  <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+  </head>
+
+  <body class="nav-md">   
+        <!-- page content -->
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">
+			
+			<div class="col-md-12 col-sm-12 col-xs-12">
+			
+				<div class="x_panel">
+					<div class="x_title">
+						<b><font color="orange"><font face=Castellar><font size="4"><center>LISTE DES QUOTAS LOCALITE</center></font></font></font></b>
+						<ul class="nav navbar-right panel_toolbox">
+						  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<center>
+					<div class="x_content">
+					
+						<table id="datatable-buttons" class="table table-striped jambo_table bulk_action" width="90%">
+							<thead>
+								<tr heigth="5px">
+									 <th >code</th>
+									 <th>Localité</th>
+									 <th>Region</th>
+									 <th>Departement</th>
+									 <th>Sous Prefecture</th>
+									  <th>id Selection</th>
+									  <th>libelle Selection</th>
+									  <th>desciption Selection</th>
+									 <th>effectif à Affecter</th>
+									 <th>effectif Affecter</th>
+									                      
+								</tr>
+							</thead>
+							<tbody>
+								<tr heigth=2% th:each="sigQuotaLocaliteView,iterStat:${listQuotaLocaliteDetailsCons}">
+									<td align="center" th:text="${sigQuotaLocaliteView.codLocalite}" width=5%> </td>
+									<td th:text="${sigQuotaLocaliteView.nomLocalite}"></td>   
+									<td th:text="${sigQuotaLocaliteView.nomRegion}"></td>   
+									<td th:text="${sigQuotaLocaliteView.nomDepartement}"></td>   
+									<td th:text="${sigQuotaLocaliteView.nomSPref}"></td>   
+									<td th:text="${sigQuotaLocaliteView.idSelection}"></td>   
+									<td th:text="${sigQuotaLocaliteView.libelleSelection}"></td>   
+									<td th:text="${sigQuotaLocaliteView.desciptionSelection}"></td>   
+									<td th:text="${sigQuotaLocaliteView.effAAffecter}"></td>   
+									<td th:text="${sigQuotaLocaliteView.effAffecter}"></td>  
+                                   									
+								</tr>
+							</tbody>
+						</table>
+						
+					  </div>
+				  
+					  </center>
+				</div>
+			</div>
+
+						<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+							<center>
+								 <a onclick = "history.back()" class="btn btn-warning" >Retour</a>
+							</center>
+			             </div>	
+		</div>
+		
+        <!-- /page content -->
+
+    </body>
+</html>

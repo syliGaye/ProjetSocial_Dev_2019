@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+  
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">   
+        <!-- page content -->
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">
+			<br/>
+		
+			<b><font color="orange"><font face=Castellar><font size="4"><center>FILTRE</center></font></font></font></b>	
+			<center>						    
+				<div class="x_content" width="95%">
+					<form class="form-horizontal form-label-left " id="dataPrgSuiviEvalAnloc" th:object="${SigFiltreRecherche}" th:action="@{/admin/prgSuiviEvalAnneeLocaliteView/rech}"  method="post" enctype="multipart/form-data" novalidate> 
+						<div class="portlet-header">
+							<table class="table-striped jambo_table bulk_action" width="90%"  style="border-collapse: separate;  border-spacing: 10px; background-color: Lavender;">
+								<tbody>
+									<tr spacing="10px" padding="10px">
+									 <td align="right">
+										<label for="annee"><font color=black>Annee Debut:</font></label>
+									</td>	
+									<td align="left">										
+										<input class="form-control" type="number" placeholder="Annee" th:field="*{anneeDebut}" id="f_debut" required/>
+									</td>
+									<td align="right">
+										<label for="annee"><font color=black>Annee Fin:</font></label>
+									</td>	
+									<td align="left">										
+										<input class="form-control" type="number" placeholder="Annee" th:field="*{anneeFin}" id="f_fin" required/>
+									</td>
+								
+                                    <td align="right">
+										<label for="Region"><font color=black>Region:</font></label>
+									</td>	
+								<td align="left">
+									    <select class="form-control" name="Région" type="text" th:field="*{codRegion}" id="f_region" required>
+									      <option value="">Selectioner une Région</option>
+                                              <option th:each="SigRegion:${allSigRegion}" 
+	                                                   th:value="${SigRegion.getCodRegion()}"
+	                                                   th:text="${SigRegion.getNomRegion()}">
+	                                            </option>
+                         				 </select>											
+									</td>
+								</tr>
+									<tr>
+									
+                                    <td align="right">
+										<label for="Département"><font color=black>Département:</font></label>
+									</td>	
+									<td align="left">
+									    <select class="form-control"  type="text" th:field="*{codDepartement}" id="f_departement" required="">
+									      <option value="">Selectioner un Département</option>
+                                             <option  th:each="SigDepartement:${allSigDepartement}" 
+	                                                     th:value="${SigDepartement.getCodDepartement()}"
+	                                                     th:text="${SigDepartement.getNomDepartement()}">
+	                                            </option>
+                         				</select>											
+									</td>
+									<td align="right">
+										<label for="Sous-Prefecture"><font color=black>Sous-Prefecture:</font></label>
+									</td>	
+									<td align="left">
+									    <select class="form-control" name="Sous-Prefecture" id="f_s_prefecture" type="text" th:field="*{codSPref}" required="">
+									      <option value="">Selectioner une Sous-Préfecture</option>
+                                             <option  th:each="SigSousPrefecture:${allSigSousPrefecture}" 
+                                                    th:value="${SigSousPrefecture.getCodSPref()}"
+                                                    th:text="${SigSousPrefecture.getNomSPref()}">
+                                              </option>
+                         				</select>											
+									</td>
+								
+									
+									<td align="right">
+										<label for="Localité"><font color=black>Localité:</font></label>
+									</td>	
+									<td align="left">		
+									    <select class="form-control"  type="text" th:field="*{codLocalite}"  id="f_localite" required="">
+									      <option value="">Selectioner une localité</option>
+                                             <option  th:each="SigLocalite:${allSigLocalite}" 
+                                                    th:value="${SigLocalite.getCodLocalite()}"
+                                                    th:text="${SigLocalite.getNomLocalite()}">
+                                            </option>
+                         				</select>									
+									</td>
+									
+								</tr>
+								
+								
+								<tr>
+									<input class="form-control" type="hidden"  value="FILTRE" name="paramchoix"/>
+									</tr>
+								</tbody>
+							</table>
+							</br>
+							<center>
+								<p><button type="submit"  class="btn btn-success" style="background-color: #0099ff"><b>Rechercher</b></button></p>
+							</center>
+						</div>
+					</form>
+					
+				</div>
+			</center>
+			<!-- fiin du filtre et debut du formulaire de consultation-->
+			<div class="x_panel">
+				<div class="x_title">
+					<b><font color="orange" size="4"><center>SUIVI EVALUATION:ANALYSE ANNEE PAR LOCALITE </center></font></b>
+					<ul class="nav navbar-right panel_toolbox">
+					  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+			 
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<table width="100%">
+						<tr>
+							<td>
+								<form th:object="${SigFiltreRecherche}" th:action="@{/admin/prgSuiviEvalAnneeLocaliteView/rech}" method="post" enctype="multipart/form-data" novalidate> 
+									<input th:field="*{anneeDebut}"  type="hidden" class="form-control" id="f_debut" />
+									<input th:field="*{anneeFin}" type="hidden" class="form-control" id="f_fin"  />
+									<input th:field="*{codRegion}" type="hidden" class="form-control" id="f_region"  />
+									<input th:field="*{codDepartement}" type="hidden" class="form-control" id="f_departement"  />
+									<input th:field="*{codSPref}"  type="hidden" class="form-control" id="f_s_prefecture" />
+									<input th:field="*{codLocalite}" type="hidden" class="form-control" id="f_localite"  />
+									<input class="form-control" type="hidden"  value="EXCEL" name="paramchoix"/>
+						
+									
+						
+							<center>
+								<p><button type="submit"  class="btn btn-large btn-primary navbar-center"><b>Générer Excel</b></button></p>
+							</center>
+								</form>
+								
+							</td>
+							
+						</tr>
+					</table>
+					
+					
+					<div class="x_content">
+						<div id="resultat_rech">
+							<table id="datatable-fixed-header" class="table table-striped table-bordered jambo_table bulk_action" width="100%">
+								<thead >
+									    <tr>
+										    <th colspan="2"><center></center></th>
+											<th colspan="6"><center>Total beneficiaire</center></th>
+											<th colspan="6"><center>Total beneficiaire Femmes</center></th>
+											<th colspan="6"><center>Total beneficiaire Hommes</center></th>
+																		
+										</tr>
+										<tr >
+										    
+										    <th rowspan="2"><center>Annee </center></th>
+											<th rowspan="2"><center>Localite</center></th>
+											
+											<th rowspan="2"><center>Nb total emission</center></th>
+											<th rowspan="2"><center>Montant total emission</center></th>
+											<th rowspan="2"><center>Nb total emission payées</center></th>
+											<th rowspan="2"><center>Montant total Payé</center></th>
+											<th rowspan="2"><center>Nb total emission non payées</center></th>
+											<th rowspan="2"><center>Montant total non Payé</center></th>
+											
+											<th rowspan="2"><center>Nb total emission</center></th>
+											<th rowspan="2"><center>Montant total emission</center></th>
+											<th rowspan="2"><center>Nb total emission payées</center></th>
+											<th rowspan="2"><center>Montant total Payé</center></th>
+											<th rowspan="2"><center>Nb total emission non payée</center></th>
+											<th rowspan="2"><center>Montant total non Payé</center></th>
+											
+											<th rowspan="2"><center>Nb total emission</center></th>
+											<th rowspan="2"><center>Montant total emission</center></th>
+											<th rowspan="2"><center>Nb total emission payées</center></th>
+											<th rowspan="2"><center>Montant total Payé</center></th>
+											<th rowspan="2"><center>Nb total emission non payée</center></th>
+											<th rowspan="2"><center>Montant total non Payé</center></th>
+											<th><center>Action</center></font></th>
+											
+										</tr>
+									
+										
+								</thead>
+								
+							<tbody  id="tbodyParams">
+										   <tr th:each="prgSuiviEvalAnneeLocaliteView,iterStat:${result}">
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.anneePeriode}"width="5%"></td>
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.nomLocalite}"width="15%"></td>
+											
+											 <td th:text="${prgSuiviEvalAnneeLocaliteView.nbTotalEmission}"width="5%" align="center" ></td>
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.mtTotalEmission}"width="5%" align="center" > </td>
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.nbTotalPaye}"width="5%" align="center" > </td>
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.mtTotalPaye}"width="5%" align="center" > </td>
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.nbTotalNonPaye}" width="5%" align="center" ></td> 
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.mtTotalNonPaye}"width="5%" align="center" > </td>
+											
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.nbTotalEmissionFemme}"width="5%" align="center" > </td>
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.mtTotalEmissionFemme}" width="5%" align="center" ></td>
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.nbTotalPayeFemme}" width="5%" align="center" ></td> 
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.mtTotalPayeFemme}"width="5%" align="center" > </td>
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.nbTotalNonPayeFemme}" width="5%" align="center" > </td>
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.mtTotalNonPayeFemme}"width="5%" align="center" > </td>
+											
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.nbTotalEmissionHomme}" width="5%" align="center" ></td> 
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.mtTotalEmissionHomme}" width="5%" align="center" ></td>
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.nbTotalPayeHomme}" width="5%" align="center" ></td>
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.mtTotalPayeHomme}"width="5%" align="center" > </td>
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.nbTotalNonPayeHomme}" width="5%" align="center" ></td> 
+											<td th:text="${prgSuiviEvalAnneeLocaliteView.mtTotalNonPayeHomme}"width="5%" align="center" > </td>
+											
+											<td>
+												<table>
+												<tr>
+												<td align="center">	
+													<a class="btn btn-info btn-xs" th:href="@{/admin/detailLocAnPrgSuiviEvalBenefView/__${prgSuiviEvalAnneeLocaliteView.anneePeriode}__/__${prgSuiviEvalAnneeLocaliteView.codLocalite}__}"><i class="fa fa-edit"></i>&nbsp;
+													Details 
+													</a> 
+													
+													 
+										        </td>
+												</tr>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+
+							</table>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+     
+    </body>
+</html>

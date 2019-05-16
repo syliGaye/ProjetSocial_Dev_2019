@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+  
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+			<div class="">
+				<div class="page-title">
+					<div class="title_left">
+						<h3>Autres Informations</h3>
+					</div>
+			</div>
+            
+			<div class="clearfix">
+			</div>
+
+            <div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+						<div class="x_title">
+						
+							<ul class="nav navbar-right panel_toolbox">
+								<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+								</li>
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+                  
+												
+						<div class="x_content">
+							<form class="form-horizontal form-label-left " th:object="${prgPlainteNiv2View}" th:action="@{/admin/editPrgPlainteView2/__${prgPlainteNiv2View.numPlainte}__}"  novalidate>
+								
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Numero Plainte  <span class="required"></span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Numero Plainte"  required="required" type="text" th:field="*{numPlainte}" readonly="true"   width="10%">
+										</div>
+									</div>  									
+	     	
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Reference Courrier <span class="required"></span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Reference" required="required" type="text" th:field="*{refCourrier}" readonly="true">
+										</div>
+									</div>
+											
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Typologie <span class="required"></span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Typologie" required="required" type="text" th:field="*{libelleTypologie}" readonly="true">
+										</div>
+									</div> 
+							
+					
+				
+								
+										
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Moment <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Moment" required="required" type="text" th:field="*{libelleMoment}" readonly="true">
+										</div>
+									</div>
+					
+					
+									
+									
+										
+						 			
+									
+<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Objet Discrimination<span class="required"></span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Objet" required="required" type="text" th:field="*{libelleObjetDiscr}" readonly="true">
+										</div>
+									</div>
+					
+					
+					
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Categorie <span class="required"></span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Categorie" required="required" type="text" th:field="*{libelleCatPlainte}" readonly="true" width=10%>
+										</div>
+									</div>			
+	
+	
+	
+	
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nature Geste<span class="required"></span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nature " required="required" type="text" th:field="*{libelleNatGest}" readonly="true" width=10%>
+										</div>
+									</div>			
+	<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Type Geste<span class="required"></span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Type " required="required" type="text" th:field="*{libelleTyeGeste}" readonly="true"width=10%>
+										</div>
+									</div>	
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Forme Geste<span class="required"></span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Forme " required="required" type="text" th:field="*{libelleFormGeste}" readonly="true"width=10%>
+										</div>
+									</div>	
+											<div class="ln_solid"></div>
+								<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+                                         <center>
+										    
+											
+											<a onclick = "history.back()" class="btn btn-warning">Retour</a>
+											
+											</center>
+
+									</div>
+							</form>
+						</div>
+                    
+					</div>
+                </div>
+            </div>
+        </div>
+    <!-- /page content -->
+	</body>
+</html>

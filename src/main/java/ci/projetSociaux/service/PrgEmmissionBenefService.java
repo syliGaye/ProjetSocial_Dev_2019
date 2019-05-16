@@ -1,0 +1,59 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ci.projetSociaux.service;
+
+import ci.projetSociaux.entity.PrgEmmissionBenef;
+import ci.projetSociaux.repository.PrgEmmissionBenefRepository;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ *
+ * @author soumabkar
+ */
+@Transactional
+@Service
+public class PrgEmmissionBenefService {
+    
+    
+	@Autowired
+	PrgEmmissionBenefRepository prgEmmissionBenefRepository;
+
+	public Optional<PrgEmmissionBenef> findOne(String codeprgEmmissionBenef) {
+		return prgEmmissionBenefRepository.findById(codeprgEmmissionBenef);
+	}
+
+        public PrgEmmissionBenef getOne(String codeprgEmmissionBenef) {
+		return prgEmmissionBenefRepository.getOne(codeprgEmmissionBenef);
+	}
+        
+	public List<PrgEmmissionBenef> findAll() {
+		return prgEmmissionBenefRepository.findAll();
+	}
+
+	public void save(PrgEmmissionBenef prgEmmissionBenef) {
+		prgEmmissionBenefRepository.save(prgEmmissionBenef);
+	}
+	
+
+	public void update(PrgEmmissionBenef prgEmmissionBenef) {
+		prgEmmissionBenef = prgEmmissionBenefRepository.save(prgEmmissionBenef);
+	}
+
+	public void delete(String codeprgEmmissionBenef) {
+		prgEmmissionBenefRepository.deleteById(codeprgEmmissionBenef);
+	}
+
+	public boolean isPrgEmmissionBenefExist(PrgEmmissionBenef prgEmmissionBenef) {
+		return prgEmmissionBenefRepository.getOne(prgEmmissionBenef.getIdOrdreEmmis()) != null;
+	}
+
+    
+    
+}

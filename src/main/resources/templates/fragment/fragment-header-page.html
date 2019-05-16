@@ -1,0 +1,53 @@
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+<div class="profile" th:href="@{/}" data-th-fragment="header-page">
+	<!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+
+              <table width=100% style="background-color:Green;">
+                   <tr>
+                		<td align="center">
+                		<div  >
+                			<center>
+                				<marquee >
+									 <h2  >
+									 	<b><font color="white">Système d'Information et de Gestion du Projet Filets Sociaux Productifs </b>
+									 </h2>
+                				</marquee>
+                			</center>
+                			</div>  
+                		</td>  
+                		<td  width=25% align="center">
+			                <table style="background-color:White;">
+			                	<tr>               	
+			                		<td align="right">
+
+					                 	<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					                    <img th:src="@{/images/Users.png}" alt="">
+					                    <span class="hidden-xs" th:text="${user.username}"></span>
+					                  </a>
+
+					                 </td>
+					                 <td align="right">
+
+					                  	<form th:action="@{/logout}" method="post" >
+					                     	<input type="submit" class="btn btn-link" value="Deconnexion" />
+										</form>
+
+					                  </td>
+				                  </tr>
+			                  </table>
+                		</td>  
+                    </tr>                    	          
+              </table>
+          </div>
+         
+        </div>
+        <!-- /top navigation -->  
+
+</div>

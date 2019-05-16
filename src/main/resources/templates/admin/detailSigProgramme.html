@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">          
+			<br>
+			<div class="x_title">
+				<b><font color="orange"><font face=Castellar><font size="4"><center>DETAILS DES PROGRAMMES ET PROJETS</center></font></font></font></b>
+				<ul class="nav navbar-right panel_toolbox">
+				<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+			<center>
+				<br/>
+				<div class="row-fluid sortable ui-sortable">		                                                            
+					<div class="panel panel-yellow">
+						<div class="panel-body">
+							<table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+									<tr>
+										<td align="center">	
+											<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+												<center>
+													<a class="btn btn-warning" th:href="@{/admin/SigProgramme}">Retour</a>
+												</center>
+								             </div>
+										</td>		
+									</tr>
+							</table>
+							<div id="no-more-tables">								
+								<div class="col-xs-2">
+								  <!-- required for floating -->
+								  <!-- Nav tabs -->
+									<ul class="nav nav-tabs tabs-left">
+					
+										<li  class="active"><a href="#financement" data-toggle="tab">Financements</a>
+										</li>
+										<li><a href="#prestation" data-toggle="tab">Prestations</a>
+										</li>
+										<li><a href="#popcible" data-toggle="tab">Populations cibles </a>
+										</li>
+									</ul>
+								</div>	
+								<div class="col-xs-9">
+								  <!-- Tab panes -->
+									<div class="tab-content">
+										<div class="tab-pane" id="financement">
+										<p class="lead">LISTE DES FINANCEMENTS DES PROGRAMMES ET PROJETS </p>
+										<!-- /Zone d'insertion des financement -->
+										
+										   <a class="btn btn-large btn-success" th:with="var=${codProgramme}" th:href="@{'/admin/sigFinancementPrg/add/'+${var}}" >Ajouter un financement</a>
+											
+      										<table  class="table table-striped jambo_table bulk_action" width=100%> 
+												<thead>
+													<tr>
+														<th >Code</th>
+														<th >Programme</th>
+														<th >Bailleur</th> 
+														<th >Montant financement</th>
+														<th >Actions</th> 
+													</tr>
+												</thead>
+												<tbody>
+													<tr heigth=2% th:each="sigFinancementPrgView,iterStat:${listSigFinancementPrgView}">
+														<td align="center" th:text="${sigFinancementPrgView.idPrgFinancement}" width=5%> </td>
+														<td  th:text="${sigFinancementPrgView.libProgramme}" width=50%> </td>
+														<td th:text="${sigFinancementPrgView.nomBailleur}" width=50%> </td>
+														<td th:text="${sigFinancementPrgView.montantInvesti}"> </td>
+														
+														
+														<td width=25% allign="center">
+															<center>
+																<a class="btn btn-info btn-xs" th:href="${'/admin/editSigFinancementPrg/'+sigFinancementPrgView.idPrgFinancement+'/'+sigFinancementPrgView.codProgramme}" onclick="return confirm('Voulez-vous modifier ce financement?')" ><i class="fa fa-edit"></i>Modifier</a>
+																<a class="btn btn-danger btn-xs" th:href="${'/admin/sigFinancementPrg/delete/'+sigFinancementPrgView.idPrgFinancement+'/'+sigFinancementPrgView.codProgramme}" onclick="return confirm('Voulez-vous supprimer ce financement?')" ><i class="fa fa-trash-o"></i>Supprimer</a> 
+											 															
+															</center>            
+														</td>															
+													</tr> 
+												</tbody>
+											</table>						
+										</div>
+										<div class="tab-pane" id="prestation">
+											<p class="lead">LISTE DES PRESTATIONS</p>
+											<!-- /Zone d'insertion prestation-->
+
+										   <a class="btn btn-large btn-success" th:with="var=${codProgramme}" th:href="@{'/admin/prgPrestation/add/'+${var}}" >Ajouter « type de prestation »</a>
+											
+						   					 <table   class="table table-striped jambo_table bulk_action" width=100%> 
+												<thead>
+													<tr>
+														<th >Code</th>
+														<th >Programme</th>
+														<th >Type prestation</th> 
+														<th >Nature prestation</th>
+														<th >Montant prestation</th>
+														<th >Periodicité</th>
+														<th >Actions</th> 
+													</tr>
+												</thead>
+												<tbody>
+													<tr heigth=2% th:each="prgPrestationView,iterStat:${listPrgPrestationView}">
+														<td align="center" th:text="${prgPrestationView.idPrgPrestation}" width=5%> </td>
+														<td th:text="${prgPrestationView.libProgramme}" width=50%> </td>
+														<td th:text="${prgPrestationView.libTypPrest}"> </td>
+														<td th:text="${prgPrestationView.prestationNature}"> </td>
+														<td th:text="${prgPrestationView.montantEspece}" width=10%> </td>
+														<td th:text="${prgPrestationView.periodicite}" width=10%> </td>
+														
+														
+														<td width=25% allign="center">
+															<center>
+																<a class="btn btn-info btn-xs" th:href="${'/admin/editPrgPrestation/'+prgPrestationView.idPrgPrestation+'/'+prgPrestationView.codProgramme}" onclick="return confirm('Voulez-vous  modifier cette prestation ?')" ><i class="fa fa-edit"></i>&nbsp;
+																	Modifier
+																</a>
+																 <a class="btn btn-danger btn-xs" th:href="${'/admin/prgPrestation/delete/'+prgPrestationView.idPrgPrestation+'/'+prgPrestationView.codProgramme}" onclick="return confirm('Voulez-vous supprimer cette prestation ?')" ><i class="fa fa-trash-o"></i>&nbsp;
+																	Supprimer
+																</a>    															
+															</center>            
+														</td>														
+														</tr>
+													</tbody>
+												</table>	
+										</div>
+										
+													
+										<div class="tab-pane" id="popcible">
+						<p class="lead"> LISTE DES POPULATIONS CIBLES</p>
+						<!-- /Zone d'insertion POPULATION CIBLE-->
+					
+					   <a class="btn btn-large btn-success" th:with="var=${codProgramme}" th:href="@{'/admin/prgProgPopCible/add/'+${var}}" >Ajouter « population cible »</a>
+						
+	   					 <table   class="table table-striped jambo_table bulk_action" width=100%> 
+							<thead>
+								<tr>
+									<th >Code</th>
+									<th >Programme</th>
+									<th >Population cible</th> 
+									<th >Actions</th> 
+								</tr>
+							</thead>
+							<tbody>
+								<tr heigth=2% th:each="prgProgPopCibleView,iterStat:${listPrgProgPopCibleView}">
+									<td align="center" th:text="${prgProgPopCibleView.idPrgPopCible}" width=5%> </td>
+									<td th:text="${prgProgPopCibleView.libProgramme}" width=50%> </td>
+									<td th:text="${prgProgPopCibleView.designPopCible}"> </td>
+									
+
+									<td width=25% allign="center">
+										<center>
+											<a class="btn btn-info btn-xs" th:href="${'/admin/editPrgProgPopCible/'+prgProgPopCibleView.idPrgPopCible+'/'+prgProgPopCibleView.codProgramme}" onclick="return confirm('Voulez-vous  modifier cette population cible ?')" ><i class="fa fa-edit"></i>&nbsp;
+												Modifier
+											</a>
+											 <a class="btn btn-danger btn-xs" th:href="${'/admin/prgProgPopCible/delete/'+prgProgPopCibleView.idPrgPopCible+'/'+prgProgPopCibleView.codProgramme}" onclick="return confirm('Voulez-vous supprimer cette population cible ?')" ><i class="fa fa-trash-o"></i>&nbsp;
+												Supprimer
+											</a>    															
+										</center>            
+									</td>														
+									</tr>
+								</tbody>
+							</table>	
+					</div>
+										
+										
+										
+										
+									</div>
+								</div>
+								
+								<table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+									<tr>
+										<td align="center">	
+											<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+												<center>
+													<a class="btn btn-warning" th:href="@{/admin/SigProgramme}">Retour</a>
+												</center>
+											 </div>
+
+										</td>		
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>	
+                </div>	
+			</center>		
+		</div>	
+    <!-- /page content -->
+	</body>
+</html>
+

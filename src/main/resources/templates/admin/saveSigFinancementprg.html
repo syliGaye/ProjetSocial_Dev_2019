@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">    
+    <meta charset="utf-8">
+	     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+		<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+    
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+
+				<div class="clearfix"></div>
+
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="x_panel">
+							<div class="x_title">
+								<b><font color="orange"><font face=Castellar><font size="5"><center>SAISIE D'UN FINANCEMENT DE PROGRAMME </center></font></font></font></b>
+								<ul class="nav navbar-right panel_toolbox">
+									<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+									</li>
+								</ul>
+								<div class="clearfix"></div>
+							</div>
+							<div class="x_content"> <!-- th:with="var=${codProgramme}" --> 
+								
+								 <form class="form-horizontal form-label-left " th:object="${sigFinancementPrg}"  th:with="var=${codProgramme},var1=${codProgramme},var2=${codProgramme}" th:action="@{/admin/sigFinancementPrg/add/__${var}__}" method="post" novalidate>
+								 
+										<div class="item form-group">
+												<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Code financement programme <span class="required">*</span>
+												</label> 
+												
+											<!--	<div class="col-md-6 col-sm-6 col-xs-12">
+												<input id="f_idfinancPrg" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Code financement programme" required="required" type="text" th:field="*{idPrgFinancement}">
+												</div> -->
+												
+													<div class="col-md-6 col-sm-6 col-xs-12">
+											        <select class="form-control" name="f_idfinancPrg" readonly="true">
+						                                      		 <option th:each="sigFinancementPrg:${result}"  
+						                                                    th:value="${result}"  
+						                                                    th:text="${result}" > 
+						                                                </option>
+						                                            
+						                          	</select>
+											
+													</div>
+												
+												
+												
+											</div>
+								 
+								 
+								 
+											<div class="item form-group">
+												<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Code Programme <span class="required">*</span>
+												</label>
+												
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													<select class="form-control" name="codprg" th:field="*{codProgramme}" >
+															<option th:each="sigProgramme:${allSigProgramme}" 
+															th:value="${sigProgramme.getCodProgramme()}" 
+															th:text="${sigProgramme.getCodProgramme()}"> 
+															</option>
+													</select>
+												</div>
+											</div>  
+											
+											<div class="item form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Bailleur<span class="required">*</span>
+											</label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													<select class="form-control" name="codebail" th:field="*{codBailleur}" >
+														
+															<option th:each="prgBailleur:${allPrgBailleur}" 
+															th:value="${prgBailleur.getCodBailleur()}" 
+															th:text="${prgBailleur.getNomBailleur()}"> 
+															</option>
+													</select>
+												</div>
+											</div>  
+											
+										
+
+											
+
+
+											<div class="item form-group">
+												<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Montant financement <span class="required">*</span>
+												</label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+												<input id="f_montfin" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Montant financement" required="required" type="number" th:field="*{montantInvesti}">
+												</div>
+											</div> 
+
+											 
+
+											
+									
+											
+											<div class="ln_solid"></div>
+									<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+                                        <center>
+										    <a onclick = "history.back()" class="btn btn-warning" >Retour</a>
+											<a href="javascript:window.location.reload()" class="btn btn-default">Annuler</a>
+											<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+											</center>
+
+									</div>
+
+									
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        <!-- /page content -->
+
+ 
+</body></html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+  
+  <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+  </head>
+
+  <body class="nav-md">   
+        <!-- page content -->
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">
+			
+			<div class="col-md-12 col-sm-12 col-xs-12">
+			
+				<div class="x_panel">
+					<div class="x_title">
+						<b><font color="orange"><font face=Castellar><font size="4"><center>PAIEMENT</center></font></font></font></b>
+						<ul class="nav navbar-right panel_toolbox">
+						  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<center>
+					<div class="x_content">
+     						<table id="datatable-buttons" class="table table-striped jambo_table bulk_action" width="100%">
+							<thead>
+								<tr heigth="5px">
+									 <th >Code Periode</th>
+									 <th>Agence Paiement</th>
+									 <th>Date Paiement</th>
+									 <th>Montant Payé</th>
+									 <th>Total Payé</th>
+									 <center><th >Actions </th>  </center>                     
+								</tr>
+							</thead>
+							<tbody>
+								<tr heigth=2% th:each="PrgVirementApPeriodeStatView,iterStat:${allPrgVirementApPeriodeStatView}">
+									<td align="center" th:text="${PrgVirementApPeriodeStatView.codPeriode}" width=5%> </td>
+									<td th:text="${PrgVirementApPeriodeStatView.nomAp}"></td>     
+									<td th:text="${PrgVirementApPeriodeStatView.datePaiement}"></td>    
+									<td th:text="${PrgVirementApPeriodeStatView.totPaye}"></td>    
+									<td th:text="${PrgVirementApPeriodeStatView.totNonPaye}"></td>                     									
+									<td width=5% allign="center">
+										<center>
+											<a class="btn btn-info btn-xs" th:href="@{/admin/PrgVirementAp/add}" ><i class="fa fa-edit"></i>
+												Remboursement
+											</a>
+											
+										</center>            
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						
+					  </div>
+					  </center>
+				</div>
+			</div>
+		</div>
+        <!-- /page content -->
+
+    </body>
+</html>

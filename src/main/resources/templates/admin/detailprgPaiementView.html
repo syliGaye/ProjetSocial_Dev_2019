@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+         <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+			<div class="page-title">
+				<div class="title_center">
+					<b><font color="orange" size="5"><center>DETAILS MENAGE BENEFICIAIRE</center></font></b>
+				</div>
+			</div>
+			<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+				<center>
+					<a onclick = "history.back()" class="btn btn-warning">Retour</a>
+				</center>
+			</div>
+
+            <div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+						<div class="x_content">
+								<form class="form-horizontal form-label-left " th:object="${prgPaiementView}" th:action="@{'/admin/detailprgPaiementView/'+idPaiement}" method="post"   novalidate>
+								<div class="col-md-12 col-sm-12 col-xs-12">								
+									<div class="x_panel">
+										<div class="x_title">
+										   <b><font color="orange" size="4">Localisation du ménage</font></b>
+											<div class="clearfix"></div>
+									    </div>								
+										<table class="table table-striped table-bordered jambo_table bulk_action">
+											<thead>
+												<tr class="headings">
+													<th colspan=2 class="column-title" >Région</th>
+													<th colspan=2 class="column-title" >Département</th>
+													<th colspan=2 class="column-title" >Sous Préfecture</th>
+													<th colspan=2 class="column-title" >Localié</th>  
+                                                    <th class="column-title" >Vilage</th>     													
+												</tr>
+											</thead>
+
+											<tbody>
+												<tr class="even pointer">
+													<td th:text="${prgPaiementView.codRegion}" width=5%> </td>
+													<td th:text="${prgPaiementView.nomRegion}" ></td> 
+													<td th:text="${prgPaiementView.codDepartement}" width=5%> </td>
+													<td th:text="${prgPaiementView.nomDepartement}" ></td>
+													<td th:text="${prgPaiementView.codSPref}" width=5%></td>
+													<td th:text="${prgPaiementView.nomSPref}" ></td>
+													<td th:text="${prgPaiementView.codLocalite}" width=5%></td>
+													<td th:text="${prgPaiementView.nomLocalite}" ></td>
+													<td th:text="${prgPaiementView.villageQuartier}"></td>
+												</tr>
+											</tbody>
+										</table>
+								    </div>
+								</div>	
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="x_panel">
+										<div class="x_title">
+											<b><font color="orange" size="4">Information Ménage</font></b>
+											<div class="clearfix"></div>
+										</div>											    
+										<table class="table table-striped table-bordered jambo_table bulk_action"  width="100%">
+											<tr>
+												<td>
+													<label >Id Ménage</label>
+													 <input type="text" id="last-name" name="last-name" class="form-control col-md-7 col-xs-12" disabled="disabled" th:field="*{codMenage}">									
+												</td>
+												<td>
+													<label >Nom Chef Ménage</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{nomChefMenage}">			
+												</td>											
+
+											</tr>									
+										</table >
+									</div>
+								</div>	
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="x_panel">
+										<div class="x_title">
+											<b><font color="orange" size="4">Details Paiement</font></b>
+											<div class="clearfix"></div>
+										</div>											    
+										<table class="table table-striped table-bordered jambo_table bulk_action"  width="100%">
+											<tr>
+												<td>
+													<label >Période</label>
+													 <input type="text" id="last-name" name="last-name" class="form-control col-md-7 col-xs-12" disabled="disabled" th:field="*{libellePeriode}">									
+												</td>
+												<td>
+													<label >Date debut</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{datePaiement}">			
+												</td>	
+												<td>
+													<label >Montant</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{montantPaiement}">			
+												</td>												
+												<td>
+													<label >Statut</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{libStatutPaiement}">			
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<label >Récipiendaire</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{nomRecipiendaire}">			
+												</td>
+												<td>
+													<label >Téléphone</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{telRecipiendaire}">			
+												</td>																																			
+												<td>
+													<label >AP</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{raisonSocialAp}">			
+												</td>	
+												<td>
+													<label >Mode Paiement</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{libModePaie}">			
+												</td>												
+													
+											</tr>									
+										</table >
+									</div>
+								</div>								
+							</form>	
+						</div>	
+					</div>	
+				</div>		
+            </div>
+			<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+				<center>
+					<a onclick = "history.back()" class="btn btn-warning">Retour</a>
+				</center>
+			</div>
+       </div>     
+    
+    <!-- /page content -->
+	</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+	
+	        <!-- page filtre -->
+   <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">     
+       
+			<br>
+			    
+         <!-- page filtre -->
+  
+        <!-- page content -->
+			<div class="">
+				<div class="x_title">
+						
+						<b><font color="orange"><font face=Castellar><font size="4"><center>DETAILS DES EMISSIONS DE LA PERIODE </center></font></font></font></b>
+						<ul class="nav navbar-right panel_toolbox">
+						  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<center>
+			
+<!--debut contenue ---------------------------------PAGE--><!--BEGIN CONTENT-->
+
+				<br/>
+				<div class="row-fluid sortable ui-sortable">		                                                            
+					<div class="panel panel-yellow">
+						<div class="panel-body">
+							<table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+									<tr>
+										<td align="center">	
+											<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+												<center>
+													<a class="btn btn-warning" th:href="@{/admin/prgEmmissionPeriodeView}">Retour</a>
+												</center>
+								             </div>
+										</td>		
+									</tr>
+							</table>
+							<div id="no-more-tables">
+								
+								<table  id="datatable-buttons" class="table table-striped jambo_table bulk_action" width=90% >
+									<thead>
+										<tr>
+										    <th><center>Code Periode </center></th>
+											<th><center>Libelle Periode</center></th>
+											<th><center>Localite</center></th>
+											<th><center>Quartier</center></th>
+											<th><center>Code Chef de Menage</center></th>
+											<th><center>Chef de Menage</center></th>
+											<th><center>Montant Emis</center></font></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="PrgEmmissionView,iterStat:${listPrgPaiementView}">
+										        <td  th:text="${PrgEmmissionView.codPeriode}" width=5%></td>
+												<td  th:text="${PrgEmmissionView.libellePeriode}"width=15%></td>
+												<td th:text="${PrgEmmissionView.nomLocalite}"></td>
+												<td th:text="${PrgEmmissionView.villageQuartier}"></td>
+												<td  th:text="${PrgEmmissionView.idChefMenage}"> </td>
+												<td  th:text="${PrgEmmissionView.nomChefMenage}"> </td>
+												<td th:text="${PrgEmmissionView.montantEmis}" width=5%></td> 
+										</tr>
+									</tbody>
+									
+								</table>
+								<table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+									<tr>
+										<td align="center">	
+											<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+												<center>
+													<a class="btn btn-warning" th:href="@{/admin/prgEmmissionPeriodeView}">Retour</a>
+												</center>
+								             </div> 
+										</td>		
+									</tr>
+								</table>
+								
+							</div>
+						</div>
+					</div>
+                 </center>
+				</div>
+			</div>
+		</div>	
+    <!-- /page content -->
+	</body>
+</html>
+

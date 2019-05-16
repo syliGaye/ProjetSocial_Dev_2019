@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>ci.projetSociaux.ProjetSocial_Dev</groupId>
+	<artifactId>ProjetSocial_Dev_2019</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<name>Vers_Final_05052019</name>
+	<description>Application de gestion pour les aides sociales ...</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.5.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+            
+            <dependency>
+                
+                <groupId> 
+                    org.springframework.boot
+                </groupId>
+                
+                <artifactId>
+                    spring-boot-starter-tomcat
+                </artifactId>
+                
+            </dependency>
+            
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+<!--    <version>2.0.4.RELEASE</version>-->
+</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+<!--    <version>2.0.4.RELEASE</version>-->
+</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+<!--    <version>2.0.4.RELEASE</version>-->
+</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+<!--    <version>2.0.4.RELEASE</version>-->
+</dependency>
+
+		<!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
+                    <dependency>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                      </dependency>
+
+		
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		</dependency>
+		
+		<!-- spring security -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-taglibs</artifactId>
+<!--    <version>5.0.7.RELEASE</version>-->
+</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity4 -->
+<dependency>
+    <groupId>org.thymeleaf.extras</groupId>
+    <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+<!--    <version>3.0.2.RELEASE</version>-->
+</dependency>
+
+<dependency>
+            <groupId>nz.net.ultraq.thymeleaf</groupId>
+            <artifactId>thymeleaf-layout-dialect</artifactId>
+        </dependency> 
+
+		
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+<!--    <version>2.0.4.RELEASE</version>-->
+</dependency>
+
+        
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>jquery-ui</artifactId>
+    <version>1.12.1</version>
+</dependency>
+
+
+<!-- https://mvnrepository.com/artifact/org.webjars/font-awesome -->
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>font-awesome</artifactId>
+    <version>5.2.0</version>
+</dependency>
+
+
+<!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>bootstrap</artifactId>
+    <version>4.1.3</version>
+</dependency>
+
+
+<!-- https://mvnrepository.com/artifact/org.webjars.bower/jquery -->
+<dependency>
+    <groupId>org.webjars.bower</groupId>
+    <artifactId>jquery</artifactId>
+    <version>3.3.1</version>
+</dependency>
+
+
+	 <dependency>
+	  <groupId>org.springframework</groupId>
+	  <artifactId>spring-messaging</artifactId>
+	  <type>jar</type>
+	 </dependency>
+         
+	 <dependency>
+	  <groupId>org.springframework</groupId>
+	  <artifactId>spring-websocket</artifactId>
+	  <type>jar</type>
+	 </dependency>
+         
+	 <dependency>
+	  <groupId>org.apache.poi</groupId>
+	  <artifactId>poi</artifactId>
+	  <version>3.17</version>
+	  <type>jar</type>
+	 </dependency>
+         
+	 <dependency>
+	  <groupId>org.apache.poi</groupId>
+	  <artifactId>poi-ooxml</artifactId>
+	  <version>3.15</version>
+	  <type>jar</type>
+	 </dependency>
+         
+	 <dependency>
+	  <groupId>com.alibaba</groupId>
+	  <artifactId>fastjson</artifactId>
+	  <version>1.2.24</version>
+	  <type>jar</type>
+	 </dependency>
+         
+	 <dependency>
+	  <groupId>com.google.guava</groupId>
+	  <artifactId>guava</artifactId>
+	  <version>19.0</version>
+	  <type>jar</type>
+	 </dependency>
+	 <dependency>
+	  <groupId>com.itextpdf</groupId>
+	  <artifactId>itextpdf</artifactId>
+	  <version>5.5.10</version>
+	  <type>jar</type>
+	 </dependency>
+	</dependencies>
+
+	<build>
+            
+            <finalName> SIG-PFSP_VF </finalName>
+            
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

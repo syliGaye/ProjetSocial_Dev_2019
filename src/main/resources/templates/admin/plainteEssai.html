@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+  
+  <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+  </head>
+
+  <body class="nav-md">   
+        <!-- page content -->
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">
+         <br/>
+        <div class="x_title">
+						<b><font color="orange" size="4"><center>AJOUT DES PLAIGNANTS MEMBRES / NON MEMBRES</center></font></b>
+						<ul class="nav navbar-right panel_toolbox">
+						  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+        
+			<b><font color="orange"><font face=Castellar><font size="4"><center>FILTRE</center></font></font></font></b>	
+			<center>						    
+				<div class="x_content" width="95%">
+					<div class="portlet-header">
+					
+					<form class="form-horizontal form-label-left " id="dataRsuMenageView" th:object="${SigFiltreRecherche}" th:action="@{/admin/PrgPlainterech/rech}" method="post" enctype="multipart/form-data" novalidate>
+						
+			              <div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="f_region2">Région<span class="required">*</span>
+								</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<select class="form-control" type="text"  id="f_region2" th:field="*{codRegion}" required="">
+									      <option value="">Selectioner une Région</option>
+                                              <option th:each="SigRegion:${allSigRegion}" 
+	                                                   th:value="${SigRegion.getCodRegion()}"
+	                                                   th:text="${SigRegion.getNomRegion()}">
+	                                            </option>
+                         				 </select>	
+									</div>
+								</div>  
+								
+							<div class="item form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="f_Departement2">Departement<span class="required">*</span>
+											</label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													 <select class="form-control" type="text" id="f_departement2" th:field="*{CodDepartement}" required="">
+												      <option value="">Selectioner un Département</option>
+			                                             <option  th:each="SigDepartementView:${allSigDepartement}" 
+				                                                     th:value="${SigDepartementView.getCodDepartement()}"
+				                                                     th:text="${SigDepartementView.getNomDepartement()}">
+				                                          </option>
+			                         				 </select>
+												</div>
+											</div>  
+
+											<div class="item form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="f_s_prefecture2">Sous préfecture<span class="required">*</span>
+											</label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													<select class="form-control" id="f_s_prefecture2" th:field="*{CodSPref}"  required="">
+													      <option value="">Selectioner une Sous-Préfecture</option>
+				                                             <option  th:each="SigSousPrefecture:${allSigSousPrefecture}" 
+				                                                    th:value="${SigSousPrefecture.getCodSPref()}"
+				                                                    th:text="${SigSousPrefecture.getNomSPref()}">
+				                                           </option>
+                         				           </select>
+												</div>
+											</div>  
+ 
+											<div class="item form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="f_Localite2" >Localite<span class="required">*</span>
+											</label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													<select class="form-control" type="text" id="f_localite2" th:field="*{CodLocalite}" required="">
+									                 <option value="">Selectioner une localité</option>
+			                                             <option  th:each="SigLocalite:${allSigLocalite}" 
+			                                                    th:value="${SigLocalite.getCodLocalite()}"
+			                                                    th:text="${SigLocalite.getNomLocalite()}">
+			                                            </option>
+			                         				</select>
+												</div>
+											</div>  
+											 
+											<div class="item form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="f_menage2">Menage<span class="required">*</span>
+											</label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													 <select class="form-control"  id="f_menage2" th:field="*{CodMenage}" required="">
+						                                     <option value="NONE">Menage</option>  
+						                                            <option th:each="RsuMenageView:${allRsuMenageView}" 
+						                                                    th:value="${RsuMenageView.getCodMenage()}" 
+						                                                    th:text="${RsuMenageView.getNomChefMenage() }" > 
+						                                                   
+						                                            </option>
+						                                            
+						                           </select>
+												</div>
+											</div>   
+											
+											<div class="item form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="f_membre2">Membre menage<span class="required">*</span>
+											</label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													 <select class="form-control" type="text" id="f_membre2" th:field="*{IdMembre}" required="" >
+						                                     <option value="NONE">Membre du ménage</option>  
+						                                            <option th:each="RsuMembreMenage:${allRsuMembreMenage}" 
+						                                                    th:value="${RsuMembreMenage.getIdMembre()}" 
+						                                                    th:text="${RsuMembreMenage.getNomMembre()+ '  '+RsuMembreMenage.getPrenomMembre() }" > 
+						                                                    
+						                                            </option>
+						                                            
+						                           </select>
+												</div>
+											</div>  
+											
+					 
+						<div class="ln_solid"></div>
+						<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+                                   		 
+						<center>
+							<a onclick = "history.back()" class="btn btn-warning">Retour</a>
+							<a th:href="@{/admin/PrgPlainterech/Membre}" class="btn btn-default">Annuler</a>	
+							<button id="send" type="submit" class="btn btn-success">Ajout Plaignant</button>		  
+						
+						</center>
+						</form>
+					</div>
+				</div>
+			</center>
+			 <!-- fiin du filtre et debut du formulaire de consultation-->
+			 
+			
+        </div>
+        <!-- /page content -->
+  </center>      
+     <!--<script th:src="@{/build/js/passerParamRsuMenageView.js}"></script>-->
+
+    </body>
+</html>

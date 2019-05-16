@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">    
+    
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>	
+	</head>
+
+	<body class="nav-md">
+    
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+			<div class="">
+				<div class="clearfix"></div>
+
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="x_panel">
+							<div class="x_title">
+								<b><font color="orange" size="5"><center>CREATION D'UN STATUT DE PLAINTE</center></font></b>
+								<ul class="nav navbar-right panel_toolbox">
+									<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+									</li>
+								</ul>
+								<div class="clearfix"></div>
+							</div>
+							<div class="x_content">
+								<form class="form-horizontal form-label-left " th:object="${prgTypologiePlt}" th:action="@{/admin/prgTypologiePlt/add}" method="post"    novalidate>
+									
+									<div class="item form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">code Statut  <span class="required">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6 col-xs-12">
+											      <select class="form-control" name="codTypologie" readonly="true">
+						                                      
+						                                            <option th:each="PrgTypologiePlt:${result}"  
+						                                                    th:value="${result}"  
+						                                                    th:text="${result}" > 
+						                                            </option>
+						                                            
+						                           </select>
+											</div>
+									</div> 
+								
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Libellé Statut <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Libellé" required="required" type="text" th:field="*{libelleTypologie}">
+										</div>
+									</div>
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Durée de traitement prévue(jour)<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Durée" required="required" type="number" th:field="*{dureeTrait}">
+										</div>
+									</div>
+									
+									
+									<div class="ln_solid"></div>
+									<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+                                        <center>
+											<a class="btn btn-warning" th:href="@{/admin/prgTypologiePlt}">Retour</a>
+											<a class="btn btn-default" th:href="@{/admin/prgTypologiePlt/add}">Annuler</a>
+										    <button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+										</center>
+
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+        <!-- /page content -->
+
+ 
+	</body>
+</html>

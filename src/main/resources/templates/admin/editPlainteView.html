@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+  
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+			<div class="">
+				<div class="page-title">
+					<div class="title_left">
+						<h3>Autres Informations</h3>
+					</div>
+			</div>
+            
+			<div class="clearfix">
+			</div>
+
+            <div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+						<div class="x_title">
+						
+							<ul class="nav navbar-right panel_toolbox">
+								<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+								</li>
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+                  
+						<div class="x_content">
+							<form class="form-horizontal form-label-left " th:object="${PrgPlainteView}" th:action="@{/admin/editPrgPlainteView/__${PrgPlainteView.numPlainte}__}" method="post"   novalidate>
+							
+									
+										<table border="0">	
+    <tbody>
+								<tr spacing="10px" padding="10px">
+									<td align="right">
+										<label for="Numero Plainte"><font color=black>Numero Plainte:</font></label>
+									</td>	
+									<td align="left" colspan=2>		
+										<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Numero Plainte" size="50" required="required" type="text" th:field="*{numPlainte}">
+									</td>
+									<td align="right">
+										<label for="Region"><font color=black>Region:</font></label>
+									</td>	
+									<td align="left" colspan=2>										
+										<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Region" required="required" type="text" th:field="*{nomRegion}" readonly="true">
+									</td>
+									<td align="right">
+										<label for="Departement"><font color=black>Departement:</font></label>
+									</td>	
+									<td align="left" colspan=2>										
+										<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Departement" required="required" type="text" th:field="*{nomDepartement}" readonly="true">
+									</td>
+	<td align="right">
+										<label for="SousPrefecture"><font color=black>SousPrefecture:</font></label>
+									</td>	
+									<td align="left" colspan=2>										
+										<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="SousPrefecture" required="required" type="text" th:field="*{nomSPref}" readonly="true">
+									</td>
+									
+								</tr>
+								
+								<tr>
+									
+	<td align="right">
+	<label for="Moment"><font color=black>Forme Geste:</font></label>
+	</td>	
+	<td align="left">										
+<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Forme Geste" required="required" type="text" th:field="*{libelleFormGeste}" readonly="true">
+	</td>
+	
+<td align="right">
+	<label for="Moment"><font color=black>Nature Geste:</font></label>
+	</td>	
+	<td align="left">										
+<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nature Geste" required="required" type="text" th:field="*{libelleNatGest}" readonly="true">
+	</td>
+<td align="right">
+	<label for="Type Geste"><font color=black>Type Geste:</font></label>
+	</td>	
+	<td align="left">										
+<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Type Geste" required="required" type="text" th:field="*{libelleTyeGeste}" readonly="true">
+	</td>	
+<td align="right">
+	<label for="Type Geste"><font color=black>Categorie Plainte:</font></label>
+	</td>	
+	<td align="left">										
+<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Categorie Plainte" required="required" type="text" th:field="*{libelleCatPlainte}" readonly="true">
+	</td>
+	     </tr>
+	
+	<tr>
+<td align="right">
+<label for="Discrimination"><font color=black>Discrimination:</font></label>
+</td>						
+<td  align="center">									   
+<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Discrimination" required="required" type="text" th:field="*{libelleObjetDiscr}" readonly="true">
+</td>	
+																	
+ <td align="right">
+<label for="Courrier"><font color=black>Courrier:</font></label>
+</td>	
+<td align="left">										
+<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Courrier" required="required" type="text" th:field="*{refCourrier}" readonly="true">
+</td>
+
+<td align="right">
+<label for="Typologie"><font color=black>Typologie:</font></label>
+</td>	
+<td align="left" colspan=2>										
+<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Typologie" required="required" type="text" th:field="*{libelleTypologie}" readonly="true">
+</td>
+
+<td align="right">
+<label for="Courrier"><font color=black>Statut:</font></label>
+</td>	
+<td align="left">										
+<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Statut" required="required" type="text" th:field="*{libStatutPlainte}" readonly="true">
+</td>
+      </tr>
+      
+      <tr>
+<td align="right">
+<label for="Mode"><font color=black>Mode:</font></label>
+</td>						
+<td  align="center">									   
+<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Mode" required="required" type="text" th:field="*{libelleModeSaisi}" readonly="true">
+</td>	
+																	
+ <td align="right">
+<label for="Confidentialite"><font color=black>Confidentialite:</font></label>
+</td>	
+<td align="left">										
+<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Confidentialite" required="required" type="text" th:field="*{libConfidPlainte}" readonly="true">
+</td>
+
+<td align="right">
+<label for="Gravite"><font color=black>Gravite:</font></label>
+</td>	
+<td align="left" colspan=2>										
+<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Gravite" required="required" type="text" th:field="*{libGravitePlainte}" readonly="true">
+</td>
+
+<td align="right">
+<label for="date"><font color=black>Date Enregistrement:</font></label>
+</td>	
+<td align="left">										
+<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Date Enregistrement" required="required" type="text" th:field="*{dateEnregis}" readonly="true">
+</td>
+      </tr>
+																
+								
+									
+							
+		</tbody>
+		</table>
+											<div class="ln_solid"></div>
+								<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+                                         <center>
+										    
+											<button id="send" type="submit" class="btn btn-success">Retour</button>
+											</center>
+
+									</div>
+							</form>
+						</div>
+                    
+					</div>
+                </div>
+            </div>
+        </div>
+    <!-- /page content -->
+	</body>
+</html>

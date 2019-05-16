@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">          
+			<br>
+			<div class="x_title">
+				<b><font color="orange"><font face=Castellar><font size="4"><center>CONSULTATIONS DU DETAILS DE LA PLAINTE</center></font></font></font></b>
+				<ul class="nav navbar-right panel_toolbox">
+				<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+			<center>
+				<br/>
+				<div class="row-fluid sortable ui-sortable">		                                                            
+					<div class="panel panel-yellow">
+						<div class="panel-body">
+							<div id="no-more-tables">								
+								<div class="col-xs-2">
+								  <!-- required for floating -->
+								  <!-- Nav tabs -->
+									<ul class="nav nav-tabs tabs-left">
+										<li class="active"><a href="#infos_comp" data-toggle="tab">Infos-Compléméntaires</a>
+										</li>
+																	
+										<li><a href="#traitement" data-toggle="tab">Sessions de Traitement</a>
+										</li>
+										<li><a href="#doc_just" data-toggle="tab">Doc Just Traitement</a>
+										</li>
+										<li><a href="#jury" data-toggle="tab">Acteur traitement</a>
+										</li>
+									</ul>
+								</div>	
+								<div class="col-xs-9">
+								  <!-- Tab panes -->
+									<div class="tab-content">
+										<div class="tab-pane active" id="infos_comp">
+										  <p class="lead">Infos compléméntaire</p>
+										  <!-- /Zone d'inserion des INFOS COMPLEMENTAIRE /-->
+											<table id="datatable-buttons"  class="table table-striped jambo_table bulk_action" border="0" width=95% th:each="prgPlainteConsView,iterStat:${listPrgPlainteConsView}">
+												<tr>
+													<td colspan=8 bgcolor="orange"><font color="black"><center><label for="titre1"  >Infos - localisation </label ></center></font></td></tr> 
+												<tr>
+												<tr>
+													<td align="right"><label  for="relion">Region   </label></td>
+													<td align="left"  th:text="${prgPlainteConsView.nomRegion}"></td>
+													
+													<td align="right"><label  for="dept">Departement   </label></td>
+													<td align="left"  th:text="${prgPlainteConsView.nomDepartement}"></td>
+													
+													<td align="right"><label for="Pref">Sous Prefecture   </label></td>
+													<td align="left" th:text="${prgPlainteConsView.nomSPref}"></td>
+													
+													<td align="right"><label for="local">Localite  </label></td>
+													<td align="left" th:text="${prgPlainteConsView.nomLocalite}"></td>																													
+												</tr>
+												<tr>
+												    <td colspan=8 bgcolor="orange"><font color="black"><center><label for="titre1"  >Infos - plainte </label ></center></font></td></tr> 
+												</tr> 
+												<tr>
+												    <td align="right"><label for="numero">Numero Plainte </label></td>
+													<td align="left" th:text="${prgPlainteConsView.numPlainte}" ></td>
+													
+													<td align="right"><label for="dete">Date Saisie </label></td>
+													<td align="left" th:text="${prgPlainteConsView.dateEnregis}" ></td>
+													
+													<td align="right"><label for="titre1">Plaignant </label></td>
+													<td align="left" th:text="${prgPlainteConsView.nomPlaingnant}"></td>	  
+
+													<td align="right"><label for="titre1">Genre </label></td>	
+													<td align="left" th:text="${prgPlainteConsView.genrePlaingnant}"></td>			
+												 
+												
+												</tr> 
+												<tr>
+													<td align="right"><label for="titre1">Date Evenement </label></td>
+													<td align="left" th:text="${prgPlainteConsView.dateEvent}" ></td>
+
+													<td align="right"><label for="titre1">Date Signalement </label></td>
+													<td align="left" th:text="${prgPlainteConsView.dateSignal}" ></td>		
+			                                   
+													<td align="right"><label for="nature">Nature Geste </label></td>
+													<td align="left" th:text="${prgPlainteConsView.libelleNatGest}"></td>
+
+													<td align="right"><label for="forme">Forme Geste </label></td>
+													<td align="left" th:text="${prgPlainteConsView.libelleFormGeste}"></td>
+												</tr> 
+												
+												<tr>
+													<td align="right"><label for="type">Type Geste </label></td>
+													<td align="left" th:text="${prgPlainteConsView.libelleTyeGeste}"></td>
+
+													<td align="right"><label for="moment">Moment</label></td>
+													<td align="left" th:text="${prgPlainteConsView.libelleMoment}"></td>		
+ 
+													<td align="right"><label for="titre1">Objet Discrimination </label></td>
+													<td colspan=3 align="left" th:text="${prgPlainteConsView.libelleObjetDiscr}"></td>	
+                                                 <tr>
+													<td><align="right">Description </label></td>	
+													<td colspan=8 align="left" th:text="${prgPlainteConsView.description}"></td>
+	                                            </tr> 
+												</tr>  
+												<tr>
+												    <td colspan=8 bgcolor="orange"><font color="black"><center><label for="titre1"  >Information Traitement </label ></center></font></td></tr> 
+												</tr> 																													
+			                                   
+												 <tr>
+												    <td align="right" ><label bgcolor="#BFD9D6" for="titre1">Validation </label></td>
+													
+													<td align="right"><label >Date </label></td> 
+													<td align="left" th:text="${prgPlainteConsView.dateValid1}"></td>
+													
+													<td align="right"><label  for="Intervenant 0">Intervenant </label></td>
+													<td colspan=4 align="left" th:text="${prgPlainteConsView.nomAgCol}"></td>							
+	                                             </tr> 
+												 <tr>	
+													<td align="right"><label  bgcolor="#BFD9D6" for="titre1">Village</label></td>	
+														<td align="right"><label>Date </label></td>
+														<td  align="left" th:text="${prgPlainteConsView.dateValid2}"></td>
+														
+														<td align="right"><label >Intervenant </label></td>
+														<td colspan=4 align="left" th:text="${prgPlainteConsView.nomAgCol}"></td>
+												 </tr> 
+												  <tr>
+													 <td  align="right" ><label bgcolor="#BFD9D6" for="titre1">Régional </label></td>
+													 
+														<td align="right"><label >Date </label></td>
+														<td  align="left" th:text="${prgPlainteConsView.dateValid3}"></td>
+														
+														<td align="right"><label >Intervenant </label></td>
+														<td colspan=4 align="left" th:text="${prgPlainteConsView.nomAgCol}"></td>
+												 </tr>  
+												 <tr>
+													<td align="right" ><label bgcolor="#BFD9D6" for="titre1">UGP</label></td>
+													
+														<td align="right"><label >Date </label></td>
+														<td  align="left" th:text="${prgPlainteConsView.dateValid4}"></td>
+														
+														<td align="right"><label >Intervenant </label></td>
+														<td colspan=4 align="left" th:text="${prgPlainteConsView.nomAgCol}"></td>
+												 </tr> 
+												 
+												 <tr>
+												    <td colspan=8 bgcolor="orange"><font color="black"><center><label for="titre1"  >Information sur le Statut </label ></center></font></td></tr> 
+												</tr>
+												 
+		                                          <tr>
+		                                                <td align="right"><label for="titre1">Date Cloture </label></td>
+														<td align="left" th:text="${prgPlainteConsView.dateCloture}"></td>
+														
+														<td align="right"><label for="titre1">Statut </label></td> 
+														<td colspan=5 align="left" th:text="${prgPlainteConsView.libStatutPlainte}"></td>		
+														
+														
+												 </tr> 												 
+		
+											</table>                      
+										</div>
+														
+										<div class="tab-pane" id="traitement">
+										<p class="lead">Liste des sessions de traitements de la plainte</p>
+										<!-- /Zone d'inserion des traitements -->
+											<table id="datatable-buttons"  class="table table-striped jambo_table bulk_action" width=100%> 
+												<thead>
+													<tr>
+														<th>N°Painte</th>
+														<th>N°Traitement</th>
+														<th>Nom</th>
+														<th>Agent</th>
+														<th>Niveau</th>
+														<th>Date Traitement</th>
+														<th>Solution Proposée</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="prgPlainteTraitementView,iterStat:${listPlainteTraitementView}">
+														<td th:text="${prgPlainteTraitementView.numPlainte}"></td>
+														<td th:text="${prgPlainteTraitementView.numTrait}"></td>
+														<td th:text="${prgPlainteTraitementView.nomAgentTraiteur}"></td>
+														<td th:text="${prgPlainteTraitementView.nomAgCol}"></td>
+														<td th:text="${prgPlainteTraitementView.libelleNivTr}"></td>
+														<td th:text="${prgPlainteTraitementView.dateTraitement}"></td>
+														<td th:text="${prgPlainteTraitementView.solutionPropose}"></td>
+													</tr>
+												</tbody>
+											</table>						
+										</div>
+										<div class="tab-pane" id="doc_just">
+										<p class="lead">Liste des documents justifiants les séances de traitements de la plainte</p>
+										<!-- /Zone d'inserion des traitements -->
+      						<table id="datatable-buttons"  class="table table-striped jambo_table bulk_action" width=100%> 
+												<thead>
+													<tr>
+														<th>N°Traitement</th>
+														<th>Niveau traitement</th>
+														<th>N°Document</th>
+														<th>Type Document</th>
+														<th>Reference</th>
+														
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="prgPlainteDocJustView,iterStat:${listPrgPlainteDocJustView}">
+														<td th:text="${prgPlainteDocJustView.numTrait}"></td>
+														<td th:text="${prgPlainteDocJustView.libelleNivTr}"></td>
+														<td th:text="${prgPlainteDocJustView.idDocJustPlt}"></td>
+														<td th:text="${prgPlainteDocJustView.libTypDoc}"></td>
+														<td th:text="${prgPlainteDocJustView.refDocument}"></td>
+														
+													</tr>
+												</tbody>
+											</table>						
+										</div>
+										<div class="tab-pane" id="jury">
+											<p class="lead">Liste des Membre du jury ayants participés aux séances de traitements de la plainte</p>
+											<!-- /Zone d'inserion des membres du jury -->
+											<table id="datatable-buttons"  class="table table-striped jambo_table bulk_action" width=100%> 
+												<thead>
+													<tr>
+														<th >Numero </th>
+														 <th>Nom Acteur</th>
+														 <th>Prenoms</th>
+														 <th>Fonction</th>
+														 <th>Contact</th>
+														 <th>Structure</th>
+														
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="prgPlainteJuryTraitView,iterStat:${listPrgPlainteJuryTraitView}">
+														<td th:text="${prgPlainteJuryTraitView.idJury}"></td>
+														<td th:text="${prgPlainteJuryTraitView.nomJury}"></td>
+														<td th:text="${prgPlainteJuryTraitView.prenomJury}"></td>
+														<td th:text="${prgPlainteJuryTraitView.fonctionJury}"></td>
+														<td th:text="${prgPlainteJuryTraitView.contactJury}"></td>
+														<td th:text="${prgPlainteJuryTraitView.structureRepresente}"></td>
+														
+													</tr>
+												</tbody>
+											</table>	
+										</div>
+									</div>
+								</div>
+								<br>
+								<table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+									<tr>
+										<td align="center">	
+											<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+												<center>
+													<!--a class="btn btn-warning" th:href="@{/admin/prgPlainteConsView}">Retour</a-->
+													<a onclick = "history.go(-1)"  class="btn btn-warning">Retour</a>
+												</center>
+											 </div>
+
+										</td>		
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>	
+                </div>	
+			</center>		
+		</div>	
+    <!-- /page content -->
+	</body>
+</html>
+

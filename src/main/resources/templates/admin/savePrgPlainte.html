@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">    
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+	 
+	<body class="nav-md">
+    
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+			<div class="">
+				<div class="page-title">
+					<div class="title_left">
+						<h3>Enregistrement d'une plainte</h3>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			
+							
+							<div class="x_content">
+								<form class="form-horizontal form-label-left " th:object="${PrgPlainte}" th:action="@{/admin/PrgPlainte/add}" method="post"  novalidate>
+							
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Numero Plainte <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Numero Plainte" required="required" type="text" th:field="*{numPlainte}" readonly="true" >
+										</div>
+									</div>  
+									
+									<table width="100%">
+	                                      <tr width="100%">
+	                                      <td width="100%">
+	                                  	<div class="row top_tiles" style="margin: 0 0; background-color:Green">
+						<span><center><font color="white"><font size="3">Identification du plaignant</font></center></span>
+						
+			                     	</div>
+	                                </td>
+	                                </tr>
+	                                </table>
+	                                 </br>
+	
+		                     <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Tierce Personne<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">									
+										
+										 <select class="form-control" name="idIntervenant"th:field="*{idIntervenant}" >
+                                               
+                                                    <option th:each="varSigIntervenant:${allSigIntervenant}" 
+                                                    th:value="${varSigIntervenant.getIdIntervenant()}" 
+                                                    th:text="${varSigIntervenant.getNomInterv() +'  '+ varSigIntervenant.getPrenomsInterv()}" > 
+                                            </option>
+                                    </select>
+                                             										
+										
+										</div>
+										
+										   <div class="btn-group open"></div>
+                                            <div class="btn-group open">
+				                               <a class="btn btn-default" th:href="@{/admin/SigIntervenant/add}">Non Membre RSU</a>
+                                            </div>
+										
+									  <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									</div>
+	
+			                     
+			                    	
+			                      <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Membre RSU<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">									
+										
+										 <select class="form-control" name="idMembre" th:field="*{idMembre}" >
+                                               
+						                                            <option th:each="varRsuMembreMenage:${allRsuMembreMenage}" 
+						                                                    th:value="${varRsuMembreMenage.getIdMembre()}" 
+						                                                    th:text="${varRsuMembreMenage.getNomMembre()+ '  '+varRsuMembreMenage.getPrenomMembre()+' { '+varRsuMembreMenage.getIdMembre()+' }' }" > 
+						                                                    
+						                                            </option>
+                                         </select>
+                        
+										</div>
+										
+											<div class="btn-group open"></div>
+                                            <div class="btn-group open">
+				                              <a class="btn btn-default" th:href="@{/admin/PrgPlainterech/Membre}">Membre RSU</a>
+										    </div>
+										    
+                                           
+									  <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									</div>	<div class="ln_solid"></div>
+									
+									 <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nom Chef Ménage<span class="required"></span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">									
+										
+										  <select class="form-control"  th:field="*{codMenage}" required="" readonly="true">
+						                                     
+						                                            <option th:each="RsuMenageView:${allRsuMenageView}" 
+						                                                    th:value="${RsuMenageView.getCodMenage()}" 
+						                                                    th:text="${RsuMenageView.getNomChefMenage() }" > 
+						                                                   
+						                                            </option>
+						                                            
+						                           </select>
+                        
+										</div>
+									   
+									  <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									</div>	<div class="ln_solid"></div>
+									
+									                   
+                                 <table width="100%">
+	                                      <tr width="100%">
+	                                      <td width="100%">
+	                                  	<div class="row top_tiles" style="margin: 0 0; background-color:Green">
+						<span><center><font color="white"><font size="3">Localisation Plainte</font></center></span>
+						
+			                     	</div>
+	                                </td>
+	                                </tr>
+	                                </table>
+	                                </br>       
+									
+			                          <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Region<span class="required"></span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">									
+										
+																	<select  class="form-control col-md-7 col-xs-12" type="text"  id="f_region2"  required="">
+																	  <option value="">Selectioner une Région</option>
+																		  <option th:each="SigRegion:${allSigRegion}" 
+																				   th:value="${SigRegion.getCodRegion()}"
+																				   th:text="${SigRegion.getNomRegion()}">
+																			</option>
+																	 </select>	
+                                    
+                        
+                      
+										</div>
+									  <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>	
+									</div>	
+			                          <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Departement<span class="required"></span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">									
+										
+																	 <select class="form-control" type="text" id="f_departement2"  required="">
+																	  <option value="">Selectioner un Département</option>
+																		 <option  th:each="SigDepartementView:${allSigDepartement}" 
+																					 th:value="${SigDepartementView.getCodDepartement()}"
+																					 th:text="${SigDepartementView.getNomDepartement()}">
+																		  </option>
+																	 </select>
+                                    
+                        
+                      
+										</div>
+									  <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>	
+									</div>									
+			                          <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Sous-Préfecture<span class="required"></span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">									
+																	<select class="form-control" id="f_s_prefecture2"   required="">
+																		  <option value="">Selectioner une Sous-Préfecture</option>
+																			 <option  th:each="SigSousPrefecture:${allSigSousPrefecture}" 
+																					th:value="${SigSousPrefecture.getCodSPref()}"
+																					th:text="${SigSousPrefecture.getNomSPref()}">
+																		   </option>
+																   </select>
+                                    
+                        
+                      
+										</div>
+									  <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>	
+									</div>					
+			                          <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Localite<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">									
+										
+										 <select class="form-control" name="codLocalite" id="f_localite2"  th:field="*{codLocalite}" >
+                                              
+                                                    <option th:each="varSigLocalite:${allSigLocalite}" 
+                                                    th:value="${varSigLocalite.getCodLocalite()}" 
+                                                    th:text="${varSigLocalite.getNomLocalite()}"> 
+                                            </option>
+                                    </select>
+                                    
+                        
+                      
+										</div>
+									  <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>	
+									</div>	
+													
+			                      
+								
+	                                   <table width="100%">
+	                                      <tr width="100%">
+	                                      <td width="100%">
+	                                  	<div class="row top_tiles" style="margin: 0 0; background-color:Green">
+						              <span><center><font color="white"><font size="3">Dates de  la Plainte</font></center></span>
+						
+				                     	</div>
+		                                </td>
+		                                </tr>
+		                                </table>
+		                                 </br>	
+										
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date et Heure de L'Enegistrement <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Date et Heure enregistrement" required="required" type="date" th:field="*{dateEnregis}">
+										</div>
+									</div>
+					
+					
+                                    <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date et Heure de Signalement <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Date et Heure Signalement" required="required" type="date" th:field="*{dateSignal}">
+										</div>
+									</div>
+					
+					
+					
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date et Heure de l'Evenement <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Date et Heure Evenementt" required="required" type="date" th:field="*{dateEvent}" width=10%>
+										</div>
+									</div>			
+	
+	                                   
+	
+	
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Reference du Courrier <span class="required"></span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Reference Courrier" required="required" type="text" th:field="*{refCourrier}" width=10%>
+										</div>
+									</div>			
+	
+	                                	
+	 
+	  	                          <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Confidentialite   <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+										
+										 <select class="form-control" name="confidPlainte" th:field="*{confidPlainte}"  >
+                                            
+                                                    <option value="O" selected>OUI</option>
+                                                      <option value="N">NON</option>
+      
+                                                        </option>
+                                          </select>
+                        
+										</div>
+									      <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									    </div>		 	 
+	
+	 					
+						       
+			
+	                                     								
+									<table width="100%">
+	                                      <tr width="100%">
+	                                      <td width="100%">
+	                                  	<div class="row top_tiles" style="margin: 0 0; background-color:Green">
+						<span><center><font color="white"><font size="3">Description de la Plainte</font></center></span>
+						
+			                     	</div>
+	                                </td>
+	                                </tr>
+	                                </table>
+	                                 </br>
+
+	
+									
+			                    <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Categorie  <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+										
+										
+										 <select class="form-control" name="CodCatPlainte" th:field="*{CodCatPlainte}"  >
+                                              <option value="NONE">Categorie Plainte</option>  
+                                                    <option th:each="varPrgCategoriePlainte:${allPrgCategoriePlainte}" 
+                                                    th:value="${varPrgCategoriePlainte.getCodCatPlainte()}" 
+                                                    th:text="${varPrgCategoriePlainte.getLibelleCatPlainte()}"> 
+                                            </option>
+                                         </select>
+                        
+										</div>
+									  <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>	
+									</div>		 	 
+	
+	 
+	  
+	
+	  
+	  	                           <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Statut Plainte  <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+										
+										
+										 <select class="form-control" name="CodTypologie" th:field="*{CodTypologie}"  >
+                                              <option value="NONE">Typlogie de Plainte</option>  
+                                                    <option th:each="varPrgTypologiePlt:${allPrgTypologiePlt}" 
+                                                    th:value="${varPrgTypologiePlt.getCodTypologie()}" 
+                                                    th:text="${varPrgTypologiePlt.getLibelleTypologie()}"> 
+                                            </option>
+                                         </select>
+                        
+										</div>
+									  <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									</div>		 	 
+	
+	 
+	  	                           <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gravite   <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+										
+										 <select class="form-control" name="gravitePlainte" th:field="*{gravitePlainte}"  >
+                                            
+                                                    <option value="O" selected>Plainte Grave</option>
+                                                    <option value="N">Plainte Non Grave</option>
+      
+                                                    </option>
+                                          </select>
+                        
+										</div>
+									  <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									</div>		 	 
+										
+					                 <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Type de Geste  <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+										
+										
+										<select class="form-control" name="codTypGeste" th:field="*{codTypGeste}"  >
+                                              <option value="NONE">Type de Geste</option>  
+                                                    <option th:each="varPrgTypeGeste:${allPrgTypeGeste}" 
+                                                    th:value="${varPrgTypeGeste.getCodTypGeste()}" 
+                                                    th:text="${varPrgTypeGeste.getLibelleTyeGeste()}"> 
+                                            </option>
+                                        </select>
+                        
+										</div>
+									  <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									</div>	
+									
+									 <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Forme de Geste  <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+										
+										 <select class="form-control" name="codForeGeste" th:field="*{codForeGeste}" >
+                                              <option value="NONE">Forme de Geste</option>  
+                                                    <option th:each="varPrgFormeGeste:${allPrgFormeGeste}" 
+                                                    th:value="${varPrgFormeGeste.getCodForeGeste()}" 
+                                                    th:text="${varPrgFormeGeste.getLibelleFormGeste()}"> 
+                                            </option>
+                                        </select>	
+                        
+										</div>
+									  <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									</div>	
+									
+									 <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nature de Geste  <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+										
+										 <select class="form-control" name="codNatGest" th:field="*{codNatGest}" >
+                                              <option value="NONE">Nature de Geste</option>  
+                                                    <option th:each="varPrgNatureGeste:${allPrgNatureGeste}" 
+                                                    th:value="${varPrgNatureGeste.getCodNatGest()}" 
+                                                    th:text="${varPrgNatureGeste.getLibelleNatGest()}"> 
+                                            </option>
+                                       </select>	
+                        
+										</div>
+									  <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									</div>	
+									
+									 <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Moment  <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+										
+										<select class="form-control" name="codMoment" th:field="*{codMoment}" >
+                                              <option value="NONE">Moment</option>  
+                                                    <option th:each="varPrgMomentPl:${allPrgMomentPl}" 
+                                                    th:value="${varPrgMomentPl.getCodMoment()}" 
+                                                    th:text="${varPrgMomentPl.getLibelleMoment()}"> 
+                                            </option>
+                                       </select>	
+                        
+										</div>
+									  <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									</div>
+									
+									 <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Lieu  <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+										
+										 <select class="form-control" name="codLieu" th:field="*{codLieu}" >
+                                              <option value="NONE">Lieu de  Plainte</option>  
+                                                    <option th:each="varPrgLieuIncident:${allPrgLieuIncident}" 
+                                                    th:value="${varPrgLieuIncident.getCodLieu()}" 
+                                                    th:text="${varPrgLieuIncident.getLibelleLieu()}"> 
+                                            </option>
+                                        </select>		
+                        
+										</div>
+									  <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									</div>
+									
+									
+									 <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Objet Discrimination  <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+										
+										 <select class="form-control" name="codObjetDiscr" th:field="*{codObjetDiscr}" >
+                                              <option value="NONE">Objet Discrimination</option>  
+                                                    <option th:each="varPrgObjetDiscrim:${allPrgObjetDiscrim}" 
+                                                    th:value="${varPrgObjetDiscrim.getCodObjetDiscr()}" 
+                                                    th:text="${varPrgObjetDiscrim.getLibelleObjetDiscr()}"> 
+                                            </option>
+                                          </select>	
+                        
+										</div>
+									  <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									</div>
+									
+									
+									<div class="item form-group">
+												<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Description de la Plainte </label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+												    <textarea name class="resizable_textarea form-control" placeholder="description de la plainte..." th:field="*{description}"></textarea>
+												</div>
+								   </div>
+								   
+								     <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nom Agent<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">									
+										
+										 <select class="form-control" name="codAgCol"th:field="*{codAgCol}" >
+                                              <option value="NONE">Agent Collecte</option>  
+                                                    <option th:each="varSigAgentCollecte:${allSigAgentCollecte}" 
+                                                    th:value="${varSigAgentCollecte.getCodAgCol()}" 
+                                                    th:text="${varSigAgentCollecte.getNomAgCol()+ '  '+varSigAgentCollecte.getPrenomAgentCol()}"> 
+                                            </option>
+                                         </select>
+                        
+										</div>
+										
+									          <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									    </div>								
+				
+										 <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Mode Saisine de la Plainte<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">									
+										
+										 <select class="form-control" name="codModeSaisie"th:field="*{codModeSaisie}" >
+                                              <option value="NONE">Mode de Plainte</option>  
+                                                    <option th:each="varPrgModeSaisine:${allPrgModeSaisine}" 
+                                                    th:value="${varPrgModeSaisine.getCodModeSaisie()}" 
+                                                    th:text="${varPrgModeSaisine.getLibelleModeSaisi()}"> 
+                                            </option>
+                                         </select>
+                                    
+										</div>
+									      <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>	
+									    </div>			
+								
+										<div class="ln_solid"></div>
+								         <div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+                                         <center>
+										    <a th:href="@{/admin/PrgPlainteView}" class="btn btn-warning" >Retour</a>
+											<a th:href="@{/admin/PrgPlainte/add}" class="btn btn-default">Annuler</a>
+											<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+										</center>
+
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			
+                  </div>
+                </div>
+        </div>
+        
+        <!-- /page content -->
+
+ 
+</body></html>

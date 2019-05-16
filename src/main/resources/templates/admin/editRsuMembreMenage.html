@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+  
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+			<div class="">
+				<div class="page-title">
+					<div class="title_center">
+						<b><font color="orange" size="5"><center>MODIFICATION MEMBRE</center></font></b>
+					</div>
+				</div>
+            
+			<div class="clearfix">
+			</div>
+
+            <div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+						<div class="x_content">
+							<!-- <form class="form-horizontal form-label-left" th:object="${rsuMembreMenageView}" th:with="var=${codMenage},var2=${idMembre}" th:action="@{'/admin/editRsuMembreMenage/'+${var}+'/'+${var2}}" method="post"   novalidate> -->
+							
+							<form class="form-horizontal form-label-left" th:object="${rsuMembreMenageView}" th:with="var=${codMenage},var2=${idMembre}" th:action="@{/admin/editRsuMembreMenage/__${var}__/__${var2}__}" method="post"   novalidate> 
+							
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="x_panel">
+										<div class="x_title">
+											<h2>Localisation du ménage</h2>
+										
+											<div class="clearfix"></div>
+										</div>
+
+										<div class="x_content">
+
+											<div class="table-responsive">
+											  <table class="table table-striped jambo_table bulk_action">
+												<thead>
+												  <tr class="headings">
+													<th class="column-title">Région </th>
+													<th class="column-title">Département </th>
+													<th class="column-title">Sous Préfecture </th>
+													<th class="column-title">Localité</th>
+													<th class="column-title">Village </th>
+													
+												  </tr>
+												</thead>
+
+												<tbody>
+													<tr class="even pointer">
+														<td th:text="${rsuMembreMenageView.nomRegion}"></td>
+														<td th:text="${rsuMembreMenageView.nomDepartement}"> </td>
+														<td th:text="${rsuMembreMenageView.nomSPref}"> </td>
+														<td th:text="${rsuMembreMenageView.nomLocalite}"></td>
+														<td th:text="${rsuMembreMenageView.villageQuartier}"></td>
+													</tr>
+												</tbody>
+											  </table>
+											</div>
+										</div>
+									</div>
+								</div>
+								  
+								<div class="clearfix"></div>
+								<div class="row">
+									<div class="col-md-12 col-sm-12 col-xs-12">
+										<div class="x_panel">
+											<div class="x_title">
+												<h2>Information Ménage</h2>
+												<div class="clearfix"></div>
+											</div>
+											<div class="x_content">
+												<br />
+												<div class="form-group">
+													<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Id Ménage <span class="required">*</span>
+													</label>
+													<div class="col-md-6 col-sm-6 col-xs-12">
+													  <input type="text" id="last-name" name="last-name" class="form-control col-md-7 col-xs-12" disabled="disabled" th:field="*{codMenage}">
+													</div>
+												</div>
+												<div class="form-group">
+													<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Nom Chef Ménage</label>
+													<div class="col-md-6 col-sm-6 col-xs-12">
+														<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{nomChefMenage}">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+									
+								<div class="row">
+									<table border="0">
+									<tr>
+										<td>
+											<div class="col-md-12 col-xs-9">
+												<div class="x_panel">
+													<div class="x_title">
+														<h2>Information Membre</small></h2>
+														<div class="clearfix"></div>
+													</div>
+													<div class="x_content">
+														<br />
+														<div class="form-horizontal form-label-left input_mask">
+														
+															<div class="form-group">
+																<label class="control-label col-md-3 col-sm-3 col-xs-12">Id </label>
+																<div class="col-md-6 col-sm-9 col-xs-12">
+																  <input type="text" class="form-control" disabled="disabled" th:field="*{idMembre}">
+																</div>
+															</div>
+															
+															<div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+																<label for="fullname">Nom </label> 
+																<input type="text" class="form-control" id="inputSuccess3"  th:field="*{nomMembre}">
+															</div>
+															<div class="col-md-5 col-sm-6 col-xs-12 form-group has-feedback">
+																<label for="fullname">Prénoms</label> 
+																<input type="text" class="form-control" id="inputSuccess3"  th:field="*{prenomMembre}">
+															</div>
+															<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+																<label for="fullname">Surnom</label> 
+																<input type="text" class="form-control" id="inputSuccess3"  th:field="*{surnomMembre}">
+															</div> <br>
+															<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+																<label for="fullname">Date Naissance</label> 
+																<input type="text" class="form-control" id="inputSuccess3"  th:field="*{dateNaisMembre}">
+															</div>
+															<div class="col-md-5 col-sm-6 col-xs-12 form-group has-feedback">
+																<label for="fullname">Lieu Naissance</label> 
+																<input type="text" class="form-control" id="inputSuccess3"  th:field="*{lieuNaisMembre}">
+															</div>
+															<div class="col-md-3 col-sm-12 col-xs-12 form-group">
+																<p><label for="fullname">Genre </label>
+																	<select class="form-control"  th:field="*{genre}"  >
+																			<option value="0">FEMININ</option>  
+																			<option value="1">MASCULIN</option> 
+																	</select>
+																</p>
+															</div> <br>
+															<div class="col-md-7 col-sm-6 col-xs-12 form-group has-feedback">
+																<p><label for="fullname">Type de pièce </label>
+																	<select   class="form-control" th:field="*{codTypePieceid}"  >
+																		<option th:each="PmtTypePieceident:${allPmtTypePieceident}" 
+																				th:value="${PmtTypePieceident.getCodTypePieceid()}"
+																				th:text="${PmtTypePieceident.getLibelleTypPieceid()}"> 
+																		</option>
+																	</select>
+																</p>
+															</div>
+															<div class="col-md-5 col-sm-6 col-xs-12 form-group has-feedback">
+																<label for="fullname">N°Pièce</label> 
+																<input type="text" class="form-control" id="inputSuccess3"  th:field="*{numPieceIdent}">
+															</div>
+															<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+																<label for="fullname">Nom Prénoms Père</label> 
+																<input type="text" class="form-control" id="inputSuccess3"  th:field="*{nomPere}">
+															</div>
+															<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+																<label for="fullname">Nom Prénoms Mère</label> 
+																<input type="text" class="form-control" id="inputSuccess3"  th:field="*{nomMere}">
+															</div>
+															
+															<div class="col-md-5 col-sm-6 col-xs-12 form-group has-feedback">
+																<p><label for="fullname">Niveau d'étude </label>
+																	<select class="form-control" th:field="*{codNiveauEtude}"  >
+																		<option th:each="PmtNiveauEtude:${allPmtNiveauEtude}" 
+																				th:value="${PmtNiveauEtude.getCodNiveauEtude()}"
+																				th:text="${PmtNiveauEtude.getLibelleNiveauEtude()}"> 
+																		</option>
+																	</select>
+																</p>
+															</div>
+															<div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+																<p><label for="fullname">Ecole Actuelle </label>
+																	<select  class="form-control" th:field="*{ecoleActuelle}"  >
+																		<option  value="0">NON</option>  
+																		<option value="1">OUI</option>
+																	</select>
+																</p>
+															</div>
+															<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+																<p><label for="fullname">Capacité SMS </label>
+																	<select class="form-control" th:field="*{capaciteSms}"   >
+																		<option value="1">Oui lire et écrire</option>  
+																		<option value="2">Seulement lire</option> 
+																		<option value="3">NON </option> 
+																	</select>
+																</p>
+															</div>
+															
+															<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+																<p><label for="fullname">Activité </label>
+																	<select class="form-control" th:field="*{codActiviteCm}"  >
+																		<option th:each="PmtActiviteCm:${allPmtActiviteCm}" 
+																				th:value="${PmtActiviteCm.getCodActiviteCm()}"
+																				th:text="${PmtActiviteCm.getLibelleActiviteCm()}"> 
+																		</option>
+																	</select>
+																</p>
+															</div>
+															<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+																<p><label for="fullname">Travailleur Indépendant</label> 
+																<input type="text" class="form-control" id="inputSuccess3"  th:field="*{travIndependant}"></p>
+															</div>
+															<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+																<p><label for="fullname">Nationnalité </label>
+																	<select class="form-control"   th:field="*{nationalite}"  >
+																			<option value="1">IVOIRIENNE</option>  
+																			<option value="2">NON IVOIRIENNE</option> 
+																	</select>
+																</p>
+															</div>
+															<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+																<p><label for="fullname">Statut Résidence </label>
+																	<select class="form-control"  th:field="*{codStatutRes}"  >
+																		<option th:each="PmtStatutResidence:${allPmtStatutResidence}" 
+																				th:value="${PmtStatutResidence.getCodStatutRes()}"
+																				th:text="${PmtStatutResidence.getLibelleStatutRes()}"> 
+																		</option>
+																	</select>
+																</p>
+															</div>
+															<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+																<p><label for="fullname">Situation Matrimoniale </label>
+																	<select class="form-control"  th:field="*{codStatuMat}"  >
+																		<option th:each="PmtStatutMatrimonial:${allPmtStatutMatrimonial}" 
+																				th:value="${PmtStatutMatrimonial.getCodStatuMat()}"
+																				th:text="${PmtStatutMatrimonial.getLibelleStatuMat()}"> 
+																		</option>
+																	</select>
+																</p>
+															</div>
+															
+															<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+																<p><label for="fullname">Lien </label>
+																	<select  class="form-control" th:field="*{codLien}"  >
+																		<option th:each="PmtLienMenage:${allPmtLienMenage}" 
+																				th:value="${PmtLienMenage.getCodLien()}"
+																				th:text="${PmtLienMenage.getLibelleLien()}"> 
+																		</option>
+																	</select>
+																</p>
+															</div>
+															
+															<div class="ln_solid"></div>
+													 
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</td>
+										<td width="35%">
+
+											<div class="col-md-14 col-xs-12">
+												<div class="x_panel">
+													<div class="x_title">
+														<h2>Information Maladie</h2>
+														<div class="clearfix"></div>
+													</div>
+													<div class="x_content">
+														<br />
+														<div class="form-horizontal form-label-left">
+
+															<div class="form-group">
+																<label class="control-label col-md-6 col-sm-3 col-xs-12">Mode de Paiement Soins</label>
+																<div class="col-md-6 col-sm-9 col-xs-12">
+																  <p>
+																	<select class="form-control"  th:field="*{libellePaieSoin}"  >
+																			<!--option th:each="PmtModePaiementSoin:${allPmtModePaiementSoin}" 
+																					th:value="${PmtModePaiementSoin.getLibellePaieSoin}"
+																					th:text="${PmtModePaiementSoin.getLibellePaieSoin}"> 
+																			</option-->
+																		</select>
+																	</p>
+																</div>
+															</div>
+															<div class="form-group">
+																<label class="control-label col-md-6 col-sm-3 col-xs-12">Tombé Malade</label>
+																<div class="col-md-4 col-sm-9 col-xs-12">
+																	<p>	
+																		<select   class="form-control"  th:field="*{tomberMalade}"  >
+																			<option value="0">NON</option>  
+																			<option value="1">OUI</option>  
+																		</select>
+																	</p>
+																</div>
+															</div>
+															<div class="form-group">
+																<label class="control-label col-md-6 col-sm-3 col-xs-12">Cons. Personnel</label>
+																<div class="col-md-4 col-sm-9 col-xs-12">
+																	<p>	
+																		<select   class="form-control"  th:field="*{consulterPersonnel}"  >
+																			<option value="0">NON</option>  
+																			<option value="1">OUI</option>  
+																		</select>
+																	</p>
+																</div>
+															</div>
+															<div class="form-group">
+																<label class="control-label col-md-6 col-sm-3 col-xs-12">Carnet de Santé </label>
+																<div class="col-md-4 col-sm-9 col-xs-12">
+																	<p>	
+																		<select   class="form-control"  th:field="*{avoirCarnet}"  >
+																			<option value="0">NON</option>  
+																			<option value="1">OUI</option>  
+																		</select>
+																	</p>
+																</div>
+															</div>
+															<div class="form-group">
+																<label class="control-label col-md-6 col-sm-3 col-xs-12">Etre Vacciné </label>
+																<div class="col-md-4 col-sm-9 col-xs-12">
+																	<p>	
+																		<select   class="form-control"  th:field="*{etreVacciner}"  >
+																			<option value="0">NON</option>  
+																			<option value="1">OUI</option>  
+																		</select>
+																	</p>
+																</div>
+															</div>
+															<div class="form-group">
+																<label class="control-label col-md-6 col-sm-3 col-xs-12">Etre Enceinte </label>
+																<div class="col-md-4 col-sm-9 col-xs-12">
+																	<p>	
+																		<select   class="form-control"  th:field="*{etreEnceinte}"  >
+																			<option value="0">NON</option>  
+																			<option value="1">OUI</option>  
+																		</select>
+																	</p>
+																</div>
+															</div>
+															<div class="form-group">
+																<label class="control-label col-md-6 col-sm-3 col-xs-12">Avoir Maladie </label>
+																<div class="col-md-4 col-sm-9 col-xs-12">
+																	<p>	
+																		<select   class="form-control"  th:field="*{avoirMaladieChronique}"  >
+																			<option value="0">NON</option>  
+																			<option value="1">OUI</option>  
+																		</select>
+																	</p>
+																</div>
+															</div>
+															<div class="form-group">
+																<label for="message">Détails Maladie</label>
+																<textarea id="message"  class="form-control" name="message"  th:field="*{detailMaladieChronique}"></textarea>
+															</div>
+															
+											 
+														</div>
+													</div>
+												</div>
+											</div>
+										</td>
+									</tr>
+									
+								</table >
+								</div>
+								<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+									<center>
+										    <a onclick = "history.back()" class="btn btn-warning">Retour</a>
+											<a href="javascript:window.location.reload()" class="btn btn-default">Annuler</a>
+											<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+											</center>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+    <!-- /page content -->
+	</body>
+</html>

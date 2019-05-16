@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+  
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+			<div class="">
+				<div class="page-title">
+					<div class="title_left">
+						
+					</div>
+			</div>
+            
+			<div class="clearfix">
+			</div>
+
+            <div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+						<div class="x_title">
+							<b><font color="orange"><font face=Castellar><font size="5"><center>MODIFICATION D'UN JURY </center></font></font></font></b>
+							<ul class="nav navbar-right panel_toolbox">
+								<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+								</li>
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+                  
+						<div class="x_content">
+						<!--
+						    <form class="form-horizontal form-label-left " th:object="${prgPlainteJuryTraitView}"  th:action="${'/admin/editPrgPlainteJuryTrait3/'+prgPlainteJuryTraitView.numTrait+'/'+prgPlainteJuryTraitView.idJury+'/'+prgPlainteJuryTraitView.numPlainte}" method="post"   novalidate>
+							-->
+							
+						<form class="form-horizontal form-label-left " th:object="${prgPlainteJuryTraitView}"  th:action="@{/admin/editPrgPlainteJuryTrait3/__${prgPlainteJuryTraitView.numTrait}__/__${prgPlainteJuryTraitView.idJury}__/__${prgPlainteJuryTraitView.numPlainte}__}" method="post"   novalidate>	
+		                 		
+		                    		<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Code Jury <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Code du Jury" required="required" type="text" th:field="*{idJury}" readonly="true">
+										</div>
+									</div> 
+									 
+										<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nom Jury <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Reference" required="required" type="text" th:field="*{nomJury}">
+										</div>
+									</div> 
+									
+										<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Prenoms Jury <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Prenoms" required="required" type="text" th:field="*{prenomJury}">
+										</div>
+									</div>
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fonction Jury <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Fonction" required="required" type="text" th:field="*{fonctionJury}">
+										</div>
+									</div>
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Contact <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Contact" required="required" type="number" th:field="*{contactJury}">
+										</div>
+									</div>
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Structure <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Structure" required="required" type="text" th:field="*{structureRepresente}">
+										</div>
+									</div>
+									
+							       <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Traitement<span class="required">*</span></label>
+                    
+                                    <div class="col-md-6 col-sm-6 col-xs-12">                                        
+                                    <select class="form-control" name="numTrait" th:field="*{numTrait}" >
+                                            <option th:each="PrgPlainteTraitement:${allPrgPlainteTraitement}" 
+                                                    th:value="${PrgPlainteTraitement.getNumTrait()}"
+                                                    th:text="${PrgPlainteTraitement.getNumTrait()}"> 
+                                            </option>
+                                    </select>
+                               </div>
+                               </div> 
+                               
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Type de Jury<span class="required">*</span></label>
+                    
+                                    <div class="col-md-6 col-sm-6 col-xs-12">                                        
+                                    <select class="form-control" name="numTrait" th:field="*{codTypeJury}" >
+                                     <option value="NONE">Type Jury</option>  
+                                            <option th:each="PrgPlainteTypeJury:${allPrgPlainteTypeJury}" 
+                                                    th:value="${PrgPlainteTypeJury.getCodTypeJury()}"
+                                                    th:text="${PrgPlainteTypeJury.getDesignTypeJury()}"> 
+                                            </option>
+                                    </select>
+                               </div>
+                               </div>
+								
+								
+                        
+								<div class="ln_solid"></div>
+								<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+                                         <center>
+										    <a onclick = "history.back()" class="btn btn-warning">Retour</a>
+											<a href="javascript:window.location.reload()" class="btn btn-default">Annuler</a>
+											<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+											</center>
+
+									</div>
+							</form>
+						</div>
+                    
+					</div>
+                </div>
+            </div>
+        </div>
+    <!-- /page content -->
+	</body>
+</html>

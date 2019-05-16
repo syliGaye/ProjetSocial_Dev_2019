@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">    
+    
+    <head>
+		<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+    
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+			<div class="">
+
+				<div class="clearfix"></div>
+
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="x_panel">
+							<div class="x_title">
+								<b><font color="orange"><font face=Castellar><font size="4"><center>ENREGISTRER UN NIVEAU</center></font></font></font></b>
+								<ul class="nav navbar-right panel_toolbox">
+									<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+									</li>
+								</ul>
+								<div class="clearfix"></div>
+							</div>
+							<div class="x_content">
+								<form class="form-horizontal form-label-left " th:object="${prgNivTraitPlt}" th:action="@{/admin/prgNivTraitPlt/add}" method="post"    novalidate>
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Code Niveau traitement <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Code Niveau traitement" required="required" type="text" th:field="*{codNivTr}">
+										</div>
+									</div>  
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Libellé Niveau de traitement <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Libellé Niveau de traitement " required="required" type="text" th:field="*{libelleNivTr}">
+										</div>
+									</div>
+									<div class="ln_solid"></div>
+									<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+									<center>
+										    <a th:href="@{/admin/prgNivTraitPlt}" class="btn btn-warning">Retour</a>
+											<a th:href="@{/admin/prgNivTraitPlt/add}" class="btn btn-default">Annuler</a>
+											<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+											</center>
+
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+        <!-- /page content -->
+
+ 
+</body></html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+  
+  <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+		
+		<style>
+			* {
+			  box-sizing: border-box;
+			}
+
+			body {
+			  background-color: #f1f1f1;
+			}
+
+			#regForm {
+			  background-color: #ffffff;
+			  margin: 100px auto;
+			  font-family: Raleway;
+			  padding: 40px;
+			  width: 70%;
+			  min-width: 300px;
+			}
+
+			
+			input {
+			  padding: 10px;
+			  width: 100%;
+			  font-size: 17px;
+			  font-family: Raleway;
+			  border: 1px solid #aaaaaa;
+			}
+			
+			select {
+			  padding: 10px;
+			  width: 100%;
+			  font-size: 17px;
+			  font-family: Raleway;
+			  border: 1px solid #aaaaaa;
+			}
+
+			/* Mark input boxes that gets an error on validation: */
+			input.invalid {
+			  background-color: #ffdddd;
+			}
+			
+			/* Mark input boxes that gets an error on validation: */
+			select.invalid {
+			  background-color: #ffdddd;
+			}
+
+			/* Hide all steps by default: */
+			.tab {
+			  display: none;
+			}
+
+			button {
+			  background-color: #4CAF50;
+			  color: #ffffff;
+			  border: none;
+			  padding: 10px 20px;
+			  font-size: 17px;
+			  font-family: Raleway;
+			  cursor: pointer;
+			}
+
+			button:hover {
+			  opacity: 0.8;
+			}
+
+			#prevBtn {
+			  background-color: #bbbbbb;
+			}
+
+			/* Make circles that indicate the steps of the form: */
+			.step {
+			  height: 15px;
+			  width: 15px;
+			  margin: 0 2px;
+			  background-color: #bbbbbb;
+			  border: none;  
+			  border-radius: 50%;
+			  display: inline-block;
+			  opacity: 0.5;
+			}
+
+			.step.active {
+			  opacity: 1;
+			}
+
+			/* Mark the steps that are finished and valid: */
+			.step.finish {
+			  background-color: #4CAF50;
+			}
+		</style>
+		
+
+
+	
+  </head>
+	
+  <body  >   
+        <!-- page content -->
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">
+		
+			<br/>
+				<form id="regForm"  th:object="${rsuMenage}" th:action="@{/admin/rsuMembreMenage/add}" method="post"    novalidate>
+					<div class="x_title">
+						<b><font color="orange" size="5"><center>CREATION D'UN MEMBRE</center></font></b>
+						<ul class="nav navbar-right panel_toolbox">
+							<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+							</li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<div>
+						</p>
+							<p><label for="fullname">Code Ménage </label><select align="center"  oninput="this.className = ''" name="codMenage"  >
+								<option th:each="RsuMenage:${allRsuMenage}" 
+										th:value="${RsuMenage.getCodMenage()}"
+										th:text="${RsuMenage.getCodMenage()}"> 
+								</option>
+							</select></p>
+					</div>
+					<!-- One "tab" for each step in the form: -->
+					<div class="tab">
+						<div class="x_panel">
+							<div class="x_title">
+								<b><font color="orange" size="4">Information Membre</font></b>
+								<div class="clearfix"></div>
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Nom </label><input placeholder="Nom..." oninput="this.className = ''" name="nomMembre"></p>
+							</div>
+							<div class="col-md-4 col-sm-12 col-xs-12 form-group">
+								
+							</div>
+							<div class="col-md-8 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Prénoms </label><input placeholder="Prénoms..." oninput="this.className = ''" name="prenomMembre"></p>
+							</div>
+							<div class="col-md-4 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Surnom </label><input placeholder="Surnom..." oninput="this.className = ''" value="Surnom..." name="surnomMembre"></p>
+							</div>
+							<div class="col-md-4 col-sm-12 col-xs-12 form-group">
+								
+							    <p><label for="fullname">Date de Naissance</label><input type="date" required class="form-control" placeholder="Date de Naissance..." oninput="this.className = ''" name="dateNaisMembre"></p>
+							</div>
+							<div class="col-md-4 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Lieu de Naissance </label><input placeholder="Lieu de Naissance..." oninput="this.className = ''" name="lieuNaisMembre"></p>
+							</div>
+							<div class="col-md-3 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Genre </label>
+									<select   oninput="this.className = ''" name="genre"  >
+											<option selected value="0">Femme</option>  
+											<option value="1">Homme</option> 
+									</select>
+								</p>
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Nationnalité </label>
+									<select   oninput="this.className = ''" name="nationalite"  >
+											<option selected value="1">Ivoirienne</option>  
+											<option value="2">Non Ivoirienne</option> 
+									</select>
+								</p>
+							</div>
+							<div class="col-md-4 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Téléphone Membre </label><input placeholder="Téléphone Membre..." oninput="this.className = ''"  value="Téléphone Membre..." name="telMembre"></p>
+							</div>
+							<div class="col-md-8 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Type de pièce </label>
+									<select   oninput="this.className = ''" name="codTypePieceid"  >
+										<option value="">Type de pièce</option>  
+										<option th:each="PmtTypePieceident:${allPmtTypePieceident}" 
+												th:value="${PmtTypePieceident.getCodTypePieceid()}"
+												th:text="${PmtTypePieceident.getLibelleTypPieceid()}"> 
+										</option>
+									</select>
+								</p>
+							</div>
+							<div class="col-md-4 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Numéro de pièce </label><input placeholder="Numéro de pièce..." oninput="this.className = ''" value="Numéro de pièce..." name="numPieceIdent"></p>
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Nom-Prénoms Père</label><input placeholder="Nom-Prénoms Père..." oninput="this.className = ''" name="nomPere"></p>
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Nom-Prénoms Mère</label><input placeholder="Nom-Prénoms Mère..." oninput="this.className = ''" name="nomMere"></p>
+							</div>
+						</div>
+						<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+							<center>
+								<a  th:with="var=${codMenage}" class="btn btn-warning" th:href="@{'/admin/listRsuMembreMenage?codMenage='+${var}}">Retour</a>
+							</center>
+						</div>
+					</div>
+					<div class="tab">
+						<div class="x_panel">
+							<div class="x_title">
+								<b><font color="orange" size="4">Détails membre</font></b>
+								<div class="clearfix"></div>
+							</div>
+							<div class="col-md-3 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Ecole Actuelle </label>
+									<select   oninput="this.className = ''" name="ecoleActuelle"  >
+										<option value="">Ecole Actuelle</option>  
+										<option selected value="0">NON</option>  
+										<option value="1">OUI</option>
+									</select>
+								</p>
+							</div>
+							<div class="col-md-5 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Niveau d'étude </label>
+									<select   oninput="this.className = ''" name="codNiveauEtude"  >
+										<option value=" ">Niveau d'étude</option>  
+										<option th:each="PmtNiveauEtude:${allPmtNiveauEtude}" 
+												th:value="${PmtNiveauEtude.getCodNiveauEtude()}"
+												th:text="${PmtNiveauEtude.getLibelleNiveauEtude()}"> 
+										</option>
+									</select>
+								</p>
+							</div>
+							<div class="col-md-4 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Capacité SMS </label>
+									<select   oninput="this.className = ''" name="capaciteSms"  >
+										<option value="">Capacité SMS</option>  
+										<option value="1">Oui lire et écrire</option>  
+										<option value="2">Seulement lire</option> 
+										<option value="3">NON </option> 
+									</select>
+								</p>
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Activité </label>
+									<select   oninput="this.className = ''" name="codActiviteCm"  >
+										<option value="">Activité</option>  
+										<option th:each="PmtActiviteCm:${allPmtActiviteCm}" 
+												th:value="${PmtActiviteCm.getCodActiviteCm()}"
+												th:text="${PmtActiviteCm.getLibelleActiviteCm()}"> 
+										</option>
+									</select>
+								</p>
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Travailleur Indépendant </label><input placeholder="Travailleur Indépendant..." oninput="this.className = ''"  value="Travailleur Indépendant..." name="travIndependant"></p>
+							</div>
+							<div class="col-md-7 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Situation Matrimoniale </label>
+									<select   oninput="this.className = ''" name="codStatuMat"  >
+										<option value="">Situation Matrimoniale</option>  
+										<option th:each="PmtStatutMatrimonial:${allPmtStatutMatrimonial}" 
+												th:value="${PmtStatutMatrimonial.getCodStatuMat()}"
+												th:text="${PmtStatutMatrimonial.getLibelleStatuMat()}"> 
+										</option>
+									</select>
+								</p>
+							</div>
+							<div class="col-md-5 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Statut Résidence </label>
+									<select   oninput="this.className = ''" name="codStatutRes"  >
+										<option value="">Statut Résidence</option>  
+										<option th:each="PmtStatutResidence:${allPmtStatutResidence}" 
+												th:value="${PmtStatutResidence.getCodStatutRes()}"
+												th:text="${PmtStatutResidence.getLibelleStatutRes()}"> 
+										</option>
+									</select>
+								</p>
+							</div>
+							<div class="col-md-8 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Lien </label>
+									<select   oninput="this.className = ''" name="codLien"  >
+										<option value="">Lien</option>  
+										<option th:each="PmtLienMenage:${allPmtLienMenage}" 
+												th:value="${PmtLienMenage.getCodLien()}"
+												th:text="${PmtLienMenage.getLibelleLien()}"> 
+										</option>
+									</select>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="tab">
+						<div class="x_panel">
+							<div class="x_title">
+								<b><font color="orange" size="4">Santé Membre</font></b>
+								<div class="clearfix"></div>
+							</div>
+							
+							<div class="col-md-8 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Mode de Paiement Soin </label>
+									<select   oninput="this.className = ''" name="codPaieSoin"  >
+										<option value="">Mode de paiement</option>  
+										<option th:each="PmtModePaiementSoin:${allPmtModePaiementSoin}" 
+												th:value="${PmtModePaiementSoin.getCodPaieSoin()}"
+												th:text="${PmtModePaiementSoin.getLibellePaieSoin()}"> 
+										</option>
+									</select>
+								</p>
+							</div>
+
+							<div class="col-md-4 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Tombé Malade </label>
+									<select   oninput="this.className = ''" name="tomberMalade"  >
+										<option selected value="0">NON</option>  
+										<option value="1">OUI</option>  
+									</select>
+								</p>
+							</div>
+							<div class="col-md-4 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Consulter Personnel </label>
+									<select   oninput="this.className = ''" name="consulterPersonnel"  >
+										<option selected value="0">NON</option>  
+										<option value="1">OUI</option>  
+									</select>
+								</p>
+							</div>
+							<div class="col-md-4 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Carnet de Santé </label>
+									<select   oninput="this.className = ''" name="avoirCarnet"  >
+										<option selected value="0">NON</option>  
+										<option value="1">OUI</option>  
+									</select>
+								</p>
+							</div>
+							<div class="col-md-4 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Etre Vacciné </label>
+									<select   oninput="this.className = ''" name="etreVacciner"  >
+										<option selected value="0">NON</option>  
+										<option value="1">OUI</option>  
+									</select>
+								</p>
+							</div>
+							<div class="col-md-4 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Etre Enceinte </label>
+									<select   oninput="this.className = ''" name="etreEnceinte"  >
+										<option selected value="0">NON</option>  
+										<option value="1">OUI</option>  
+									</select>
+								</p>
+							</div>
+							<div class="col-md-4 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Avoir Maladie Chronique </label>
+									<select   oninput="this.className = ''" name="avoirMaladieChronique"  >
+										<option selected value="0">NON</option>  
+										<option value="1">OUI</option>  
+									</select>
+								</p>
+							</div>
+							<div class="col-md-12 col-sm-12 col-xs-12 form-group">
+								<p><label for="fullname">Détail Maladie Chronique </label>
+									<textarea class="resizable_textarea form-control" placeholder="..." oninput="this.className = ''" name="detailMaladieChronique"></textarea>
+								</p>
+							</div>
+						</div>
+					</div>
+					
+				
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Précédent</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">Suivant</button>
+    </div>
+  </div>
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+  </div>
+</form>
+		</div>
+        <!-- /page content -->
+
+	
+    </body>
+</html>

@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+	 
+	    
+        <!-- page filtre -->
+   <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">     
+       
+        <br/>
+		
+		<div class="x_title">
+						
+						<b><font color="orange"><font face=Castellar><font size="4"><center>SUIVI EVALUATION: ANALYSE PAR ANNEE ET PAR DEPARTEMENT</center></font></font></font></b>
+						<ul class="nav navbar-right panel_toolbox">
+						  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+						</ul>
+						<div class="clearfix"></div>
+		</div>
+		<b><font color="orange"><font face=Castellar><font size="4"><center>FILTRE</center></font></font></font></b>	
+			<center>						    
+				<div class="x_content" width="95%">
+					<div class="portlet-header">
+					
+					<form class="form-horizontal form-label-left " id="dataPrgSuiviEvalDept" th:object="${SigFiltreRecherche}" th:action="@{/admin/prgSuiviEvalAnneeDepartementView/rech}" method="post" enctype="multipart/form-data" novalidate>
+			
+						
+						<table class="table-striped jambo_table bulk_action" width="90%"  style="border-collapse: separate;  border-spacing: 10px; background-color: Lavender;">
+							<tbody>
+								<tr spacing="10px" padding="10px">
+                                 <td align="right">
+										<label for="Debut"><font color=black>Année Debut:</font></label>
+									</td>	
+									<td align="left" colspan=1>		
+										<input th:field="*{anneeDebut}" type="number" class="form-control" id="f_debut"  required/>
+									</td>
+									<td align="right">
+										<label for="Fin"><font color=black>Année Fin:</font></label>
+									</td>	
+									<td align="left" colspan=1>										
+										<input th:field="*{anneeFin}" type="number" class="form-control" id="f_fin"  required/>
+									</td>
+									
+								
+								</tr>
+								<tr>
+								    <td align="right">
+										<label for="Region"><font color=black>Région:</font></label>
+									</td>	
+									<td align="left">
+									    <select class="form-control" th:field="*{codRegion}" id="f_region" required="">
+									      <option value="">Toutes les Région</option>
+                                              <option th:each="SigRegion:${allSigRegion}" 
+	                                                   th:value="${SigRegion.getCodRegion()}"
+	                                                   th:text="${SigRegion.getNomRegion()}">
+	                                            </option>
+                         				 </select>											
+									</td>
+									<td align="right">
+										<label for="Département"><font color=black>Département:</font></label>
+									</td>	
+									<td align="left">
+									    <select class="form-control" th:field="*{codDepartement}" type="text" id="f_departement" required="">
+										      <option value="">Tous les Départements</option>
+	                                             <option  th:each="SigDepartement:${allSigDepartement}" 
+	                                                     th:value="${SigDepartement.getCodDepartement()}"
+	                                                     th:text="${SigDepartement.getNomDepartement()}">
+	                                            </option>
+                         				</select>											
+									</td>
+								</tr>
+								<tr>
+									<input class="form-control" type="hidden"  value="FILTRE" name="paramchoix"/>
+								</tr>
+								
+							</tbody>
+						</table>
+						</br>
+						<center>
+							<p><button target="submit" class="btn btn-success" style="background-color: #0099ff"><b>Rechercher</b></button></p>
+						</center>
+						</form>
+					</div>
+				</div>
+			</center>
+            <br/>	
+
+			 <div class="col-md-12 col-sm-12 col-xs-12">
+					<table width="100%">
+						<tr>
+							<td>
+								<form th:object="${SigFiltreRecherche}" th:action="@{/admin/prgSuiviEvalAnneeDepartementView/rech}" method="post" enctype="multipart/form-data" novalidate> 
+									<input th:field="*{anneeDebut}"  type="hidden" class="form-control" id="d_annee" />
+									<input th:field="*{anneeFin}"  type="hidden" class="form-control" id="f_annee" />
+									<input th:field="*{codRegion}" type="hidden" class="form-control" id="f_region"  />
+									<input th:field="*{codDepartement}" type="hidden" class="form-control" id="f_departement"  />
+									
+									
+									<input class="form-control" type="hidden"  value="EXCEL" name="paramchoix"/>
+						
+							<center>		<button type="submit"  class="btn btn-large btn-primary navbar-center"   ><b>Générer Excel</b></button>  	</center>
+						
+								</form>
+								
+							</td>
+							
+						</tr>
+					</table>			
+
+				      
+         <div class="col-md-12 col-sm-12 col-xs-12">
+			<!--a class="btn btn-large btn-success" >Ajouter Membre</a-->
+				<div class="x_panel">
+				
+					<center>
+					<div class="x_content">
+					
+						<table id="datatable-fixed-header" class="table table-striped table-bordered jambo_table bulk_action" width="100%">
+							 <thead >
+									    <tr>
+										    <th colspan="2"><center></center></th>
+											<th colspan="6"><center>Total beneficiaire</center></th>
+											<th colspan="6"><center>Total beneficiaire femmes</center></th>
+											<th colspan="6"><center>Total beneficiaire hommes</center></th>
+																		
+										</tr>
+										<tr >
+										    
+										    <th rowspan="1"><center>Periode </center></th>
+											<th rowspan=""><center>Departement</center></th>
+											
+											<th rowspan="1"><center>Nb total emission</center></th>
+											<th rowspan="1"><center>Montant total emission</center></th>
+											<th rowspan="1"><center>Nb total emission payées</center></th>
+											<th rowspan="1"><center>Montant total Payé</center></th>
+											<th rowspan="1"><center>Nb total emission non payées</center></th>
+											<th rowspan="1"><center>Montant total non Payé</center></th>
+											
+											<th rowspan="1"><center>Nb total emission</center></th>
+											<th rowspan="1"><center>Montant total emission</center></th>
+											<th rowspan="1"><center>Nb total emission payées</center></th>
+											<th rowspan="1"><center>Montant total Payé</center></th>
+											<th rowspan="1"><center>Nb total emission non payée</center></th>
+											<th rowspan="1"><center>Montant total non Payé</center></th>
+											
+											<th rowspan="1"><center>Nb total emission</center></th>
+											<th rowspan="1"><center>Montant total emission</center></th>
+											<th rowspan="1"><center>Nb total emission payées</center></th>
+											<th rowspan="1"><center>Montant total Payé</center></th>
+											<th rowspan="1"><center>Nb total emission non payée</center></th>
+											<th rowspan="1"><center>Montant total non Payé</center></th>
+											<th><center>Action</center></font></th>
+											
+										</tr>
+									
+										
+									</thead>
+									<tbody  id="tbodyParams">
+										   <tr th:each="prgSuiviEvalAnneeDepartementView,i:${result}">
+										   
+											<td th:text="${prgSuiviEvalAnneeDepartementView.anneePeriode}"></td>
+											<td th:text="${prgSuiviEvalAnneeDepartementView.nomDepartement}"></td>
+											
+											 <td th:text="${prgSuiviEvalAnneeDepartementView.nbTotalEmission}" align="center" ></td>
+											<td th:text="${prgSuiviEvalAnneeDepartementView.mtTotalEmission}" align="center" > </td>
+											<td th:text="${prgSuiviEvalAnneeDepartementView.nbTotalPaye}" align="center" > </td>
+											<td th:text="${prgSuiviEvalAnneeDepartementView.mtTotalPaye}" align="center" > </td>
+											<td th:text="${prgSuiviEvalAnneeDepartementView.nbTotalNonPaye}"  align="center" ></td> 
+											<td th:text="${prgSuiviEvalAnneeDepartementView.mtTotalNonPaye}" align="center" > </td>
+											
+											<td th:text="${prgSuiviEvalAnneeDepartementView.nbTotalEmissionFemme}" align="center" > </td>
+											<td th:text="${prgSuiviEvalAnneeDepartementView.mtTotalEmissionFemme}"  align="center" ></td>
+											<td th:text="${prgSuiviEvalAnneeDepartementView.nbTotalPayeFemme}"  align="center" ></td> 
+											<td th:text="${prgSuiviEvalAnneeDepartementView.mtTotalPayeFemme}" align="center" > </td>
+											<td th:text="${prgSuiviEvalAnneeDepartementView.nbTotalNonPayeFemme}"  align="center" > </td>
+											<td th:text="${prgSuiviEvalAnneeDepartementView.mtTotalNonPayeFemme}" align="center" > </td>
+											
+											<td th:text="${prgSuiviEvalAnneeDepartementView.nbTotalEmissionHomme}"  align="center" ></td> 
+											<td th:text="${prgSuiviEvalAnneeDepartementView.mtTotalEmissionHomme}"  align="center" ></td>
+											<td th:text="${prgSuiviEvalAnneeDepartementView.nbTotalPayeHomme}"  align="center" ></td>
+											<td th:text="${prgSuiviEvalAnneeDepartementView.mtTotalPayeHomme}" align="center" > </td>
+											<td th:text="${prgSuiviEvalAnneeDepartementView.nbTotalNonPayeHomme}"  align="center" ></td> 
+											<td th:text="${prgSuiviEvalAnneeDepartementView.mtTotalNonPayeHomme}" align="center" > </td>
+											
+											<td>
+												<table>
+												<tr><td align="center">	
+													<a class="btn btn-info btn-xs" th:href="@{/admin/detailDepAnPrgSuiviEvalBenefView/__${prgSuiviEvalAnneeDepartementView.anneePeriode}__/__${prgSuiviEvalAnneeDepartementView.codDepartement}__}"><i class="fa fa-edit"></i>&nbsp;
+													Detail 
+													</a> 
+										        </td></tr>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+						</table>
+						
+					  </div>
+					  </center>
+				</div>
+			</div>
+		</div>
+        <!-- /page content -->
+
+    </body>
+</html>

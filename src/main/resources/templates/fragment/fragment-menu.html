@@ -1,0 +1,257 @@
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+	<div class="profile" data-th-fragment="menu" >
+		<div class="left_col scroll-view" style="background-color:Green;">
+		<div class="box span12" style="height: 800px; border:0px; background-color:Green; ">
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu" >
+				<div class="menu_section">
+                
+					<ul class="nav side-menu">
+						<li><a th:href="@{/home}"><i class="fa fa-home"></i>Acceuil<span ></span></a>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_SUPERADMIN')"><a><i class="fa fa-edit"></i>PARAMETRES DE BASE <span class="fa fa-chevron-down"></span></a>
+							<ul class="nav child_menu" >
+							  <li><a th:href="@{/admin/sigParametre}">Paramètre Généraux</a></li>
+							   <li><a th:href="@{/user/profil}">Profils Utilisateur</a></li>
+							  <li><a th:href="@{/user/users}">Utilisateurs</a></li>
+							  <hr> </hr>		
+							  <li><a th:href="@{/admin/sigStructureAgentCollecte}">Structures de rattachement des agents</a></li>					  
+							  <li><a th:href="@{/admin/sigEquipeCollecteView}">Equipes de Collecte</a></li>
+							  <li><a th:href="@{/admin/sigAgentCollecteView}">Personnels/Agents Collecte</a></li>
+                              <hr> </hr>
+							  <li><a th:href="@{/admin/prgBailleur}">Bailleurs</a></li>
+							  <li><a th:href="@{/admin/sigTypePrestation}">Types de Prestations</a></li>
+							  <li><a th:href="@{/admin/prgPopCible}">Population cibles</a></li>						  
+							  <li><a th:href="@{/admin/SigProgramme}">Programmes / Projets</a></li>
+							  <hr> </hr>
+							  <li><a th:href="@{/admin/SigRegion}">Liste des Régions</a></li>
+							  <li><a th:href="@{/admin/SigDepartement}">Liste des Départements</a></li>
+							  <li><a th:href="@{/admin/sigSousPrefecture}">Liste des Sous-Préfectures</a></li>
+							  <li><a th:href="@{/admin/SigLocalite}">Liste des Localités</a></li>      
+							  <hr> </hr>
+							  <li><a th:href="@{/admin/sigEquipeLocaliteView}">Historique des Equipes</a></li>
+							  <li><a th:href="@{/admin/sigEquipeMembreView}">Historique du Personnel</a></li>
+							</ul>
+						</li>
+						<li><a><i class="fa fa-desktop"></i>REGISTRE SOCIAL UNIQUE(RSU)<span class="fa fa-chevron-down"></span></a> 
+							<ul class="nav child_menu">
+							   <li sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_SUPERADMIN')"><a><i></i>Paramètre PMT <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a th:href="@{/admin/pmtActiviteCm}">Activités du Membre</a></li>
+										<li><a th:href="@{/admin/pmtLienMenage}">Lien de parenté</a></li> 			
+										<li><a th:href="@{/admin/pmtHandicap}">Handicap</a></li>
+										<li><a th:href="@{/admin/pmtAmeliorerHandicap}">Types d'assistance</a></li>
+										<hr> </hr>
+										<li><a th:href="@{/admin/pmtNiveauEtude}">Niveau d'étude</a></li>
+										<li><a th:href="@{/admin/pmtStatutMatrimonial}">Statut Matrimonial</a></li>
+										<li><a th:href="@{/admin/pmtStatutResidence}">Statut Résidence</a></li>
+										<li><a th:href="@{/admin/pmtTypePieceident}">Types Pièces d'identité</a></li>
+										<hr> </hr>
+										<li><a th:href="@{/admin/pmtLogDouche}">Types de douche</a></li>
+										<li><a th:href="@{/admin/pmtLogEau}">Types de source d'eau</a></li>
+										<li><a th:href="@{/admin/pmtLogToilette}">Types de toilette</a></li>
+										<li><a th:href="@{/admin/pmtLogOrdure}">Types de gestion des ordures</a></li>
+										<li><a th:href="@{/admin/pmtModePaiementSoin}">Mode de règlement des soins</a></li>
+										<hr> </hr>                        			 
+										<li><a th:href="@{/admin/pmtLogMur}">Nature de mur des logements</a></li>
+										<li><a th:href="@{/admin/pmtLogSol}">Nature de sol des logements</a></li>
+										<li><a th:href="@{/admin/pmtLogToit}">Nature de toit des logements</a></li>
+									</ul>
+								</li>	
+								<li><a th:href="@{/admin/pmtModel}">Modèle de calcul PMT</a></li>                     		
+								<li><a th:href="@{/admin/rsuMenage}">Création d'un Ménage</a></li>
+								<li><a th:href="@{/admin/filtreRsuMenage}">Modification d'un Ménage</a></li>
+								<li><a  th:href="@{/admin/filtreSaveRsuMembreMenage}">Création d'un Membre du Ménage</a></li>
+								<hr> </hr> 
+								<li><a th:href="@{/admin/pmtModelConsultation}">Consultation du Modèle de calcul PMT</a></li>  						  
+								<li><a th:href="@{/admin/rsuMenageView}">Consultation Ménage</a></li>
+                                                        <li><a th:href="@{/admin/rsuMembreMenageView}">Consultation Membre Ménage</a></li>
+                                                        <li><a th:href="@{/admin/odkMenage}">Consultation ODK Ménage</a></li>
+								<li><a th:href="@{/admin/odkMembre}">Consultation ODK Membre Ménage</a></li>
+                                                         <li><a th:href="@{/admin/OdkRecipiendaire}">Consultation ODK Récipiendaire</a></li>
+							</ul>
+						</li>
+						<li><a><i class="fa fa-table"></i>GESTION DES BENEFICIAIRES<span class="fa fa-chevron-down"></span></a>
+							<ul class="nav child_menu">
+							   <li><a><i></i>Sélection des Bénéficiaires<span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a th:href="@{/admin/sigQuotaSelection}">Projets d'Affectation</a></li>
+										<li><a th:href="@{/admin/PrgBeneficiairePmtView}">Présélection Score PMT</a></li>
+										<li><a th:href="@{/admin/prgBeneficiaireVillageView}">Validation communautaire</a></li> 
+										<li><a th:href="@{/admin/PrgBeneficiaireUgpView}">Validation UGP</a></li>
+										<li><a th:href="@{/admin/sigQuotaSelectionRetrait}">Sorti d'un Bénéficiaire par Sélection</a></li>			
+									</ul>
+								</li>		
+								<li><a th:href="@{/admin/PrgBeneficiairesView}">Suivi Bénéficiaires</a></li>
+								<li><a th:href="@{/admin/PrgBeneficiaireRecView}">Suivi Récipiendaires</a></li> 	
+								<hr> </hr>
+								<li><a th:href="@{/admin/sigQuotaSelectionCons}">Consultation des Projets d'Affectation</a></li> 
+								<li><a th:href="@{/admin/prgBeneficiaireView}">Consultation Bénéficiaires</a></li>
+								<li><a th:href="@{/admin/prgHistoRecipiendaireView}">Historique des Récipiendaires</a></li>
+							</ul>
+						</li>					  
+						<li><a><i class="fa fa-table"></i>GESTION DES PAIEMENTS<span class="fa fa-chevron-down"></span></a>
+							<ul class="nav child_menu">
+							   <li><a><i></i>Paramètres Paiement<span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a th:href="@{/admin/sigAgencePaiement}">Agence de paiement</a></li>
+										<li><a th:href="@{/admin/prgModePaiement}">Mode de paiement</a></li> 
+										<li><a th:href="@{/admin/prgPaiementReportStatut}">Statut reporting AP</a></li> 			
+									</ul>
+								</li>	
+								<li><a th:href="@{/admin/prgEmmissionPeriodeAnneeView}">Génération des Emissions</a></li>
+								<li><a th:href="@{/admin/prgPaiementPeriodeAnnee}">Génération des Paiements</a></li>
+								<li><a th:href="@{/admin/prgListingView}">Géneration de Listing de Paiement</a></li>						  
+								<li><a th:href="@{/admin/prgPaiementAttenteView}">Virement UGP(Règlement des AP)</a></li>
+								<li><a th:href="@{/admin/prgPaiementReportViewDetails1}">Reporting de paiement</a></li>
+								<li><a th:href="@{/admin/PrgVirementApPeriodeStatView}">Remboursement AP</a></li>
+								<hr> </hr>
+								<li><a><i></i>Consultation des Paiements<span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a th:href="@{/admin/prgEmmissionPeriodeView}">Emission-Consultation Période</a></li>
+										<li><a th:href="@{/admin/prgEmmissionView}">Emission-Consultation Ménages</a></li>
+										<li><a th:href="@{/admin/prgPaiementPeriodeView}">Paiement-Consultation Période </a></li>
+										<li><a th:href="@{/admin/prgPaiementReportView}">Paiement-Consultation Report </a></li>
+										<li><a th:href="@{/admin/prgListingViewCons}">Paiement-Consultation Listing </a></li>
+										<li><a th:href="@{/admin/PrgPaiementView}">Paiement-Consultation Ménage </a></li>	
+										<li><a th:href="@{/admin/prgVirementUgpPeriodeView}">Consultation Virement UGP</a></li>	
+										<li><a th:href="@{/admin/prgVirementApPeriodeView}">Consultation Remboursement AP</a></li>	
+									</ul>						  						  
+								</li>
+							</ul>
+						</li>
+						<li><a><i class="fa fa-clone"></i>GESTION DES PLAINTES <span class="fa fa-chevron-down"></span></a>
+							<ul class="nav child_menu">
+								<li><a><i></i>Paramètres Plainte<span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+									  <li><a th:href="@{/admin/PrgCategoriePlainte}">Catégorie de plainte</a></li>
+									  <li><a th:href="@{/admin/PrgTypePlainte}">Type de plainte</a></li>
+									  <li><a th:href="@{/admin/prgTypologiePlt}">Statut plainte</a></li>	
+									  <hr> </hr> 
+									  <li><a th:href="@{/admin/PrgNatureGeste}">Nature de geste</a></li>	
+									  <li><a th:href="@{/admin/PrgTypeGeste}">Type de geste</a></li>
+									  <li><a th:href="@{/admin/PrgFormeGeste}">Forme de geste</a></li>	
+									  <li><a th:href="@{/admin/prgLieuIncident}">Lieu d'incident</a></li>
+									  <li><a th:href="@{/admin/prgMomentPl}">Période Incident</a></li>
+									  <li><a th:href="@{/admin/prgObjetDiscrim}">Type de discrimination</a></li>
+									  <li><a th:href="@{/admin/prgModeSaisine}">Mode de Saisine</a></li>
+									  <hr> </hr> 
+									  <li><a th:href="@{/admin/prgNivTraitPlt}">Niveau de traitement de plaintes</a></li>
+									  <li><a th:href="@{/admin/prgPlainteTypeJury}">Partie prenante au règlement de la plainte</a></li>
+									  <li><a th:href="@{/admin/prgTypeDocJust}">Documents justificatifs</a></li>								  									  
+									</ul>  
+								</li>	
+								<li><a th:href="@{/admin/PrgPlainteView}">Enregistrement Plainte</a></li>
+								<li><a><i></i>Traitement Plainte<span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+									  <li><a th:href="@{/admin/prgPlainteView2}">Décision Comité Régionale</a></li>	
+									  <li><a th:href="@{/admin/prgPlainteView3}">Décision UGP</a></li>										  
+									</ul> 
+								</li>	
+							  <li><a th:href="@{/admin/prgPlainteConsView}">Consultation Plainte</a></li>
+							<li><a th:href="@{/admin/odkPlainte}">Consultation Odk Plainte</a></li>
+
+							</ul>
+						</li>
+						<li><a><i class="fa fa-bar-chart-o"></i>SUIVIS-EVALUATIONS <span class="fa fa-chevron-down"></span></a>
+							<ul class="nav child_menu">
+								<li><a><i></i>Suivi des données du PMT<span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a><i></i>Analyse par periode<span class="fa fa-chevron-down"></span></a>
+											<ul class="nav child_menu">
+											  <li><a th:href="@{/admin/prgSuiviRsuMenageAnneeView}">Analyse par Année</a></li>
+											  <li><a th:href="@{/admin/prgSuiviRsuMenageMoisView}">Analyse par Mois</a></li>
+											</ul>
+										 </li>		
+										<li><a><i></i>Analyse par Localisation<span class="fa fa-chevron-down"></span></a>
+											<ul class="nav child_menu">
+											  <li><a th:href="@{/admin/PrgSuiviRsuMenageAnneeRegionView}">Region - Année</a></li>
+											  <li><a th:href="@{/admin/PrgSuiviRsuMenageMoisRegionView}">Region - Mois</a></li>
+											   <hr> </hr>
+											  <li><a th:href="@{/admin/prgSuiviRsuMenageAnneeDepartementView}">Département - Année</a></li>
+											  <li><a th:href="@{/admin/prgSuiviRsuMenageMoisDepartementView}">Département - Mois</a></li>
+											   <hr> </hr>
+											  <li><a th:href="@{/admin/prgSuiviRsuMenageAnneeSousPrefView}">Sous Pref. - Année</a></li>
+											  <li><a th:href="@{/admin/prgSuiviRsuMenageMoisSousPrefView}">Sous Pref. - Mois</a></li>
+											   <hr> </hr>
+											  <li><a th:href="@{/admin/prgSuiviRsuMenageAnneeLocaliteView}">Localité - Année</a></li>
+											  <li><a th:href="@{/admin/prgSuiviRsuMenageMoisLocaliteView}">Localité - Mois</a></li>										  
+											</ul>	
+										</li>											
+									</ul>  
+								</li>	
+								<li><a><i></i>Suivi des Bénéficiaire PFSP<span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a th:href="@{/admin/prgSuiviBenefPhaseView}">Analyse par Phase</a></li>	
+										<li><a><i></i>Analyse par Localisation<span class="fa fa-chevron-down"></span></a>
+											<ul class="nav child_menu">
+											  <li><a th:href="@{/admin/prgSuiviBenefPhaseRegionView}">Region - Phase</a></li>
+											  <li><a th:href="@{/admin/prgSuiviBenefPhaseDepartementView}">Département - Phase</a></li>
+											  <li><a th:href="@{/admin/prgSuiviBenefPhaseSousPrefView}">Sous Pref. - Phase</a></li>
+											  <li><a th:href="@{/admin/prgSuiviBenefPhaseLocaliteView}">Localité - Phase</a></li>								  
+											</ul>	
+										</li>											
+									</ul>  
+								</li>										
+								<li><a><i></i>Suivi des Paiements<span class="fa fa-chevron-down"></span></a>							
+									<ul class="nav child_menu">
+										<li><a><i></i>Analyse par periode<span class="fa fa-chevron-down"></span></a>
+											<ul class="nav child_menu">
+											  <li><a th:href="@{/admin/prgSuiviEvalAnneeView}">Analyse par Année</a></li>
+											  <li><a th:href="@{/admin/prgSuiviEvalPeriodeView}">Analyse par Trimestre</a></li>
+											</ul>
+										 </li>		
+										<li><a><i></i>Analyse par Localisation<span class="fa fa-chevron-down"></span></a>
+											<ul class="nav child_menu">
+											  <li><a th:href="@{/admin/PrgSuiviEvalAnneeRegionView}">Region - Année</a></li>
+											  <li><a th:href="@{/admin/PrgSuiviEvalPeriodeRegionView}">Region - Trimestre</a></li>
+											   <hr> </hr>
+											  <li><a th:href="@{/admin/prgSuiviEvalAnneeDepartementView}">Département - Année</a></li>
+											  <li><a th:href="@{/admin/prgSuiviEvalPeriodeDepartementView}">Département - Trimestre</a></li>
+											   <hr> </hr>
+											  <li><a th:href="@{/admin/prgSuiviEvalAnneeSousPrefView}">Sous Pref. - Année</a></li>
+											  <li><a th:href="@{/admin/prgSuiviEvalPeriodeSPrefView}">Sous Pref. - Trimestre</a></li>
+											   <hr> </hr>
+											  <li><a th:href="@{/admin/prgSuiviEvalAnneeLocaliteView}">Localité - Année</a></li>
+											  <li><a th:href="@{/admin/prgSuiviEvalPeriodeLocaliteView}">Localité - Trimestre</a></li>										  
+											</ul>	
+										</li>											
+									</ul>  
+								</li>		
+							   <li><a><i></i>Suivi des plaintes<span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">		
+										<li><a><i></i>Analyse par periode<span class="fa fa-chevron-down"></span></a>
+											<ul class="nav child_menu">																			  
+											  <li><a th:href="@{/admin/prgSuiviPlainteAnneeView}">Analyse par Années </a></li>						  
+											  <li><a th:href="@{/admin/prgSuiviPlainteMoisView}">Analyse par Mois</a></li>
+											</ul>	
+										</li>											
+										<li><a><i></i>Analyse par Localisation<span class="fa fa-chevron-down"></span></a>
+											<ul class="nav child_menu">	
+											  <li><a th:href="@{/admin/PrgSuiviPlainteAnneeRegionView}">Région - Année</a></li>																			  
+											  <li><a th:href="@{/admin/PrgSuiviPlainteMoisRegionView}">Région - Mois </a></li>
+											  <hr> </hr>
+											  <li><a th:href="@{/admin/prgSuiviPlainteAnneeDepartementView}">Départements - Année </a></li>										  
+											  <li><a th:href="@{/admin/prgSuiviPlainteMoisDepartementView}">Départements - Mois </a></li>
+											  <hr> </hr>
+											  <li><a th:href="@{/admin/prgSuiviPlainteAnneeSousPrefView}">Sous Pref. - Année </a></li>										  
+											  <li><a th:href="@{/admin/prgSuiviPlainteMoisSousPrefView}">Sous Pref. - Mois</a></li>
+											  <hr> </hr>
+											  <li><a th:href="@{/admin/prgSuiviPlainteAnneeLocaliteView}">Localités  - Année</a></li>										  
+											  <li><a th:href="@{/admin/prgSuiviPlainteMoisLocaliteView}">Localités  - Mois</a></li>
+										   </ul>	
+										</li>										   
+									 </ul>
+								</li>
+							</ul>
+						</li>     
+					</ul>
+					<!-- /menu   -->
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>

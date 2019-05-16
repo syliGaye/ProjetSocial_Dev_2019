@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+  
+  <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+		
+	<style>
+			* {
+			  box-sizing: border-box;
+			}
+
+			body {
+			  background-color: #f1f1f1;
+			}
+
+			#regForm1 {
+			  background-color: #ffffff;
+			  margin: 100px auto;
+			  font-family: Raleway;
+			  padding: 40px;
+			  width: 70%;
+			  min-width: 300px;
+			}
+
+			
+			input {
+			  padding: 10px;
+			  width: 100%;
+			  font-size: 17px;
+			  font-family: Raleway;
+			  border: 1px solid #aaaaaa;
+			}
+			
+			select {
+			  padding: 10px;
+			  width: 100%;
+			  font-size: 17px;
+			  font-family: Raleway;
+			  border: 1px solid #aaaaaa;
+			}
+
+			
+			
+			/* Mark input boxes that gets an error on validation: */
+			select.invalid {
+			  background-color: #ffdddd;
+			}
+
+			/* Hide all steps by default: */
+			.tab1 {
+			  display: none;
+			}
+
+			button {
+			  background-color: #4CAF50;
+			  color: #ffffff;
+			  border: none;
+			  padding: 10px 20px;
+			  font-size: 17px;
+			  font-family: Raleway;
+			  cursor: pointer;
+			}
+
+			button:hover {
+			  opacity: 0.8;
+			}
+
+			#prevBtn1 {
+			  background-color: #bbbbbb;
+			}
+
+			/* Make circles that indicate the steps of the form: */
+			.step {
+			  height: 15px;
+			  width: 15px;
+			  margin: 0 2px;
+			  background-color: #bbbbbb;
+			  border: none;  
+			  border-radius: 50%;
+			  display: inline-block;
+			  opacity: 0.5;
+			}
+
+			.step.active {
+			  opacity: 1;
+			}
+
+			/* Mark the steps that are finished and valid: */
+			.step.finish {
+			  background-color: #4CAF50;
+			}
+		</style>	
+	
+  </head>
+	
+  <body  >   
+        <!-- page content -->
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">
+		
+			<br/>
+				<form id="regForm1" name="regForm1" th:object="${odkMembre}" th:action="${'/admin/detailsOdkMembres/'+odkMembre.idMenage}" method="post"    novalidate>
+					<div class="x_title">
+						<b><font color="orange" size="5"><center>LISTE DETAILLEE DES MEMBRES DU MENAGE ODK</center></font></b>
+						<ul class="nav navbar-right panel_toolbox">
+							<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+							</li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<!-- One "tab1" for each step in the form: -->
+					<div class="tab1">
+						<div class="x_panel"> 
+							<div class="x_title">
+								<b><font color="orange" size="4">Localisation du Membre Ménage</font></b>
+								<div class="clearfix"></div>
+							</div>
+							<p><label for="fullname">Région </label><select id="f_region" th:field="*{codeRegion}" disabled="disabled"  >
+								<option value="NONE">Région</option>  
+								<option th:each="SigRegion:${allSigRegion}" 
+										th:value="${SigRegion.getCodRegion()}"
+										th:text="${SigRegion.getNomRegion()}"> 
+								</option>
+							</select></p>
+							<p><label for="fullname">Département </label><select id="f_departement" th:field="*{codeDepartement}" disabled="disabled"  >
+								<option value="NONE">Département</option>  
+								<option th:each="SigDepartement:${allSigDepartement}" 
+										th:value="${SigDepartement.getCodDepartement()}"
+										th:text="${SigDepartement.getNomDepartement()}"> 
+								</option>
+							</select></p><p><label for="fullname">Sous-Préfecture </label><select id="f_s_prefecture" th:field="*{codeSousprefecture}" disabled="disabled"  >
+								<option value="NONE">Sous-Préfecture</option>  
+								<option th:each="SigSousPrefecture:${allSigSousPrefecture}" 
+										th:value="${SigSousPrefecture.getCodSPref()}"
+										th:text="${SigSousPrefecture.getNomSPref()}"> 
+								</option>
+							</select></p><p><label for="fullname">Localité </label><select  id="f_localite" th:field="*{codeLocalite}" name="codLocalite" disabled="disabled" >
+								<option value="NONE">Localité</option>  
+								<option th:each="SigLocalite:${allSigLocalite}" 
+										th:value="${SigLocalite.getCodLocalite()}"
+										th:text="${SigLocalite.getNomLocalite()}"> 
+								</option>
+							</select></p>
+							
+							<p><label for="fullname">Village </label><input placeholder="Village..." oninput="this.className = ''" name="quartierEtVillage" th:field="*{villageQuartier}" disabled="disabled"></p>
+							
+							
+		
+						</div>
+					</div>
+					
+					<div class="tab1">
+						<div class="x_panel"> 
+							<div class="x_title">
+								<b><font color="orange" size="4">Information des Membres du ménage </font></b>
+								<div class="clearfix"></div>
+							</div>
+							
+							<p><label for="fullname">id Membre </label><input type="text" placeholder="idMembre..." oninput="this.className = ''" name="idMembre" th:field="*{idMembre}" disabled="disabled"></p>
+							
+							<p><label for="fullname">id Menage </label><input type="text" placeholder="idMenage..." oninput="this.className = ''" name="idMenage" th:field="*{idMenage}" disabled="disabled"></p>
+							
+							<p><label for="fullname">nom </label><input type="text" placeholder="nom..." oninput="this.className = ''" name="nom" th:field="*{nom}" disabled="disabled"></p>
+							
+							<p><label for="fullname">Prénoms </label><input type="text" placeholder="prenoms..." oninput="this.className = ''" name="prenoms" th:field="*{prenoms}" disabled="disabled"></p>
+							
+							<p><label for="fullname">Surnom </label><input type="text" placeholder="membreSurnom..." oninput="this.className = ''" name="membreSurnom" th:field="*{membreSurnom}" disabled="disabled"></p>
+							
+							
+							<p> <label for="fullname">Nationnalité</label>
+										<select   oninput="this.className = ''" name="nationalite"  th:field="*{nationalite}" disabled="disabled" >
+											<option selected value="1">IVOIRIENNE</option>  
+											<option value="2">NON IVOIRIENNE</option> 
+										</select></p>
+										
+							<p> <label for="fullname">Genre</label>
+										<select   oninput="this.className = ''" name="genre"  th:field="*{genre}" disabled="disabled" >
+											<option selected value="0">FEMININ</option>  
+											<option value="1">MASCULIN</option> 
+										</select></p>	
+
+
+							<p><label for="fullname">Téléphone Membre </label><input type="text" placeholder="numero1..." oninput="this.className = ''" name="numero1" th:field="*{numero1}" disabled="disabled"></p>
+							
+							
+							
+							<p><label for="fullname">Type de pièce </label><select id="f_region" th:field="*{typePiecedidentite}" disabled="disabled"  >
+								<option value="NONE">Type de pièce</option>  
+										<option th:each="PmtTypePieceident:${allPmtTypePieceident}" 
+												th:value="${PmtTypePieceident.getCodTypePieceid()}"
+												th:text="${PmtTypePieceident.getLibelleTypPieceid()}"> 
+										</option>
+							</select></p>
+							
+							<p><label for="fullname">Numéro de pièce </label><input type="text" placeholder="numeroCni..." oninput="this.className = ''" name="numeroCni" th:field="*{numeroCni}" disabled="disabled"></p>
+							
+							<p><label for="fullname">Nom-Prénoms Père</label><input type="text" placeholder="nometprenomsdupere..." oninput="this.className = ''" name="nometprenomsdupere" th:field="*{nometprenomsdupere}" disabled="disabled"></p>
+							
+							<p><label for="fullname">Nom-Prénoms Mère</label><input type="text" placeholder="nometprenomsdelamere..." oninput="this.className = ''" name="nometprenomsdelamere" th:field="*{nometprenomsdelamere}" disabled="disabled"></p>
+							
+							
+		
+						</div>
+					</div>
+					
+					
+					<div class="tab1">
+						<div class="x_panel">
+							<div class="x_title">
+								<b><font color="orange" size="4">Details Des Membres Ménage</font></b>
+								<div class="clearfix"></div>
+							</div>
+							
+							<p><label for="fullname">Membre scolarisé</label><input type="number" placeholder="Membre scolarisé..." oninput="this.className = ''" name="membreScolarise" th:field="*{membreScolarise}" disabled="disabled"></p>
+							
+							<p><label for="fullname">Ecole Actuelle </label><select   oninput="this.className = ''" name="ecoleActuelle"  th:field="*{ecoleActuelle}" disabled="disabled" >
+									
+										<option value="NONE">Ecole Actuelle</option>  
+										<option selected value="0">NON</option>  
+										<option value="1">OUI</option>
+									</select></p>
+							
+							<p><label for="fullname">Toit </label><select   oninput="this.className = ''" name="codNiveauEtude"  th:field="*{niveauEtude}" disabled="disabled" >
+								
+										<option value="NONE">Niveau d'étude</option>  
+										<option th:each="PmtNiveauEtude:${allPmtNiveauEtude}" 
+												th:value="${PmtNiveauEtude.getCodNiveauEtude()}"
+												th:text="${PmtNiveauEtude.getLibelleNiveauEtude()}"> 
+										</option>
+									</select></p>
+							
+							<p><label for="fullname">Travailleur Indépendant </label><input type="text" placeholder="Travailleur Indépendant..." oninput="this.className = ''" name="travailleurIndependant" th:field="*{travailleurIndependant}" disabled="disabled"></p>
+							
+							<p><label for="fullname">Profession</label><input type="text" placeholder="profession..." oninput="this.className = ''" name="profession" th:field="*{profession}" disabled="disabled"></p>
+							 
+							
+							<p><label for="fullname">Capacité SMS </label><select   oninput="this.className = ''" name="capaciteSms" th:field="*{capaciteSms}" disabled="disabled" >
+								<option value="NONE">Capacité SMS</option>  
+										<option value="1">Oui lire et écrire</option>  
+										<option value="2">Seulement lire</option> 
+										<option value="3">NON </option>
+							</select></p>
+							<p><label for="fullname">Activité </label><select   oninput="this.className = ''" name="activiteCm" th:field="*{activiteCm}" disabled="disabled" >
+								<option value="NONE">Activité</option>  
+										<option th:each="PmtActiviteCm:${allPmtActiviteCm}" 
+												th:value="${PmtActiviteCm.getCodActiviteCm()}"
+												th:text="${PmtActiviteCm.getLibelleActiviteCm()}"> 
+										</option>
+							</select></p>
+							<p><label for="fullname">Situation Matrimonial </label><select   oninput="this.className = ''" name="statutmatrimonial" th:field="*{statutmatrimonial}" disabled="disabled">
+								<option value="NONE">Situation Matrimoniale</option>  
+										<option th:each="PmtStatutMatrimonial:${allPmtStatutMatrimonial}" 
+												th:value="${PmtStatutMatrimonial.getCodStatuMat()}"
+												th:text="${PmtStatutMatrimonial.getLibelleStatuMat()}"> 
+										</option>
+							</select></p>
+							<p><label for="fullname">Statut Résidence </label><select   oninput="this.className = ''" name="membreStatutResidence" th:field="*{membreStatutResidence}" disabled="disabled">
+								<option value="NONE">Statut Résidence</option>  
+										<option th:each="PmtStatutResidence:${allPmtStatutResidence}" 
+												th:value="${PmtStatutResidence.getCodStatutRes()}"
+												th:text="${PmtStatutResidence.getLibelleStatutRes()}"> 
+										</option>
+							</select></p>
+							<p><label for="fullname">Lien </label><select   oninput="this.className = ''" name="membreLien" th:field="*{membreLien}" disabled="disabled" >
+							  
+								<option value="NONE">Lien</option>  
+										<option th:each="PmtLienMenage:${allPmtLienMenage}" 
+												th:value="${PmtLienMenage.getCodLien()}"
+												th:text="${PmtLienMenage.getLibelleLien()}"> 
+										</option>
+							</select></p>
+							
+						</div>
+					</div>
+					<div class="tab1">
+						<div class="x_panel">
+							<div class="x_title">
+								<b><font color="orange" size="4">Information de vulnérabilité du membre</font></b>
+								<div class="clearfix"></div>
+							</div>
+							
+							<table border="0">
+								<tr>
+									<td width="30%">
+										<p> <label for="fullname">Cas de maladie (3 dernier mois)</label>
+										<select   oninput="this.className = ''" name="tomberMalade" th:field="*{tomberMalade}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>  
+										</select></p>
+										
+										<p><label for="fullname">si oui à t'il consulter un centre de santé</label>
+										<select   oninput="this.className = ''" name="consulterPersonnel"  th:field="*{consulterPersonnel}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option> 
+										</select></p>
+										
+										<p><label for="fullname">Si Oui Mode de reglément des soins?</label><input type="text" placeholder="priseEnchargeSoin..." oninput="this.className = ''" name="priseEnchargeSoin" th:field="*{priseEnchargeSoin}" disabled="disabled"></p>
+										
+										
+										<p> <label for="fullname">Le membre est- elle Enceinte? </label>
+										<select   oninput="this.className = ''" name="etreEnceinte"  th:field="*{etreEnceinte}" disabled="disabled">
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option> 
+										</select></p>
+										
+										<p> <label for="fullname">A t'il un carnet de santé?</label>
+										<select   oninput="this.className = ''" name="avoirCarnet"  th:field="*{avoirCarnet}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+										<p> <label for="fullname">Etre vacciné? </label>
+										<select   oninput="this.className = ''" name="etreVacciner"  th:field="*{etreVacciner}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+										<p> <label for="fullname">Avoir une maladie chronique</label>
+										<select   oninput="this.className = ''" name="avoirMaladieChronique" th:field="*{avoirMaladieChronique}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+										<p> <label for="fullname">Etre handicap? </label>
+										<select   oninput="this.className = ''" name="etreHandicaper" th:field="*{etreHandicaper}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+									</td>
+									<td width="3%">
+									</td>
+									<td width="30%">
+										<p><label for="fullname">Souffrir handicap? </label>
+										<select   oninput="this.className = ''" name="souffrirHandicap" th:field="*{souffrirHandicap}" disabled="disabled">
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option> 
+										</select></p>
+										
+										<p><label for="fullname">Incapacité activité managère? </label>
+										<select   oninput="this.className = ''" name="incapaciteActiviteMenageres"   th:field="*{incapaciteActiviteMenageres}" disabled="disabled">
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+										<p><label for="fullname">Incapacité à travailler?</label>
+										<select   oninput="this.className = ''" name="incapaciteATravailler"  th:field="*{incapaciteATravailler}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+										<p><label for="fullname">incapacite A aller A lecole? </label>
+										<select   oninput="this.className = ''" name="incapaciteAallerAlecole"   th:field="*{incapaciteAallerAlecole}" disabled="disabled">
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+										
+										<p><label for="fullname">incapacite A s'habiller? </label>
+										<select   oninput="this.className = ''" name="incapaciteAshabiller"  th:field="*{incapaciteAshabiller}" disabled="disabled">
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>  
+										</select></p>
+										
+										<p><label for="fullname">incapacite A Se nourrir?</label>
+										<select   oninput="this.className = ''" name="incapaciteASenourrir"   th:field="*{incapaciteASenourrir}" disabled="disabled">
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option> 
+										</select></p>
+										
+										<p><label for="fullname">incapacite A Se laver? </label>
+										<select   oninput="this.className = ''" name="incapaciteASelaver"  th:field="*{incapaciteASelaver}" disabled="disabled" >
+											<option selected value="0">NON</option>  
+											<option value="1">OUI</option>
+										</select></p>
+									</td>
+									
+								</tr>
+							</table>
+							
+					</div>
+					</div>
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="prevBtn1" onclick="nextPrev1(-1)">Précédent</button>
+      <button type="button" id="nextBtn1" onclick="nextPrev1(1)">Suivant</button>
+	  <button type="button" id="lienBtn1" onclick="history.back()">Quitter</button>
+	  
+	 
+    </div>
+  </div>
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+  </div>
+ 
+</form>
+		</div>
+        <!-- /page content -->
+
+	
+    </body>
+</html>

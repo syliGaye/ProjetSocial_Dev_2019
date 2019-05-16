@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">          
+			<br>
+			<div class="x_title">
+				<b><font color="orange"><font face=Castellar><font size="4"><center>DOSSIER DE VALIDATION DE LA PLAINTE</center></font></font></font></b>
+				<ul class="nav navbar-right panel_toolbox">
+				<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+			<center>
+				<br/>
+				<div class="row-fluid sortable ui-sortable">		                                                            
+					<div class="panel panel-yellow">
+						<div class="panel-body">
+							<table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+									<tr>
+										<td align="center">	
+											<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+												<center>
+													<a onclick = "history.back()" class="btn btn-warning">Retour</a>
+												</center>
+								             </div>
+										</td>		
+									</tr>
+							</table>
+							<div id="no-more-tables">								
+								<div class="col-xs-3">
+								  <!-- required for floating -->
+								  <!-- Nav tabs -->
+									<ul class="nav nav-tabs tabs-left">							
+										<li><a href="#traitement" data-toggle="tab">Sessions de Traitement</a>
+										</li>
+																		
+										<li class="active"><a href="#infos_comp" data-toggle="tab">Infos-Compléméntaires</a>
+										</li>										
+									</ul>
+								</div>	
+								<div class="col-xs-9">
+								  <!-- Tab panes -->
+									<div class="tab-content">
+										<div class="tab-pane active" id="traitement">
+											<!-- /Zone d'inserion des traitements -->
+										    <a class="btn btn-large btn-success" th:with="var=${numPlainte}" th:href="@{/admin/prgPlainteTraitement0/add/0/__${var}__}" >Nouvelle sessions de validation</a>
+											<p class="lead">Liste des sessions de validation de la plainte</p>
+											<table  class="table table-striped jambo_table bulk_action" border=1 width=100%> 
+												<thead>
+													<tr>														
+														<th  align="center">N°Traitement </th>
+														<th  align="center">Date</th>
+														<th>Agent</th>														
+														<th align="center">Solution Proposée</th>
+														<th  align="center">Actions</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="prgPlainteTraitementView,iterStat:${listPlainteTraitementView}">
+														
+														<td  align="center" th:text="${prgPlainteTraitementView.numTrait}" width=10%></td>
+														<td  align="center" th:text="${prgPlainteTraitementView.dateTraitement}"  width=10%></td>
+														<td th:text="${prgPlainteTraitementView.nomAgentTraiteur}"></td>														
+														<td  align="center" th:text="${prgPlainteTraitementView.solutionPropose}" width=15%></td>
+														<td width=40%  align="center">
+															<center>
+																<a class="btn btn-info btn-xs" th:href="@{/admin/editPrgPlainteTraitement0/0/__${prgPlainteTraitementView.numPlainte}__/__${prgPlainteTraitementView.numTrait}__}" onclick="return confirm('Voulez-vous modifier cette plainte ?')" ><i class="fa fa-edit"></i>&nbsp;
+																	Modifier
+																</a>
+																 <a class="btn btn-danger btn-xs" th:href="@{/admin/prgPlainteTraitement0/delete/__${prgPlainteTraitementView.numTrait}__}" onclick="return confirm('Voulez-vous supprimer cette plainte ?')" ><i class="fa fa-trash-o"></i>&nbsp;
+																	Supprimer
+																</a>  
+																<a class="btn btn-info btn-xs" th:href="@{/admin/prgPlainteTraitement0Detail/0/__${prgPlainteTraitementView.numPlainte}__/__${prgPlainteTraitementView.numTrait}__}"  ><i class="fa fa-edit"></i>&nbsp;
+																	Details Analyse 
+																</a>																
+															</center>            
+														</td>
+													</tr>
+												</tbody>
+											</table>						
+										</div>
+										<div class="tab-pane" id="temoins">
+											<p class="lead">Liste des temoins</p>
+											<!-- /Zone d'inserion des temoins -->
+											<table  class="table table-striped jambo_table bulk_action" width=100%> 
+												<thead>
+													<tr>										
+													   <th >N°Painte</th>
+														<th >Nom</th>
+														<th >Prenom</th>
+														<th>Activite</th>
+														<th>Contact</th>
+														<th >Localite</th>
+														<th>recit</th>									   
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="prgPlainteTemoinsView,iterStat:${listPrgPlainteTemoinsView}">
+														<td th:text="${prgPlainteTemoinsView.numPlainte}"></td>
+														<td th:text="${prgPlainteTemoinsView.nomTemoin}"></td>
+														<td th:text="${prgPlainteTemoinsView.prenomTemoin}"></td>
+														<td th:text="${prgPlainteTemoinsView.activiteTemoin}"></td>
+														<td th:text="${prgPlainteTemoinsView.contactTemoin}"></td>
+														<td th:text="${prgPlainteTemoinsView.nomLocalite}"></td>
+														<td th:text="${prgPlainteTemoinsView.recitTemoin}" width="20%"></td>
+													</tr>
+												</tbody>
+											</table>						
+										</div>										
+									    <div class="tab-pane" id="infos_comp">
+											<p class="lead">Infos compléméntaire</p>
+											<!-- /Zone d'inserion des INFOS COMPLEMENTAIRE -->
+										</div>									
+									</div>
+									
+								</div>
+								
+								<table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+									<tr>
+										<td align="center">	
+											<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+												<center>
+													<a onclick = "history.back()" class="btn btn-warning">Retour</a>
+												</center>
+											 </div>
+
+										</td>		
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>	
+                </div>	
+			</center>		
+		</div>	
+    <!-- /page content -->
+	</body>
+</html>
+

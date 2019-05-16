@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+	 
+	    
+        <!-- page debut filtre -->
+   <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">  <br/>    
+       
+		<b><font color="orange"><font face=Castellar><font size="4"><center>CONSULTATIONS DES PAIEMENTS PAR DEPARTEMENT ET PAR PERIODE </center></font></font></font></b>
+
+        <br/>
+		<b><font color="orange"><font face=Castellar><font size="4"><center>FILTRE</center></font></font></font></b>	
+			<center>						    
+				<div class="x_content" width="95%">
+					<div class="portlet-header">
+					
+					
+						<form class="form-horizontal form-label-left " id="dataPrgSuiviEvalPeriodeDepartementView" th:object="${SigFiltreRecherche}" th:action="@{/admin/prgSuiviEvalPeriodeDepartementView/rech1}" method="post" enctype="multipart/form-data" novalidate>	
+						<table class="table-striped jambo_table bulk_action" width="70%"  style="border-collapse: separate;  border-spacing: 10px; background-color: Lavender;">
+							<tbody>
+						<tr spacing="10px" padding="10px">
+									 <td align="right">
+										<label for="PDebut"><font color=black>Periode Debut:</font></label>
+									</td>	
+																		<td align="left">
+									    <select class="form-control" name="PDebut" type="text" id="f_PDebut"  th:field="*{anneeDebut}"  required="">
+									      <option value="">Sélectionner une periode Debut</option>
+                                             <option  th:each="PrgEmmissionPeriodeView:${allPrgEmmissionPeriodeView}" 
+                                                    th:value="${PrgEmmissionPeriodeView.getIdPeriode()}"
+                                                    th:text="${PrgEmmissionPeriodeView.getLibellePeriode()}">
+                                              </option>
+                         				</select>											
+									</td>
+									<td align="right">
+										<label for="PFin"><font color=black>Periode Fin:</font></label>
+									</td>	
+									<td align="left">
+									    <select class="form-control" name="PFin" type="text" id="f_PFin"  th:field="*{anneeFin}"  required="">
+									      <option value="">Sélectionner une periode Fin</option>
+                                               <option  th:each="PrgEmmissionPeriodeView:${allPrgEmmissionPeriodeView}" 
+                                                    th:value="${PrgEmmissionPeriodeView.getIdPeriode()}"
+                                                    th:text="${PrgEmmissionPeriodeView.getLibellePeriode()}">
+                                              </option>
+                         				</select>											
+									</td>
+									</tr>
+								<tr>
+                                    <td align="right">
+										<label for="Region"><font color=black>Region:</font></label>
+									</td>	
+								<td align="left">
+									    <select class="form-control" name="Région" type="number" th:field="*{codRegion}" id="f_region" required="">
+									      <option value="">Sélectionner une Région</option>
+                                              <option th:each="SigRegion:${allSigRegion}" 
+	                                                   th:value="${SigRegion.getCodRegion()}"
+	                                                   th:text="${SigRegion.getNomRegion()}">
+	                                            </option>
+                         				 </select>											
+									</td>
+								
+                                    <td align="right">
+										<label for="Département"><font color=black>Département:</font></label>
+									</td>	
+									<td align="left">
+									    <select class="form-control" name="Département" type="number" th:field="*{codDepartement}" id="f_departement" required="">
+									      <option value="">Sélectionner un Département</option>
+                                             <option  th:each="SigDepartement:${allSigDepartement}" 
+	                                                     th:value="${SigDepartement.getCodDepartement()}"
+	                                                     th:text="${SigDepartement.getNomDepartement()}">
+	                                            </option>
+                         				</select>											
+									</td>
+									<input class="form-control" type="hidden"  value="FILTRE" name="paramchoix"/>
+								</tr>
+								
+								
+
+							</tbody>
+						</table>
+						</br>
+						<center>
+							<p><button target="submit"  class="btn btn-success" style="background-color: #0099ff"><b>Rechercher</b></button></p>
+						</center>
+						</form>
+					</div>
+				</div>
+			</center>
+            <br/>	
+
+
+
+			<div class="col-md-12 col-sm-12 col-xs-12">
+					<table width="100%">
+						<tr>
+							<td>
+								<form th:object="${SigFiltreRecherche}" th:action="@{/admin/prgSuiviEvalPeriodeDepartementView/rech1}" method="post" enctype="multipart/form-data" novalidate> 
+									<input th:field="*{anneeDebut}"  type="hidden" class="form-control" id="d_annee" />
+									<input th:field="*{anneeFin}"  type="hidden" class="form-control" id="f_annee" />
+									<input th:field="*{codRegion}" type="hidden" class="form-control" id="f_region"  />
+									<input th:field="*{codDepartement}" type="hidden" class="form-control" id="f_departement"  />
+									
+									
+									<input class="form-control" type="hidden"  value="EXCEL" name="paramchoix"/>
+						
+							<center>		<button type="submit"  class="btn btn-large btn-primary navbar-center"   ><b>Générer Excel</b></button>  	</center>
+						
+								</form>
+								
+							</td>
+							
+						</tr>
+					</table>			
+
+         <!-- page fin filtre -->
+        
+        <!-- page detail fitre -->
+
+        <!-- page content -->
+       
+			<div class="">
+				<div class="x_title">
+						
+						
+						<ul class="nav navbar-right panel_toolbox">
+						  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<center>
+<!--debut contenue ---------------------------------PAGE--><!--BEGIN CONTENT-->
+
+				<br/>
+			
+				
+				<div class="row-fluid sortable ui-sortable">		                                                            
+					<div class="panel panel-yellow">
+						<div class="panel-body">
+							<div id="no-more-tables">
+								<table id="datatable-fixed-header"  class="table table-striped jambo_table bulk_action table-bordered" width="70%">
+								
+									   	   <thead >
+									    									    <tr>
+										    <th colspan="2"><center>Période</center></th>
+											<th colspan="6"><center>Total beneficiaire</center></th>
+											<th colspan="6"><center>Total beneficiaire Femmes</center></th>
+											<th colspan="6"><center>Total beneficiaire Hommes</center></th>
+																		
+										</tr>
+										<tr >
+										    
+										    <th rowspan="1"><center>Période </center></th>
+											<th rowspan=""><center>Departement</center></th>
+											
+											<th rowspan="1"><center>Nb total emission</center></th>
+											<th rowspan="1"><center>Montant total emission</center></th>
+											<th rowspan="1"><center>Nb total emission payées</center></th>
+											<th rowspan="1"><center>Montant total Payé</center></th>
+											<th rowspan="1"><center>Nb total emission non payées</center></th>
+											<th rowspan="1"><center>Montant total non Payé</center></th>
+											
+											<th rowspan="1"><center>Nb total emission</center></th>
+											<th rowspan="1"><center>Montant total emission</center></th>
+											<th rowspan="1"><center>Nb total emission payées</center></th>
+											<th rowspan="1"><center>Montant total Payé</center></th>
+											<th rowspan="1"><center>Nb total emission non payée</center></th>
+											<th rowspan="1"><center>Montant total non Payé</center></th>
+											
+											<th rowspan="1"><center>Nb total emission</center></th>
+											<th rowspan="1"><center>Montant total emission</center></th>
+											<th rowspan="1"><center>Nb total emission payées</center></th>
+											<th rowspan="1"><center>Montant total Payé</center></th>
+											<th rowspan="1"><center>Nb total emission non payée</center></th>
+											<th rowspan="1"><center>Montant total non Payé</center></th>
+											<th><center>Action</center></font></th>
+											
+										</tr>
+									
+										
+									</thead>
+								<tbody id="tbodyParams">
+									<tr th:each="prgSuiviEvalPeriodeDepartementView, i:${result}">
+										    
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.libellePeriode}"width="5%"></td>
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.nomDepartement}"width="15%"></td>	
+											
+							                 <td th:text="${prgSuiviEvalPeriodeDepartementView.nbTotalEmission}" align="center" ></td>
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.mtTotalEmission}" align="center" > </td>
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.nbTotalPaye}" align="center" > </td>
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.mtTotalPaye}" align="center" > </td>
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.nbTotalNonPaye}"  align="center" ></td> 
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.mtTotalNonPaye}" align="center" > </td>
+											
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.nbTotalEmissionFemme}" align="center" > </td>
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.mtTotalEmissionFemme}"  align="center" ></td>
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.nbTotalPayeFemme}"  align="center" ></td> 
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.mtTotalPayeFemme}" align="center" > </td>
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.nbTotalNonPayeFemme}"  align="center" > </td>
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.mtTotalNonPayeFemme}" align="center" > </td>
+											
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.nbTotalEmissionHomme}"  align="center" ></td> 
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.mtTotalEmissionHomme}"  align="center" ></td>
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.nbTotalPayeHomme}"  align="center" ></td>
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.mtTotalPayeHomme}" align="center" > </td>
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.nbTotalNonPayeHomme}"  align="center" ></td> 
+											<td th:text="${prgSuiviEvalPeriodeDepartementView.mtTotalNonPayeHomme}" align="center" > </td>
+											<td> 
+												<table>
+												<tr><td align="center">	
+													<a class="btn btn-info btn-xs" th:href="@{/admin/detailDepPePrgSuiviEvalBenefView/__${prgSuiviEvalPeriodeDepartementView.codPeriode}__/__${prgSuiviEvalPeriodeDepartementView.codDepartement}__}"><i class="fa fa-edit"></i>&nbsp;
+													Detail 
+													</a> 
+										        </td></tr>
+												</table>
+											</td>
+										</tr>
+											</tbody>
+									
+								</table>
+							</div>
+						</div>
+					</div>
+					</div>
+                  </center>
+				</div>
+			</div>
+		</div>	
+    <!-- /page content -->
+	</body>
+</html>
+

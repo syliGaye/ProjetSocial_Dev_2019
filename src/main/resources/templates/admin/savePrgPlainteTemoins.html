@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">    
+    
+    <head>
+		<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+		
+	</head>
+
+	<body class="nav-md">
+    
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+			<div class="">
+				<div class="page-title">
+					<div class="title_left">
+						<h3>Enregistrement</h3>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="x_panel">
+							<div class="x_title">
+								<h2>Enregistrer un Temoin </h2>
+								<ul class="nav navbar-right panel_toolbox">
+									<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+									</li>
+								</ul>
+								<div class="clearfix"></div>
+							</div>
+							
+							
+						
+							<div class="x_content">
+								<form id="regForm" class="form-horizontal form-label-left " th:object="${PrgPlainteTemoins}" th:action="@{/admin/savePrgPlainteTemoins}" method="post"    novalidate>
+			
+	<table width="100%">
+	                                      <tr width="100%">
+	                                      <td width="100%">
+	                                  	<div class="row top_tiles" style="margin: 0 0; background-color:Green">
+						<span><center><font color="white"><font size="3">Reference Plainte   </font></center></span>
+						
+			                     	</div>
+	                                </td>
+	                                </tr>
+	                                </table>
+	                                 </br>	
+	
+		
+		
+																	
+			<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Numero Plainte<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">									
+										
+										 <select class="form-control" name="numPlainte"th:field="*{numPlainte}" >
+                                             
+                                                    <option th:each="varPrgPlainte:${allPrgPlainte}" 
+                                                    th:value="${varPrgPlainte.getNumPlainte()}" 
+                                                    th:text="${varPrgPlainte.getNumPlainte()+ ' ' + 'DU' + ' '  +varPrgPlainte.getDateEvent()}"> 
+                                            </option>
+                                    </select>
+                        
+                      
+										
+										
+										</div>
+										
+									  <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									</div>								
+				
+				
+						
+									
+	<table width="100%">
+	                                      <tr width="100%">
+	                                      <td width="100%">
+	                                  	<div class="row top_tiles" style="margin: 0 0; background-color:Green">
+						<span><center><font color="white"><font size="3">Renseignements sur le Temoin</font></center></span>
+						
+			                     	</div>
+	                                </td>
+	                                </tr>
+	                                </table>
+	                                 </br>	
+									
+									
+								
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Numero Temoin <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Numero Temoin" required="required" type="text" th:field="*{idTemoin}" readonly="true">
+										</div>
+									</div>  									
+	      
+	        </br>	
+								
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nom <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Nom" required="required" type="text" th:field="*{nomTemoin}">
+										</div>
+									</div>    
+	      
+	     
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Prenoms <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Nom" required="required" type="text" th:field="*{prenomTemoin}">
+										</div>
+									</div>    
+	   
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Contact <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Nom" required="required" type="text" th:field="*{contactTemoin}">
+										</div>
+									</div>    
+	   
+	   
+	   
+	<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Activite <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Nom" required="required" type="text" th:field="*{activiteTemoin}">
+										</div>
+									</div>    
+	      
+	   
+	   
+	   
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Recit <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Recit" required="required" type="text" th:field="*{recitTemoin}">
+										</div>
+									</div> 
+	      
+	      
+	      
+	      
+														<div class="ln_solid"></div>
+								<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+                                         <center>
+                                 <a th:href="@{/admin/PrgPlainteTemoins/add}" class="btn btn-default">Ajouter un autre Temoin</a>
+        
+                                         
+										    <a th:href="@{/admin/PrgPlainteView}" class="btn btn-warning" >Retour</a>
+											<a th:href="@{/admin/PrgPlainteTemoins/add}" class="btn btn-default">Annuler</a>
+											<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+											</center>
+
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			
+                  </div>
+                </div>
+        </div>
+        
+        <!-- /page content -->
+
+ 
+</body></html>

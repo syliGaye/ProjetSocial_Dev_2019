@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+  
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+		</br>
+			<div class="clearfix">
+			</div>
+			</br></br></br></br></br></br></br></br></br></br>
+			<div class="row">
+				<table border="0">
+					<tr>
+						<td width="15%">
+						</td>
+						<td width="45%">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<b><font color="orange" size="5"><center> RECHERCHE D'UN MENAGE</center></font></b>
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+						  
+								<div class="x_content">
+									<form class="form-horizontal form-label-left " th:object="${rsuMembreMenage}" th:action="${'/admin/listRsuMembreMenage'}"    novalidate>
+														<div class="item form-group" width="100%">
+															<label class="control-label col-md-3 col-sm-3 col-xs-12" for="f_region">Région<span class="required">*</span>
+															</label>
+																<div class="col-md-9 col-sm-6 col-xs-12">
+																	<select  class="form-control col-md-7 col-xs-12" type="text"  id="f_region2"  required="">
+																	  <option value="">Selectioner une Région</option>
+																		  <option th:each="SigRegion:${allSigRegion}" 
+																				   th:value="${SigRegion.getCodRegion()}"
+																				   th:text="${SigRegion.getNomRegion()}">
+																			</option>
+																	 </select>	
+																</div>
+														</div>  
+											
+														<div class="item form-group">
+															<label class="control-label col-md-3 col-sm-3 col-xs-12" for="f_Depart">Departement<span class="required">*</span>
+															</label>
+																<div class="col-md-9 col-sm-6 col-xs-12">
+																	 <select class="form-control" type="text" id="f_departement2"  required="">
+																	  <option value="">Selectioner un Département</option>
+																		 <option  th:each="SigDepartementView:${allSigDepartement}" 
+																					 th:value="${SigDepartementView.getCodDepartement()}"
+																					 th:text="${SigDepartementView.getNomDepartement()}">
+																		  </option>
+																	 </select>
+																</div>
+														</div>  
+
+														<div class="item form-group">
+															<label class="control-label col-md-3 col-sm-3 col-xs-12" for="f_s_prefecture">Sous préfecture<span class="required">*</span>
+															</label>
+																<div class="col-md-9 col-sm-6 col-xs-12">
+																	<select class="form-control" id="f_s_prefecture2"   required="">
+																		  <option value="">Selectioner une Sous-Préfecture</option>
+																			 <option  th:each="SigSousPrefecture:${allSigSousPrefecture}" 
+																					th:value="${SigSousPrefecture.getCodSPref()}"
+																					th:text="${SigSousPrefecture.getNomSPref()}">
+																		   </option>
+																   </select>
+																</div>
+														</div>  
+
+														<div class="item form-group">
+															<label class="control-label col-md-3 col-sm-3 col-xs-12" for="f_Localite" >Localite<span class="required">*</span>
+															</label>
+																<div class="col-md-9 col-sm-6 col-xs-12">
+																	<select class="form-control" type="text" id="f_localite2"  required="">
+																	 <option value="">Selectioner une localité</option>
+																		 <option  th:each="SigLocalite:${allSigLocalite}" 
+																				th:value="${SigLocalite.getCodLocalite()}"
+																				th:text="${SigLocalite.getNomLocalite()}">
+																		</option>
+																	</select>
+																</div>
+														</div>  
+														<div class="item form-group">
+															<label class="control-label col-md-3 col-sm-3 col-xs-12" for="f_menage">Menage<span class="required">*</span>
+															</label>
+																<div class="col-md-9 col-sm-6 col-xs-12">
+																	 <select class="form-control"   name="codMenage" id="f_menage2" required="">
+																		<option value="">Menage</option>  
+																		<option th:each="RsuMenageView:${allRsuMenageView}" 
+																			th:value="${RsuMenageView.getCodMenage()}" 
+																			th:text="${RsuMenageView.getCodMenage() + ' -- '+RsuMenageView.getNomChefMenage()}" > 
+																		</option>
+																   </select>
+																</div>
+	
+														</div> 	
+													<div class="item form-group">
+														<center>
+																<button id="send" type="submit" class="btn btn-primary">MODIFIER </button>
+														</center>
+														</div> 																	</div>
+	
+																																				
+
+									</form>
+								</div>
+							
+							</div>
+						</div>
+						</td>
+						<td width="15%">
+						</td>
+					</tr>
+				</table>
+					
+            </div>
+        </div>
+    <!-- /page content -->
+	</body>
+</html>

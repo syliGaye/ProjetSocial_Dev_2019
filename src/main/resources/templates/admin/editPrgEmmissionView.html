@@ -1,0 +1,499 @@
+ 
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head><title>FILET SOCIAUX| Accueil</title>
+    <meta charset="utf-8">
+	     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" th:href="@{/images/icons/favicon.ico}">
+    <link rel="apple-touch-icon" th:href="@{/images/icons/favicon.png}">
+    <link rel="apple-touch-icon" sizes="72x72" th:href="@{/images/icons/favicon-72x72.png}">
+    <link rel="apple-touch-icon" sizes="114x114" th:href="@{/images/icons/favicon-114x114.png}">
+    <!--Loading bootstrap css-->
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
+    <link type="text/css" rel="stylesheet" th:href="@{/vendors/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/vendors/font-awesome/css/font-awesome.min.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/vendors/bootstrap/css/bootstrap.min.css}">
+    <!--LOADING STYLESHEET FOR PAGE--><!--Loading style vendors-->
+    <link type="text/css" rel="stylesheet" th:href="@{/vendors/animate.css/animate.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/vendors/jquery-pace/pace.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/vendors/iCheck/skins/all.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/vendors/jquery-news-ticker/jquery.news-ticker.css}">
+    <!--Loading style-->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/themes/style3/pink-blue.css}" id="theme-change" class="style-change color-change}">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style-responsive.css}">
+</head>
+<body>
+<div>
+    
+<div id="wrapper">
+<!--BEGIN SIDEBAR MENU777777777777777777777777777777777777777777777777777777777777-->
+<nav id="sidebar" role="navigation" data-step="2" class="navbar-default navbar-static-side">
+    <div class="sidebar-collapse menu-scroll">
+        <ul id="side-menu" class="nav">
+            <li class="user-panel">
+<!--                class="thumb" class="img-circle"-->
+                <div ><img src="" alt="" style="width: 201px; height:251px;" /></div>
+                <div align="center"><p><br>
+</p>
+
+                </div>
+                <div class="clearfix"></div>
+            </li>
+           <li class="active"><a href="index2.php"><i class="fa fa-tachometer fa-fw">
+                        <div class="icon-bg bg-orange"></div>
+                    </i><span class="menu-title">Accueil</span></a></li>
+
+            <li><a href="#"><i class="fa fa-desktop fa-fw">
+                        <div class="icon-bg bg-violet"></div>
+                    </i><span class="menu-title">GESTION</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                <li><a href="form_client.php"><i class="fa fa-file-text-o"></i><span class="submenu-title">Client</span></a></li>
+                <li><a href="form_hotel.php"><i class="fa fa-file-text-o"></i><span class="submenu-title">Hotel</span></a></li>
+                <li><a href="form_utilisateur.php"><i class="fa fa-file-text-o"></i><span class="submenu-title">Utilisateur</span></a></li>
+
+                </ul>
+            </li>
+            <li><a href="#"><i class="fa fa-edit fa-fw">
+                        <div class="icon-bg bg-yellow"></div>
+                    </i><span class="menu-title">EDITION</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="#"><i class="fa fa-print"></i><span class="submenu-title">Client</span></a></li>
+                    <li><a href="#"><i class="fa fa-print"></i><span class="submenu-title">Hotel</span></a></li>
+                    <li><a href="#"><i class="fa fa-print"></i><span class="submenu-title">Utilisateur</span></a></li>
+
+                </ul>
+            </li>
+            <li><a href="#"><i class="fa fa-sitemap fa-fw">
+                        <div class="icon-bg bg-dark"></div>
+                    </i><span class="menu-title">CROISEMENT</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="#"><i class="fa fa-file-text-o"></i><span class="submenu-title">Avis de Recherche</span></a></li>
+                </ul>
+            </li>
+            <li><a href="#"><i class="fa fa-bar-chart-o fa-fw">
+                        <div class="icon-bg bg-orange"></div>
+                    </i><span class="menu-title">STATISTIQUE</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="charts-flotchart.html"><i class="fa fa-angle-right"></i><span class="submenu-title">Flot Charts</span></a></li>
+                    <li><a href="charts-chartjs.html"><i class="fa fa-angle-right"></i><span class="submenu-title">Chartjs</span></a></li>
+                    <li><a href="#"><i class="fa fa-angle-right"></i><span class="submenu-title">HighCharts</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li><a href="charts-highchart-line.html"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Line Charts</span></a></li>
+                            <li><a href="charts-highchart-area.html"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Area Charts</span></a></li>
+                            <li><a href="charts-highchart-column-bar.html"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Column & Bar Charts</span></a></li>
+                            <li><a href="charts-highchart-pie.html"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Pie Charts</span></a></li>
+                            <li><a href="charts-highchart-scatter-bubble.html"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Scatter & Bubble Charts</span></a></li>
+                            <li><a href="charts-highchart-dynamic.html"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Dynamic Charts</span></a></li>
+                            <li><a href="charts-highchart-combinations.html"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Combinations</span></a></li>
+                            <li><a href="charts-highchart-more.html"><i class="fa fa-angle-double-right"></i><span class="submenu-title">More Chart Types</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href="#"><i class="fa fa-cog fa-fw">
+                        <div class="icon-bg bg-pink"></div>
+                    </i><span class="menu-title">PARAMETRE DE BASE</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+<!--                    <li><a href="#"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Departement</span></a></li>-->
+                    <li><a href="form_region.php"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Region</span></a></li>
+                    <li><a href="form_ville.php"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Ville</span></a></li>
+                    <li><a href="form_commune.php"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Commune</span></a></li>
+                    <li><a href="form_marque.php"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Marque Vehicule</span></a></li>
+                    <li><a href="form_genre.php"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Genre vehicule</span></a></li>
+                    <li><a href="form_couleur.php"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Couleur Vehicule</span></a></li>
+                    <li><a href="form_nationalite.php"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Nationalite</span></a></li>
+                    <li><a href="form_type_piece.php"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Type de pièce</span></a></li>
+                    <li><a href="form_structure.php"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Structure Police</span></a></li>
+                    <li><a href="form_type_structure.php"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Type structure Police</span></a></li>
+                    <li><a href="form_type_utilisateur.php"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Type utilisateur</span></a></li>
+                    <li><a href="form_profil.php"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Profil</span></a></li>
+                </ul>
+            <li><a href="#"><i class="fa fa-database fa-fw">
+                        <div class="icon-bg bg-red"></div>
+                    </i><span class="menu-title">SAUVEGARDE DE BD</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+
+                    <li><a href="#"><i class="fa fa-th-list fa-fw">
+                                <div class="icon-bg bg-blue"></div>
+                            </i><span class="menu-title">Tables</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="table-basic.html"><i class="fa fa-th-large"></i><span class="submenu-title">Basic Tables</span></a></li>
+                            <li><a href="table-responsive.html"><i class="fa fa-tablet"></i><span class="submenu-title">Responsive Tables</span></a></li>
+                            <li><a href="table-action.html"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">Action Tables</span></a></li>
+                            <li><a href="table-filter.html"><i class="fa fa-filter"></i><span class="submenu-title">Filter Tables</span></a></li>
+                            <li><a href="table-advanced.html"><i class="fa fa-indent"></i><span class="submenu-title">Advanced Tables</span></a></li>
+                            <li><a href="table-sample.html"><i class="fa fa-table"></i><span class="submenu-title">Sample Tables</span></a></li>
+                        </ul>
+                    </li>
+
+
+
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!--END SIDEBAR MENU  -->
+
+<!--BEGIN PAGE WRAPPER-->
+<div id="page-wrapper"><!--BEGIN TITLE & BREADCRUMB PAGE-->
+<div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+    <div class="page-header pull-left">
+        <div class="page-title"> Emission Beneficiaire
+          <ol class="breadcrumb page-breadcrumb pull-right">
+            <li></li>
+            <li class="active"></li>
+          </ol>
+        </div>
+  </div>
+    <ol class="breadcrumb page-breadcrumb pull-right">
+        <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Accueil</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+        <li><a href="#">Forms</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+    </ol>
+  <div class="clearfix"></div>
+</div>
+<!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
+ 
+
+<br/>
+
+
+
+<div class="table-container">
+                                            <!--div class="row mbl">
+                                                <div class="col-lg-6">
+                                                    <div class="input-group input-group-sm mbs"><span class="input-group-btn"><button type="button" data-toggle="dropdown" class="btn btn-danger dropdown-toggle">Filtre
+                                                        &nbsp;<span class="caret"></span></button><ul class="dropdown-menu">
+                                                        <li><a href="#"><i class="fa fa-tint"></i>&nbsp;
+                                                            Newest</a></li>
+                                                        <li><a href="#"><i class="fa fa-star"></i>&nbsp;
+                                                            Rating</a></li>
+                                                        <li><a href="#"><i class="fa fa-money"></i>&nbsp;
+                                                            Price</a></li>
+                                                        <li><a href="#"><i class="fa fa-user"></i>&nbsp;
+                                                            Sales</a></li>
+                                                    </ul></span>
+                                                 <input type="text" placeholder="Entrez Code Emission Benef..." class="form-control"><span class="input-group-btn"><button type="button" data-toggle="dropdown" class="btn btn-success dropdown-toggle">Rechercher</button></span></div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="tb-group-actions pull-right"><span>10 records selected:</span>
+													<select class="table-group-action-input form-control input-inline input-small input-sm mlm">
+                                                        <option value="">Select...</option>
+                                                        <option value="Cancel">Cancel</option>
+                                                        <option value="Cancel">Hold</option>
+                                                        <option value="Cancel">On Hold</option>
+                                                        <option value="Close">Close</option>
+                                                    </select>&nbsp;
+                                                        <button class="btn btn-sm btn-primary"><i class="fa fa-check"></i>&nbsp;
+                                                            Enregistrer
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+    
+                                            -->
+    
+    
+    
+    
+   <!---------------------------------------------------------------------------------------------------------------> 
+   <!---------------------------------------debut formulaire Save Emission ----------------------------------------->
+   <!--------------------------------------------------------------------------------------------------------------->    
+    
+    
+   <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+   <tr>
+   <td>
+   <div class="panel panel-orange">
+				<div class="panel-heading" align="center" >Detail Emission de Paiement </div>
+				<div class="panel-body pan">
+  <form class="form-horizontal" th:object=${PrgEmmissionView} th:action="@{/admin/editPrgEmmissionView/__${PrgEmmissionView.idOrdreEmmis}__}" method="post">
+			                                                                      
+			
+   <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+     <tr>
+     <td>
+         
+             <table class="table table-hover table-striped  table-advanced tablesorter">	       
+               <tr>
+                 <td>
+					<div class="row">
+
+					<div class="col-md-6">
+								
+								  <input class="input-xlarge focused" id="usr" type="text" th:field="*{idOrdreEmmis}" required="required"> &nbsp;
+								  <!-- span class="help-inline" style="color: #d70000;" th:text="${message}"></span>
+								  <span class="help-inline" style="color: #d70000;" th:if="${#fields.hasErrors('idOrdreEmmis')}" th:errors="*{idOrdreEmmis}"></span>
+								  
+								  "@{'/admin/prgEmmissionBenef/add/editPrgEmmissionBenef/'+prgEmmissionBenef.idOrdreEmmis}" 
+								  "@{'/admin/prgEmmissionBenef/add}"
+								   -->
+								
+					</div> 
+					</div> 
+                    <div class="row">
+						<div class="col-md-6">
+								<div class="input-icon right"><i class="fa fa-user"></i><input id="inputFirstName" type="text" placeholder="Montant Emission" th:field="*{montantEmis}" class="form-control"/></div>
+						</div>
+								
+						<div class="col-md-6">
+						<div class="form-group"><input id="inputFirstName" type="text" placeholder="Statut Emission" th:field="*{statutEmmision}" class="form-control"/></div>
+					   </div>
+																
+					</div> 
+					
+					
+			  </td>
+              </tr>	
+			</table>			
+					
+    </td>
+    </tr>
+	
+	<tr>
+    <td>
+    <table class="table table-hover table-striped  table-advanced tablesorter">	       
+               <tr>
+                 <td>
+    
+				<div class="row">
+	
+                    <div class="col-md-6">
+							<div class="form-group">
+                    
+						<select class="form-control" name="idprgBeneficiaire" >
+							<option value="NONE">...Beneficiare ...</option>  
+								   <option th:each="varPrgBeneficiaire :${allPrgBeneficiaire}" 
+										   th:value="${varPrgBeneficiaire.getIdPrgBenef()}" 
+										   th:text="${varPrgBeneficiaire.getStatutBenef()}"> 
+								   </option>
+						</select>
+						
+						</div>
+					    </div>
+					 </div>
+					 <div class="row">
+					      <div class="col-md-6"  >
+							<div class="col-md-6">
+								<div class="form-group"><input id="inputName" type="text"  th:field="*{codMenage}"  placeholder="Code Menage" class="form-control"/></div>
+							</div> 
+
+							<div class="col-md-6">
+									<div class="form-group"><input id="inputFirstName" type="text" placeholder="Recipendaire" th:field="*{idRecipiendaire}" class="form-control"/></div>
+						    </div>
+						   
+						    <div class="col-md-6">
+									<div class="form-group"><input id="inputFirstName" type="text" placeholder="Localité" th:field="*{nomLocalite}" class="form-control"/></div>
+						    </div>
+						    
+						     <div class="col-md-6">
+									<div class="form-group"><input id="inputFirstName" type="text" placeholder="Departement" th:field="*{nomDepartement}" class="form-control"/></div>
+						    </div>
+						  </div> 
+						  
+						  <div class="col-md-6"  >
+							<div class="col-md-6">
+								<div class="form-group"><input id="inputName" type="text"  th:field="*{idOrdreEmmis}"  placeholder="Contact Recipendaire" class="form-control"/></div>
+							</div> 
+
+							<div class="col-md-6">
+									<div class="form-group"><input id="inputFirstName" type="text" placeholder="Region Beneficiaire" th:field="*{nomRegion}" class="form-control"/></div>
+						    </div>
+						   
+						    <div class="col-md-6">
+									<div class="form-group"><input id="inputFirstName" type="text" placeholder="Village/ville" th:field="*{villageQuartier}" class="form-control"/></div>
+						    </div>
+						    
+						    <div class="col-md-6">
+									<div class="form-group"><input id="inputFirstName" type="text" placeholder="Quartier" th:field="*{villageQuartier}" class="form-control"/></div>
+						    </div>
+						    
+						  </div>  
+						                
+					</div>
+				
+		        </td>
+               </tr>	
+			</table>
+					    
+     </td>
+    </tr>
+	
+	<tr>
+    <td>
+			     <table class="table table-hover table-striped  table-advanced tablesorter">
+			       <tr>
+			        <td align="Center">
+    
+               	<div class="row">
+	
+                    <div class="col-md-6">
+							<div class="form-group">
+                    
+						<select class="form-control" name="idprgBeneficiaire">
+							<option value="NONE">...Code Periode ...</option>  
+								   <option th:each="varPrgBeneficiaire :${allPrgBeneficiaire}" 
+										   th:value="${varPrgBeneficiaire.getIdPrgBenef()}" 
+										   th:text="${varPrgBeneficiaire.getStatutBenef()}"> 
+								   </option>
+						</select>
+						
+						</div>
+					    </div>
+					 </div>
+     
+     
+				<div class="row">
+
+				    <div class="col-md-6">
+							<div class="form-group">
+								<div class="input-icon right"><i class="fa fa-user"></i><input id="inputName" type="text"  th:field="*{libellePeriode}"  placeholder="Libelle Periode" class="form-control"/></div>
+							</div> 
+
+							<div class="form-group">
+								<div class="input-icon right"><i class="fa fa-user"></i><input id="inputName" type="text"  th:field="*{enCours}"  placeholder="Statut Periode" class="form-control"/></div>
+							</div>
+
+
+				  </div>   
+				  
+				  <div class="col-md-6">
+							<div class="form-group">
+								<div class="input-icon right"><i class="fa fa-user"></i><input id="inputName" type="date"  th:field="*{dateDebEmm}"  placeholder="Date Debut " class="form-control"/></div>
+							</div> 
+
+							<div class="form-group">
+								<div class="input-icon right"><i class="fa fa-user"></i><input id="inputName" type="date"  th:field="*{dateFinEmm}"  placeholder="Date Fin" class="form-control"/></div>
+							</div>
+
+
+				  </div>           
+
+
+                 </div>
+                 
+                 </td>
+			    </tr>
+		
+		<tr>
+		<td>   
+			    </table>  
+   
+			     <table class="table table-hover table-striped  table-advanced tablesorter">
+			       <tr>
+			        <td align="Center">
+                                     
+                             <a class="btn btn-success btn-lg"  th:href="@{/admin/prgEmmissionBenef}"><h5><strong> Retour </strong></h5></a>
+                                
+			                                    
+			    </td>
+			    </tr>
+			    </table> 
+			    
+	    </td>
+	    </tr>
+	    </table>                             
+    </form>
+    </div>
+    </div>
+    
+    </td>
+    </tr>
+    </table>
+    
+    
+                                           
+                        </div>
+
+
+
+
+
+<!--END CONTENT--><!--BEGIN FOOTER-->
+<div id="footer">
+    <div class="copyright">Iris Web-Hotel 2016 &copy; Copyright Tous Droits Reserv&eacute;s MEMIS </div>
+</div>
+<!--END FOOTER-->
+	
+</div>
+<!--END PAGE WRAPPER--></div>
+</div>
+<script th:src="@{/js/jquery-1.10.2.min.js}"></script>
+<script th:src="@{/js/jquery-migrate-1.2.1.min.js}"></script>
+<script th:src="@{/js/jquery-ui.js}"></script>
+<!--loading bootstrap js-->
+<!--
+<script th:src="@{/liste.js}"></script>
+-->
+<script th:src="@{/vendors/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js}"></script>
+<script th:src="@{/js/html5shiv.js}"></script>
+<script th:src="@{/js/respond.min.js}"></script>
+<script th:src="@{/vendors/metisMenu/jquery.metisMenu.js}"></script>
+<script th:src="@{/vendors/slimScroll/jquery.slimscroll.js}"></script>
+<script th:src="@{/vendors/jquery-cookie/jquery.cookie.js}"></script>
+<script th:src="@{/vendors/iCheck/icheck.min.js}"></script>
+<script th:src="@{/vendors/iCheck/custom.min.js}"></script>
+<script th:src="@{/vendors/jquery-news-ticker/jquery.news-ticker.js}"></script>
+<script th:src="@{/js/jquery.menu.js}"></script>
+<script th:src="@{/vendors/jquery-pace/pace.min.js}"></script>
+<script th:src="@{/vendors/holder/holder.js}"></script>
+<script th:src="@{/vendors/responsive-tabs/responsive-tabs.js}"></script>
+<!--LOADING SCRIPTS FOR PAGE-->
+<script th:src="@{/vendors/jquery-tablesorter/jquery.tablesorter.js}"></script>
+<script th:src="@{/vendors/bootstrap-datepicker/js/bootstrap-datepicker.js}"></script>
+<script th:src="@{/js/table-sample.js}"></script>
+<!--LOADING SCRIPTS FOR PAGE--><!--CORE JAVASCRIPT-->
+<script th:src="@{/js/main.js}"></script>
+
+<script>(function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-145464-12', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+<script>
+	$('#ac1').show();
+	$('#ac2').hide();
+	$('#ac3').hide();
+	$('#ac4').hide();
+	
+	$("#nbre1").click(function(){
+		$('#ac1').show();
+		$('#ac2').hide();
+		$('#ac3').hide();
+		$('#ac4').hide();
+	});
+	$("#nbre2").click(function(){
+		$('#ac2').show();
+		$('#ac3').hide();
+		$('#ac4').hide();
+	});
+	$('#nbre3').click(function(){
+		$('#ac2').show();
+		$('#ac3').show();
+		$('#ac4').hide();
+	});
+	$('#nbre4').click(function(){
+		$('#ac2').show();
+		$('#ac3').show();
+		$('#ac4').show();
+	});
+	
+</script>
+</body>
+</html>

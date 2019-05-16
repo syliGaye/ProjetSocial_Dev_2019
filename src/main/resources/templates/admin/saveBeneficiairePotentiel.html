@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">    
+    
+  <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+  </head>
+
+	<body class="nav-md">
+    
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+			<div class="">
+				<div class="page-title">
+					<div class="title_left">
+						<center></center><h3>Enregistrement de membres potentiel</h3></center>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				
+
+							<div class="x_content">
+								<form class="form-horizontal form-label-left " th:object="${PrgBeneficiaire}" th:action="@{/admin/PrgBeneficiaire/add}" method="post"  novalidate>
+							
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Identifiant Beneficiaire <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Identifiant Beneficiaire" required="required" type="text" th:field="*{idPrgBenef}" readonly="true" >
+										</div>
+									</div>  
+									
+									
+	                                 </br>
+	
+		                     <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="f_menagescore2">Code Menage<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">									
+										
+										           <select class="form-control" type="text"  id="f_menagescore2"  th:field="*{codMenage}" required="">
+						                                     
+						                                            <option th:each="RsuMenageView:${allRsuMenageView}" 
+						                                                    th:value="${RsuMenageView.getCodMenage()}" 
+						                                                    th:text="${RsuMenageView.getNomChefMenage() }" > 
+						                                                   
+						                                            </option>
+						                                            
+						                           </select>
+
+										</div>
+									  <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									</div>
+	
+			                     
+			                    	
+			                      <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Selection<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">									
+										                   <select     class="form-control" name="idSelection">
+																<option th:each="SigQuotaSelection:${allSigQuotaSelection}" 
+																		th:value="${SigQuotaSelection.getIdSelection()}"
+																		th:text="${SigQuotaSelection.getLibelleSelection()}"> 
+																</option>
+															</select>
+										</div>
+										
+										
+									  <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									</div>	<div class="ln_solid"></div>
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="f_modele2">Model<span class="required">*</span>
+										</label>
+									
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													 <select class="form-control" type="text" id="f_modele2" th:field="*{codModel}" required="" >
+						                                     <option value="">Model</option>  
+						                                          <option th:each="PmtModel:${allPmtModel}" 
+																		th:value="${PmtModel.getCodModel()}"
+																		th:text="${PmtModel.getLibelleModel()}"> 
+																  </option>
+						                           </select>
+												</div> 
+											 
+										
+									  <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									</div>	<div class="ln_solid"></div>
+									
+									<div class="item form-group">
+										
+										<div class="item form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="f_score">Score Model<span class="required">*</span>
+											</label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													 <select class="form-control" type="text" id="f_score" th:field="*{scorePrg}" required="" >
+						                                     <option value="">Score Model</option>  
+						                                           <option th:each="RsuMenageScorePmt:${listRsuMenageScorePmt}" 
+																		th:value="${RsuMenageScorePmt.getScoreModelPmt()}"
+																		th:text="${RsuMenageScorePmt.getScoreModelPmt()}"> 
+																</option>
+						                           </select>
+												</div>
+											</div> 
+										
+									  <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									</div>	<div class="ln_solid"></div>
+									
+			                          <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Programme<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">									
+										
+										                  <select    class="form-control" name="codProgramme">
+																<option th:each="SigProgramme:${allSigProgramme}" 
+																		th:value="${SigProgramme.getCodProgramme()}"
+																		th:text="${SigProgramme.getLibelleProgramme()}"> 
+																</option>
+															</select>
+                        
+										</div>
+										
+									          <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>	
+									    </div>								
+				
+		                                 </br>	
+										
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date d'affectation <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Date d'affectation" required="required" type="date" th:field="*{dateAffect}">
+										</div>
+									</div>
+					
+					
+                                    <div class="item form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Statut Bénéficiaire  <span class="required">*</span>
+											</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+												      <select  class="form-control" name="statutBenef">
+                                                         <option value="B1">Ménage éligible présélectionné par le comité villageois</option>
+															
+													  </select>
+										</div>	
+									</div>	
+					
+															
+										<div class="ln_solid"></div>
+								         <center>
+										    <a onclick = "history.back()" class="btn btn-warning" >Retour</a>
+											<a href="javascript:window.location.reload()" class="btn btn-default">Annuler</a>
+											<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+											</center>
+
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			
+                  </div>
+                </div>
+        </div>
+        
+        <!-- /page content -->
+        <!--<script th:src="@{/build/js/passerParamRsuMenageView.js}"></script>-->
+    <!--script th:src="@{/build/js/OnChangeModele.js}"></script>-->
+    
+    </body>
+ 
+</body></html>

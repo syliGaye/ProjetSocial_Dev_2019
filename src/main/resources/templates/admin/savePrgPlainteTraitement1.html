@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">    
+    <meta charset="utf-8">
+	     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+		<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+    
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+
+				<div class="clearfix"></div>
+
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="x_panel">
+							<div class="x_title">
+								<b><font color="orange"><font face=Castellar><font size="5"><center>CREER UNE SESSION DE VALIDATION DE PLAINTE</center></font></font></font></b>
+								<ul class="nav navbar-right panel_toolbox">
+									<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+									</li>
+								</ul>
+								<div class="clearfix"></div>
+							</div>
+							<div class="x_content">
+								<form class="form-horizontal form-label-left " th:object="${prgPlainteTraitement}" th:with="var=${numPlainte}" th:action="@{/admin/prgPlainteTraitement1/add/__${var}__}" method="post" novalidate>
+								
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">N° Plainte<span class="required">*</span></label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<select class="form-control" name="numPlainte" th:field="*{numPlainte}" >
+														
+															<option th:each="prgPlainte:${allPrgPlainte}" 
+															th:value="${prgPlainte.getNumPlainte()}" 
+															th:text="${prgPlainte.getNumPlainte()}"> 
+															</option>
+													</select>
+										</div>
+									</div>
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Numéro Traitement<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"   name="name" placeholder="N°Traitement" required="required" type="text"  th:field="*{numTrait}" readonly="true">
+										</div>
+									</div> 
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Niveau de traitement<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+																												
+											<select class="form-control" name="codNivTr" th:field="*{codNivTr}" >
+                                                       
+                                                           <option th:each="prgNivTraitPlt:${allPrgNivTraitPlt}" 
+				                                           th:value="${prgNivTraitPlt.getCodNivTr()}" 
+				                                           th:text="${prgNivTraitPlt.getLibelleNivTr()}"> 
+				                                  			</option><!-- -->
+                                           </select>
+											
+										</div>
+									</div>
+																		 								 
+						
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date Traitement <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Date Traitement" required="required" type="date" th:field="*{dateTraitement}">
+										</div>
+									</div> 
+						
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Agent Traiteur<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Agent Traiteur" required="required" type="text" th:field="*{nomAgentTraiteur}">
+										</div>
+									</div>
+									
+										<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> Tel Agent<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Tel Agent" required="required" type="text" th:field="*{telAgentTraiteur}">
+										</div>
+									</div> 
+									
+									<!--<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> Solution proposée<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Solution proposée" required="required" type="text" th:field="*{solutionPropose}">
+										</div>
+									</div> -->
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Solution proposée<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<select class="form-control" name="solutionPropose" th:field="*{solutionPropose}" >
+                                                       
+                                                           
+				                                  			<option value=" "></option>
+				                                  			
+                                                            <option value="REFERER ANALYSE">REFERER ANALYSE</option>
+				                                  			                                                            
+				                                  			<option value="REFERERCREG">REFERER COMITE REGIONALE</option>
+				                                  			
+				                                  			<option value="REFERERUGP">REFERER UGP</option>
+                                                          
+                                                            <option value="REPORTER">REPORTER</option>
+				                                  			
+				                                  			<option value="CLOTURER">CLOTURER</option>
+				                                  			
+				                                  			
+                                           </select>
+										</div>
+									</div>
+									
+									
+									<!--<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Observations<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Observations" required="required" type="text" th:field="*{observations}">
+										
+										</div>
+									</div> -->
+									
+									
+									<div class="item form-group">
+									<!--<label for="message">Observation (500 max) :</label>-->
+									<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Observations<span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea name="Observation" class="form-control" id="Observations" required="required" data-parsley-trigger="keyup" data-parsley-validation-threshold="10" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.." data-parsley-maxlength="500" data-parsley-minlength="20" th:field="*{observations}" ></textarea>
+                                    </div>
+                                    </div>
+									
+									
+
+									<div class="ln_solid"></div>
+									<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+                                         <center>
+										    <a onclick = "history.back()" class="btn btn-warning" >Retour</a>
+											<a href="javascript:window.location.reload()" class="btn btn-default">Annuler</a>
+											<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+											</center>
+
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        <!-- /page content -->
+
+ 
+</body></html>

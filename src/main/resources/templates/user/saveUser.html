@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">    
+    
+    <head>
+		<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+    
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+			<div class="">
+				<div class="clearfix"></div>
+
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<b><font color="orange" size="5"><center>Ajouter un utilisateur</center></font></b>
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+
+								<div class="box-content">
+									<form class="form-horizontal" th:object="${user}" th:action="@{/user/add}" method="post">
+										<fieldset>
+										
+										  <div class="control-group">
+											<label class="control-label" for="usr">Nom d'utilisateur</label>
+											<div class="controls">
+											  <input class="input-xlarge focused" id="usr" type="text" th:field="*{userName}" required="required">
+											  <span class="help-inline" style="color: #d70000;" th:text="${message}"></span>
+											  <span class="help-inline" style="color: #d70000;" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></span>
+											</div>
+										  </div>
+										  
+										  <div class="control-group">
+											<label class="control-label" for="usr-email">Email</label>
+											<div class="controls">
+											  <input class="input-xlarge focused" id="usr-email" type="text" th:field="*{email}" required="required">
+											  <span class="help-inline" style="color: #d70000;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+											</div>
+										  </div>
+										  
+										  <div class="control-group">
+											<label class="control-label" for="usr-mdp">Mot de passe</label>
+											<div class="controls">
+											  <input class="input-xlarge focused" id="usr-mdp" type="password" th:field="*{password}" required="required">
+											  <span class="help-inline" style="color: #d70000;" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+											</div>
+										  </div>
+										  
+										  <div class="control-group">
+											<label class="control-label" for="selectRole">Rôle</label>
+											<div class="controls">
+											  <select id="selectRole" th:field="*{role}">
+												<option value="ROLE_SUPERADMIN">Super Admin</option>
+												<option value="ROLE_ADMIN">Admin</option>
+												<option value="ROLE_USER" selected="selected">Utilisateur</option>
+											  </select>
+											  <span class="help-inline" style="color: #d70000;" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></span>
+											</div>
+										  </div>
+										  
+										  <div class="control-group">
+											<label class="control-label" for="selectStatus">Statut</label>
+											<div class="controls">
+											  <select id="selectStatus" th:field="*{enabled}">
+												<option value="0">Inactif</option>
+												<option value="1" selected="selected">Actif</option>
+											  </select>
+											  <span class="help-inline" style="color: #d70000;" th:if="${#fields.hasErrors('enabled')}" th:errors="*{enabled}"></span>
+											</div>
+										  </div>
+										  
+										  <div class="form-actions">
+											<button type="submit" class="btn btn-primary">Save</button>
+											<button class="btn">Cancel</button>
+										  </div>
+										</fieldset>
+									  </form>
+								
+								</div>
+							</div><!--/span-->
+				
+						</div><!--/row-->
+					</div>
+			</div>
+		</div>
+        <!-- /page content -->
+
+ 
+</body></html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+         <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+			<div class="page-title">
+				<div class="title_center">
+					<b><font color="orange" size="5"><center>DETAILS MENAGE</center></font></b>
+				</div>
+			</div>
+			<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+				<center>
+					<a onclick = "history.back()" class="btn btn-warning">Retour</a>
+				</center>
+			</div>
+
+            <div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+						<div class="x_content">
+							<form class="form-horizontal form-label-left" th:object="${odkMenage}" th:action="@{/admin/odkMenage}"  method="post"   novalidate>
+								<div class="col-md-12 col-sm-12 col-xs-12">								
+									<div class="x_panel">
+										<div class="x_title">
+										   <b><font color="orange" size="4">Localisation du ménage</font></b>
+											<div class="clearfix"></div>
+									    </div>								
+										<table class="table table-striped table-bordered jambo_table bulk_action">
+											<thead>
+												<tr class="headings">
+													<th class="column-title" >Région</th>
+													<th  class="column-title" >Département</th>
+													<th  class="column-title" >Sous Préfecture</th> 
+													<th  class="column-title" >Localié</th>  
+                                                    <th class="column-title" >Vilage</th>     													
+												</tr>
+											</thead>
+
+											<tbody>
+												<tr class="even pointer">
+													<td th:text="${odkMenage.regiondistrict}" width=25%> </td>
+													
+													<td th:text="${odkMenage.departement}" width=25%> </td>
+													
+													<td th:text="${odkMenage.sousprefecture}" width=25%></td>
+													
+													<td th:text="${odkMenage.localite}" width=25%></td>
+													
+													<td th:text="${odkMenage.quartierEtVillage}"></td>
+												</tr>
+											</tbody>
+										</table>
+								    </div>
+								</div>	
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="x_panel">
+										<div class="x_title">
+											<b><font color="orange" size="4">Information Ménage</font></b>
+											<div class="clearfix"></div>
+										</div>											    
+										<table class="table table-striped table-bordered jambo_table bulk_action"  width="100%">
+											<tr>
+												<td>
+													<label >Id Ménage</label>
+													 <input type="text" id="last-name" name="last-name" class="form-control col-md-7 col-xs-12" disabled="disabled" th:field="*{idMenage}">									
+												</td>
+																							
+												<td>
+													<label >Ilot</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{ilot}">			
+												</td>											
+												<td>
+													<label >Batiment</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{batiment}">			
+												</td>	
+												<td>
+													<label >Logement</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{logement}">			
+												</td>												
+											</tr>									
+										</table >
+									</div>
+								</div>	
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="x_panel">
+										<div class="x_title">
+											<b><font color="orange" size="4">Détails Logement</font></b>
+											<div class="clearfix"></div>
+										</div>											    
+										<table class="table table-striped table-bordered jambo_table bulk_action"  width="100%">
+											<tr>
+												<td>
+													<label >Nombre de Chambre</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{logemementChambres}">			
+												</td>												
+												<td>
+													<label >Type de Mur</label>
+													 <input type="text" id="last-name" name="last-name" class="form-control col-md-7 col-xs-12" disabled="disabled" th:field="*{logementMur}">									
+												</td>
+												<td>
+													<label >Type de Toit</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{logementToit}">			
+												</td>												
+												<td>
+													<label >Type de Sol</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{logementSol}">			
+												</td>																						
+											</tr>	
+											<tr>
+												<td>
+													<label >Source d'eau</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{logementEau}">			
+												</td>												
+												<td>
+													<label >Type de Douche</label>
+													 <input type="text" id="last-name" name="last-name" class="form-control col-md-7 col-xs-12" disabled="disabled" th:field="*{logementDouche}">									
+												</td>
+												<td>
+													<label >Type de Toilette</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{logementToilette}">			
+												</td>												
+												<td>
+													<label >Ordure</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{logementOrdures}">			
+												</td>																						
+											</tr>											
+										</table >
+									</div>
+								</div>	
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="x_panel">
+										<div class="x_title">
+											<b><font color="orange" size="4">Détails Logement</font></b>
+											<div class="clearfix"></div>
+										</div>											    
+										<table class="table table-striped table-bordered jambo_table bulk_action"  width="100%">
+											<tr>
+												<td>
+													<label>à Tabouret </label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{lTabouret}" >
+												</td>
+												<td>
+													<label>à Table</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{lTable}" >
+												</td>
+												<td>
+													<label>à Fauteuil</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{lFauteuil}" >
+												</td> 
+												<td>
+													<label>à Portable</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aPortable}" >
+												</td> 
+												<td>
+													<label>à TV</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aTv}" >
+												</td>
+												<td>
+													<label>à Radio</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aRadio}" >
+												</td>
+											</tr>
+											<tr>											
+												<td>
+													<label>à Ordinateur</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aOrdinateur}" >
+												</td>
+												<td>
+													<label>à Cuisinière</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aCuisiniere}" >
+												</td>
+												<td>
+													<label>à Antenne Parabolique</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aAntenneParabolique}" >
+												</td>
+												<td>
+													<label>à Appareil Photo Numérique</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aAppareilPhotoNumerique}" >
+												</td>			
+												<td>
+													<label>à Voiture</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aVoiture}" >
+												</td>
+												
+												<td>
+													<label>à Moto</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aMoto}" >
+												</td>
+											</tr>
+											<tr>													
+												<td>
+													<label>à Brouette</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aBrouette}" >
+												</td>
+												<td>
+													<label>à Lit</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aLit}" >
+												</td>
+												<td>
+													<label>à natte</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aNatte}" >
+												</td>
+												<td>
+													<label>à sceau</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aSceau}" >
+												</td>
+												
+												<td>
+													<label>à Chaise </label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aChaiseAutre}" >
+												</td>
+												<td>
+													<label>à bateau</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aBateauDePeche}" >
+												</td>
+											</tr>
+											<tr>													
+												<td>
+													<label>à Fer à Repasser</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aFerARepasser}" >
+												</td>
+												<td>
+													<label>à Vélomoteur</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aVelomoteur}" >
+												</td>
+												
+												<td>
+													<label>à Drap </label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aDrapEtCouverture}" >
+												</td>
+												<td>
+													<label>à Salon Ordinaire</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aSalonOrdinaire}" >
+												</td>
+												<td>
+													<label>à pilon et Mortier</label> 
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled"  th:field="*{aPilonEtMortier}" >
+												</td>	
+												<td>	
+												</td>
+											</tr>											
+										</table>
+									</div>
+								</div>	
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="x_panel">
+										<div class="x_title">
+											<b><font color="orange" size="4">Détails Ciblage</font></b>
+											<div class="clearfix"></div>
+										</div>											    
+										<table class="table table-striped table-bordered jambo_table bulk_action"  width="100%">
+											<tr>
+												<td>
+													<label >Date Début</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{starttime}">			
+												</td>												
+												<td>
+													<label >Date Fin</label>
+													 <input type="text" id="last-name" name="last-name" class="form-control col-md-7 col-xs-12" disabled="disabled" th:field="*{endtime}">									
+												</td>
+												<td>
+													<label >Id Sim</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{simid}">			
+												</td>												
+												<td>
+													<label >N° Appareil</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{deviceid}">			
+												</td>																						
+											</tr>	
+										</table >
+									</div>
+								</div>	
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="x_panel">
+										<div class="x_title">
+											<b><font color="orange" size="4">Coordonnées GPS</font></b>
+											<div class="clearfix"></div>
+										</div>											    
+										<table class="table table-striped table-bordered jambo_table bulk_action"  width="100%">
+											<tr>
+												<td>
+													<label >Latitude</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{gpsLatitude}">			
+												</td>												
+												<td>
+													<label >Longitude</label>
+													 <input type="text" id="last-name" name="last-name" class="form-control col-md-7 col-xs-12" disabled="disabled" th:field="*{gpsLongitude}">									
+												</td>
+												<td>
+													<label >Altitude</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{gpsAltitude}">			
+												</td>												
+												<td>
+													<label >Accuracy</label>
+													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" disabled="disabled" th:field="*{gpsAccuracy}">			
+												</td>																						
+											</tr>	
+										</table >
+									</div>
+								</div>	
+								
+											
+							</form>	
+						</div>	
+					</div>	
+				</div>		
+            </div>
+			<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+				<center>
+					<a onclick = "history.back()" class="btn btn-warning">Retour</a>
+				</center>
+			</div>
+       </div>     
+    
+    <!-- /page content -->
+	</body>
+</html>

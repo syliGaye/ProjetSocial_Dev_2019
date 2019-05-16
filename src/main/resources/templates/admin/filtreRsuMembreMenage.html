@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+  
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+		</br>
+			<div class="clearfix">
+			</div>
+			</br></br></br></br></br></br></br></br></br></br>
+			<div class="row">
+				<table border="0">
+					<tr>
+						<td width="15%">
+						</td>
+						<td width="45%">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<b><font color="orange" size="5"><center>FILTRE DE RECHERCHE MEMBRE</center></font></b>
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+						  
+								<div class="x_content">
+									<form class="form-horizontal form-label-left " th:object="${rsuMembreMenage}" th:action="${'/admin/editRsuMembreMenage'}"    novalidate>
+										<div class="x_panel">
+											<div class="form-group">
+												<label class="col-sm-3 control-label">Entrer Code Membre</label>
+
+												<div class="col-sm-9">
+													<div class="input-group">
+														<input type="text" class="form-control" name="idMembre">
+														<span class="input-group-btn">
+															<button id="send" type="submit" class="btn btn-primary">RECHERCHER</button>
+															<!--a class="btn btn-primary" th:href="${'/admin/editRsuMenage'}"  ><i class="fa fa-edit"></i>&nbsp;
+															RECHERCHER
+															</a-->
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							
+							</div>
+						</div>
+						</td>
+						<td width="15%">
+						</td>
+					</tr>
+				</table>
+					
+            </div>
+        </div>
+    <!-- /page content -->
+	</body>
+</html>

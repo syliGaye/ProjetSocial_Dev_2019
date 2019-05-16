@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+			<div class="">
+			<br>
+			<form class="form-horizontal form-label-left " th:object="${pmtModelRubriques}" th:action="@{/admin/editPmtModelRubriques/__${pmtModelRubriques.codModel}__/__${pmtModelRubriques.idModelRubrique}__}" method="post"   novalidate>
+								
+				<div class="page-title">
+				
+					<div class="title_center">
+						<b><font color="orange"><font face=Castellar><font size="5"><center>MODIFICATION D'UNE RUBRIQUE</center></font></font></font></b>
+					
+					</div>
+			    </div>
+            
+			    <div class="clearfix">
+			    </div>
+
+            <div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+						<div class="x_title">
+							
+							<ul class="nav navbar-right panel_toolbox">
+								<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+								</li>
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+                  
+						<div class="x_content">
+							<form class="form-horizontal form-label-left " th:object="${pmtModelRubriques}" th:action="${'/admin/editPmtModelRubriques/'+pmtModelRubriques.idModelRubrique}" method="post"   novalidate>
+								
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Code Model<span class="required">*</span></label> 
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<select class="form-control" readonly="true" name="codeM" th:field="*{codModel}" >
+														
+															<option th:each="pmtModel:${ListPmtModel}" 
+															th:value="${pmtModel.getCodModel()}" 
+															th:text="${pmtModel.getLibelleModel()}"> 
+															</option>
+													</select>
+										</div>
+									</div>
+									
+									
+										<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Code Rubrique <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Code Rubrique" required="required" readonly="true" type="text" th:field="*{idModelRubrique}">
+										</div>
+									</div>  
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Ordre  Rubrique <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Ordre Rubrique " required="required" readonly="true" type="text" th:field="*{ordreRubrique}">
+										</div>
+									</div>
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Designation Rubrique <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name" placeholder="Dessignation Rubrique" required="required" type="text" th:field="*{designationRubrique}">
+										</div>
+									</div>  
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Description Rubrique <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Description Rubrique" required="required" type="text" th:field="*{desciptionRubrique}">
+										</div>
+									</div> 
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Constante Rubrique<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Score Rubrique" required="required" type="number" th:field="*{scoreRubrique}">
+										</div>
+									</div> 
+									
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Mode Calcul Rubrique <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Mode Calcul" required="required" type="text" th:field="*{modeCalc}">
+										</div>
+									</div>
+									<!--  <div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Formule Calcul Rubrique <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Formule Calcul " required="required" type="text" th:field="*{formuleCalc}">
+										</div>
+									</div>-->
+									
+									<div class="ln_solid"></div>
+								<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+                                            <center>
+										    <a onclick = "history.back()" class="btn btn-warning">Retour</a>
+											<a href="javascript:window.location.reload()" class="btn btn-default">Annuler</a>
+											<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+											</center>
+									</div>
+							</form>
+						</div>
+                    
+					</div>
+                </div>
+            </div>
+        </div>
+    <!-- /page content -->
+	</body>
+</html>

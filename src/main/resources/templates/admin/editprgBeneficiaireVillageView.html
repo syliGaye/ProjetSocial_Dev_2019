@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+  
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+		</br>
+			<div class="clearfix">
+			</div>
+			</br>
+            <div class="row">
+				<table border="0">
+					<tr>
+						<td width="15%">
+						</td>
+						<td width="45%">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<b><font color="orange" size="5"><center>DETAILS MENAGE</center></font></b>
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+						  
+								<div class="x_content">
+									<form class="form-horizontal form-label-left " th:object="${prgBeneficiaireVillageView}" th:action="@{/admin/prgBeneficiaireVillageView/__${prgBeneficiaireVillageView.idPrgBenef}__}" method="post"   novalidate>
+										
+										<div class="form-horizontal form-label-left">
+
+											<div class="form-group">
+												<label class="control-label col-md-6 col-sm-12 col-xs-6">Village</label>
+												<div class="col-md-6 col-sm-9 col-xs-12">
+													
+													<input type="text" class="form-control" disabled="disabled" th:field="*{villageQuartier}" >
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="control-label col-md-6 col-sm-12 col-xs-6">Code Ménage</label>
+												<div class="col-md-6 col-sm-9 col-xs-12">
+													
+													<input type="text" class="form-control" disabled="disabled" th:field="*{codMenage}" >
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="control-label col-md-6 col-sm-12 col-xs-6" >Chef Ménage Nom Prénoms</label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													<input type="text" class="form-control" disabled="disabled" th:field="*{nomChefMenage}" >
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="control-label col-md-6 col-sm-12 col-xs-6">Retenu </label>
+												<div class="col-md-4 col-sm-9 col-xs-12">
+													<select id="statutBenef" name="statutBenef" th:field="*{statutBenef}" class="form-control" required>
+														<option value="R1">NON</option>
+														<option value="B1">OUI</option>
+													</select>
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<label class="control-label col-md-2 col-sm-12 col-xs-6" >Motif</label>
+												<div class="col-md-10 col-sm-9 col-xs-12">
+													
+													<textarea name="motifRetrait" class="resizable_textarea form-control" placeholder="R.A.S" th:field="*{motifRetrait}"></textarea>
+												</div>
+											</div>
+										</div>
+										<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+											<center>
+										    <a onclick = "history.back()" class="btn btn-warning">Retour</a>
+											<a href="javascript:window.location.reload()" class="btn btn-default">Annuler</a>
+											<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+											</center>
+										</div>
+																
+									</form>
+								</div>
+							
+							</div>
+						</div>
+						</td>
+						<td width="15%">
+						</td>
+					</tr>
+				</table>
+					
+            </div>
+        </div>
+    <!-- /page content -->
+	</body>
+</html>

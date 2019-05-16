@@ -1,0 +1,94 @@
+	<!DOCTYPE html>
+	<html lang="en" data-layout-decorate="~{fragment/layout}">   
+  
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+		<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+		<body class="nav-md">   
+		<!-- page content -->
+		
+		<div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">     
+		
+			<div class="x_panel">
+				<div class="x_title">
+				
+				<br>
+				<br>
+						
+						<b><font color="orange"><font face=Castellar><font size="4"><center>DETAILS DES PLAINTES PAR ANNEE ET PAR DEPARTEMENT</center></font></font></font></b>
+						<ul class="nav navbar-right panel_toolbox">
+						  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<center>
+				
+					<br/>
+				<div class="row-fluid sortable ui-sortable">		                                                            
+					<div class="panel panel-yellow">
+						<div class="panel-body">
+						
+						<div class="ln_solid"></div>
+									<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+									<center>
+                                    <a onclick = "history.back()" class="btn btn-warning">Retour</a>										
+								    </center>
+									</div>
+						
+						
+							<div id="no-more-tables">
+						<table id="datatable-buttons" class="table table-bordered   table-striped jambo_table bulk_action" width="100%">
+							<thead>
+								<tr heigth="5px">
+								     <th align="center" >N°Plainte</th>
+									<th align="center"  >Nom plaignant</th>
+									<th align="center" >Etat traitement</th>
+									<th align="center" >Date traitement</th>
+									<th align="center"  >Date signalement</th>
+									<th align="center" >Statut plainte</th>
+									<th align="center" >Catégorie de la plainte</th>
+									<th align="center" >Nature de geste</th>
+									<th align="center" >Forme de geste</th>           
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="prgSuiviPlainteView,iterStat:${listPlainteDetailsDepAn}">
+									<td th:text="${prgSuiviPlainteView.numPlainte}"></td>
+									<td th:text="${prgSuiviPlainteView.fNomPlaingnant}" width="40%"></td>
+									<td th:text="${prgSuiviPlainteView.libStatutPlainte}" width="20%"></td>
+									<td th:text="${prgSuiviPlainteView.dateSignal}"></td>
+									<td th:text="${prgSuiviPlainteView.dateTraitement}"></td>
+									<td th:text="${prgSuiviPlainteView.libelleMoment}"></td>
+									<td th:text="${prgSuiviPlainteView.libelleCatPlainte}"></td>
+									<td th:text="${prgSuiviPlainteView.libelleNatGest}"></td>
+									<td th:text="${prgSuiviPlainteView.libelleFormGeste}"></td>
+									 
+								</tr>
+							</tbody>
+						</table>
+
+						
+						<br>
+			                	<br>
+								<div class="ln_solid"></div>
+									<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+									<center>
+									<a onclick = "history.back()" class="btn btn-warning">Retour</a>	
+								    </center>
+									</div>
+						
+						
+						
+					</div>
+					</center>
+				</div>
+			</div>
+		<!-- /page content -->
+
+		</body>
+	</html>

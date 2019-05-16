@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+<meta charset="utf-8">
+	     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+  </head>
+
+  <body class="nav-md">   
+        <!-- page content -->
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">
+			<br/>
+			<div class="col-md-12 col-sm-12 col-xs-12">
+		
+
+				<div class="x_panel">
+					<div class="x_title">
+						<br/>
+						<b><font color="orange"><font face=Castellar><font size="4"><center>CONSULTATION DES PROJETS D'AFFECATTION DE MENAGES AU PROJET </center></font></font></font></b>
+						<ul class="nav navbar-right panel_toolbox">
+						  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<center>
+					<div class="x_content">
+					
+						<table id="datatable-buttons" class=" table-striped jambo_table bulk_action" width="90%">
+							<thead>
+								<strong><tr heigth="5px">
+									<th >Numero</th>
+								<th>Libellé Selection</th>
+							<th >Description Selection</th>  
+								<th >Effectif à affecter</th>
+								<th>Effectif affecté</th>
+								<th>Statut</th>
+									<th >Action</th>                 
+								</strong></tr>
+							</thead>
+							<tbody>
+								<tr heigth=2% th:each="sigQuotaSelection,iterStat:${allSigQuotaSelection}">
+									<td align="center" th:text="${sigQuotaSelection.idSelection}" width=5%> </td>
+									<td th:text="${sigQuotaSelection.libelleSelection}" width=30%></td> 
+                                    <td th:text="${sigQuotaSelection.desciptionSelection}"></td> 							
+                                     <td th:text="${sigQuotaSelection.effAAffecter}"  width=10%></td> 
+                                     <td th:text="${sigQuotaSelection.effAffecter}"  width=10%></td> 		
+                                     <td th:text="${sigQuotaSelection.statut}"  width=10%></td> 		
+									<td width=10% allign="center">
+										<center>
+											<a class="btn btn-info btn-xs" th:href="@{/admin/sigQuotaRegionView/__${sigQuotaSelection.idSelection}__}"><i class="fa fa-edit"></i>&nbsp; 
+												Détails 
+											</a> 
+											
+											<!--a class="btn btn-info btn-xs" th:href="${'/admin/sigQuotaLocaliteCons/'+sigQuotaSelection.idSelection}"><i class="fa fa-edit"></i>&nbsp; 
+												Détails 
+											</a--> 
+										</center>            
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						
+					  </div>
+					  </center>
+				</div>
+			</div>
+		</div>
+        <!-- /page content -->
+
+    </body>
+</html>

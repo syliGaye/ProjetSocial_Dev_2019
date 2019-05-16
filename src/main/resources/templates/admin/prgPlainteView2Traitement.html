@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">          
+			<br>
+			<div class="x_title">
+				<b><font color="orange"><font face=Castellar><font size="4"><center>TRAITEMENT DE LA PLAINTE AU NIVEAU REGIONAL</center></font></font></font></b>
+				<ul class="nav navbar-right panel_toolbox">
+				<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+			<center>
+				<br/>
+				<div class="row-fluid sortable ui-sortable">		                                                            
+					<div class="panel panel-yellow">
+						<div class="panel-body">
+							<table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+									<tr>
+										<td align="center">	
+											<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+												<center>
+													<a onclick = "history.back()" class="btn btn-warning" >Retour</a>
+												</center>
+								             </div>
+										</td>		
+									</tr>
+							</table>
+							<div id="no-more-tables">								
+								<div class="col-xs-3">
+								  <!-- required for floating -->
+								  <!-- Nav tabs -->
+									<ul class="nav nav-tabs tabs-left">
+										<li class="active"><a href="#infos_comp" data-toggle="tab">Résumé de la Plainte</a>
+										</li>
+																
+										<li><a href="#traitement" data-toggle="tab">Sessions de Traitement</a>
+										</li>
+									</ul>
+								</div>	
+								<div class="col-xs-9">
+								  <!-- Tab panes -->
+									<div class="tab-content">
+										<div class="tab-pane active" id="infos_comp">
+										  <p class="lead">Résumé de La Plainte</p>
+										  <!-- /Zone d'inserion des INFOS COMPLEMENTAIRE -->
+										
+											<table  class="table table-striped jambo_table bulk_action" width=100%  th:each="prgPlainteTraitementView,iterStat:${listPlainteTraitementView0}">
+												<tr>
+													<td colspan=8 bgcolor="orange"><font color="black"><center><label for="titre1"  >Infos - localisation </label ></center></font></td></tr> 
+												<tr>
+												<tr>
+													<td align="right"><label  for="relion">Region   </label></td>
+													<td align="left"  th:text="${prgPlainteTraitementView.nomRegion}"></td>
+													
+													<td align="right"><label  for="dept">Departement   </label></td>
+													<td align="left"  th:text="${prgPlainteTraitementView.nomDepartement}"></td>
+													
+													<td align="right"><label for="Pref">Sous Prefecture   </label></td> 
+													<td align="left" th:text="${prgPlainteTraitementView.nomSPref}"></td>
+													
+													<td align="right"><label for="local">Localite  </label></td>
+													<td align="left" th:text="${prgPlainteTraitementView.nomLocalite}"></td>																													
+												</tr>
+												<tr>
+												    <td colspan=8 bgcolor="orange"><font color="black"><center><label for="titre1"  >Infos - plainte </label ></center></font></td></tr> 
+												</tr> 
+												<tr>
+												    <td align="right"><label for="numero">Numero Plainte </label></td>
+													<td align="left" th:text="${prgPlainteTraitementView.numPlainte}" ></td>
+													
+													<td align="right"><label for="dete">Date Saisie </label></td>
+													<td align="left" th:text="${prgPlainteTraitementView.dateEnregis}" ></td>
+													
+													<td align="right"><label for="titre1">Plaignant </label></td>
+													<td colspan=3 align="left" th:text="${prgPlainteTraitementView.fNomPlaingnant}"></td>	  
+
+												</tr> 
+												<tr>
+													<td align="right"><label for="titre1">Date Evenement </label></td>
+													<td align="left" th:text="${prgPlainteTraitementView.dateEvent}" ></td>
+
+													<td align="right"><label for="titre1">Date Signalement </label></td>
+													<td align="left" th:text="${prgPlainteTraitementView.dateSignal}" ></td>		
+			                                   
+													<td align="right"><label for="nature">Nature Geste </label></td>
+													<td align="left" th:text="${prgPlainteTraitementView.libelleNatGest}"></td>
+
+													<td align="right"><label for="forme">Forme Geste </label></td>
+													<td align="left" th:text="${prgPlainteTraitementView.libelleFormGeste}"></td>
+												</tr> 
+												
+												<tr>
+													<td align="right"><label for="type">Type Geste </label></td>
+													<td align="left" th:text="${prgPlainteTraitementView.libelleTyeGeste}"></td>
+
+													<td align="right"><label for="moment">Moment</label></td>
+													<td align="left" th:text="${prgPlainteTraitementView.libelleMoment}"></td>		
+ 
+													<td align="right"><label for="titre1">Objet Discrimination </label></td>
+													<td colspan=3 align="left" th:text="${prgPlainteTraitementView.libelleObjetDiscr}"></td>	
+                                                 <tr>
+													<td><align="right">Description </label></td>	
+													<td colspan=8 align="left" th:text="${prgPlainteTraitementView.description}"></td>
+	                                            </tr> 
+												</tr>  
+												<tr>
+												    <td colspan=8 bgcolor="orange"><font color="black"><center><label for="titre1"  >Information Traitement Agent et comité villageois </label ></center></font></td></tr> 
+												</tr> 																													
+			                                   
+												 <tr>
+												    <td align="right" ><label bgcolor="#BFD9D6" for="titre1">Validation </label></td>
+													
+													<td align="right"><label >Date </label></td> 
+													<td align="left" th:text="${prgPlainteTraitementView.dateValid1}"></td>
+													
+													<td align="right"><label  for="Intervenant 0">Intervenant </label></td>
+													<td colspan=4 align="left" th:text="${prgPlainteTraitementView.nomAgCol}"></td>							
+	                                             </tr> 
+												
+												 <tr>
+												    <td colspan=8 bgcolor="orange"><font color="black"><center><label for="titre1"  >Information sur le Statut </label ></center></font></td></tr> 
+												</tr>
+												 
+		                                          <tr>
+		                                               
+														<td align="right"><label for="titre1">Statut </label></td> 
+														<td colspan=5 align="left" th:text="${prgPlainteTraitementView.libStatutPlainte}"></td>		
+														
+												 </tr> 												 
+		
+											</table>   	
+														
+										</div>	
+															
+										<div class="tab-pane" id="traitement">
+										<p class="lead">Liste des sessions de validation de la plainte</p>
+										<!-- /Zone d'inserion des traitements -->
+										<br>
+										   <a class="btn btn-large btn-success" th:with="var=${numPlainte}" th:href="@{/admin/prgPlainteTraitement2/add/2/__${var}__}" >Nouvelle sessions de validation</a>
+											
+											<table  class="table table-striped jambo_table bulk_action" width=100%> 
+												<thead>
+													<tr>														
+														<th>N°Traitement </th>
+														<th>Date Traitement</th>
+														<th>Agent</th>														
+														<th>Solution Proposée</th>
+														<th>Actions</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="prgPlainteTraitementView,iterStat:${listPlainteTraitementView}">
+														
+														<td th:text="${prgPlainteTraitementView.numTrait}" width=10%></td>
+														<td th:text="${prgPlainteTraitementView.dateTraitement}"  width=10%></td>
+														<td th:text="${prgPlainteTraitementView.nomAgentTraiteur}"  width=20%></td>														
+														<td th:text="${prgPlainteTraitementView.solutionPropose}" width=10%></td>
+														<td width=40% allign="center">
+															<center>
+																<a class="btn btn-info btn-xs" th:href="@{/admin/editPrgPlainteTraitement2/2/__${prgPlainteTraitementView.numPlainte}__/__${prgPlainteTraitementView.numTrait}__}" onclick="return confirm('Voulez-vous modifier cette plainte ?')" ><i class="fa fa-edit"></i>&nbsp;
+																	Modifier
+																</a>
+																 <a class="btn btn-danger btn-xs" th:href="@{/admin/prgPlainteTraitement2/delete/__${prgPlainteTraitementView.numTrait}__}" onclick="return confirm('Voulez-vous supprimer cette plainte ?')" ><i class="fa fa-trash-o"></i>&nbsp;
+																	Supprimer
+																</a>  
+																<a class="btn btn-info btn-xs" th:href="@{/admin/prgPlainteTraitement2Detail/2/__${prgPlainteTraitementView.numPlainte}__/__${prgPlainteTraitementView.numTrait}__}"  ><i class="fa fa-edit"></i>&nbsp;
+																	Details Analyse
+																</a>																
+															</center>            
+														</td>
+													</tr>
+												</tbody>
+											</table>						
+										</div>
+									</div>
+								</div>
+								
+								<table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+									<tr>
+										<td align="center">	
+											<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+												<center>
+													<a onclick = "history.back()" class="btn btn-warning" >Retour</a>
+												</center>
+											 </div>
+
+										</td>		
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>	
+                </div>	
+			</center>		
+		</div>	
+    <!-- /page content -->
+	</body>
+</html>
+

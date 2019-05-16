@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+  
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+			<div class="">
+				<div class="page-title">
+					<div class="title_center">
+						<b><font color="orange" size="5"><center>MODIFICATION DU MENAGE</center></font></b>
+					</div>
+				</div>
+            
+			<div class="clearfix">
+			</div>
+
+            <div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+						<div class="x_content">
+						<!--
+							<form class="form-horizontal form-label-left" th:object="${rsuMenageView}" th:action="${'/admin/editRsuMenage/'+rsuMenageView.codMenage}" method="post"   novalidate> 
+							-->
+							<form class="form-horizontal form-label-left" th:object="${rsuMenageView}" th:action="@{/admin/editRsuMenage/__${rsuMenageView.codMenage}__}" method="post"   novalidate> 
+							
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="x_panel">
+										<div class="x_title">
+											<h2>Localisation du ménage</h2>
+										
+											<div class="clearfix"></div>
+										</div>
+
+										<div class="x_content">
+
+											<div class="table-responsive">
+											  <table class="table table-striped jambo_table bulk_action">
+												<thead>
+													<tr class="headings">
+														<th class="column-title" >Code Région</th>
+														<th class="column-title" >Région</th>
+														<th class="column-title" >Code Dép. </th>
+														<th class="column-title" >Département </th>
+														<th class="column-title" >Code Sous Pré.</th>
+														<th class="column-title" >Sous Préfecture</th>
+														<th class="column-title" >Code Localité</th>
+														<th class="column-title" >Localié</th>                       
+													</tr>
+												</thead>
+
+												<tbody>
+													<tr class="even pointer">
+														<td th:text="${rsuMenageView.codRegion}" width=5%> </td>
+														<td th:text="${rsuMenageView.nomRegion}" ></td> 
+														<td th:text="${rsuMenageView.codDepartement}" width=5%> </td>
+														<td th:text="${rsuMenageView.nomDepartement}" ></td>
+														<td th:text="${rsuMenageView.codSPref}" width=5%></td>
+														<td th:text="${rsuMenageView.nomSPref}" ></td>
+														<td th:text="${rsuMenageView.codLocalite}" width=5%></td>
+														<td th:text="${rsuMenageView.nomLocalite}" ></td>
+													</tr>
+												</tbody>
+											  </table>
+											</div>
+										</div>
+									</div>
+								</div>
+								  
+								<div class="clearfix"></div>
+								
+								
+									
+								<div class="row">
+									<table border="0">
+										<tr>
+											<td width="28%">
+												<div class="col-md-12 col-xs-9">
+													<div class="x_panel">
+														<div class="x_title">
+															<h2>Détails Ménage</h2>
+															<div class="clearfix"></div>
+														</div>
+														<div class="x_content">
+															<br />
+															<div class="form-horizontal form-label-left">
+
+																<div class="form-group">
+																	
+																	<div class="col-md-10 col-sm-9 col-xs-12">
+																		<label for="fullname">Village</label>
+																		<input type="text" class="form-control"  th:field="*{villageQuartier}" >
+																	</div>
+																</div>
+																<div class="form-group">
+																	
+																	<div class="col-md-10 col-sm-9 col-xs-12">
+																		<label >Code Ménage</label>
+																		<input type="text" class="form-control" disabled="disabled" th:field="*{codMenage}" >
+																	</div>
+																</div>
+																<div class="form-group">
+																	
+																	<div class="col-md-10 col-sm-9 col-xs-12">
+																		<label >Chef Ménage Nom Prénoms</label>
+																		<input type="text" class="form-control"  th:field="*{nomChefMenage}" >
+																	</div>
+																</div>
+																<div class="form-group">
+																	
+																	<div class="col-md-4 col-sm-9 col-xs-12">
+																		<label >Ilot </label>
+																		<input type="text" class="form-control"  th:field="*{ilot}" >
+																	</div>
+																</div>
+																<div class="form-group">
+																	
+																	<div class="col-md-4 col-sm-9 col-xs-12">
+																		<label >Batiment </label>
+																		<input type="text" class="form-control"  th:field="*{batiment}" >
+																	</div>
+																</div>
+																<div class="form-group">
+																	
+																	<div class="col-md-4 col-sm-9 col-xs-12">
+																		<label >Logement </label>
+																		<input type="text" class="form-control"  th:field="*{logement}" >
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</td><td width="30%">
+
+												<div class="col-md-14 col-xs-12">
+													<div class="x_panel">
+														<div class="x_title">
+															<h2>Détails Logement</h2>
+															<div class="clearfix"></div>
+														</div>
+														<div class="x_content">
+															<br />
+															<div class="form-horizontal form-label-left">
+
+																<div class="form-group">
+																	
+																	<div class="col-md-12 col-sm-9 col-xs-12">
+																		
+																		<p><label >Type de Mur</label>
+																		<select   th:field="*{codLogMur}" class="form-control" >
+																		<option th:each="PmtLogMur:${allPmtLogMur}" 
+																				th:value="${PmtLogMur.getCodLogMur()}"
+																				th:text="${PmtLogMur.getLibelleLogMur()}"> 
+																		</option>
+																		</select></p>
+																	</div>
+																</div>
+																<div class="col-md-8 col-sm-6 col-xs-12 form-group has-feedback">
+																	<p><label for="fullname">Toit </label><select class="form-control"   th:field="*{codLogToit}"   >
+																		<option th:each="PmtLogToit:${allPmtLogToit}" 
+																				th:value="${PmtLogToit.getCodLogToit()}"
+																				th:text="${PmtLogToit.getLibelleLogToit()}"> 
+																		</option>
+																	</select></p>
+																</div>
+																<div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">Chambre</label> 
+																	<input type="text" class="form-control" id="inputSuccess3" th:field="*{logemementChambres}" >
+																</div>
+																<div class="form-group">
+																	
+																	<div class="col-md-12 col-sm-9 col-xs-12">
+																		<p><label for="fullname">Type de Sol </label><select class="form-control"   th:field="*{codLogSol}"   >
+																		<option th:each="PmtLogSol:${allPmtLogSol}" 
+																				th:value="${PmtLogSol.getCodLogSol()}"
+																				th:text="${PmtLogSol.getLibelleLogSol()}"> 
+																		</option>
+																	</select></p>
+																	</div>
+																</div>
+																<div class="form-group">
+																	
+																	<div class="col-md-12 col-sm-9 col-xs-12">
+																		<p><label for="fullname">Source d'eau </label><select class="form-control"   th:field="*{codLogEau}"   >
+																		<option th:each="PmtLogEau:${allPmtLogEau}" 
+																				th:value="${PmtLogEau.getCodLogEau()}"
+																				th:text="${PmtLogEau.getLibelleLogEau()}"> 
+																		</option>
+																	</select></p>
+																	</div>
+																</div>
+																<div class="form-group">
+																	
+																	<div class="col-md-12 col-sm-9 col-xs-12">
+																		<p><label for="fullname">Type de Douche </label><select class="form-control"   th:field="*{codLogDouche}"   >
+																		<option th:each="PmtLogDouche:${allPmtLogDouche}" 
+																				th:value="${PmtLogDouche.getCodLogDouche()}"
+																				th:text="${PmtLogDouche.getLibelleLogDouche()}"> 
+																		</option>
+																	</select></p>
+																	</div>
+																</div>
+																<div class="form-group">
+																	
+																	<div class="col-md-12 col-sm-9 col-xs-12">
+																		<p><label for="fullname">Type de Toilette </label><select class="form-control"   th:field="*{codLogToilette}"   >
+																		<option th:each="PmtLogToilette:${allPmtLogToilette}" 
+																				th:value="${PmtLogToilette.getCodLogToilette()}"
+																				th:text="${PmtLogToilette.getLibelleLogToilette()}"> 
+																		</option>
+																	</select></p>
+																	</div>
+																</div>
+																<div class="form-group">
+																	
+																	<div class="col-md-12 col-sm-9 col-xs-12">
+																		<p><label for="fullname">Ordure </label><select class="form-control"   th:field="*{codLogOrdure}"   >
+																		<option th:each="PmtLogOrdure:${allPmtLogOrdure}" 
+																				th:value="${PmtLogOrdure.getCodLogOrdure()}"
+																				th:text="${PmtLogOrdure.getLibelleLogOrdure()}"> 
+																		</option>
+																	</select></p>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</td>
+											</tr>
+											<tr>
+											
+											<td colspan="2">
+												<div class="col-md-12 col-xs-9">
+													<div class="x_panel">
+														<div class="x_title">
+															<h2>Bien du Ménage</small></h2>
+															<div class="clearfix"></div>
+														</div>
+														<div class="x_content">
+															<br />
+															<div class="form-horizontal form-label-left input_mask">
+															
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<p> <label for="fullname">à Tabouret </label>
+																	<select class="form-control"  th:field="*{lTabouret}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à Table</label> 
+																	<select class="form-control"  th:field="*{lTable}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div> 
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à Fauteuil</label> 
+																	<select class="form-control"  th:field="*{lFauteuil}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div> 
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à Portable</label> 
+																	<select class="form-control"  th:field="*{aPortable}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div> 
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à TV</label> 
+																	<select class="form-control"  th:field="*{aTv}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à Radio</label> 
+																	<select class="form-control"  th:field="*{aRadio}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div> 
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à Ordinateur</label> 
+																	<select class="form-control"  th:field="*{aOrdinateur}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à Cuisinière</label> 
+																	<select class="form-control"  th:field="*{aCuisiniere}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à Antenne Parabolique</label> 
+																	<select class="form-control"  th:field="*{aAntenneParabolique}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à pilon et Mortier</label> 
+																	<select class="form-control"  th:field="*{aPilonEtMortier}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à Voiture</label> 
+																	<select class="form-control"  th:field="*{aVoiture}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à Moto</label> 
+																	<select class="form-control"  th:field="*{aMoto}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à Brouette</label> 
+																	<select class="form-control"  th:field="*{aBrouette}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à Lit</label> 
+																	<select class="form-control"  th:field="*{aLit}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à natte</label> 
+																	<select class="form-control"  th:field="*{aNatte}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à sceau</label> 
+																	<select class="form-control"  th:field="*{aSceau}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à Chaise </label> 
+																	<select class="form-control"  th:field="*{aChaiseAutre}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à bateau</label> 
+																	<select class="form-control"  th:field="*{aBateauDePeche}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à Fer à Repasser</label> 
+																	<select class="form-control"  th:field="*{aFerARepasser}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à Vélomoteur</label> 
+																	<select class="form-control"  th:field="*{aVelomoteur}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à Drap </label> 
+																	<select class="form-control"  th:field="*{aDrapEtCouverture}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																<div class="col-md-2 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à Salon Ordinaire</label> 
+																	<select class="form-control"  th:field="*{aSalonOrdinaire}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																
+																<div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">à Appareil Photo Numérique</label> 
+																	<select class="form-control"  th:field="*{aAppPhotoNum}"  >
+																		<option value="0">NON</option>  
+																		<option value="1">OUI</option>  
+																	</select></p>
+																</div>
+																
+															</div>
+														</div>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</table >
+								</div>
+								
+								
+								<div class="row">
+									<table >
+										<tr>
+											<td width="50%">
+												<div class="col-md-12 col-xs-9">
+													<div class="x_panel">
+														<div class="x_title">
+															<h2>Détails Ciblage</small></h2>
+															<div class="clearfix"></div>
+														</div>
+														<div class="x_content">
+															<br />
+															<div class="form-horizontal form-label-left input_mask">
+															
+																<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label >Date Début </label> 
+																	<input type="text" class="form-control" id="inputSuccess3" disabled="disabled" th:field="*{dateHeurDebut}" >
+																</div>
+																<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label >Date Fin</label> 
+																	<input type="text" class="form-control" id="inputSuccess3" disabled="disabled" th:field="*{dateHeurFin}" >
+																</div> 
+																<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label >Id Sim</label> 
+																	<input type="text" class="form-control" id="inputSuccess3" disabled="disabled" th:field="*{idsim}" >
+																</div> 
+																<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">N°Appareil</label> 
+																	<input type="text" class="form-control" id="inputSuccess3" disabled="disabled" th:field="*{numAppareil}" >
+																</div> <br>
+																
+																<div class="ln_solid"></div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</td>
+											<td>
+												<div class="col-md-12 col-xs-9">
+													<div class="x_panel">
+														<div class="x_title">
+															<h2>Coordonnées GPS</small></h2>
+															<div class="clearfix"></div>
+														</div>
+														<div class="x_content">
+															<br />
+															<div class="form-horizontal form-label-left input_mask">
+															
+																<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label >Latitude</label> 
+																	<input type="text" class="form-control" id="inputSuccess3"  th:field="*{gpsLatitude}" >
+																</div>
+																<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label >Longitude</label> 
+																	<input type="text" class="form-control" id="inputSuccess3"  th:field="*{gpsLongitude}" >
+																</div> 
+																<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label >Altitude</label> 
+																	<input type="text" class="form-control" id="inputSuccess3"  th:field="*{gpsAltitude}" >
+																</div> 
+																<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+																	<label for="fullname">Accuracy</label> 
+																	<input type="text" class="form-control" id="inputSuccess3"  th:field="*{gpsAccuracy}" >
+																</div> <br>
+																
+																<div class="ln_solid"></div>
+															</div>
+														</div>
+													</div>
+											</td>
+										</tr>
+									</table >
+								</div>
+								
+								
+								<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+									<center>
+										    <a onclick = "history.back()" class="btn btn-warning">Retour</a>
+											<a href="javascript:window.location.reload()" class="btn btn-default">Annuler</a>
+											<button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+											</center>
+								</div>
+							</form>
+						
+					</div>
+                </div>
+            </div>
+        </div>
+    <!-- /page content -->
+	</body>
+</html>

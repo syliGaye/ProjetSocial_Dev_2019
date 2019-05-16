@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+  
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+			<div class="">
+				<div class="page-title">
+					<div class="title_left">
+						<h3></h3>
+					</div>
+			</div>
+            
+			<div class="clearfix">
+			</div>
+
+            <div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+						<div class="x_title">
+							<b><font color="orange"><font face=Castellar><font size="5"><center>DETAILS SUR LE PAIEMENT</center></font></font></font></b>
+							<ul class="nav navbar-right panel_toolbox">
+								<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+								</li>
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+                  
+						<div class="x_content">
+							<form class="form-horizontal form-label-left " th:object="${PrgPaiementView}" th:action="@{/admin/editPrgPaiementView/__${PrgPaiementView.idPaiement}__}" method="post"   novalidate>
+								           <table align="center" border="0"  height="54"  class="table table-striped jambo_table bulk_action">
+      <tbody>
+	  
+	  <tr>
+	  <td height="30" width="214"><center><b>REGION</b></center></td>
+	  <td height="20" width="214"><center><b>DEPARTEMENT</b></center></td>
+	  <td height="20" width="214"><center><b>SOUS PREFECTURE</b></center></td>
+	  <td height="20" width="214"><center><b>LOCALITE</center></b></td>
+	  <td height="20" width="214"><center><b>VILLAGE</center></b></td>
+	  
+	  
+		 </tr>
+	  
+	  <tr>
+	  <td height="20" width="214"><input type="text" th:field="*{nomRegion}" class="form-control required text-left" readonly="true"></td>
+	  <td height="20" width="214"><input type="text" th:field="*{nomDepartement}" class="form-control required text-left" readonly="true"></td>
+	  <td height="20" width="214"><input type="text" th:field="*{nomSPref}" class="form-control required text-left" readonly="true"></td>
+	  <td height="20" width="214"><input type="text" th:field="*{nomLocalite}" class="form-control required text-left" readonly="true"></td>
+
+	  <td height="20" width="214"><input type="text" th:field="*{villageQuartier}" class="form-control required text-left" readonly="true"></td>
+	  </tr>
+	  </tbody>
+    </table>
+    
+    
+                <table align="center" border="1" height="44" class="table table-striped jambo_table bulk_action">
+      
+			   <tbody>
+			  <tr> 
+			  <td width="643"><center><b>PAIEMENT</b></center></td>
+			  <td width="643"><center><b>MENAGE</b></center></td>
+			  </tr>
+			  </tbody>
+			  </table>
+			   <table align="center" border="0"  height="44"  class="table table-striped jambo_table bulk_action">
+      <tbody>
+		  <tr>
+      <td height="20" width="316"><b>ANNEE</b></td>
+	  <td height="20" width="332"><input type="text" th:field="*{anneePeriode}" class="form-control required text-left" readonly="true"></td>
+	  <td height="20" width="318"><b>CODE DU MENAGE</b></td>
+	  <td height="20" width="322"><input type="text" th:field="*{codMenage}" class="form-control required text-left" readonly="true"></td>
+	</tr>
+	
+	<tr>
+      <td height="20" width="321"><b>PERIODE</b></td>
+	  <td height="20" width="322"><input type="text" th:field="*{libellePeriode}" class="form-control required text-left" readonly="true"></td>
+	  <td height="20" ><b>NOM & PRENOMS DU CHEF DE MENAGE</b></td>
+	  <td height="20" ><input type="text" th:field="*{nomChefMenage}" class="form-control required text-left" readonly="true">
+	</td>
+	</tr>
+
+  <tr> 	
+	  <td height="20" width="321"><b>AGENCE DE PAIEMENT</b></td>
+	  <td height="20" width="322"><input type="text" th:field="*{codAp}" class="form-control required text-left" readonly="true">
+	  <input type="text" th:field="*{raisonSocialAp}" class="form-control required text-left" readonly="true"></td>
+	  <td height="20"><b>NOM & PRENOMS DU RECIPIENDAIRE</b></td>
+	  <td height="20"><input type="text" th:field="*{nomRecipiendaire}" class="form-control required text-left" readonly="true"></td>
+	  </tr>
+	    
+	  <tr> 	
+	  <td height="20"><b>MODE PAIEMENT</b></td>
+	  <td height="20"><input type="text" th:field="*{libModePaie}" class="form-control required text-left" readonly="true"></td>
+	  <td height="20"><b>TELEPHONE RECIPIENDAIRE</b></td>
+	  <td height="20"><input type="text" th:field="*{telRecipiendaire}" class="form-control required text-left" readonly="true"></td>
+	  </tr>
+	  
+	  	     <tr> 	
+	  <td height="20"><b>DATE</b></td>
+	  <td height="20"><input type="text" th:field="*{datePaiement}" class="form-control required text-left" readonly="true"></td>
+	  <td height="20"><b>BENEFICIARE</b></td>
+	  <td height="20"><input type="text" th:field="*{idPrgBenef}" class="form-control required text-left" readonly="true"></td>
+	  </tr>
+	  
+	  	   <tr> 	
+	  <td height="20"><b>STATUT</b></td>
+	  <td height="20"><input type="text" th:field="*{libStatutPaiement}" class="form-control required text-left" readonly="true"></td>
+	 	  <td height="20" ><b>TELEPHONE AGENT PAYEUR</b></td>
+	  <td height="20" ><input type="text" th:field="*{telAgent}" class="form-control required text-left" readonly="true"></td>
+	  </tr>
+	 
+	  		  	   	
+	 <tr > 
+	  <td height="20" ><b>MATRICULE AGENT PAYEUR</b></td>
+	  <td height="20" ><input type="text" th:field="*{matAgt}" class="form-control required text-left" readonly="true"></td>
+	  	  <td height="20" ><b>NOM & PRENOMS AGENT PAYEUR</b></td>
+	  <td height="20" ><input type="text" th:field="*{prenomAgt}" class="form-control required text-left" readonly="true"></td>
+	  </tr>
+	  <br/>
+		</table>		
+	
+
+                  <center><table>
+					<thead>
+					<tr>
+							<center><th><b><font color="blue">EMMISSION DU PAIEMENT SUR LE MENAGE</font></b></th></center>
+							
+							</tr>
+							</thead>
+					</table></center><br/>
+           <center><table   class= "table-striped jambo_table bulk_action"  width="50%">
+							
+							
+							<thead>
+								<tr >
+									 <th ><center>Periode</center></th>
+									 <th><center>Libelle Emmission</center></th>
+									                        
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="PrgEmmissionView,iterStat:${allPrgEmmissionView}">
+									<center><td  th:text="${PrgEmmissionView.codPeriode}" > </td></center>
+									<center><td th:text="${PrgEmmissionView.libStatutEmmision}"></td></center>  
+	           
+									
+								</tr>
+							</tbody>
+						</table></center><br/>
+     
+           	       <table>
+					          <div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro"  >
+				                        <center>
+											<center>
+										    <a onclick = "history.back()" class="btn btn-warning">Retour</a>
+											
+											</center>
+										</center>
+									</div>
+					</table>
+
+                        
+								
+							</form>
+				
+				
+						</div>
+                    
+					</div>
+                </div>
+            </div>
+        </div>
+    <!-- /page content -->
+	</body>
+</html>

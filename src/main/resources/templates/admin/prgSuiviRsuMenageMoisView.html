@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+	
+        <!-- page debut filtre -->
+   <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content"> 
+                <br/>
+                <center>						    
+				<div class="x_content" width="95%">
+					<div class="portlet-header">
+						<div class="x_title">						
+							<b><font color="orange"><font face=Castellar><font size="4"><center>Suivi des données du PMT/analyse par mois</center></font></font></font></b>
+							<ul class="nav navbar-right panel_toolbox">
+							  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+						<b><font color="orange"><font face=Castellar><font size="3"><center>FILTRE</center></font></font></font></b>
+          <form class="form-horizontal form-label-left " id="PrgSuiviRsuMenageMoisView" th:object="${SigFiltreRecherche}" th:action="@{/admin/prgSuiviRsuMenageMoisView/rech}" method="post" enctype="multipart/form-data" novalidate>						
+						<table class="table-striped jambo_table bulk_action" width="90%"  style="border-collapse: separate;  border-spacing: 10px; background-color: Lavender;">
+							<tbody>
+								<tr spacing="10px" padding="10px">
+                                    <td align="right">
+										<label for="annee"><font color=black>Annee:</font></label>
+									</td>	
+									<td align="left">										
+										<input class="form-control" type="number" placeholder="Annee" name="annee" th:field="*{anneeDebut}" id="f_debut"/>
+									</td>								
+									<td align="right">
+										<label for=""><font color=black>Mois Debut:</font></label>
+									</td>	
+									<td align="left">	
+									    <select class="form-control" name="Période" type="number" th:field="*{moisDebut}" id="d_Période" required="">
+										      <option value="">Sélectionner le mois debut</option>
+											  <option value="1">Janvier</option>
+											  <option value="2">Fevrier</option>
+											  <option value="3">Mars</option>
+											  <option value="4">Avril</option>
+											  <option value="5">Mai</option>
+											  <option value="6">Juin</option>
+											  <option value="7">Juillet</option>
+											  <option value="8">Aout</option>
+											  <option value="9">Septembre</option>
+											  <option value="10">Octobre</option>
+											  <option value="11">Novembre</option>
+											  <option value="12">Decembre</option>
+
+                         				</select>											
+									</td>
+									
+									<td align="right">
+										<label for="Debut Période"><font color=black>mois Fin:</font></label>
+									</td>	
+									<td align="left">
+									    <select class="form-control" name="Période" type="number" th:field="*{moisFin}" id="f_Période" required="">
+										      <option value="">Sélectionner le mois fin</option>
+											  <option value="1">Janvier</option>
+											  <option value="2">Fevrier</option>
+											  <option value="3">Mars</option>
+											  <option value="4">Avril</option>
+											  <option value="5">Mai</option>
+											  <option value="6">Juin</option>
+											  <option value="7">Juillet</option>
+											  <option value="8">Aout</option>
+											  <option value="9">Septembre</option>
+											  <option value="10">Octobre</option>
+											  <option value="11">Novembre</option>
+											  <option value="12">Decembre</option>
+                         				</select>											
+									</td>
+								<input class="form-control" type="hidden"  value="FILTRE" name="paramchoix"/>
+								</tr>
+							</tbody>
+						</table>
+						<br/>
+						<center>
+							<p><button target="submit" class="btn btn-success" style="background-color: #0099ff"><b>Rechercher</b></button></p>
+							<ul class="nav navbar-right panel_toolbox">
+						  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+						</ul>
+						<div class="clearfix"></div>
+						</center>
+						</form>
+					</div>
+				</div>
+			    </center>	
+
+					<div class="col-md-12 col-sm-12 col-xs-12">
+					<table width="100%">
+						<tr>
+							<td>
+								<form th:object="${SigFiltreRecherche}" th:action="@{/admin/prgSuiviRsuMenageMoisView/rech}" method="post" enctype="multipart/form-data" novalidate>
+									<input th:field="*{anneeDebut}"  type="hidden" class="form-control" id="f_debut" />
+									<input th:field="*{moisDebut}"  type="hidden" class="form-control" id="d_Période" />
+									<input th:field="*{moisFin}" type="hidden" class="form-control" id="f_Période"  />
+									
+									<input class="form-control" type="hidden"  value="EXCEL" name="paramchoix"/>
+						
+							<center>		<button type="submit"  class="btn btn-large btn-primary navbar-center"   ><b>Générer Excel</b></button>  	</center>
+						
+								</form>
+								
+							</td>
+							
+						</tr>
+					</table>
+
+         <!-- page fin filtre -->
+        
+        <!-- page detail fitre -->
+		
+<!--debut contenue ---------------------------------PAGE--><!--BEGIN CONTENT-->       
+			<div class="">
+			  <center>
+
+				<div class="row-fluid sortable ui-sortable">		                                                            
+					<div class="panel panel-yellow">
+						<div class="panel-body">
+							<div id="no-more-tables">
+								<table id="datatable-fixed-header" border="1" class="table table-striped jambo_table bulk_action" width="80%">
+								<thead >
+									    <tr>
+										     <th colspan="2"><center></center></th>
+											<th colspan="12"><center>BASE PMT</center></th>
+											
+											<th colspan="10"><center>NIVEAU DE PAUVRETE</center></th>
+																					
+										</tr>
+										<tr>
+											<th rowspan="2"><center>Période</center></th>
+											<th rowspan="2"><center>Mois</center></th>
+											<th colspan="4"><center>Ménages PMT/RSU</center></th>
+											<th colspan="4"><center>Ménages Femmes PMT/RSU</center></th>
+											<th colspan="4"><center>Ménages Hommes PMT/RSU</center></th>
+											<th colspan="2"><center>Model 1</center></th>
+											<th colspan="2"><center>Model 2</center></th>
+											<th colspan="2"><center>Model 3</center></th>
+											<th colspan="2"><center>Model 4</center></th>
+											<th colspan="2"><center>Model 5</center></th>
+	
+									   </tr>
+										<tr>
+											
+											<th  ><center>Nb total de ménage</center></th>
+											<th  ><center>Nb total de membre</center></th>
+											<th  ><center>Nombre d'homme</center></th>
+											<th  ><center>Nombre de femme</center></th>
+											
+										  <th  ><center>Nb total de ménage</center></th>
+											<th  ><center>Nb total de membre</center></th>
+											<th  ><center>Nombre d'homme</center></th>
+											<th  ><center>Nombre de femme</center></th>
+											
+											<th  ><center>Nb total de ménage</center></th>
+											<th  ><center>Nb total de membre</center></th>
+											<th  ><center>Nombre d'homme</center></th>
+											<th  ><center>Nombre de femme</center></th>
+										
+											<th><center>En Dessous du Seuil</center> </th>
+											<th><center>Au Dessus du Seuil</center> </th>
+											
+											<th><center>En Dessous du Seuil</center> </th>
+											<th><center>Au Dessus du Seuil</center> </th>
+											
+											<th><center>En Dessous du Seuil</center> </th>
+											<th><center>Au Dessus du Seuil</center> </th>
+											
+											<th><center>En Dessous du Seuil</center> </th>
+											<th><center>Au Dessus du Seuil</center> </th>
+											
+											<th><center>En Dessous du Seuil</center> </th>
+											<th><center>Au Dessus du Seuil</center> </th>
+											
+										</tr>
+									</thead>
+									<tbody>
+									    <tr th:each="PrgSuiviRsuMenageMoisView,i:${result}">
+											<td th:text="${PrgSuiviRsuMenageMoisView.annee}"></td>
+											<td th:text="${PrgSuiviRsuMenageMoisView.libelleMois}"></td>
+											<td th:text="${PrgSuiviRsuMenageMoisView.nbMenage}"></td>
+											<td th:text="${PrgSuiviRsuMenageMoisView.effTotal}"></td>
+											<td th:text="${PrgSuiviRsuMenageMoisView.effHomme}"> </td>
+											<td th:text="${PrgSuiviRsuMenageMoisView.effFemme}"> </td>
+
+											<td th:text="${PrgSuiviRsuMenageMoisView.nbMemageChefFemme}"></td> 
+											<td th:text="${PrgSuiviRsuMenageMoisView.effMembreFemme}"></td>
+											<td th:text="${PrgSuiviRsuMenageMoisView.nbEffHommeFemme}"></td>
+											<td th:text="${PrgSuiviRsuMenageMoisView.nbEffFemmeFemme}"> </td>
+											
+											
+
+											<td th:text="${PrgSuiviRsuMenageMoisView.nbMemageChefHomme}"> </td> 
+											<td th:text="${PrgSuiviRsuMenageMoisView.effMembreHomme}"> </td>
+											<td th:text="${PrgSuiviRsuMenageMoisView.effHommeHomme}"></td>
+											<td th:text="${PrgSuiviRsuMenageMoisView.effHommeFemme}"> </td>
+
+											<td th:text="${PrgSuiviRsuMenageMoisView.nbMenagePauvreModel1}"></td>
+											<td th:text="${PrgSuiviRsuMenageMoisView.nbMenageRicheModel1}"></td>
+
+											<td th:text="${PrgSuiviRsuMenageMoisView.nbMenagePauvreModel2}" ></td>
+											<td th:text="${PrgSuiviRsuMenageMoisView.nbMenageRicheModel2}" ></td>
+
+											<td th:text="${PrgSuiviRsuMenageMoisView.nbMenagePauvreModel3}"></td>
+											<td th:text="${PrgSuiviRsuMenageMoisView.nbMenageRicheModel3}"></td>
+
+											<td th:text="${PrgSuiviRsuMenageMoisView.nbMenagePauvreModel4}"></td>
+											<td th:text="${PrgSuiviRsuMenageMoisView.nbMenageRicheModel4}"></td>
+
+											<td th:text="${PrgSuiviRsuMenageMoisView.nbMenagePauvreModel5}"></td>
+											<td th:text="${PrgSuiviRsuMenageMoisView.nbMenageRicheModel5}"></td>									
+										
+											<td>
+												<table>
+												<tr><td align="center">	
+												  <a class="btn btn-info btn-xs" th:href="@{/admin/prgSuiviRsuMenageMoisView/__${PrgSuiviRsuMenageMoisView.annee}__/__${PrgSuiviRsuMenageMoisView.codMois}__}" align="center" ><i class="fa fa-edit"></i>&nbsp;
+													Detail 
+													</a> 
+										        </td></tr>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+									
+								</table>
+							</div>
+						</div>
+					</div>
+                  </center>
+				</div>
+			</div>
+		</div>	
+    <!-- /page content -->
+	</body>
+</html>
+

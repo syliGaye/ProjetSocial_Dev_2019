@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+	 
+	    
+        <!-- page debut filtre -->
+   <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">  <br/>    
+       
+		<b><font color="orange"><font face=Castellar><font size="4"><center>CONSULTATION DES VIREMENTS AUX AGENCES DE PAIEMENT </center></font></font></font></b>
+
+        <br/>
+		<b><font color="orange"><font face=Castellar><font size="4"><center>FILTRE</center></font></font></font></b>	
+			<center>						    
+				<div class="x_content" width="95%">
+					<div class="portlet-header">
+					
+					
+						<form class="form-horizontal form-label-left " id="dataew" th:object="${SigFiltreRecherche}" th:action="@{/admin/prgVirementUgpPeriodeView/rech}" method="post" enctype="multipart/form-data" novalidate>	
+						<table class="table-striped jambo_table bulk_action" width="70%"  style="border-collapse: separate;  border-spacing: 10px; background-color: Lavender;">
+					
+							<tbody>
+						<tr spacing="10px" padding="10px">
+									 <td align="right">
+										<label for="PDebut"><font color=black>Periode Debut:</font></label>
+									</td>	
+									<td align="left">
+									    <select class="form-control" name="PDebut" type="text" id="f_PDebut"  th:field="*{anneeDebut}"  required="">
+                     					     <option  th:each="PrgEmmissionPeriodeView:${allPrgEmmissionPeriodeView}" 
+                                                    th:value="${PrgEmmissionPeriodeView.getIdPeriode()}"
+                                                    th:text="${PrgEmmissionPeriodeView.getLibellePeriode()}">
+                                             </option>
+                         				</select>											
+									</td>
+									<td align="right">
+										<label for="PFin"><font color=black>Periode Fin:</font></label>
+									</td>	
+									<td align="left">
+									    <select class="form-control" name="PFin" type="text" id="f_PFin"  th:field="*{anneeFin}"  required="">
+                     					     <option  th:each="PrgEmmissionPeriodeView:${allPrgEmmissionPeriodeView}" 
+                                                    th:value="${PrgEmmissionPeriodeView.getIdPeriode()}"
+                                                    th:text="${PrgEmmissionPeriodeView.getLibellePeriode()}">
+                                             </option>
+                         				</select>											
+									</td>
+									</tr>
+							<tr>
+							
+									<td align="right">
+										<label for="Libelle Agence"><font color=black>Libelle Agence:</font></label>
+									</td>	
+									<td align="left" colspan="3">																				
+									  <select class="form-control"  name="Agence de paiement"   type="text" id="f_ag_paiement"  th:field="*{codAp}" required="">
+									      <option value="">Selectioner une agence de paiement</option>
+                                             <option  th:each="SigAgencePaiement:${allSigAgencePaiement}" 
+                                                    th:value="${SigAgencePaiement.getCodAp()}"
+                                                    th:text="${SigAgencePaiement.getRaisonSocialAp()}">
+                                             </option>
+                                           </select> 							   
+									</td>
+									<input class="form-control" type="hidden"  value="FILTRE" name="paramchoix"/>
+								</tr>
+								
+								
+
+							</tbody>
+						</table>
+						</br>
+						<center>
+							<p><button target="submit"  class="btn btn-success" style="background-color: #0099ff"><b>Rechercher</b></button></p>
+						</center>
+						</form>
+		      </div>
+					</div>
+			</center>
+        
+        	<br/>
+			
+			  <div class="col-md-12 col-sm-12 col-xs-12">
+					<table width="100%">
+						<tr>
+							<td>
+								<form th:object="${SigFiltreRecherche}" th:action="@{/admin/prgVirementUgpPeriodeView/rech}" method="post" enctype="multipart/form-data" novalidate> 
+									
+									<input th:field="*{anneeDebut}" type="hidden" class="form-control" id="anneeDebut"  />
+									<input th:field="*{anneeFin}" type="hidden" class="form-control" id="anneeFin"  />
+									<input th:field="*{codAp}" type="hidden" class="form-control" id="codAp"  />
+
+									<input class="form-control" type="hidden"  value="EXCEL" name="paramchoix"/>
+						
+									<button type="submit"  class="btn btn-large btn-primary navbar-right"   ><b>Générer Excel</b></button>
+						
+								</form>
+								
+							</td>
+							<td>
+								<form th:object="${SigFiltreRecherche}" th:action="@{/admin/prgVirementUgpPeriodeView/rech}" method="post" enctype="multipart/form-data" novalidate> 
+									<input th:field="*{anneeDebut}" type="hidden" class="form-control" id="anneeDebut"  />
+									<input th:field="*{anneeFin}" type="hidden" class="form-control" id="anneeFin"  />
+									<input th:field="*{codAp}" type="hidden" class="form-control" id="codAp"  />
+	
+									<input class="form-control" type="hidden"  value="PDF" name="paramchoix"/>
+						
+									<button type="submit"  class="btn btn-large btn-primary navbar-left"   ><b>Générer PDF</b></button>
+						
+								</form>
+							</td>
+						</tr>
+					</table>
+		
+			<div class="col-md-12 col-sm-12 col-xs-12">
+			<!--a class="btn btn-large btn-success" >Ajouter Membre</a-->
+				<div class="x_panel">
+				
+					<center>
+					<div class="x_content">
+					
+						<table id="datatable-fixed-header" class="table table-striped table-bordered jambo_table bulk_action" width="100%">
+							<thead>
+								<tr heigth="5px">
+									   <th >Id Virement</th>
+									   <th>Libelle Periode</th>
+									   <th>Nom Agence</th>
+									   <th>Date Virement</th>
+									   <th>Montant Virement</th>
+									   <th>Recu Virement</th>
+									    <th><center>Action</center></font></th> 
+									                   
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="PrgVirementUgpPeriodeView,i:${result}">
+									<td th:text="${PrgVirementUgpPeriodeView.idVirementUgp}"></td>
+									<td th:text="${PrgVirementUgpPeriodeView.codPeriode}"></td>
+									<td th:text="${PrgVirementUgpPeriodeView.raisonSocialAp}"></td>
+									<td th:text="${PrgVirementUgpPeriodeView.dateEnvoi}"></td>
+									<td th:text="${PrgVirementUgpPeriodeView.montVir}"></td>
+									<td th:text="${PrgVirementUgpPeriodeView.recuVir}"></td>
+									
+									<td class="center" width=20%>
+									
+													
+									<a class="btn btn-info btn-xs" th:href="@{/admin/prgPaiementUgpDetails/__${PrgVirementUgpPeriodeView.idVirementUgp}__}" ><i class="fa fa-edit"></i>&nbsp; 
+																Detail
+															</a>
+															
+									
+									</td>   
+								</tr>
+							</tbody>
+						</table>
+						
+					  </div>
+					  </center>
+				</div>
+			</div>
+		</div>
+        <!-- /page content -->
+
+    </body>
+</html>
+

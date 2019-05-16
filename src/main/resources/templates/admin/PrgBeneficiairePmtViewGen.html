@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:p="http://primefaces.org/ui" data-layout-decorate="~{fragment/layout}" >
+    
+    
+    <head>
+    	
+  </head>
+
+  <body class="nav-md">
+    
+
+        <!-- page content -->
+        
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">
+        
+       
+			
+			<!-- debut du filtre du filtre -->		                
+                          
+			<div class="">
+			<div class="portlet-header">
+			
+
+			<div class="portlet-body" style="display: block;">
+			</div>
+	
+	
+			<div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+					<tr>
+						<td align="center">	
+							<center><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Lancer la Preselection Selon le Score PMT</button></center>	
+						</td>		
+					</tr>
+				</table>
+				<div class="container">
+				  <!-- Modal -->
+					<div class="modal fade" id="myModal" role="dialog">
+						<div class="modal-dialog">
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+								  <button type="button" class="close" data-dismiss="modal">&times;</button>
+								  <b><font color="orange" size="5"><center>ENTRER LES PARAMETRES</center></font></b>
+								</div>
+								<div class="modal-body">
+									<form class="form-horizontal form-label-left " th:object="${PrgBeneficiaire}" th:action="@{/admin/prgGenererAffectationBenef}" method="post"   novalidate>
+										
+										<div class="form-horizontal form-label-left">
+
+											<p><label for="fullname">Sélection </label><select class="form-control" name="idSelection">
+												<option th:each="SigQuotaSelection:${allSigQuotaSelection}" 
+														th:value="${SigQuotaSelection.getIdSelection()}"
+														th:text="${SigQuotaSelection.getLibelleSelection()}"> 
+												</option>
+											</select></p>
+											
+											<p><label for="fullname">Programme </label><select   class="form-control" name="codProgramme">
+												<option value="NONE">Sélectionner le Programme</option>
+												<option th:each="SigProgramme:${allSigProgramme}" 
+														th:value="${SigProgramme.getCodProgramme()}"
+														th:text="${SigProgramme.getLibelleProgramme()}"> 
+												</option>
+											</select></p>
+											
+											<p><label for="fullname">Model </label><select   class="form-control" name="codModel" >
+												<option value="NONE">Sélectionner le Model</option>
+												<option th:each="PmtModel:${allPmtModel}" 
+														th:value="${PmtModel.getCodModel()}"
+														th:text="${PmtModel.getLibelleModel()}"> 
+												</option>
+											</select></p>
+										</div>
+										<div class="modal-footer">
+									<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+										<center>
+											<button type="button" class="btn btn-warning" data-dismiss="modal">Retour</button>
+											<button id="send" type="submit" class="btn btn-success">Valider</button>
+										</center>
+									</div>
+								</div>
+										
+									</form>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			  	 		  
+			</div>
+			
+  	<!-- fiin du filtre et debut du formulaire de consultation-->	
+		
+
+        </div>
+        <!-- /page content -->
+	</body></html>

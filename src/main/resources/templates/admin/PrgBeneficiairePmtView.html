@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:p="http://primefaces.org/ui" data-layout-decorate="~{fragment/layout}" >
+    
+    
+    <head>
+    	
+  </head>
+
+  <body class="nav-md">
+    
+
+        <!-- page content -->
+        
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">
+        
+       
+			
+			<!-- debut du filtre du filtre -->		                
+                          
+			<div class="">
+			<div class="portlet-header">
+			
+
+			<div class="portlet-body" style="display: block;">
+			</div>
+	
+	
+			<div><br>  	
+			  	 <center><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Lancer la Preselection</button></center>	
+			  	<div class="container">
+				  <!-- Modal -->
+					<div class="modal fade" id="myModal" role="dialog">
+						<div class="modal-dialog">
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+								  <button type="button" class="close" data-dismiss="modal">&times;</button>
+								  <b><font color="orange" size="5"><center>ENTRER LES PARAMETRES</center></font></b>
+								</div>
+								<div class="modal-body">
+									<form class="form-horizontal form-label-left " th:object="${PrgBeneficiaire}" th:action="${'/admin/prgGenererAffectationBenef'}" method="post"   novalidate>
+										
+										<div class="form-horizontal form-label-left">
+
+											<p><label for="fullname">Sélection </label><select class="form-control" name="idSelection">
+												<option th:each="SigQuotaSelection:${allSigQuotaSelection}" 
+														th:value="${SigQuotaSelection.getIdSelection()}"
+														th:text="${SigQuotaSelection.getLibelleSelection()}"> 
+												</option>
+											</select></p>
+											
+											<p><label for="fullname">Programme </label><select   class="form-control" name="codProgramme">
+												<option value="NONE">Sélectionner le Programme</option>
+												<option th:each="SigProgramme:${allSigProgramme}" 
+														th:value="${SigProgramme.getCodProgramme()}"
+														th:text="${SigProgramme.getLibelleProgramme()}"> 
+												</option>
+											</select></p>
+											
+											<p><label for="fullname">Model </label><select   class="form-control" name="codModel" >
+												<option value="NONE">Sélectionner le Model</option>
+												<option th:each="PmtModel:${allPmtModel}" 
+														th:value="${PmtModel.getCodModel()}"
+														th:text="${PmtModel.getLibelleModel()}"> 
+												</option>
+											</select></p>
+										</div>
+										<div class="modal-footer">
+									<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+										<center>
+											<button type="button" class="btn btn-warning" data-dismiss="modal">Retour</button>
+											<button id="send" type="submit" class="btn btn-success">Valider</button>
+										</center>
+									</div>
+								</div>
+										
+									</form>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			  	 		  
+			</div>
+			
+  	<!-- fiin du filtre et debut du formulaire de consultation-->	
+			
+          <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+
+                  <div class="x_title">
+                    <b><font color="orange"><font face=Castellar><font size="4"><center>LISTE DES MENAGES RETENU SELON LE SCORE PMT</center></font></font></font></b>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+        
+
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <div class="x_content">
+              <center>
+                    <table id="datatable-buttons"  class="table table-striped jambo_table bulk_action" width="100%"> 
+                      <thead>
+                        <tr>
+                                                
+							<th >Localité</th>
+							<th >Village</th>
+							<th >Chef de Menage</th>
+							<th >Date Affectation</th>
+							<th >Score</th>
+							<th >Libelle Selecteur</th>
+							<th >Action</th>
+                                                   
+                         </tr>
+                      </thead>
+
+
+                      <tbody>
+                       
+                          
+                          
+                           <tr th:each="PrgBeneficiairePmtView,iterStat:${allPrgBeneficiairePmtView}">
+              
+								<td th:text="${PrgBeneficiairePmtView.nomLocalite}"> </td>
+								<td th:text="${PrgBeneficiairePmtView.villageQuartier}"> </td>
+								<td th:text="${PrgBeneficiairePmtView.nomChefMenage}" width="20%"> </td>
+								<td th:text="${PrgBeneficiairePmtView.dateAffect}" width="5%"> </td>
+								<td th:text="${PrgBeneficiairePmtView.scorePrg}" width="5%"> </td>
+								<td th:text="${PrgBeneficiairePmtView.libelleSelection}"> </td>
+								
+                                                          
+                                <td class="center" width="10%">
+									<a class="btn btn-info btn-xs" th:href="@{/admin/editPrgBeneficiairePmtView/__${PrgBeneficiairePmtView.codMenage}__}"><i class="fa fa-edit"></i>
+										Details 
+									</a>
+									
+									
+				               
+                                </td>
+                            </tr>
+                          
+                          
+                          
+                      </tbody>
+                    </table>
+                  </center>
+                  </div>
+                </div>
+              </div>
+
+        </div>
+        <!-- /page content -->
+
+        <div>  <center><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Lancer la Preselection</button></center></div>
+  
+</body></html>

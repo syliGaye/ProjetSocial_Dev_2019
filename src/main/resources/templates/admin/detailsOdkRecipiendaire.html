@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+  
+  <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+		
+							 
+		<style>
+			* {
+			  box-sizing: border-box;
+			}
+
+			body {
+			  background-color: #f1f1f1;
+			}
+
+			#regForm {
+			  background-color: #ffffff;
+			  margin: 100px auto;
+			  font-family: Raleway;
+			  padding: 40px;
+			  width: 70%;
+			  min-width: 300px;
+			}
+
+			
+			input {
+			  padding: 10px;
+			  width: 100%;
+			  font-size: 17px;
+			  font-family: Raleway;
+			  border: 1px solid #aaaaaa;
+			}
+			
+			select {
+			  padding: 10px;
+			  width: 100%;
+			  font-size: 17px;
+			  font-family: Raleway;
+			  border: 1px solid #aaaaaa;
+			}
+
+			/* Mark input boxes that gets an error on validation: */
+			input.invalid {
+			  background-color: #ffdddd;
+			}
+			
+			/* Mark input boxes that gets an error on validation: */
+			select.invalid {
+			  background-color: #ffdddd;
+			}
+
+			/* Hide all steps by default: */
+			.tab {
+			  display: none;
+			}
+
+			button {
+			  background-color: #4CAF50;
+			  color: #ffffff;
+			  border: none;
+			  padding: 10px 20px;
+			  font-size: 17px;
+			  font-family: Raleway;
+			  cursor: pointer;
+			}
+
+			button:hover {
+			  opacity: 0.8;
+			}
+
+			#prevBtn {
+			  background-color: #bbbbbb;
+			}
+
+			/* Make circles that indicate the steps of the form: */
+			.step {
+			  height: 15px;
+			  width: 15px;
+			  margin: 0 2px;
+			  background-color: #bbbbbb;
+			  border: none;  
+			  border-radius: 50%;
+			  display: inline-block;
+			  opacity: 0.5;
+			}
+
+			.step.active {
+			  opacity: 1;
+			}
+
+			/* Mark the steps that are finished and valid: */
+			.step.finish {
+			  background-color: #4CAF50;
+			}
+		</style>
+		
+
+
+	
+  </head>
+	
+  <body  >   
+        <!-- page content -->
+        <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">
+		
+			<br/>
+				<form id="regForm" name="regForm1" th:object="${OdkRecipiendaire}" th:action="${'/admin/detailsOdkRecipiendaire/'+OdkRecipiendaire.idRecipiendaire}" method="post"   novalidate>
+					<div class="x_title">
+						<b><font color="orange" size="5"><center>LISTE DETAILLEE DU RECIPIENDAIRE ODK</center></font></b>
+						<ul class="nav navbar-right panel_toolbox">
+							<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+							</li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<!-- One "tab" for each step in the form: -->
+					<div class="tab">
+						<div class="x_panel"> 
+							<div class="x_title">
+								<b><font color="orange" size="4">Localisation du Récipiendaire</font></b>
+								<div class="clearfix"></div>
+							</div>
+							<p><label for="fullname">Région </label><select id="f_region" th:field="*{codRegion}" disabled="disabled"  >
+								<option value="NONE">Région</option>  
+								<option th:each="SigRegion:${allSigRegion}" 
+										th:value="${SigRegion.getCodRegion()}"
+										th:text="${SigRegion.getNomRegion()}"> 
+								</option>
+							</select></p>
+							<p><label for="fullname">Département </label><select id="f_departement" th:field="*{codDepartement}" disabled="disabled"  >
+								<option value="NONE">Département</option>  
+								<option th:each="SigDepartement:${allSigDepartement}" 
+										th:value="${SigDepartement.getCodDepartement()}"
+										th:text="${SigDepartement.getNomDepartement()}"> 
+								</option>
+							</select></p><p><label for="fullname">Sous-Préfecture </label><select id="f_s_prefecture" th:field="*{codSousPref}" disabled="disabled"  >
+								<option value="NONE">Sous-Préfecture</option>  
+								<option th:each="SigSousPrefecture:${allSigSousPrefecture}" 
+										th:value="${SigSousPrefecture.getCodSPref()}"
+										th:text="${SigSousPrefecture.getNomSPref()}"> 
+								</option>
+							</select></p><p><label for="fullname">Localité </label><select  id="f_localite" th:field="*{codLocalite}" name="codLocalite" disabled="disabled" >
+								<option value="NONE">Localité</option>  
+								<option th:each="SigLocalite:${allSigLocalite}" 
+										th:value="${SigLocalite.getCodLocalite()}"
+										th:text="${SigLocalite.getNomLocalite()}"> 
+								</option>
+							</select></p>
+					</div>
+		
+								<div class="x_panel">
+							<div class="x_title">
+								<b><font color="orange" size="4">Information sur le Récipiendaire</font></b>
+								<div class="clearfix"></div>
+							</div>
+							    <p><label for="fullname">N°Recipiendaire</label><input  placeholder="Date" oninput="this.className = ''" name="idRecipiendaire" th:field="*{idRecipiendaire}" disabled="disabled"></p>
+                                
+                                    <p><label for="fullname">Matricule Membre</label><input  placeholder="Date" oninput="this.className = ''" name="idMembre" th:field="*{idMembre}" disabled="disabled"></p>
+
+                                        <p><label for="fullname">Code Menage</label><input  placeholder="Date" oninput="this.className = ''" name="codMenage" th:field="*{codMenage}" disabled="disabled"></p>
+									
+
+                                        <p><label for="fullname">Nom Tierce</label><input  placeholder="Date" oninput="this.className = ''" name="nomTierce" th:field="*{nomTierce}" disabled="disabled"></p>
+
+                                        <p><label for="fullname">Prenoms Tierce</label><input  placeholder="Date" oninput="this.className = ''" name="prenomsTierce" th:field="*{prenomsTierce}" disabled="disabled"></p>
+							     
+                                        <p><label for="fullname">Genre Tierce</label>
+										<select  placeholder="Genre" oninput="this.className = ''" name="genreTierce" th:field="*{genreTierce}" disabled="disabled">
+                                         <option selected value="0">HOMME</option>
+                                         <option  value="1">FEMME</option>										 
+								
+							             </select></p>
+										 
+										 
+                                        <p><label for="fullname">Contact Tierce</label><input  placeholder="Contact" oninput="this.className = ''" name="contactTierce" th:field="*{contactTierce}" disabled="disabled"></p>
+									
+
+                                     
+                                        <p><label for="fullname">Agence</label><select   oninput="this.className = ''" name="codAp" th:field="*{codAp}" disabled="disabled">
+								<option value="NONE">Agence</option>  
+								<option th:each="SigAgencePaiement:${allSigAgencePaiement}" 
+										th:value="${SigAgencePaiement.getCodAp()}"
+										th:text="${SigAgencePaiement.getRaisonSocialAp()}"> 
+								</option>
+							</select></p>
+                                        
+						</div>
+						
+						<div class="x_panel">
+							<div class="x_title">
+								<b><font color="orange" size="4">Information sur le Collecteur</font></b>
+								<div class="clearfix"></div>
+							</div>
+							   
+							<p><label for="fullname">Matricule Agent Collecteur </label><select   oninput="this.className = ''" name="codAgCol" th:field="*{codAgCol}" disabled="disabled">
+								<option value="NONE">Matricule Agent Collecteur</option>  
+								<option th:each="SigAgentCollecte:${allSigAgentCollecte}" 
+										th:value="${SigAgentCollecte.getCodAgCol()}"
+										th:text="${SigAgentCollecte.getNomAgCol()}"> 
+								</option>
+							</select></p>
+							
+							<p><label for="fullname">Date Enregistrement</label><input  placeholder="Date" oninput="this.className = ''" name="dateEnregis" th:field="*{dateEnregis}" disabled="disabled"></p>
+						
+						
+						</div>
+						
+						
+						
+					
+					
+
+					
+					<br>
+								<div class="ln_solid"></div>
+									<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+									<center>
+								    <a onclick = "history.back()" class="btn btn-warning">Retour</a>												
+								    </center>
+									</div>
+
+ 
+</form>
+		</div>
+        <!-- /page content -->
+
+	
+    </body>
+</html>

@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">   
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+  <body class="nav-md">
+	 
+	    
+        <!-- page debut filtre -->
+   <div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">   
+   
+                <br/>
+                <center>						    
+				<div class="x_content" width="95%">
+					<div class="portlet-header">
+						<div class="x_title">						
+							<b><font color="orange"><font face=Castellar><font size="4"><center>Suivi des données du PMT/analyse par année</center></font></font></font></b>
+							<ul class="nav navbar-right panel_toolbox">
+							  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+						<b><font color="orange"><font face=Castellar><font size="3"><center>FILTRE</center></font></font></font></b>	
+						
+				<form class="form-horizontal form-label-left " id="PrgSuiviRsuMenageAnneeView" th:object="${SigFiltreRecherche}" th:action="@{/admin/prgSuiviRsuMenageAnneeView/rech}" method="post" enctype="multipart/form-data" novalidate>
+                          
+						<table class="table-striped jambo_table bulk_action" width="90%"  style="border-collapse: separate;  border-spacing: 10px; background-color: Lavender;">
+							<tbody>
+								<tr spacing="10px" padding="10px">
+									<td align="right">
+										<label for="annee"><font color=black>Annee Debut:</font></label>
+									</td>	
+									<td align="left">										
+										<input class="form-control" type="number" placeholder="Annee" name="annee" th:field="*{anneeDebut}"  id="f_debut"/>
+									</td>
+									<td align="right">
+										<label for="annee"><font color=black>Annee Fin:</font></label>
+									</td>	
+									<td align="left">										
+										<input class="form-control" type="number" placeholder="Annee" name="annee" th:field="*{anneeFin}"  id="f_fin"/>
+									</td>
+									<input class="form-control" type="hidden"  value="FILTRE" name="paramchoix"/>
+								</tr>
+							</tbody>
+						</table>
+						<br/>
+						<center>
+							<p><button target="submit" class="btn btn-success" style="background-color: #0099ff"><b>Rechercher</b></button></p>
+							<ul class="nav navbar-right panel_toolbox">
+						  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+						</ul>
+						<div class="clearfix"></div>
+						</center>
+						</form>
+					</div>
+				</div>
+			    </center>
+   
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<table width="100%">
+						<tr>
+							<td>
+								<form th:object="${SigFiltreRecherche}" th:action="@{/admin/prgSuiviRsuMenageAnneeView/rech}" method="post" enctype="multipart/form-data" novalidate> 
+									<input th:field="*{anneeDebut}"  type="hidden" class="form-control" id="f_debut" />
+									<input th:field="*{anneeFin}" type="hidden" class="form-control" id="f_fin"  />
+									
+									<input class="form-control" type="hidden"  value="EXCEL" name="paramchoix"/>
+						
+							<center>		<button type="submit"  class="btn btn-large btn-primary navbar-center"   ><b>Générer Excel</b></button>  	</center>
+						
+								</form>
+								
+							</td>
+							
+						</tr>
+					</table>
+			       
+<!--debut contenue ---------------------------------PAGE--><!--BEGIN CONTENT-->
+            <div class="">
+				
+			<center>
+				<div class="row-fluid sortable ui-sortable">		                                                            
+					<div class="panel panel-yellow">
+						<div class="panel-body">
+							<div id="no-more-tables">
+								<table id="datatable-fixed-header" border="1" class="table table-striped jambo_table bulk_action" width="80%">
+									<thead >
+									    <tr>
+										     
+										    <th colspan="1"><center></center></th>
+											<th colspan="12"><center>BASE PMT</center></th>
+											
+											<th colspan="10"><center>NIVEAU DE PAUVRETE</center></th>
+																						
+										</tr>
+
+										<tr>
+										    <th rowspan="2"><center>Période</center></th>						
+											<th colspan="4"><center>Ménages PMT/RSU</center></th>
+											<th colspan="4"><center>Ménages Femmes PMT/RSU</center></th>
+											<th colspan="4"><center>Ménages Hommes PMT/RSU</center></th>
+											<th colspan="2"><center>Model 1</center></th>
+											<th colspan="2"><center>Model 2</center></th>
+											<th colspan="2"><center>Model 3</center></th>
+											<th colspan="2"><center>Model 4</center></th>
+											<th colspan="2"><center>Model 5</center></th>
+	
+										</tr>
+										<tr>
+
+											<th  ><center>Nb total de ménage</center></th>
+											<th  ><center>Nb total de membre</center></th>
+											<th  ><center>Nombre d'homme</center></th>
+											<th  ><center>Nombre de femme</center></th>
+											
+										  <th  ><center>Nb total de ménage</center></th>
+											<th  ><center>Nb total de membre</center></th>
+											<th  ><center>Nombre d'homme</center></th>
+											<th  ><center>Nombre de femme</center></th>
+											
+											<th  ><center>Nb total de ménage</center></th>
+											<th  ><center>Nb total de membre</center></th>
+											<th  ><center>Nombre d'homme</center></th>
+											<th  ><center>Nombre de femme</center></th>
+										
+											<th><center>En Dessous du Seuil</center> </th>
+											<th><center>Au Dessus du Seuil</center> </th>
+											
+											<th><center>En Dessous du Seuil</center> </th>
+											<th><center>Au Dessus du Seuil</center> </th>
+											
+											<th><center>En Dessous du Seuil</center> </th>
+											<th><center>Au Dessus du Seuil</center> </th>
+											
+											<th><center>En Dessous du Seuil</center> </th>
+											<th><center>Au Dessus du Seuil</center> </th>
+											
+											<th><center>En Dessous du Seuil</center> </th>
+											<th><center>Au Dessus du Seuil</center> </th>
+											
+                                            <th><center>ACTION</center></th>
+											
+										</tr>
+									</thead>
+									<tbody>
+									    <tr th:each="PrgSuiviRsuMenageAnneeView,i:${result}">
+											<td th:text="${PrgSuiviRsuMenageAnneeView.annee}"></td>
+											<td th:text="${PrgSuiviRsuMenageAnneeView.nbMenage}"></td>
+											<td th:text="${PrgSuiviRsuMenageAnneeView.effTotal}"></td>
+											<td th:text="${PrgSuiviRsuMenageAnneeView.effHomme}"> </td>
+											<td th:text="${PrgSuiviRsuMenageAnneeView.effFemme}"> </td>
+
+											<td th:text="${PrgSuiviRsuMenageAnneeView.nbMemageChefFemme}"></td> 
+											<td th:text="${PrgSuiviRsuMenageAnneeView.effMembreFemme}"></td>
+											<td th:text="${PrgSuiviRsuMenageAnneeView.nbEffHommeFemme}"></td>
+											<td th:text="${PrgSuiviRsuMenageAnneeView.nbEffFemmeFemme}"> </td>
+											
+											
+
+											<td th:text="${PrgSuiviRsuMenageAnneeView.nbMemageChefHomme}"> </td> 
+											<td th:text="${PrgSuiviRsuMenageAnneeView.effMembreHomme}"> </td>
+											<td th:text="${PrgSuiviRsuMenageAnneeView.effHommeHomme}"></td>
+											<td th:text="${PrgSuiviRsuMenageAnneeView.effHommeFemme}"> </td>
+
+											<td th:text="${PrgSuiviRsuMenageAnneeView.nbMenagePauvreModel1}"></td>
+											<td th:text="${PrgSuiviRsuMenageAnneeView.nbMenageRicheModel1}"></td>
+
+											<td th:text="${PrgSuiviRsuMenageAnneeView.nbMenagePauvreModel2}" ></td>
+											<td th:text="${PrgSuiviRsuMenageAnneeView.nbMenageRicheModel2}" ></td>
+
+											<td th:text="${PrgSuiviRsuMenageAnneeView.nbMenagePauvreModel3}"></td>
+											<td th:text="${PrgSuiviRsuMenageAnneeView.nbMenageRicheModel3}"></td>
+
+											<td th:text="${PrgSuiviRsuMenageAnneeView.nbMenagePauvreModel4}"></td>
+											<td th:text="${PrgSuiviRsuMenageAnneeView.nbMenageRicheModel4}"></td>
+
+											<td th:text="${PrgSuiviRsuMenageAnneeView.nbMenagePauvreModel5}"></td>
+											<td th:text="${PrgSuiviRsuMenageAnneeView.nbMenageRicheModel5}"></td>
+											<td>
+												<table>
+												<tr><td align="center">	
+												<a class="btn btn-info btn-xs" th:href="@{/admin/prgSuiviRsuMenageAnneeView/__${PrgSuiviRsuMenageAnneeView.annee}__}" align="center" ><i class="fa fa-edit"></i>&nbsp;
+													Detail 
+													</a>  
+										        </td>
+												</tr>
+												</table>
+											</td>
+										</tr>
+									</tbody>	
+								</table>
+							</div>
+						</div>
+					</div>
+                  </center>
+				</div>
+			</div>
+		</div>	
+    <!-- /page content -->
+	</body>
+</html>
+

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragment/layout}">    
+    
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+	<body class="nav-md">
+    
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+			<div class="">
+				<div class="clearfix"></div>
+
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="x_panel">
+							<div class="x_title">
+								<b><font color="orange" size="5"><center>CREATION D'UN STATUT PAIEMENT REPORT</center></font></b>
+								<ul class="nav navbar-right panel_toolbox">
+									<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+									</li>
+								</ul>
+								<div class="clearfix"></div>
+							</div>
+							<div class="x_content">
+								<form class="form-horizontal form-label-left " th:object="${prgPaiementReportStatut}" th:action="@{/admin/prgPaiementReportStatut/add}" method="post"    novalidate>
+								
+								
+								<div class="item form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Id statut<span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" name="name"  required="required" type="text" th:field="*{idPaiementReportStatut}" readonly="true">
+									</div>
+								</div> 
+									
+								
+								
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Agence Paiement<span class="required">*</span></label>
+										<div class="col-md-6 col-sm-6 col-xs-12">                                        
+										<select class="form-control" name="codEqui" th:field="*{codAp}" >
+											<option value="NONE">Agence Paiement</option>  
+											<option th:each="sigAgencePaiement:${allSigAgencePaiement}" 
+													th:value="${sigAgencePaiement.getCodAp()}" 
+													th:text="${sigAgencePaiement.getRaisonSocialAp()}"> 
+											</option>
+										</select> 
+									</div>
+                           </div> 
+			
+								<div class="item form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Code paiement report statut <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="code paiement report" required="required" type="text" th:field="*{codPaiementReportStatut}">
+									</div>
+								</div>
+								
+								<div class="item form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Libellé paiement report statut <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="libellé paiement report" required="required" type="text" th:field="*{libellePaiementReportStatut}">
+									</div>
+								</div>
+								
+								
+								
+								
+								<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Paiement Effectué?<span class="required">*</span></label>
+										<div class="col-md-6 col-sm-6 col-xs-12">                                        
+										<select class="form-control" name="etatPaiementReportStatut" th:field="*{etatPaiementReportStatut}" >
+											<option value="NONE">Statut paiement report</option>  
+												 <option value="OUI">OUI</option>
+												 <option value="NON">NON</option>
+										</select> 
+									</div>
+                           </div> 
+								
+									<div class="ln_solid"></div>
+									<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+                                        <center>
+											<a class="btn btn-warning" th:href="@{/admin/prgPaiementReportStatut}">Retour</a>
+											<a class="btn btn-default" th:href="@{/admin/prgPaiementReportStatut/add}">Annuler</a>
+										    <button id="send" type="submit" class="btn btn-success">Enregistrer</button>
+										</center>
+
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+        <!-- /page content -->
+
+ 
+</body></html>

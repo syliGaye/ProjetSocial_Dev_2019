@@ -1,0 +1,106 @@
+	<!DOCTYPE html>
+	<html lang="en" data-layout-decorate="~{fragment/layout}">   
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+		<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+	</head>
+
+		<body class="nav-md">   
+		<!-- page content -->
+		
+		<div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">     
+		
+			<div class="x_panel">
+			
+				<div class="x_title">
+				
+				<br>
+				<br>
+						
+						<b><font color="orange"><font face=Castellar><font size="4"><center>DETAILS DES MENAGES PAR MOIS ET PAR DEPARTEMENT</center></font></font></font></b>
+						<ul class="nav navbar-right panel_toolbox">
+						  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<center>
+				
+					<br/>
+				<div class="row-fluid sortable ui-sortable">		                                                            
+					<div class="panel panel-yellow">
+						<div class="panel-body">
+						
+						<div class="ln_solid"></div>
+									<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+									<center>
+								    <a th:href="@{/admin/prgSuiviRsuMenageMoisDepartementView}" class="btn btn-warning">Retour</a>												
+								    </center>
+									</div>
+						
+							<div id="no-more-tables">
+						<table id="datatable-buttons" class="table table-striped jambo_table bulk_action" width="90%">
+							<thead>
+								<tr heigth="5px">
+									
+									<th >Departement</th>
+									   <th>Mois</th>
+									   <th>Code Menage</th>
+									<th>Nom Chef Menage</th>
+								       <th>Genre</th>
+									<th>Taille Menage</th>
+									<th>Nombre Femme </th>
+									<th>Nombre Homme</th>
+									<th>Score Model 1</th>
+									<th>Score Model 2</th>
+									<th>Score Model 3</th>
+									<th>Score Model 4</th>
+									<th>Score Model 5</th>
+									
+									                       
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="prgSuiviRsuMenageView,iterStat:${listRsuMenageDetailsDepPe}">
+									
+									<td th:text="${prgSuiviRsuMenageView.nomDepartement}"></td>
+									<td th:text="${prgSuiviRsuMenageView.libelleMois}"></td>
+									<td th:text="${prgSuiviRsuMenageView.codMenage}"></td>
+									<td th:text="${prgSuiviRsuMenageView.nomChefMenage}"></td>
+									<td th:text="${prgSuiviRsuMenageView.genre}"></td>
+									<td th:text="${prgSuiviRsuMenageView.nbEff}"></td>
+									<td th:text="${prgSuiviRsuMenageView.effFemme}"></td>
+									<td th:text="${prgSuiviRsuMenageView.effHomme}"></td>
+									<td th:text="${prgSuiviRsuMenageView.scoreModel1}"></td>
+									<td th:text="${prgSuiviRsuMenageView.scoreModel2}"></td>
+									<td th:text="${prgSuiviRsuMenageView.scoreModel3}"></td>
+									<td th:text="${prgSuiviRsuMenageView.scoreModel4}"></td>
+									<td th:text="${prgSuiviRsuMenageView.scoreModel5}"></td>
+									
+									
+									</tr>
+									
+							</tbody>
+						</table>
+						
+						<br>
+			                	<br>
+								<div class="ln_solid"></div>
+									<div class="alert alert-warning alert-dismissible fade in" style="background-color: Gainsboro; align: center" >
+									<center>
+								  <!--   <a th:href="@{/admin/prgSuiviRsuMenageMoisDepartementView}" class="btn btn-warning">Retour</a> -->	
+								    <a onclick = "history.back()" class="btn btn-warning">Retour</a>												
+								    </center>
+									</div>
+
+					</div>
+					</center>
+				</div>
+			</div>
+		<!-- /page content -->
+
+		</body>
+	</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:p="http://primefaces.org/ui" data-layout-decorate="~{fragment/layout}" >   
+  <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">    
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/7A678B1C-4107-8C43-995B-90A65D6E597B/main.js" charset="UTF-8"></script>
+
+
+
+  </head>
+
+  <body class="nav-md">
+
+    <!-- page content -->
+    <center>   
+	<div class="right_col" role="main" style="min-height: 809px;" data-layout-fragment="content">     
+        </br>
+		<b><font color="orange"><font face=Castellar><font size="4"><center>FILTRE</center></font></font></font></b>	
+			<center>						    
+				<div class="x_content" width="95%">
+					<div class="portlet-header">
+						
+						<form class="form-horizontal form-label-left " id="PrgPaiementView" th:object="${SigFiltreRecherche}" th:action="@{/admin/PrgPaiementView/rech}" method="post" enctype="multipart/form-data" novalidate>
+                        <table class="table-striped jambo_table bulk_action" width="90%"  style="border-collapse: separate;  border-spacing: 10px; background-color: Lavender;">
+							<tbody>
+								  <tr spacing="10px" padding="10px">
+									<td align="right">
+										<label for="Debut Période"><font color=black>Période Debut:</font></label>
+									</td>	
+									<td align="left" colspan=2>		
+										<input th:field="*{dateDebut}" type="date"  class="form-control" id="f_debut"  required/>
+									</td>
+									<td align="right">
+										<label for="fin Période"><font color=black>Période Fin:</font></label>
+									</td>	
+									<td align="left" colspan=2>										
+										<input th:field="*{dateFin}" type="date" class="form-control" id="f_fin"  required="required" />
+									</td>
+								</tr>
+								<tr>
+									<td align="right">
+										<label for="Region"><font color=black>Région:</font></label>
+									</td>	
+									<td align="left">
+									    <select class="form-control" th:field="*{codRegion}" type="text" id="f_region">
+									       <option value="">Selectioner une Région</option>
+                                            <option th:each="SigRegion:${allSigRegion}" 
+                                                    th:value="${SigRegion.getCodRegion()}"
+                                                    th:text="${SigRegion.getNomRegion()}">
+                                            </option>
+                         				</select>											
+									</td>
+									<td align="right">
+										<label for="Département"><font color=black>Département:</font></label>
+									</td>	
+									<td align="left">
+									    <select class="form-control" th:field="*{codDepartement}" type="text" id="f_departement" required="required" >
+									      <option value="">Selectioner un Département</option>
+                                            <option  th:each="SigDepartement:${allSigDepartement}" 
+                                                     th:value="${SigDepartement.getCodDepartement()}"
+                                                     th:text="${SigDepartement.getNomDepartement()}">
+                                            </option>
+                         				</select>											
+									</td>
+									<td align="right">
+										<label for="Sous-Préfecture"><font color=black>Sous-Préfecture:</font></label>
+									</td>	
+									<td align="left">
+									    <select class="form-control" th:field="*{codSPref}" id="f_s_prefecture"  required="required" >
+									      <option value="">Sous Prefecture</option>
+                                             <option  th:each="SigSousPrefecture:${allSigSousPrefecture}" 
+                                                    th:value="${SigSousPrefecture.getCodSPref()}"
+                                                    th:text="${SigSousPrefecture.getNomSPref()}">
+                                              </option>
+                         				</select>											
+									</td>
+								</tr>
+								<tr>
+									<td align="right">
+										<label for="Localité"><font color=black>Localité:</font></label>
+									</td>	
+									<td align="left">		
+									    <select class="form-control" th:field="*{codLocalite}" id="f_localite" required="">
+									      <option value="">Selectioner une localité</option>
+                                             <option  th:each="SigLocalite:${allSigLocalite}" 
+                                                    th:value="${SigLocalite.getCodLocalite()}"
+                                                    th:text="${SigLocalite.getNomLocalite()}">
+                                             </option>
+                                          </select>   								
+									</td>
+									<td align="right">
+										<label for="Village"><font color=black>Village:</font></label>
+									</td>	
+									<td align="left">										
+										<input class="form-control" type="text" placeholder="Village" th:field="*{villageQuartier}" id="f_Village"/>
+									</td>
+									
+									<td  align="center">
+									    <label for="Recipiendaire"><font color=black>Recipiendaire:</font></label>
+									</td>	
+									<td align="left">										
+										<input class="form-control" type="text" placeholder="Recipendaire" th:field="*{nomRecipiendaire}" id="f_Recipiendaire"/>
+									</td>
+								</tr>								
+								<tr>
+									<td align="right">
+										<label for="Agence de paiement"><font color=black>Agence de paiement:</font></label>
+									</td>	
+									<td align="left">	
+									  <select class="form-control" th:field="*{codAp}" id="f_ag_paiement" required="">
+									      <option value="">Selectioner une agence de paiement</option>
+                                             <option  th:each="SigAgencePaiement:${allSigAgencePaiement}" 
+                                                    th:value="${SigAgencePaiement.getCodAp()}"
+                                                    th:text="${SigAgencePaiement.getRaisonSocialAp()}">
+                                             </option>
+                                           </select>  																		
+									</td>								
+									<td align="right">
+										<label for="Statut Emission"><font color=black>Statut Période:</font></label>
+									</td>	
+									
+									<td align="left"  colspan="3">		
+									  <select name="fin Période" class="form-control" th:field="*{statutMenage}" id="f_statut_paiement" required="">
+											<option value="">Selectionner un statut</option>
+                     					     <option  th:each="SigStatut:${listSigStatut}" 
+                                                    th:value="${SigStatut.getCodStatut()}"
+                                                    th:text="${SigStatut.getLibelleStatut()}">
+                                             </option>
+                         				</select>																		
+									</td>
+									
+									</tr>
+							
+							</tbody>
+						</table>
+						
+						</br>
+						<center>
+							<p><button target="submit" class="btn btn-success" style="background-color: #0099ff"><b>Rechercher</b></button></p>
+							
+							<ul class="nav navbar-right panel_toolbox">
+						    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+						    </ul>
+						    <div class="clearfix"></div>
+						</center>
+						</form>
+					</div>
+				</div>
+			</center>	
+		               
+	 <!-- fiin du filtre et debut du formulaire de consultation-->	
+			
+          <div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+
+						<div class="x_title">
+							<b><font color="orange"><font face=Castellar><font size="4"><center>LISTE DES PAIEMENTS</center></font></font></font></b>
+							<div class="clearfix"></div>
+						</div>
+						 <div class="x_content">
+							<table id="datatable-buttons"  class="table table-striped table-bordered  jambo_table bulk_action" width="100%"> 
+							  <thead>
+								<tr>                
+									<th >Libelle periode</th>
+									<th >Date paiement</th>
+									<th >Localité</th>
+									<th>Recipiendaire</th>
+									<th >Agence</th>
+									<th >Montant</th>
+									<th >Statut</th>
+									<th >Action</th>                 
+								 </tr>
+							  </thead>
+							  <tbody id="tbodyParams">
+									<tr th:each="PrgPaiementView,i:${result}">
+										<td th:text="${PrgPaiementView.libellePeriode}"> </td>
+										<td th:text="${PrgPaiementView.datePaiement}"> </td>
+										<td th:text="${PrgPaiementView.nomLocalite}"> </td>
+										<td th:text="${PrgPaiementView.nomRecipiendaire}"> </td>
+										<td th:text="${PrgPaiementView.raisonSocialAp}"> </td>
+										<td th:text="${PrgPaiementView.montantPaiement}"> </td>
+										<td  th:text="${PrgPaiementView.libStatutPaiement}" width="50%"> </td>                                                         
+										<td class="center" width="10%">
+											<a class="btn btn-info btn-xs" th:href="@{/admin/detailprgPaiementView/__${PrgPaiementView.idPaiement}__}"><i class="fa fa-edit"></i>
+												Details Paiement
+											</a>
+										</td>
+									</tr>
+							  </tbody>
+							</tbody>
+							</table>
+						</div>
+					</div>
+              </div>
+        </div>
+        <!-- /page content -->
+  </center>      
+ 
+</body></html>
