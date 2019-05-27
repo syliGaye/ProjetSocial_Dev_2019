@@ -24,6 +24,7 @@ public class LoginController {
 		    return "home";
 		}else {
 			/* Cas de non connexion */
+			modelMap.put("titrePage", "FILETS SOCIAUX | Connexion");
 			return "login";
 		}
 		
